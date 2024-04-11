@@ -59,8 +59,8 @@
         <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
         <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
         <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star-empty.png" alt="Star" class="star-empty">
-        <img src="Images/OrderConfirmation/Star-empty.png" alt="Star" class="star-empty">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
       </div>
     </div>
   </div>
