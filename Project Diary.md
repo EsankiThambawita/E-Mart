@@ -65,7 +65,7 @@
 
 > **Team Leader - Esanki Thambawita**
 
-**Date: April 10, 2024**
+**Date: April 11, 2024**
 
 **Challenge:** On April 10th, a team member discovered a virus on their computer, which had unknowingly led to infected files being pushed to the old repository.
 
