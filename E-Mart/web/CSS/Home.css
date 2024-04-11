@@ -7,3 +7,314 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Esanki Lakvindee
 */
 
+/*Global styles*/
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, sans-serif;
+    color: #FFF;
+    background-color: black;
+    height: 100%;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1; /* Ensure the gradient overlay is behind the content but on top of the background image */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 815px; /* Adjust height as needed */
+    overflow: hidden; /* Ensure that content beyond the height of the container is hidden */
+    background-color: black; /* Set background color as desired */
+}
+
+.background-image {
+    width: 100%;
+    height: 815px; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+.content {
+    position: absolute;
+    top: 149px;
+    left: 114px;
+    text-align: left;
+    z-index: 2;
+}
+
+h1, p {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-start; /* Align buttons to the left */
+    gap: 20px;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    border-radius: 15px;
+    border: 0.5px solid #FFF;
+    background: rgba(0, 0, 0, 0.00);
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #FFF;
+}
+
+.start-shopping {
+    background: rgba(21, 22, 99, 0.90);
+    backdrop-filter: blur(50px);
+}
+
+/*Second Section*/
+.second-section {
+    position: relative;
+    margin-top: 141px; /* Placed after 141px after the image lens */
+    text-align: center;
+}
+
+.Topic {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 3.2px;
+}
+
+.rectangle-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 114px; /* Space from left page border */
+    margin-right: 107px; /* Space from right page border */
+    gap: 35px; /* Gap between rectangles */
+}
+
+.rectangle {
+    width: 394px;
+    height: 523px;
+    border-radius: 25px;
+    border: 4px solid rgba(255, 255, 255, 0.40);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    overflow: hidden; /* Ensures that the border-radius is applied to the background */
+}
+
+
+.rectangle img {
+    width: 300px;
+    height: 300px;
+    margin-top: 41px;
+}
+
+.text1, .text2 {
+    display: block;
+    color: #FFF;
+    font-family: Calibri;
+    font-style: normal;
+    line-height: 16px;
+    letter-spacing: 2.24px;
+}
+
+.text1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.text2 {
+    font-size: 32px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.70);
+    margin-top: 26px;
+}
+
+/*Fourth Section*/
+.categories-text {
+    text-align: center;
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 3.2px;
+    margin-top: 171px;
+}
+
+.category-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 114px; /* Space from left page border */
+    margin-right: 107px; /* Space from right page border */
+    margin-top: 93px;
+}
+
+.category-container .category1,
+.category-container .category2,
+.category-container .category3 {
+    width: 542px; /* Adjust width as needed */
+    height: 314px; /* Adjust height as needed */
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-right: 35px; /* Gap between each category */
+}
+
+.category-container .category1 {
+    margin-left: 0;
+}
+
+.category-container .category3 {
+    margin-right: 0;
+}
+
+.category-container .column1 img {
+    width:40%;
+}
+
+.category-container .column2 {
+    width: 60%; /* Each takes half of the container */
+}
+
+.category-container .line1 {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2.4px;
+    margin-bottom: 20px;
+}
+
+.category-container .line2 {
+    color: rgba(255, 255, 255, 0.80);
+    font-family: Calibri;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 2.4px;
+}
+
+/* Fifth section */
+.nextcategory-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 56px;
+}
+
+.nextcategory-container .category4,
+.nextcategory-container .category5 {
+    width: 542px; /* Adjust width as needed */
+    height: 314px; /* Adjust height as needed */
+    border-radius: 25px;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    margin-right: 36px; /* Gap between each category */
+}
+
+.nextcategory-container .category4 {
+    margin-left: 0;
+}
+
+.nextcategory-container .category5 {
+    margin-right: 0;
+}
+
+.nextcategory-container .column1 img {
+    height: 176px; /* Image height */
+    width: 141px; /* Image width */
+}
+
+.nextcategory-container .column2 {
+    width: 50%; /* Each takes half of the container */
+}
+
+.nextcategory-container .line1 {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 35px;
+    font-weight: 700;
+    line-height: 16px;
+    letter-spacing: 2.4px;
+    margin-bottom: 20px;
+}
+
+.nextcategory-container .line2 {
+    color: rgba(255, 255, 255, 0.80);
+    font-family: Calibri;
+    font-size: 22px;
+    font-weight: 300;
+    line-height: 20px;
+    letter-spacing: 2.4px;
+}
+
+/* Sixth section */
+.longrectangle-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 134px;
+    margin-right: 134px;
+    margin-top: 200px;
+    margin-bottom: 200px;
+}
+
+.longrectangle {
+    width: 1652px;
+    height: 255px;
+    border-radius: 15px;
+    border: 1px solid #3B7BF8;
+    background: linear-gradient(209deg, rgba(21, 22, 99, 0.70) 17.86%, rgba(21, 22, 99, 0.70) 82.12%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.sentence {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 16px; /* 33.333% */
+    letter-spacing: 3px;
+    margin-bottom: 60px; /* Adjust as needed */
+}
+
+.start-shopping {
+    width: 300px;
+    height: 60px;
+    border-radius: 15px;
+    border: 2px solid #151663;
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(50px);
+    font-family: Calibri;
+    font-size: 24px;
+    font-weight: 700;
+    color: #151663;
+    cursor: pointer;
+}
