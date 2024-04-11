@@ -1,8 +1,7 @@
-# E-Mart
-Development of an E-Commerce Application using Java Technologies
+E-Mart- Development of an E-Commerce Application using Java Technologies
 
 
-#Notice: Frontend File Restoration
+# Notice: Frontend File Restoration
 
 Please be advised that as of today, we have begun restoring frontend files to this repository. This action was necessitated by an incident involving our previous repository.
 
