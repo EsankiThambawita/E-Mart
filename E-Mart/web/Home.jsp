@@ -22,8 +22,8 @@
           <p>Explore the latest in smartphone technology and<br>connectivity. From flagship models to budget-friendly<br>
             options, find your perfect fit at E-Mart.</p>
           <div class="buttons">
-              <button>About Us</button>
-              <button class="start-shopping">Start Shopping</button>
+              <button class="button1">About Us</button>
+              <button class="button2">Start Shopping</button>
           </div>
       </div>
     </div>
