@@ -1,0 +1,147 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 11, 2024, 4:43:57 PM
+    Author     : Esanki Lakvindee
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #000; /* Updated background color */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.confirmation {
+  text-align: center;
+  color: #C2C3DB;
+  margin-bottom: 81px;
+  margin-top: 124px;
+  font-size: 28px;
+}
+
+.order-summary {
+  width: calc(100% - 254px); /* Adjusted width */
+  max-width: 1000px;
+  height: 500px;
+  margin: 0 127px; /* Added margin */
+  border-radius: 20px;
+  background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(50px);
+  padding: 60px; 
+  margin-top: 81px;
+  text-align: left;
+}
+
+.order-summary h2 {
+  color: #FFF;
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 32px;
+}
+
+.line{
+  width: 970px;
+  height: 3px;
+  background: rgba(59, 123, 248, 0.40);
+  margin-bottom: 32px;
+  margin-left: 20;
+  margin-right: 20px;
+  
+  
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 32px;
+  font-size: 28px;
+}
+
+.item span {
+  flex: 1;
+  text-align: left;
+  font-size: 25px;
+  color: #FFF;
+}
+
+.name{
+    margin-right: 300px;
+}
+
+.button {
+  height: 80.294px;
+  flex-shrink: 0;
+  border-radius: 20px;
+}
+
+.button1 {
+  width: 200px;
+  height: 65px; /* Added height */
+  flex-shrink: 0;
+  border: 1px solid #FFF;
+  background: #000;
+}
+
+.button2 {
+  width: 200px;
+  height: 65px;
+  flex-shrink: 0;
+  border-radius: 20px;
+  background: #151663;
+  margin-right: 235px;
+}
+
+.button1, .button2 {
+  color: #FFF; 
+  font-size: 20px;
+}
+
+.text1, .text2 {
+  font-size: 25px;
+  color: #FFF;
+}
+
+.text1{
+    margin-right: 105px;
+}
+
+.feedback {
+  width: 700px;
+  height: 300px;
+  border-radius: 50px;
+  background: linear-gradient(180deg, #000 -44.82%, #151663 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+}
+
+.feedback h3 {
+  color: #FFF;
+  font-family: 'Calibri', sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  letter-spacing: 3.84px;
+}
+
+.stars {
+  display: flex;
+}
+
+.star-full ,.star-empty {
+  width: 60px;
+  height: 61px;
+  margin: 0 5px;
+}
