@@ -11,7 +11,7 @@ body {
     flex-direction: row;
     justify-content: space-around;
     margin-bottom: 5%;
-    margin-top: 3%;
+    margin-top: 5%;
 }
 
 .category-icons i{
@@ -40,6 +40,7 @@ body {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin-bottom: 10%;
 }
 
 /*vertical lines*/
