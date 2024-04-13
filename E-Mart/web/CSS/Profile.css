@@ -1,11 +1,3 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : Apr 11, 2024, 7:52:33 PM
-    Author     : User
-*/
 body {
     background-color: #000000; /* Black background */
     display: flex;
@@ -124,8 +116,19 @@ text-decoration: none;
     padding: 5px; 
    }
 .change-password a {
-    color:#ffffff;/* Change the font color of the link */
-     text-decoration: none;
+     color: #59E3FF; /* Change to the desired color */
+    text-decoration: underline;
+}
+.choose-file-button, .save-button {
+    background-color: #22A1C9; /* Change to the desired color */
+    color: white; /* Text color */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-
+.choose-file-button:hover, .save-button:hover {
+    background-color: #0056b3; /* Change to the desired hover color */
+}
