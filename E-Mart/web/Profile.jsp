@@ -11,6 +11,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile Page</title>
         <link href="CSS/Profile.css" rel="stylesheet" type="text/css"/>
+         <script>
+        function updateFileName() {
+            var fileInput = document.getElementById('profile-picture');
+            var fileName = fileInput.value.split('\\').pop(); // Get the file name
+            var fileNamePlaceholder = document.getElementById('file-name-placeholder');
+            fileNamePlaceholder.textContent = fileName || "No file chosen"; // Update the content of the placeholder span
+        } 
+    </script>
 </head>
 <body>
     <div class="container">
@@ -45,38 +53,42 @@
         <div class="user-image-container">
                 <img src="Images/Profile/ProfilePlaceholder.png">
             </div>
-
-            <table>
-                <tr> 
-                 <th><h1>Profile</h1></th>
-                <th><div class="user-image"></div></th>   
-                </tr>
+           <form action="ProfilePictureServlet" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr> 
+                        <th><h1>Profile</h1></th>
+                        <th><div class="user-image"></div></th>   
+                    </tr>
                  <tr>
-                     <th>First Name</th>
-                      <th>Last Name</th>
+                     <th>Username</th>
                       <th>Password</th>
+                       <th>Email</th>
                       
                  </tr>
                  <tr>
-                    <td><input type="text" id="first-name" name="first-name"></td>
-                    <td><input type="text" id="last-name" name="last-name"></td>
+                    <td><input type="text" id="username" name="username"></td>
+                    <td><input type="email" id="email" name="email"></td>
                     <td><input type="password" id="password" name="password"></td>
                  </tr>   
                  <tr>
-                     <th>Email</th>
                      <th>Contact Number</th>
                  </tr>
                  <tr>
-                    <td><input type="email" id="email" name="email"></td>
-                    <td><input type="tel" id="contact-number" name="contact-number"></td>
+                     <td><input type="tel" id="contact-number" name="contact-number"></td>
                  </tr>
-            </table><br><br>
+            </table>
             <div class="change-password">
                  <a href="ChangePassword.jsp">Change Password?</a>
-             </div>
-         </div>
-       
-       
+           </div><br>
+            <div class="button-row">
+                    <label for="profile-picture" class="choose-file-label" style="color: white;">Change Profile Picture?</label>
+                    <input type="file" id="profile-picture" name="profile-picture" accept="image/*" onchange="updateFileName()">
+                    <input type="submit" value="Save" class="save-button">
+                </div>
+                <div>   
+        </form>
+</div>
+</div>
 </body>
 </html>
 
