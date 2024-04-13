@@ -1,17 +1,10 @@
-<%-- 
-    Document   : Contact
-    Created on : Apr 11, 2024, 5:25:22 PM
-    Author     : Esanki Lakvindee
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Contact Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="CSS/Contact.css" rel="stylesheet" type="text/css"/>
+    <link href="CSS/Contact1.css" rel="stylesheet" type="text/css"/>
     <link href="CSS/NavBar.css" rel="stylesheet" type="text/css"/>
     <script src="https://kit.fontawesome.com/7942e54de0.js" crossorigin="anonymous"></script>
 </head>
@@ -49,7 +42,7 @@
         </div>
 
         <div class="c-contact-form">
-            <form action="" class="contact-form">
+            <form id="contactForm" action="" class="contact-form">
                 <div class="contact-form-row">
                     <div class="contact-input-area">
                         <label for="firstName" class="form-label">First Name</label>
@@ -101,12 +94,33 @@
                     </div>
                 </div>
                 <div class="contact-form-row c-action">
-                    <button type="submit" class="btn primary-btn order-btn">Send Message</button>
+                    <button id="sendMessageBtn" type="button" class="btn primary-btn order-btn">Send Message</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("sendMessageBtn").addEventListener("click", function() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var email = document.getElementById("email").value;
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var subject = document.querySelector('input[name="gridRadios"]:checked').nextElementSibling.textContent;
+        var message = document.getElementById("message").value;
+
+        var mailtoLink = "mailto:oneliwickramaratne@gmail.com"
+                        + "?subject=" + encodeURIComponent(subject)
+                        + "&body=" + encodeURIComponent("First Name: " + firstName + "\n"
+                                                        + "Last Name: " + lastName + "\n"
+                                                        + "Email: " + email + "\n"
+                                                        + "Phone Number: " + phoneNumber + "\n"
+                                                        + "Subject: " + subject + "\n"
+                                                        + "Message: " + message);
+
+        window.location.href = mailtoLink;
+    });
+</script>
 </body>
 </html>
