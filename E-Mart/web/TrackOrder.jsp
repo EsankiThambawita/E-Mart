@@ -24,10 +24,12 @@
         <!-- Start Body Wrapper -->
         <div class="body-wrapper">
 
-            <h1 class="section-title">
-                Track your order
-            </h1>
-
+            <div class="headingTitle">
+                <img class="returnButton" src="Images/TrackOrder/returnButton.png" alt="Return">
+                <h1 class="section-title">
+                    Track your order
+                </h1>
+            </div>
             <div class="order-tracking-card">
                 <div class="order-details-row">
                     <div class="order-details-col">
