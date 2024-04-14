@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Confirmation</title>
         <link href="CSS/OrderConfirmation.css" rel="stylesheet" type="text/css"/>
+        <script src="JS/Feedback-Rating.js" defer></script>
     </head>
     <body>
         <div class="container">
