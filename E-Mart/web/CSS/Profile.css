@@ -136,3 +136,6 @@ text-decoration: none;
 .choose-file-button:hover, .save-button:hover {
     background-color: #0056b3; /* Change to the desired hover color */
 }
+#choose-file {
+            display: none;
+        }

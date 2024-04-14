@@ -1,61 +1,72 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.UUID;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.MultipartConfig;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import jakarta.servlet.http.Part;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-/**
- *
- * @author User
- */
+@WebServlet("/ProfilePictureServlet")
+@MultipartConfig
 public class ProfilePictureServlet extends HttpServlet {
+
+    // Database connection parameters
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/your_database";
+    private static final String DB_USER = "your_username";
+    private static final String DB_PASSWORD = "your_password";
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Get the uploaded file from the request
-        Part filePart = request.getPart("profile-picture");
-        String fileName = filePart.getSubmittedFileName();
-
-        // Define the directory to save the uploaded file
-        String uploadDir = "/path/to/upload/directory";
-        String filePath = uploadDir + File.separator + fileName;
-
-        // Save the uploaded file to the server
-        try (InputStream input = filePart.getInputStream();
-             OutputStream output = new FileOutputStream(filePath)) {
-            byte[] buffer = new byte[1024];
-            int bytesRead;
-            while ((bytesRead = input.read(buffer)) != -1) {
-                output.write(buffer, 0, bytesRead);
-            }
-        } catch (IOException e) {
-            // Handle file upload error
-            e.printStackTrace();
-        }
-
-        // Store the file name in the user's session or associated data structure
+        // Get user ID from session or wherever you store user information
         HttpSession session = request.getSession();
-        session.setAttribute("profilePicture", fileName);
+        int userId = (int) session.getAttribute("userId");
+
+        // Get the uploaded file
+        Part filePart = request.getPart("profile-picture");
+        InputStream inputStream = filePart.getInputStream();
+
+        // Save the uploaded file to the database
+        saveProfilePicture(userId, inputStream);
 
         // Redirect back to the profile page or any other desired page
         response.sendRedirect("Profile.jsp");
     }
+
+    private void saveProfilePicture(int userId, InputStream inputStream) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO profile_pictures (user_id, image) VALUES (?, ?)")) {
+            pstmt.setInt(1, userId);
+            pstmt.setBlob(2, inputStream);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle database error
+        }
+    }
+
+    public InputStream getProfilePicture(int userId) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+             PreparedStatement pstmt = conn.prepareStatement("SELECT image FROM profile_pictures WHERE user_id = ?")) {
+            pstmt.setInt(1, userId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                return rs.getBinaryStream("image");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle database error
+        }
+        return null;
+    }
 }
-
-
-
-
-

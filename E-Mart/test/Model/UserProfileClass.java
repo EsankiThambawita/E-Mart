@@ -59,5 +59,3 @@ public class UserProfileClass {
         this.contactNumber = contactNumber;
     }
 }
-
-    
