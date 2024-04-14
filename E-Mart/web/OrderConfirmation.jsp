@@ -56,11 +56,11 @@
     <div class="feedback">
       <h3>How was your shopping experience?</h3>
       <div class="stars">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
-        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star1">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star2">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star3">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star4">
+        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star5">
       </div>
     </div>
   </div>
