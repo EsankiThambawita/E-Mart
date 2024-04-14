@@ -37,27 +37,39 @@
             <h2 class="Topic">Best Sellers</h2>
             <div class="rectangle-container">
                 <div class="rectangle">
-                    <img src="Images/Home/S24.png" alt="Product Image">
-                    <span class="text1">Samsung Galaxy S24</span>
-                    <span class="text2">LKR 400,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/S24.png" alt="Product Image">
+                        <span class="text1">Samsung Galaxy S24</span>
+                        <span class="text2">LKR 400,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/S22.png" alt="Product Image">
-                    <span class="text1">Samsung Galaxy S22</span>
-                    <span class="text2">LKR 300,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/S22.png" alt="Product Image">
+                        <span class="text1">Samsung Galaxy S22</span>
+                        <span class="text2">LKR 300,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/iphone14.png" alt="Product Image">
-                    <span class="text1">Iphone 14</span>
-                    <span class="text2">LKR 350,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/iphone14.png" alt="Product Image">
+                        <span class="text1">Iphone 14</span>
+                        <span class="text2">LKR 350,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/iphone15.png" alt="Product Image">
-                    <span class="text1">Iphone 15</span>
-                    <span class="text2">LKR 500,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/iphone15.png" alt="Product Image">
+                        <span class="text1">Iphone 15</span>
+                        <span class="text2">LKR 500,000</span>
+                    </a>
+                    
                 </div>
             </div>
         </div>
@@ -67,27 +79,39 @@
             <h2 class="Topic">New Arrivals</h2>
             <div class="rectangle-container">
                 <div class="rectangle">
-                    <img src="Images/Home/D5600.png" alt="Product Image">
-                    <span class="text1">Nikon D5600</span>
-                    <span class="text2">LKR 350,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/D5600.png" alt="Product Image">
+                        <span class="text1">Nikon D5600</span>
+                        <span class="text2">LKR 350,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/SONY alpha.png" alt="Product Image">
-                    <span class="text1">SONY Alpha 9 II</span>
-                    <span class="text2">LKR 300,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/SONY alpha.png" alt="Product Image">
+                        <span class="text1">SONY Alpha 9 II</span>
+                        <span class="text2">LKR 300,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/SONY RX10.png" alt="Product Image">
-                    <span class="text1">SONY RX10 IV</span>
-                    <span class="text2">LKR 450,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/SONY RX10.png" alt="Product Image">
+                        <span class="text1">SONY RX10 IV</span>
+                        <span class="text2">LKR 450,000</span>
+                    </a>
+                    
                 </div>
 
                 <div class="rectangle">
-                    <img src="Images/Home/iphone15.png" alt="Product Image">
-                    <span class="text1">Iphone 15</span>
-                    <span class="text2">LKR 500,000</span>
+                    <a href="abc.jsp">
+                        <img src="Images/Home/iphone15.png" alt="Product Image">
+                        <span class="text1">Iphone 15</span>
+                        <span class="text2">LKR 500,000</span>
+                    </a>
+                    
                 </div>
             </div>
         </div>
