@@ -26,3 +26,4 @@ function toggleStars(clickedStarId) {
 }
 
 
+
