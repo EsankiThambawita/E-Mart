@@ -110,8 +110,37 @@
                 </div>
             </div>
         </div>
+<<<<<<< Updated upstream
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
+=======
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+    document.getElementById("sendMessageBtn").addEventListener("click", function() {
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var email = document.getElementById("email").value;
+        var phoneNumber = document.getElementById("phoneNumber").value;
+        var subject = document.querySelector('input[name="gridRadios"]:checked').nextElementSibling.textContent;
+        var message = document.getElementById("message").value;
+
+        var mailtoLink = "mailto:oneliwickramaratne@gmail.com"
+                        + "?subject=" + encodeURIComponent(subject)
+                        + "&body=" + encodeURIComponent("First Name: " + firstName + "\n"
+                                                        + "Last Name: " + lastName + "\n"
+                                                        + "Email: " + email + "\n"
+                                                        + "Phone Number: " + phoneNumber + "\n"
+                                                        + "Subject: " + subject + "\n"
+                                                        + "Message: " + message);
+
+        window.location.href = mailtoLink;
+    });
+</script>
+</body>
+<h1>oneli</h1>
+>>>>>>> Stashed changes
 </html>
