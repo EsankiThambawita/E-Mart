@@ -14,6 +14,7 @@
         <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Profile.css" rel="stylesheet" type="text/css"/>
+<<<<<<< Updated upstream
         <script>
             function updateFileName() {
                 var fileInput = document.getElementById('profile-picture');
@@ -98,6 +99,93 @@
     </div>
     <%@ include file="Footer.html" %>
     <script src="JS/Common.js"></script>
+=======
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar"><br>
+            <div class="sidebar-item">
+                <a href="Profile.jsp">
+                  <img src="Images/Profile/ProfileIcon.png">                    
+                    <span>Profile</span>
+                </a>
+            </div>
+            <div class="sidebar-item">
+                <a href="TrackOrder.jsp">
+              <img src="Images/Profile/TrackOrder.png">
+                <span>Track Current Orders</span>
+                </a>
+            </div>
+            <div class="sidebar-item">
+                <a href="OrderHistory.jsp">
+              <img src="Images/Profile/OrderHistoryIcon.png">
+                <span>Order History</span>
+                </a>
+            </div>
+            <div class="sidebar-item">
+                 <a href="MyReturns.jsp">
+                     <img src="Images/Profile/MyReturnsIcon.png"><br>
+                    <span>My<br> Returns</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="form-container profile-form">
+        <div class="user-image-container">
+                <img src="Images/Profile/ProfilePlaceholder.png" id="profile-pic">
+            </div>
+           <form action="ProfilePictureServlet" method="post" enctype="multipart/form-data">
+                <table>
+                    <tr> 
+                        <th><h1>Profile</h1></th>
+                        <th><div class="user-image"></div></th>   
+                    </tr>
+                 <tr>
+                     <th>Username</th>
+                      <th>Password</th>
+                       <th>Email</th>
+                      
+                 </tr>
+                 <tr>
+                    <td><input type="text" id="username" name="username"></td>
+                    <td><input type="email" id="email" name="email"></td>
+                    <td><input type="password" id="password" name="password"></td>
+                 </tr>   
+                 <tr>
+                     <th>Contact Number</th>
+                 </tr>
+                 <tr>
+                     <td><input type="tel" id="contact-number" name="contact-number"></td>
+                 </tr>
+            </table>
+            <div class="change-password">
+                 <a href="ChangePassword.jsp">Change Password?</a>
+           </div><br>
+            <div class="button-row">
+              <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image</label>
+
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" style="display: none;">
+                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="choose-file">
+                </div>
+                <script>
+                    window.onload = function(){
+                        let profilePic = document.getElementById("profile-pic");
+                        let inputFile = document.getElementById("input-file");
+                        let chooseFile = document.getElementById("choose-file");
+
+                        inputFile.onchange = function() {
+                            profilePic.src = URL.createObjectURL(inputFile.files[0]);
+                        };
+
+                        document.querySelector('label[for="input-file"]').addEventListener('click', function() {
+                            chooseFile.click();
+                        });
+                    };
+                </script>
+        </form>
+</div>
+</div>
+>>>>>>> Stashed changes
 </body>
 </html>
 
