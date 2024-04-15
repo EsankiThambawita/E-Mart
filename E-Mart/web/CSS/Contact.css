@@ -3,15 +3,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-<<<<<<< Updated upstream:E-Mart/web/CSS/Contact.css
-    Created on : Apr 11, 2024, 5:26:04 PM
-    Author     : Esanki Lakvindee
-*/
-/*
     Created on : Apr 13, 2024, 9:14:38 PM
     Author     : hp
 */
-
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 11, 2024, 5:26:04 PM
+    Author     : Esanki Lakvindee
+*/
 
 /* CSS for responsiveness */
 .bg-accent-1 {
@@ -183,4 +185,43 @@ body {
 
 .radio-input-area input:checked {
     background-color: #15133a;
+}
+/* Add this CSS for the button styling */
+.primary-btn {
+    background-color: #151663; /* Dark blue background color */
+    color: white; /* White text color */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition on hover */
+}
+
+.primary-btn:hover {
+    background-color: transparent; /* Change background color to transparent on hover */
+    color: #151663; /* Change text color to dark blue on hover */
+    border: 2px solid #151663; /* Add border on hover */
+}
+
+.primary-btn:focus {
+    outline: none; /* Remove outline on focus */
+}
+
+/* CSS for responsiveness */
+/* Your existing CSS rules */
+
+.socialButtons i {
+    background-color: #1B1B1B;
+    font-size: 20px;
+    border-radius: 50%;
+    color: white; /* Set the icon color to white */
+}
+
+/* Add this CSS to specifically target the Facebook icon */
+.socialButtons .fa-facebook {
+    color: #3b5998; /* Facebook blue color */
+}
+/* Set the color of phone, email, and location icons to white */
+.contact-link i {
+    color: white;
 }
