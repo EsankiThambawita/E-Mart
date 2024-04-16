@@ -37,15 +37,30 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- Iterate over order history data using JSTL -->
+                        <c:forEach items="${orderHistory}" var="order">
+                            <tr>
+                                <td>${order.date}</td>
+                                <td>${order.orderNumber}</td>
+                                <td>${order.orderStatus}</td>
+                                <td>${order.itemsPurchased}</td>
+                                <td>${order.quantity}</td>
+                                <td>${order.totalPrice}</td>
+                                <td>${order.shippingAddress}</td>
+                                <td>${order.billingAddress}</td>
+                            </tr>
+                        </c:forEach>
                         <tr>
+                            <!-- Assuming session attributes for shipping address -->                         
+                          
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
                             <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
+                            <td></td> 
+                            <td><%= session.getAttribute("shippingAddress") %></td>
+                            <td><%= session.getAttribute("billingAddress") %></td>
                         </tr>
                         <tr>
                             <td></td>
