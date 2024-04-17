@@ -11,6 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order Confirmation</title>
         <link href="CSS/OrderConfirmation.css" rel="stylesheet" type="text/css"/>
+        <script src="JS/Feedback-Rating.js" defer></script>
     </head>
     <body>
         <div class="container">
@@ -54,15 +55,23 @@
     </div>
             
     <div class="feedback">
-      <h3>How was your shopping experience?</h3>
-      <div class="stars">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star.png" alt="Star" class="star-full">
-        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
-        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star-empty">
-      </div>
+    <h3>How was your shopping experience?</h3>
+    <form id="feedbackForm" action="FeedbackServlet" method="post">
+        <div class="stars">
+            <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star1">
+            <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star2">
+            <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star3">
+            <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star4">
+            <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star5">
+        </div>
+        <input type="hidden" id="feedbackValue" name="feedback" value="">
+    </form>
+    <div class="submit-feedback" style="background-color: black; margin-top:50px; border: 1px solid grey; color: #fff; padding: 6px 12px; font-size: 10px; text-transform: uppercase; cursor: pointer; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.3s, color 0.3s;" onmouseover="this.style.backgroundColor='#78909c'" onmouseout="this.style.backgroundColor='black'">
+        Submit Feedback
+   </div>
+
     </div>
+
   </div>
 
     </body>

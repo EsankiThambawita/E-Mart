@@ -1,0 +1,41 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 13, 2024, 10:48:42 AM
+    Author     : robin
+*/
+
+body{
+    background-color: black;
+    color: white;
+    font-family: 'Inter';
+    margin: 0;
+}
+
+.button-outline,
+.button-acrylic,
+.button-white {
+    min-width: 130px;
+    padding: 0.6rem 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0);
+    border-radius: 7px;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+}
+
+.button-outline{
+    border-color: rgba(255, 255, 255, 0.541);
+}
+
+.button-acrylic{
+    background-color: #15165b;
+}
+
+.button-white{
+    background-color: white;
+    color: #151663;
+    font-weight: 600;
+}

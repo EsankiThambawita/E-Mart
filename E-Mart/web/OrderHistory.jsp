@@ -9,146 +9,170 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Order History</title>
+        <link href="CSS/Common.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/OrderHistory.css" rel="stylesheet" type="text/css"/>
     </head>
+
     <body>
-       <div class="container">
-        <div class="form-container profile-form">
-           
-              
-            <table>
-                <caption><h2 class="order-history">Order History</h2></caption>
-                <thead>
-                    <tr>
-                        <th>Date</th>
-                        <th>Order Number</th>
-                        <th>Order Status</th>
-                        <th>Items Purchased</th>
-                        <th>Quantity</th>
-                        <th>Total Price</th>
-                        <th>Shipping Address</th>
-                        <th>Billing Address</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    
-                        
-                    
-                </tbody>  
-            </table><br><br>
-            <button class="return-button" onclick="window.location.href = 'Profile.jsp';">Return</button>
+        <%@ include file="Navbar.html" %>
+        <div class="body-wrapper">
+        <div class="container">
+            <div class="form-container profile-form">
+
+
+                <table>
+                    <caption><h2 class="order-history">Order History</h2></caption>
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Order Number</th>
+                            <th>Order Status</th>
+                            <th>Items Purchased</th>
+                            <th>Quantity</th>
+                            <th>Total Price</th>
+                            <th>Shipping Address</th>
+                            <th>Billing Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Iterate over order history data using JSTL -->
+                        <c:forEach items="${orderHistory}" var="order">
+                            <tr>
+                                <td>${order.date}</td>
+                                <td>${order.orderNumber}</td>
+                                <td>${order.orderStatus}</td>
+                                <td>${order.itemsPurchased}</td>
+                                <td>${order.quantity}</td>
+                                <td>${order.totalPrice}</td>
+                                <td>${order.shippingAddress}</td>
+                                <td>${order.billingAddress}</td>
+                            </tr>
+                        </c:forEach>
+                        <tr>
+                            <!-- Assuming session attributes for shipping address -->                         
+                          
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td> 
+                            <td><%= session.getAttribute("shippingAddress") %></td>
+                            <td><%= session.getAttribute("billingAddress") %></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+
+
+                    </tbody>  
+                </table><br><br>
+                <button class="return-button" onclick="window.location.href = 'Profile.jsp';">Return</button>
+            </div>
         </div>
-    </div>
+        </div>
+        <%@ include file="Footer.html" %>
+        <script src="JS/Common.js"></script>
     </body>
 </html>
 

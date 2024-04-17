@@ -47,7 +47,6 @@
 | 2024-04-7 |Making the cart functional in the checkout page                                         | Made the cart functional using JS and help of servlet
 |2024-04-08 |Adjusting spacing of the checkout page,the old CSS page didnt respond and the responsiveness of the Contact page                               |created a new CSS page  to adjust the spacings using CSS, and modified the code of contact page to correct the responsiveness of the Contact.jsp and Contact.css
 
-
 **6. Chanuka**
 
 
@@ -97,7 +96,9 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.                                   |
+| 2024-04-16 | OrderConfirmation page needed an extra button for "submit feedback" but when the css was added, it did not work for that button.                                             | Found that the issue was other css styles being conflicted and so used inline css and fixed the issue.                 |
+| 2024-04-17 | The database is not connecting to the netbeans                   | Found issue in code and fixed it.  |
+
 
 
 **2. TPR Fernando**
@@ -129,7 +130,7 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.  
+|2024-04-13 |Implementation of backend of Contact page, and css didnt apply to the checkout page                           | Implemented by using JS and deleted the old css file and restored with new new css Contact1.css
 
 
 **6. Chanuka**

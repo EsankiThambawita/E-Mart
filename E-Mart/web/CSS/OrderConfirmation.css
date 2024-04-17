@@ -140,8 +140,9 @@ body {
   display: flex;
 }
 
-.star-full ,.star-empty {
+.star {
   width: 60px;
   height: 61px;
   margin: 0 5px;
 }
+
