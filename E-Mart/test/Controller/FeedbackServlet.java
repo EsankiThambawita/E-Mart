@@ -38,8 +38,8 @@ public class FeedbackServlet extends HttpServlet {
         // You can add more parameters as needed
         
         // JDBC driver name and database URL
-        final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-        final String DB_URL="jdbc:mysql://localhost:3306/Emart";
+        final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  
+        final String DB_URL="jdbc:mysql://localhost:3306/e-mart";
 
         // Database credentials
         final String USER = "root";
@@ -56,7 +56,7 @@ public class FeedbackServlet extends HttpServlet {
             conn = DriverManager.getConnection(DB_URL, USER, PASS);
 
             // Execute a query
-            String sql = "INSERT INTO Feedback (feedback) VALUES (?)";
+            String sql = "INSERT INTO feedback VALUES (1,5)";
             stmt = conn.prepareStatement(sql);
             stmt.setString(1, feedback);
             // You can set more parameters if you have additional fields in your table
