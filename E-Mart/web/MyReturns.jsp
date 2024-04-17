@@ -25,7 +25,11 @@
         <%@ include file="Navbar.html" %>
         <div class="body-wrapper">
             <div class="container">
-                <div class="form-container profile-form">
+                
+                <div class="form-container profile-form" style="border: 2px solid #9696A1; background-color: #1a1a1a;">
+<a href="Profile.jsp" class="return-icon" style="position: absolute; top: 120px; left: 350px;">
+    <img src="Images/OrderHistory/ReturnArrow.svg" class="return-icon" style="width: 30px; height: auto;">
+</a>
 
 
                     <table>
@@ -130,7 +134,6 @@
                             </tr>   
                         </tbody>  
                     </table><br><br>
-                    <button class="return-button" onclick="window.location.href = 'Profile.jsp';">Return</button>
                 </div>
             </div>
         </div>
