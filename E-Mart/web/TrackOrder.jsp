@@ -17,6 +17,35 @@
         <link rel="stylesheet" href="CSS/Navbar.css">
         <link rel="stylesheet" href="CSS/Footer.css">
         <link href="CSS/TrackOrder.css" rel="stylesheet" />
+        <script>
+         function validation() {
+    var username = document.getElementById("username").value;
+    
+
+    if (!username || !email || !password || !confirmPassword || !contactNumber) {
+        alert("All fields must be filled out.");
+        return false;
+    }
+
+    if (password.length < 8) {
+        alert("Password must be at least 8 characters long.");
+        return false;
+    }
+
+    if (password !== confirmPassword) {
+        alert("Passwords do not match.");
+        return false;
+    }
+
+    if (!/^\d{10}$/.test(contactNumber)) {
+        alert("Contact number must be a 10-digit number.");
+        return false;
+    }
+
+    return true;
+}
+
+</script>
     </head>
 
     <body>
@@ -25,7 +54,10 @@
         <div class="body-wrapper">
 
             <div class="headingTitle">
-                <img class="returnButton" src="Images/TrackOrder/returnButton.png" alt="Return">
+                <a href="Profile.jsp" style="display: inline-block;">
+    <img class="returnButton" src="Images/TrackOrder/returnButton.png" alt="Return" style="cursor: pointer;">
+</a>
+
                 <h1 class="section-title">
                     Track your order
                 </h1>
@@ -49,7 +81,7 @@
                     </div>
                     <div class="order-details-col">
                         <h2 class="order-detail-col-title">Order Number</h2>
-                        <a href="" class="button-white">Return</a>
+                        <a href="MyReturns.jsp" class="button-white">Return</a>
                         <a href="" class="button-acrylic">Cancel Order</a>
                     </div>
                 </div>
@@ -101,8 +133,22 @@
                     </div>
                     <div class="order-details-col">
                         <h2 class="order-detail-col-title">Order Number</h2>
-                        <a href="" class="button-white">Return</a>
-                        <a href="" class="button-acrylic">Cancel Order</a>
+                        <a href="MyReturns.jsp" class="button-white">Return</a>
+                        <button id="cancelButton" onclick="confirmCancellation()">Cancel Order</button>
+
+<script>
+function confirmCancellation() {
+    // Display confirmation popup
+    var confirmed = confirm("Are you sure you want to cancel the order?");
+    
+    // If user confirms, proceed with canceling the order
+    if (confirmed) {
+        // Redirect to cancel order servlet or perform cancelation logic here
+        window.location.href = "CancelOrderServlet";
+    }
+}
+</script>
+
                     </div>
                 </div>
                 <div class="order-tracking-row">

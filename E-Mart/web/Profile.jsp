@@ -14,90 +14,134 @@
         <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Profile.css" rel="stylesheet" type="text/css"/>
-        <script>
-            function updateFileName() {
-                var fileInput = document.getElementById('profile-picture');
-                var fileName = fileInput.value.split('\\').pop(); // Get the file name
-                var fileNamePlaceholder = document.getElementById('file-name-placeholder');
-                fileNamePlaceholder.textContent = fileName || "No file chosen"; // Update the content of the placeholder span
-            }
-        </script>
     </head>
     <body>
         <%@ include file="Navbar.html" %>
         <div class="body-wrapper">
             <div class="container">
-                <div class="sidebar"><br>
+                <div class="sidebar" style="border: 2px solid #007bff;"><br>
                     <div class="sidebar-item">
                         <a href="Profile.jsp">
-                            <img src="Images/Profile/ProfileIcon.png">                    
+                            <img src="Images/Profile/Profile.svg">                    
                             <span>Profile</span>
                         </a>
                     </div>
                     <div class="sidebar-item">
                         <a href="TrackOrder.jsp">
-                            <img src="Images/Profile/TrackOrder.png">
+                            <img src="Images/Profile/TrackOrder.svg">
                             <span>Track Current Orders</span>
                         </a>
                     </div>
                     <div class="sidebar-item">
                         <a href="OrderHistory.jsp">
-                            <img src="Images/Profile/OrderHistoryIcon.png">
+                            <img src="Images/Profile/OrderHistory.svg">
                             <span>Order History</span>
                         </a>
                     </div>
                     <div class="sidebar-item">
                         <a href="MyReturns.jsp">
-                            <img src="Images/Profile/MyReturnsIcon.png"><br>
+                            <img src="Images/Profile/MyReturns.svg"><br>
                             <span>My<br> Returns</span>
                         </a>
                     </div>
                 </div>
 
-                <div class="form-container profile-form">
-                    <div class="user-image-container">
-                        <img src="Images/Profile/ProfilePlaceholder.png">
-                    </div>
-                    <form action="ProfilePictureServlet" method="post" enctype="multipart/form-data">
+              <div class="form-container profile-form" action="ProfilePictureServlet" method="post" enctype="multipart/form-data" style="border: 2px solid #007bff; height: 530px; margin-top: 30px">
+              <div class="user-image-container" style="position: relative;">
+              <img src="Images/Profile/ProfilePlaceholder.svg" id="profile-pic">
+                <a href="EditDetails.jsp">
+              <div class="edit-profile-tooltip" style="position: absolute; top: -45px; right: -20px; opacity: 0.7; transition: opacity 0.3s ease;" onmouseover="this.style.opacity = '1';" onmouseout="this.style.opacity = '0.7';">
+
+              <img src="Images/Profile/EditProfile.svg" alt="Edit Details" class="edit-icon" title="Edit Profile" style="width: 20px; height: 20px; color: #59E3FF;">
+              </div>
+              </a>
+              </div>
                         <table>
                             <tr> 
                                 <th><h1>Profile</h1></th>
                                 <th><div class="user-image"></div></th>   
                             </tr>
                             <tr>
+                                 <th>Full Name</th>
                                 <th>Username</th>
-                                <th>Password</th>
-                                <th>Email</th>
-
+                                <th>Address</th>
                             </tr>
                             <tr>
-                                <td><input type="text" id="username" name="username"></td>
-                                <td><input type="email" id="email" name="email"></td>
-                                <td><input type="password" id="password" name="password"></td>
+                                <td><input type="text" id="fullname" name="fullname"</td>
+                                <td><input type="text" id="username" name="username"</td>
+                                <td><input type="text" id="address" name="address"</td>
                             </tr>   
                             <tr>
+                                <th>Password</th>
+                                <th>Email</th>
                                 <th>Contact Number</th>
                             </tr>
                             <tr>
-                                <td><input type="tel" id="contact-number" name="contact-number"></td>
+                                <td><input type="password" id="password" name="password"></td>
+                                <td><input type="email" id="email" name="email"</td>
+                                <td><input type="tel" id="contact-number" name="contact-number"</td>
                             </tr>
-                        </table>
-                        <div class="change-password">
-                            <a href="ChangePassword.jsp">Change Password?</a>
-                        </div><br>
-                        <div class="button-row">
-                            <label for="profile-picture" class="choose-file-label" style="color: white;">Change Profile Picture?</label>
-                            <input type="file" id="profile-picture" name="profile-picture" accept="image/*" onchange="updateFileName()">
-                            <input type="submit" value="Save" class="save-button">
-                        </div>
-                        <div>   
-                    </form>
-                </div>
+                        </table><br>
+                       <table>
+  <tr>
+    <td>
+      <div class="button-row change-email">
+        <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image?</label>
+        <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" style="display: none;">
+      </div>
+    </td>
+    <td>
+      <a href="ChangePassword.jsp" style="color: #59E3FF;">Change Password</a>
+    </td>
+  </tr> 
+ <tr>
+    <td>
+      <div class="button-row change-email">
+        <a href="ChangeEmail.jsp" style="color: #59E3FF;">Change Email</a>
+      </div>
+    </td>
+    <td>
+      <a href="ChangeContactNumber.jsp" style="color: #59E3FF;">Change Contact Number</a>
+    </td>
+  </tr>
+</table>
+
+                         <script>
+        window.onload = function() {
+            let profilePic = document.getElementById("profile-pic");
+            let inputFile = document.getElementById("input-file");
+            let chooseFile = document.getElementById("choose-file");
+
+            inputFile.onchange = function() {
+                if (validateFile(inputFile)) {
+                    profilePic.src = URL.createObjectURL(inputFile.files[0]);
+                } else {
+                    input.value = ""; // Clear the file input field if validation fails
+                }
+            };
+
+            document.querySelector('label[for="input-file"]').addEventListener('click', function() {
+                chooseFile.click();
+            });
+        };
+
+        function validateFile(input) {
+            var file = input.files[0];
+            var allowedTypes = ["image/jpeg", "image/png", "image/jpg"]; // Allowed image types
+
+            if (file && !allowedTypes.includes(file.type)) {
+                // File is not an image, show an error message
+                alert("Please select a valid image file (JPEG, PNG, JPG).");
+                return false;
+            }
+            return true;
+        }
+    </script>
+              </div>
             </div>
         </div>
-    </div>
-    <%@ include file="Footer.html" %>
-    <script src="JS/Common.js"></script>
+         <%@ include file="Footer.html" %>
+         <script src="JS/Common.js"></script>  
 </body>
 </html>
 
