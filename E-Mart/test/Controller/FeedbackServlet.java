@@ -42,8 +42,8 @@ public class FeedbackServlet extends HttpServlet {
         final String DB_URL="jdbc:mysql://localhost:3306/Emart";
 
         // Database credentials
-        final String USER = "yourusername";
-        final String PASS = "yourpassword";
+        final String USER = "root";
+        final String PASS = "";
 
         Connection conn = null;
         PreparedStatement stmt = null;
