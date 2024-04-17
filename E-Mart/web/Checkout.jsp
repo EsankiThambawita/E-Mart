@@ -50,7 +50,7 @@
         </table>
 
         <h3>Billing Details <i class="fas fa-user"></i></h3>
-        <form action="CartController" method="post">
+        <form action="CartControllerServlet" method="post">
             <div class="form-group">
                 <label><i class="fas fa-user"></i> Full Name:</label><br>
                 <input type="text" name="fullName" required placeholder="John Doe"><br>
@@ -139,5 +139,6 @@
         <input type="hidden" id="quantity" name="quantity" value="1">
         <input type="hidden" id="action" name="action">
     </form>
+    
 </body>
 </html>
