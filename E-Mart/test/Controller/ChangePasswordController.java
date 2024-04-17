@@ -33,16 +33,16 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         // Retrieve parameters from the request
-        String currentPassword = request.getParameter("currentPassword");
-        String newPassword = request.getParameter("newPassword");
+        String CurrentPassword = request.getParameter("CurrentPassword");
+        String NewPassword = request.getParameter("NewPassword");
 
         // Get the user's ID from the session or wherever you store it
         String userId = (String) request.getSession().getAttribute("userId");
 
         // Validate the current password
-        if (validatePassword(userId, currentPassword)) {
+        if (validatePassword(userId, CurrentPassword)) {
             // Update the password
-            updatePassword(userId, newPassword);
+            updatePassword(userId, NewPassword);
             // Redirect to the profile page
             response.sendRedirect(request.getContextPath() + "/Profile.jsp");
         } else {
