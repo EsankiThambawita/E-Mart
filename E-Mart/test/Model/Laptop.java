@@ -10,24 +10,24 @@ import java.util.*;
  * @author robin
  */
 public class Laptop extends BaseProduct{
-    private int storageCapacity;
+    private String storageCapacity;
     private String CPU;
     private String memory;
 
     public Laptop(int productId, String productName, double price, int quantity, List<String> photos,
             String brand, String modelName, String productDescription, String category,
-            int storageCapacity, String CPU, String memory) {
+            String storageCapacity, String CPU, String memory) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
         this.storageCapacity = storageCapacity;
         this.CPU = CPU;
         this.memory = memory;
     }
 
-    public int getStorageCapacity() {
+    public String getStorageCapacity() {
         return storageCapacity;
     }
 
-    public void setStorageCapacity(int storageCapacity) {
+    public void setStorageCapacity(String storageCapacity) {
         this.storageCapacity = storageCapacity;
     }
 
