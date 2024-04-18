@@ -5,7 +5,7 @@ import java.util.*;
  *
  * @author robin
  */
-public abstract class BaseProduct {
+public class BaseProduct {
   private int productId;
   private String productName;
   private double price;
@@ -16,7 +16,7 @@ public abstract class BaseProduct {
   private String productDescription;
   private String category;
 
-  // Getters and Setters (omitted for brevity)
+  // Getters and Setters
 
   public BaseProduct(int productId, String productName, double price, int quantity, List<String> photos,
                      String brand, String modelName, String productDescription, String category) {

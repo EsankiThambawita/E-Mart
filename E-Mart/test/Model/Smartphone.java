@@ -4,7 +4,6 @@
  */
 package Model;
 
-import Model.BaseProduct;
 import java.util.*;
 
 /**
@@ -13,13 +12,13 @@ import java.util.*;
  */
 public class Smartphone extends BaseProduct {
 
-    private int storageCapacity;
+    private String storageCapacity;
     private Double screenSize;
     private String color;
 
     public Smartphone(int productId, String productName, double price, int quantity, List<String> photos,
             String brand, String modelName, String productDescription, String category,
-            int storageCapacity, Double screenSize, String color) {
+            String storageCapacity, Double screenSize, String color) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
         this.storageCapacity = storageCapacity;
         this.screenSize = screenSize;
@@ -28,11 +27,11 @@ public class Smartphone extends BaseProduct {
 
     // Getters and Setters for specific fields (omitted for brevity)
 
-    public int getStorageCapacity() {
+    public String getStorageCapacity() {
         return storageCapacity;
     }
 
-    public void setStorageCapacity(int storageCapacity) {
+    public void setStorageCapacity(String storageCapacity) {
         this.storageCapacity = storageCapacity;
     }
 
