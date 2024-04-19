@@ -3,7 +3,22 @@
     Created on : Apr 11, 2024, 7:48:20?PM
     Author     : User
 --%>
+<%@ page import="Model.User" %>
+<%@ page import="Model.userDao" %>
+<%
+    // Retrieve the logged-in user's email from the session or request
+    String userEmail = (String) request.getSession().getAttribute("userEmail");
 
+    // Call getUserByEmail method to retrieve user data
+    userDao userDao = new userDao();
+    User user = userDao.getUserByEmail(userEmail);
+
+    // Populate input fields with user data
+    String username = user.getUsername();
+    String email = user.getEmail();
+    String password = user.getPassword();
+    String contactNumber = user.getContactNumber();
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -62,24 +77,24 @@
                                 <th><div class="user-image"></div></th>   
                             </tr>
                             <tr>
-                                 <th>Full Name</th>
-                                <th>Username</th>
-                                <th>Address</th>
+                   
+                                <th>Name</th>
+                               <th>Email</th>
                             </tr>
                             <tr>
-                                <td><input type="text" id="fullname" name="fullname"</td>
-                                <td><input type="text" id="username" name="username"</td>
-                                <td><input type="text" id="address" name="address"</td>
+                             
+                                <td><input type="text" id="username" name="username" value="<%= username %>"></td>
+                               <td><input type="email" id="email" name="email" value="<%= email %>"></td>
                             </tr>   
                             <tr>
                                 <th>Password</th>
-                                <th>Email</th>
+                                
                                 <th>Contact Number</th>
                             </tr>
                             <tr>
-                                <td><input type="password" id="password" name="password"></td>
-                                <td><input type="email" id="email" name="email"</td>
-                                <td><input type="tel" id="contact-number" name="contact-number"</td>
+                                <td><input type="password" id="password" name="password" value="<%= password %>"></td>
+                                
+                                <td> <input type="tel" id="contact-number" name="ContactNumber" value="<%= contactNumber %>"></td>
                             </tr>
                         </table><br>
                        <table>
