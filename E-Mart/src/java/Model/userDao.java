@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Model;
 
 /**
  *
@@ -14,9 +14,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-class userDao {
+public class userDao {
 
-    static void saveUser(SignUpUser user) {
+    public static void saveUser(SignUpUser user) {
             String driver = "com.mysql.cj.jdbc.Driver";
         String url = "jdbc:mysql://localhost:3306/userdetails";//databasename
         String sql = "INSERT INTO usersignup (username, email, password, contact_number) VALUES (?, ?, ?, ?)";//table name

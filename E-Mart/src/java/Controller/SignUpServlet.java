@@ -1,5 +1,7 @@
 package Controller;
 
+import Model.SignUpUser;
+import Model.userDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
