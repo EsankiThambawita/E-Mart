@@ -10,12 +10,12 @@ import java.util.*;
  *
  * @author robin
  */
-public class Smartwatches extends BaseProduct {
+public class Smartwatch extends BaseProduct {
 
     private String screenSize;
     private String color;
 
-    public Smartwatches(int productId, String productName, double price, int quantity, List<String> photos,
+    public Smartwatch(int productId, String productName, double price, int quantity, List<String> photos,
             String brand, String modelName, String productDescription, String category,
             String screenSize, String color) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);

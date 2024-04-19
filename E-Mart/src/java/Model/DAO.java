@@ -12,27 +12,47 @@ import java.util.List;
  * @author robin
  */
 public class DAO {
-    
-    public static List<Smartphone> getAllSmartphones(){
+
+    public static List<Smartphone> getAllSmartphones() {
         return generateMockDataSmartphone();
-    }
-    
-    public static List<Laptop> getAllLaptops(){
-        return generateMockDataLaptop();
+        //TODO: add real sql code
     }
 
-    public static List<Camera> getAllCamera(){
+    public static List<Laptop> getAllLaptops() {
+        return generateMockDataLaptop();
+        //TODO: add real sql code
+    }
+
+    public static List<Camera> getAllCamera() {
         return generateMockDataCamera();
+        //TODO: add real sql code
     }
-    
-    public static List<Smartwatches> getAllSmartwatches(){
+
+    public static List<Smartwatch> getAllSmartwatches() {
         return generateMockDataSmartwatches();
+        //TODO: add real sql code
     }
-    
-    public static List<Monitor> getAllMonitor(){
+
+    public static List<Monitor> getAllMonitor() {
         return generateMockDataMonitor();
+        //TODO: add real sql code
     }
     
+    public static List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
+
+    public static List<ShoppingCartObj> getAllCartItems() {
+        return currentCartSnap;
+        //TODO: add real sql code
+    }
+    
+    public static void fillMockCart(){
+        currentCartSnap = generateMockShoppingCartObjs();
+    }
+
+    public static void removeAllCartItems() {
+        currentCartSnap.clear();
+    }
+
     //Mock Data
     private static List<Smartphone> generateMockDataSmartphone() {
         List<Smartphone> products = new ArrayList<>();
@@ -73,13 +93,13 @@ public class DAO {
         return products;
     }
 
-    private static List<Smartwatches> generateMockDataSmartwatches() {
-        List<Smartwatches> products = new ArrayList<>();
+    private static List<Smartwatch> generateMockDataSmartwatches() {
+        List<Smartwatch> products = new ArrayList<>();
         // Mock data for smartwatches
-        products.add(new Smartwatches(6, "Smartwatch A", 299.99, 80,
+        products.add(new Smartwatch(6, "Smartwatch A", 299.99, 80,
                 new ArrayList<>(), "Brand U", "Model 6", "Feature-rich smartwatch for fitness tracking", "Smartwatch",
                 "1.3 inches", "Red"));
-        products.add(new Smartwatches(7, "Smartwatch B", 199.99, 120,
+        products.add(new Smartwatch(7, "Smartwatch B", 199.99, 120,
                 new ArrayList<>(), "Brand T", "Model 7", "Affordable smartwatch with basic features", "Smartwatch",
                 "1.1 inches", "Blue"));
         return products;
@@ -96,7 +116,17 @@ public class DAO {
                 60, "24 inches", "1920x1080"));
         return products;
     }
-    
-    
+
+    private static List<ShoppingCartObj> generateMockShoppingCartObjs() {
+        List<ShoppingCartObj> cartProducts = new ArrayList<>();
+
+        cartProducts.add(new ShoppingCartObj("Monitor A", 399.99, 1,
+                "34 inches", ProductCategory.Monitor, "Images/Home/monitor.png"));
+        cartProducts.add(new ShoppingCartObj("Smartphone X", 899.99, 2,
+                "256GB", ProductCategory.Smartphone, "Images/Home/phone.png"));
+        cartProducts.add(new ShoppingCartObj("Laptop Y", 1299.99, 1,
+                "512GB", ProductCategory.Laptop, "Images/Home/laptop.png"));
+        return cartProducts;
+    }
 
 }
