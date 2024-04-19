@@ -96,5 +96,7 @@ public class DAO {
                 60, "24 inches", "1920x1080"));
         return products;
     }
+    
+    
 
 }
