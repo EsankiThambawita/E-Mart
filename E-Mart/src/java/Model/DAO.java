@@ -52,6 +52,10 @@ public class DAO {
     public static void removeAllCartItems() {
         currentCartSnap.clear();
     }
+    
+    public static List<ShoppingCartObj> getOrderConfirmationDetails(){
+        return generateMockShoppingCartObjs();
+    }
 
     //Mock Data
     private static List<Smartphone> generateMockDataSmartphone() {
