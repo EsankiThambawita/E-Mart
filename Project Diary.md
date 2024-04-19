@@ -96,7 +96,9 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.                                   |
+| 2024-04-16 | OrderConfirmation page needed an extra button for "submit feedback" but when the css was added, it did not work for that button.                                             | Found that the issue was other css styles being conflicted and so used inline css and fixed the issue.                 |
+| 2024-04-17 | The database is not connecting to the netbeans                   | Found issue in code and fixed it.  |
+
 
 
 **2. TPR Fernando**

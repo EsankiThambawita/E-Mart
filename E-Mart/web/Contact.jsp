@@ -56,11 +56,11 @@
                         <div class="contact-form-row">
                             <div class="contact-input-area">
                                 <label for="firstName" class="form-label">First Name</label>
-                                <input type="text" class="contact-form-control" id="firstName" placeholder="Rove">
+                                <input type="text" class="contact-form-control" id="firstName" placeholder="jamal">
                             </div>
                             <div class="contact-input-area">
                                 <label for="lastName" class="form-label">Last Name</label>
-                                <input type="text" class="contact-form-control" id="lastName" placeholder="Dough">
+                                <input type="text" class="contact-form-control" id="lastName" placeholder="kageyama">
                             </div>
                         </div>
                         <div class="contact-form-row">
@@ -104,43 +104,35 @@
                             </div>
                         </div>
                         <div class="contact-form-row c-action">
-                            <button type="submit" class="btn primary-btn order-btn">Send Message</button>
+                            <button id="sendMessageBtn" type="button" class="btn primary-btn order-btn">Send Message</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-<<<<<<< Updated upstream
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
-=======
-    </div>
-</div>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-    document.getElementById("sendMessageBtn").addEventListener("click", function() {
-        var firstName = document.getElementById("firstName").value;
-        var lastName = document.getElementById("lastName").value;
-        var email = document.getElementById("email").value;
-        var phoneNumber = document.getElementById("phoneNumber").value;
-        var subject = document.querySelector('input[name="gridRadios"]:checked').nextElementSibling.textContent;
-        var message = document.getElementById("message").value;
+        <script>
+            document.getElementById("sendMessageBtn").addEventListener("click", function () {
+                var firstName = document.getElementById("firstName").value;
+                var lastName = document.getElementById("lastName").value;
+                var email = document.getElementById("email").value;
+                var phoneNumber = document.getElementById("phoneNumber").value;
+                var subject = document.querySelector('input[name="gridRadios"]:checked').nextElementSibling.textContent;
+                var message = document.getElementById("message").value;
 
-        var mailtoLink = "mailto:oneliwickramaratne@gmail.com"
+                var mailtoLink = "mailto:oneliwickramaratne@gmail.com"
                         + "?subject=" + encodeURIComponent(subject)
                         + "&body=" + encodeURIComponent("First Name: " + firstName + "\n"
-                                                        + "Last Name: " + lastName + "\n"
-                                                        + "Email: " + email + "\n"
-                                                        + "Phone Number: " + phoneNumber + "\n"
-                                                        + "Subject: " + subject + "\n"
-                                                        + "Message: " + message);
+                                + "Last Name: " + lastName + "\n"
+                                + "Email: " + email + "\n"
+                                + "Phone Number: " + phoneNumber + "\n"
+                                + "Subject: " + subject + "\n"
+                                + "Message: " + message);
 
-        window.location.href = mailtoLink;
-    });
-</script>
-</body>
-<h1>oneli</h1>
->>>>>>> Stashed changes
+                window.location.href = mailtoLink;
+            });
+        </script>
+    </body>
 </html>

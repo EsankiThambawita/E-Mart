@@ -50,12 +50,12 @@
         <h2 style="text-align: center;">WELCOME TO E-MART!</h2>
         <h6 style="color: white;text-align: center;">Register your Account.</h6>
 
-        <form action="#" onsubmit="return validation()" method="post">
+        <form action="SignUpServlet" onsubmit="return validation()" method="post">
             <h4> <label for="username">Name</label></h4>
             
             <div class="form-control">
                 
-                <input type="text" id="username" required>
+                <input type="text"  id="username"   name="username" required>
                 <label>Xyz</label>
             </div>
    
@@ -63,7 +63,7 @@
             <h4> <label for="email">E-mail Address</label></h4>
            
             <div class="form-control">
-                <input type="text" id="email" required>
+                <input type="text"  id="email"  name="email" required>
                 <label>emartshop@gmail.com</label>
             </div>
           
@@ -71,21 +71,21 @@
             <h4><label for="password">Password</label></h4>
           
          <div class="form-control">
-           <input type="password" id="password" required>
+           <input type="password"  id="password"  name="password"   required>
            <label>Password (8+ characters)</label>
           </div>
             
              <h4><label for="Confirmpassword">Confirm Password</label></h4>
              
              <div class="form-control">
-    <input type="password" id="confirmPassword" required>
+    <input type="password"  id="confirmPassword" name="confirmPassword"  required>
 <label>Confirm Password</label>
 </div>
               
              <h4><label for="ContactNumber">Contact Number</label></h4>
               
              <div class="form-control">
-    <input type="text" id="ContactNumber"  required>
+    <input type="text"  id="ContactNumber"    name="ContactNumber" required>
     
     <label>07XXXXXXXX</label>
 </div>
