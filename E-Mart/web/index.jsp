@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Model.DAO"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,8 +16,10 @@
         <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Home.css" rel="stylesheet" type="text/css"/>
     </head>
-     <%@ include file="Navbar.html" %>
+     
     <body>
+        <%@ include file="Navbar.html" %>
+        <% DAO.fillMockCart(); %>
         <!-- Home page UI -->
         <div class="container">
             <img src="Images/Home/lens.jpg" alt="Background Image" class="background-image">
