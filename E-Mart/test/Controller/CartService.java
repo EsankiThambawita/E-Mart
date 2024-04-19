@@ -8,6 +8,7 @@ package Controller;
  *
  * @author hp
  */
+import Model.CartItem;
 import java.util.*;
 import java.sql.*;
 
