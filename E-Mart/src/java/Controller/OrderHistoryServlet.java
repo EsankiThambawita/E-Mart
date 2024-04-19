@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.util.List;
 
 // Assuming Order class is in the com.example package
-import Controller.Order;
+import Model.Order;
 
 @WebServlet(name = "OrderHistoryServlet", urlPatterns = {"/OrderHistoryServlet"})
 public class OrderHistoryServlet extends HttpServlet {

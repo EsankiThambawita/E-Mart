@@ -1,7 +1,7 @@
 
 package Controller;
 
-class SignUpUser {
+public class SignUpUser {
 
     SignUpUser(String username, String email, String password, String contactNumber) {
         
