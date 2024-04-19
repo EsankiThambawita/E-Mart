@@ -1,9 +1,9 @@
 
-package Model;
+package Controller;
 
 public class SignUpUser {
 
-   public  SignUpUser(String username, String email, String password, String contactNumber) {
+    SignUpUser(String username, String email, String password, String contactNumber) {
         
     }
       private String username;
