@@ -1,7 +1,7 @@
 package Controller;
 
+import Model.BillingDetails;
 import Controller.CartService; // Import the CartService class
-import Controller.BillingDetails; // Import the BillingDetails class from the correct package
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
