@@ -5,7 +5,6 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -82,15 +81,11 @@ public class SignUpServlet extends HttpServlet {
             SignUpUser user = new SignUpUser(username, email, password, contactNumber);
 
             // Save  to the database
-            //userDao.saveUser(user);
-            //save for profile
-            HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("email", email);
-            session.setAttribute("contactNumber", contactNumber);
+            userDao.saveUser(user);
+        
 
             //send saves to profile servlet
-            response.sendRedirect("Profile.jsp");
+            response.sendRedirect("Home.jsp");
 
         }
 
