@@ -26,10 +26,10 @@
                 <p>Explore the latest in smartphone technology and<br>connectivity. From flagship models to budget-friendly<br>
                     options, find your perfect fit at E-Mart.</p>
                 <div class="buttons">
-                    <a href="aboutus.jsp">
+                    <a href="AboutUs.jsp">
                         <button class="button1">About Us</button>
                     </a>
-                    <a href="categories.jsp">
+                    <a href="ProductCategory_Cameras.jsp">
                         <button class="button2">Start Shopping</button>
                     </a>
                 </div>
