@@ -13,6 +13,8 @@
         <link rel="stylesheet" href="/AdminPanel\CSS\dashboard.css"/>
     </head>
     <body>
+        <%@ include file="Menu.html" %>
+        <%@ include file="navbar.html" %>
     <div class="content">
             <div class="card left">
                 <div class="card-header">Card 1</div>
