@@ -7,7 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Esanki Lakvindee
 */
 
-/* CSS for profile */
 body {
     margin: 0;
     padding: 0;
@@ -19,7 +18,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    margin-top: 40px;
 }
 
 .profile-card {
@@ -32,7 +31,8 @@ body {
 
 .profile-pic {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 40px; /* Add a larger gap between profile pic and navbar */
+    margin-top: 20px; /* Add margin to the top to move it down */
 }
 
 .profile-pic img {
