@@ -62,23 +62,23 @@
                                 <th><div class="user-image"></div></th>   
                             </tr>
                             <tr>
-                                 <th>Full Name</th>
-                                <th>Username</th>
-                                <th>Address</th>
+                   
+                                <th>Name</th>
+                               <th>Email</th>
                             </tr>
                             <tr>
-                                <td><input type="text" id="fullname" name="fullname"</td>
+                             
                                 <td><input type="text" id="username" name="username"</td>
-                                <td><input type="text" id="address" name="address"</td>
+                               <td><input type="email" id="email" name="email"</td>
                             </tr>   
                             <tr>
                                 <th>Password</th>
-                                <th>Email</th>
+                                
                                 <th>Contact Number</th>
                             </tr>
                             <tr>
                                 <td><input type="password" id="password" name="password"></td>
-                                <td><input type="email" id="email" name="email"</td>
+                                
                                 <td><input type="tel" id="contact-number" name="contact-number"</td>
                             </tr>
                         </table><br>
@@ -94,16 +94,6 @@
       <a href="ChangePassword.jsp" style="color: #59E3FF;">Change Password</a>
     </td>
   </tr> 
- <tr>
-    <td>
-      <div class="button-row change-email">
-        <a href="ChangeEmail.jsp" style="color: #59E3FF;">Change Email</a>
-      </div>
-    </td>
-    <td>
-      <a href="ChangeContactNumber.jsp" style="color: #59E3FF;">Change Contact Number</a>
-    </td>
-  </tr>
 </table>
 
                          <script>
