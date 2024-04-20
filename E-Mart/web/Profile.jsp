@@ -3,15 +3,15 @@
     Created on : Apr 11, 2024, 7:48:20?PM
     Author     : User
 --%>
-<%@ page import="Model.User" %>
+<%@ page import="Model.SignUpUser" %>
 <%@ page import="Model.userDao" %>
 <%
     // Retrieve the logged-in user's email from the session or request
     String userEmail = (String) request.getSession().getAttribute("userEmail");
 
     // Call getUserByEmail method to retrieve user data
-    userDao userDao = new userDao();
-    User user = userDao.getUserByEmail(userEmail);
+    userDao UserDao = new userDao();
+    User user = UserDao.getUserByEmail(userEmail);
 
     // Populate input fields with user data
     String username = user.getUsername();

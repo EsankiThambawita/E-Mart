@@ -56,6 +56,10 @@ public class DAO {
     public static List<ShoppingCartObj> getOrderConfirmationDetails(){
         return generateMockShoppingCartObjs();
     }
+    
+    public static List<NewestProductObj> getNewArrivals(){
+        return generateMockNewestItems();
+    } 
 
     //Mock Data
     private static List<Smartphone> generateMockDataSmartphone() {
@@ -131,6 +135,18 @@ public class DAO {
         cartProducts.add(new ShoppingCartObj("Laptop Y", 1299.99, 1,
                 "512GB", ProductCategory.Laptop, "Images/Home/laptop.png"));
         return cartProducts;
+    }
+    
+    private static List<NewestProductObj> generateMockNewestItems(){
+        List<NewestProductObj> newestItems = new ArrayList<>();
+        
+        newestItems.add(new NewestProductObj(5, "Laptop Beta", 150000, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png"));
+        newestItems.add(new NewestProductObj(1, "Monitor A", 399.99, "Images/ProductCategory&Details/Monitors/AsusProArtDisplayPA278CV.png"));
+        newestItems.add(new NewestProductObj(2, "Smartphone X", 899.99, "Images/ProductCategory&Details/Phones/i14p.png"));
+        newestItems.add(new NewestProductObj(3, "Laptop Y", 1299.99, "Images/ProductCategory&Details/Laptops/HPSpectre.png"));
+        newestItems.add(new NewestProductObj(4, "Laptop Z", 1099.99, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png")); 
+
+        return newestItems;
     }
 
 }
