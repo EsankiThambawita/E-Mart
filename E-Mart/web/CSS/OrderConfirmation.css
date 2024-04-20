@@ -85,6 +85,10 @@ body {
   border-radius: 20px;
 }
 
+button:hover{
+    cursor: pointer !important;
+}
+
 .button1 {
   width: 200px;
   height: 65px; /* Added height */

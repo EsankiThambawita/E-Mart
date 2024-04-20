@@ -1,22 +1,27 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
+ */
 package Controller;
 
-import Model.SignUpUser;
-import Model.userDao;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.sql.SQLException;
-import java.util.UUID;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-@WebServlet(name = "SignUpServlet", urlPatterns = {"/SignUpServlet"})
-public class SignUpServlet extends HttpServlet {
+/**
+ *
+ * @author DELL
+ */
+@WebServlet(name = "UpdatePasswordServlet", urlPatterns = {"/UpdatePasswordServlet"})
+public class UpdatePasswordServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,10 +40,10 @@ public class SignUpServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SignUpServlet</title>");
+            out.println("<title>Servlet UpdatePasswordServlet</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SignUpServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet UpdatePasswordServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -71,46 +76,45 @@ public class SignUpServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-
-        //Get data 
-        String username = request.getParameter("username");
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
+             // Get parameters from the form
+        String newPassword = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmPassword");
-        String contactNumber = request.getParameter("ContactNumber");
 
-        // If Validation fails
-        if (!validation(username, email, password, confirmPassword, contactNumber)) {
-            request.getRequestDispatcher("SignUp.jsp").forward(request, response);
-        } else {
-
-            // Create user object
-            SignUpUser user = new SignUpUser(username, email, password, contactNumber);
-
-            // Save to the database
-            userDao userDao = new userDao(); // Create an instance of userDao
-            
-            try {
-                userDao.saveUser(user);
-         // Generate a unique user ID using UUID
-                String userID = UUID.randomUUID().toString();
-
-                // Set the user ID as a cookie
-                Cookie userIDCookie = new Cookie("userID", userID);
-                // Set the cookie path to "/" so it's accessible throughout the application
-                userIDCookie.setPath("/");
-                response.addCookie(userIDCookie);
-            }
-            catch (Exception ex) {
-                Logger.getLogger(SignUpServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-
-            //send saves to profile servlet
-            response.sendRedirect("Home.jsp");
-
+        // Check if passwords match
+        if (!newPassword.equals(confirmPassword)) {
+            // Passwords don't match, handle this case (e.g., show error message)
+            // You can redirect to a page indicating that passwords don't match
+            response.sendRedirect("passwordMismatch.jsp");
+            return; // Exit from the method
         }
 
+        // Assuming you have a database table named 'signupdetails' with columns 'username' and 'password'
+        String jdbcUrl = "jdbc:mysql://localhost:3306/details";//database name
+        String dbUsername = "root";
+        String dbPassword = " ";//
+
+        try (Connection conn = DriverManager.getConnection(jdbcUrl, dbUsername, dbPassword)) {
+            String updateQuery = "UPDATE signupdetails SET password = ? WHERE username = ?";//signupdetails table name
+            try (PreparedStatement preparedStatement = conn.prepareStatement(updateQuery)) {
+                // Set parameters
+                preparedStatement.setString(1, newPassword);
+                preparedStatement.setString(2, "the_username_of_the_user_whose_password_you_want_to_reset");
+
+                // Execute update
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                // Check if the update was successful
+                if (rowsAffected > 0) {
+                    // Password updated successfully, redirect to a success page
+                    response.sendRedirect("Home.jsp");
+                } else {
+                    // Failed to update password, redirect to an error page
+                    response.sendRedirect("resetPassword.jsp");
+                }
+            }
+        } catch (SQLException ex) {
+        
+        }
     }
 
     /**
@@ -122,21 +126,5 @@ public class SignUpServlet extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
-    private boolean validation(String username, String email, String password, String confirmPassword, String contactNumber) {
-        if (username.isEmpty() || email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty() || contactNumber.isEmpty()) {
-            return false;
-        }
-
-        if (password.length() < 8) {
-            return false;
-        }
-
-        if (!password.equals(confirmPassword)) {
-            return false;
-        }
-
-        return contactNumber.matches("\\d{10}");
-    }
 
 }

@@ -83,6 +83,11 @@
                             </tr>
                             <tr>
                              
+    <th>Name</th>
+                               <th>Email</th>
+                            </tr>
+                            <tr>
+                             
                                 <td><input type="text" id="username" name="username" value="<%= username %>"></td>
                                <td><input type="email" id="email" name="email" value="<%= email %>"></td>
                             </tr>   
@@ -109,16 +114,6 @@
       <a href="ChangePassword.jsp" style="color: #59E3FF;">Change Password</a>
     </td>
   </tr> 
- <tr>
-    <td>
-      <div class="button-row change-email">
-        <a href="ChangeEmail.jsp" style="color: #59E3FF;">Change Email</a>
-      </div>
-    </td>
-    <td>
-      <a href="ChangeContactNumber.jsp" style="color: #59E3FF;">Change Contact Number</a>
-    </td>
-  </tr>
 </table>
 
                          <script>
