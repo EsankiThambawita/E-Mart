@@ -33,30 +33,28 @@
  
     });
 </script>
-    </head>
+ </head>
 
     <div class="form-wrapper">
         <h2 style="text-align: center;">Forgot Password?</h2>
-        <form action="#"  method=" post">
+        <form action="SendVerificationCodeServlet "  method=" post">
          
             <h5 style="color:white;">
                 Please enter your login email, we'll send a new random password to your Email-inbox:
             </h5>
             <br>
-            <h4> <label for="email">Email</label></h4>
+            <h4> <label for="mobileNumber" name="mobileNumber">Phone Number</label></h4>
             
             <br>
             
             <div class="form-control">
-                <input type="text" id="email" required>
-                <label>emartshop@gmail.com</label>
+                <input type="text" id="mobileNumber" name="mobileNumber" required>
+                <label>07Xxxxxxxx</label>
             </div>
 
             
-  <button class=" " type="submit">Send The New Password</button>
-                <h6 style="color:white;">
-            Note: for security reason,you must change your password after logging in.Using profile change password.
-            </h6>
+  <button class=" " type="submit">Send The OTP</button>
+      
               
         </form>  
     </div>

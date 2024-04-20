@@ -1,9 +1,19 @@
 <%-- 
-    Document   : EditDetails
+    Document   : ChangePassword
     Created on : Apr 14, 2024, 3:36:48?PM
     Author     : User
 --%>
-
+<%@ page import="Model.User" %>
+<%@ page import="Model.userDao" %>
+<%
+    String error = request.getParameter("error");
+    String errorMessage = "";
+    if (error != null && error.equals("1")) {
+        errorMessage = "Incorrect current password. Please try again.";
+    } else if (error != null && error.equals("2")) {
+        errorMessage = "New password and confirm new password do not match.";
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +54,7 @@
 <body>
   <%@ include file="Navbar.html" %>
         <div class="body-wrapper">
-            
+            <div style="color: red;"><%= errorMessage %></div>
  <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
     <h2 style="text-align: center;">Change Password</h2>
 
