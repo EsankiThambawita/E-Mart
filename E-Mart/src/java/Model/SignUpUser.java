@@ -21,7 +21,7 @@ public class SignUpUser {
 
     }
 
-    String getPassword() {
+    public  String getPassword() {
 
         return password;
 
@@ -29,5 +29,9 @@ public class SignUpUser {
 
     String getContactNumber() {
         return contactNumber;
+    }
+
+    public void setPassword(String newPassword) {
+      
     }
 }
