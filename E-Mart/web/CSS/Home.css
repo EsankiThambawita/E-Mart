@@ -124,9 +124,9 @@ button {
 
 
 .rectangle img {
-    width: 300px;
-    height: 300px;
+    width: 90%;
     margin-top: 41px;
+    max-height: 100%;
 }
 
 .text1, .text2 {
@@ -369,4 +369,17 @@ button {
 .nextcategory-container a:hover .line1,
 .nextcategory-container a:hover .line2 {
     color: rgba(255, 255, 255, 0.9); /* Change text color when hovered */
+}
+
+a {
+    text-decoration: none;
+}
+
+.img-container{
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
