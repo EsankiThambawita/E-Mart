@@ -13,6 +13,7 @@ import java.util.*;
 public class CartControllerServlet extends HttpServlet {
     private CartService cartService;
 
+    @Override
     public void init() throws ServletException {
         cartService = new CartService();
     }
@@ -34,6 +35,11 @@ public class CartControllerServlet extends HttpServlet {
                     double productPrice = Double.parseDouble(request.getParameter("productPrice"));
                     int quantity = Integer.parseInt(request.getParameter("quantity"));
                     cartService.addToCart(productName, productPrice, quantity);
+                    // Store the selected items in a list
+                    List<String> selectedItems = new ArrayList<>();
+                    selectedItems.add(productName); // Add the selected product name
+                    // Set the list of selected items as an attribute in the request
+                    request.setAttribute("selectedItems", selectedItems);
                     break;
                 case "remove":
                     String removedProductName = request.getParameter("productName");
@@ -71,7 +77,15 @@ public class CartControllerServlet extends HttpServlet {
                     // Invalid action
                     break;
             }
+            String orderNumber = generateOrderNumber();
+
+        // Set order number as attribute in request
+        request.setAttribute("orderNumber", orderNumber);
+
+        // Forward the request to the JSP page
+        request.getRequestDispatcher("TrackOrder.jsp").forward(request, response);
         }
+        
     }
 
     @Override
@@ -94,5 +108,11 @@ public class CartControllerServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
+    }
+
+    private String generateOrderNumber() {
+        // Function to generate unique order number
+        UUID uuid = UUID.randomUUID();
+        return "ORD-" + uuid.toString(); // You can customize the format of the order number as needed
     }
 }
