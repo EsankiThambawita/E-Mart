@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Register.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Register.css"/>
     </head>
     <body>
         <div class="container">

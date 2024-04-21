@@ -10,9 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Profile</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Profile.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Profile.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
     </head>
     <body>
+        <div class="left-section">
+            <%@ include file="Menu.html" %>
+        </div>
+        
+        <div class="right-section">
+        <div class="navbar">
+            <%@ include file="navbar.html" %>
+        </div>
         <div class="container">
             <div class="profile-card">
                 <div class="profile-pic">
@@ -54,6 +64,7 @@
                     </form>
                 </div>
             </div>
+        </div>
         </div>
     </body>
 </html>
