@@ -10,9 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Orders</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Orders.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Orders.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
     </head>
     <body>
+        <div class="left-section">
+            <%@ include file="Menu.html" %>
+        </div>
+        
+        <div class="right-section">
+        <div class="navbar">
+            <%@ include file="navbar.html" %>
+        </div>
         <div class="container">
             <h1>Orders</h1>
             <table>
@@ -41,6 +51,7 @@
                     <% } %>
                 </tbody>
             </table>
+        </div>
         </div>
     </body>
 </html>
