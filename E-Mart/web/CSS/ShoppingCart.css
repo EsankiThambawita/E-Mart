@@ -1,0 +1,153 @@
+body{
+    background: black !important;
+    color:white !important;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.primary-btn{
+    background: #151663 !important;
+    color: #fff !important;
+    border: 2px solid #151663 !important;
+
+}
+
+.order-btn{
+    padding: 7px 50px !important;
+    border-radius: 10px !important;
+}
+
+.order-btns{
+    display: flex;
+    gap: 30px;
+}
+
+.order-total{
+    margin-right: 2rem;
+    font-size: 25px;
+}
+.tr-text{
+    background-color: transparent !important;
+
+}
+
+.bl-0{
+    border-left: 0 !important;
+}
+
+.br-0{
+    border-right: 0 !important;
+}
+
+.title{
+    margin: auto;
+}
+
+.wrapper-center{
+    flex-direction: column;
+    align-items: center;
+}
+
+.order-card{
+    margin-top: 4rem;
+    width: 1100px;
+    max-width: 1200px;
+    padding: 20px;
+}
+
+hr{
+    border-top: 2px solid #3B7BF8 !important;
+    opacity: 1 !important;
+}
+
+#orderItemsList{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: -10px;
+    min-height: 230px;
+    max-height: 300px;
+}
+
+#orderItemsList{
+    font-size: 20px;
+}
+
+.qty-group{
+    display: flex;
+    align-items: center;
+    gap: 0;
+    background-color: #010101;
+    width: fit-content;
+    height: fit-content;
+    padding: 0;
+    border-radius: 5px;
+}
+
+.button-qty{
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.6s ease;
+}
+
+.qty-add{
+    border-radius: 0px 5px 5px 0;
+}
+
+.qty-remove{
+    border-radius: 5px 0px 0px 5px;
+}
+
+.qty-add:hover,
+.qty-remove:hover{
+    transform: scale(105%);
+}
+
+.qty-remove:hover{
+    background-color: #46010d;
+}
+.qty-add:hover{
+    background-color: #012146;
+}
+
+.qtyAmount{
+    padding: 0 20px;
+}
+
+.bg-gray{
+    background-color: #606060;
+}
+
+.bg-accent{
+    background-color: #3B7BF8;
+}
+
+.item-icon{
+    background-color: black;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.item-icon img{
+    height: 40px;
+    width: auto;
+}
+
+.phoneDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: flex-start;
+    margin-left: 10px;
+}
+.varient{
+    font-size: 0.7em;
+    opacity: 0.7;
+}

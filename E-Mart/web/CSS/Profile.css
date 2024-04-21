@@ -1,0 +1,198 @@
+body {
+    background-color: #000000; /* Black background */
+    height: 100vh; /* Set the height of the viewport */
+}
+
+.body-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+.sidebar-item img {
+    width: 30px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    margin-right: 10px; /* Optional: Add some spacing between the icon and text */
+}
+
+/* styles for sidebar item text */
+.sidebar-item span {
+    vertical-align: middle; /* Align the text vertically with the icon */
+}
+
+/* Styling for the form */
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 55px;
+    max-height: 600px; /* Adjust as needed */
+    height: 570px;
+    background-color: rgba(0, 11, 69, 0.67);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10px;
+    border-radius: 20px; /* Rounded corners for the entire sidebar */
+    margin-top: 50px; /* Adjust the top margin to move the sidebar up */
+}
+
+.sidebar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+}
+
+.sidebar-icon {
+    font-size: 24px;
+}
+.sidebar-item span {
+    color: #ffffff; /* Set text color to white */
+    font-size: medium;
+}
+.sidebar-item a {
+text-decoration: none;
+}
+.sidebar-item .sidebar-icon,
+.sidebar-item span {
+    color: rgba(255, 255, 255, 0.7); /* Set initial text color with reduced opacity */
+    opacity: 3.0; /* Set initial opacity */
+    transition: color 0.3s ease, opacity 0.3s ease; /* Smooth transition */
+}
+
+.sidebar-item:hover .sidebar-icon,
+.sidebar-item:hover span {
+    color: #fff; /* Increase the text color brightness on hover */
+    opacity: 1; /* Increase opacity on hover */
+}
+.sidebar-item img {
+    opacity: 0.7; /* Set initial opacity */
+    transition: opacity 0.3s ease; /* Smooth transition */
+}
+
+.sidebar-item:hover img {
+    opacity: 1; /* Increase opacity on hover */
+}
+
+.form-container {
+    margin-left: 20px; /* Create space between sidebar and form */
+    max-width: 800px;
+     margin-top: 20px;
+    height:500px;
+    padding: 60px 50px;
+    border: 20px solid #000000; /* Increased border width */
+    border-radius: 30px;
+    background: rgba(0, 11, 69, 0.67);
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.profile-form table {
+    width: 100%;
+    border-radius: 50px;
+}
+
+.profile-form th, .profile-form td {
+    padding: 15px;
+    text-align: center;
+    font-family: Calibri,Calibri; /* Change font family */
+    color: #ffffff; /* Change font color */
+}
+
+.profile-form .line {
+    border-top: 1px solid #ccc;
+}
+
+.user-image-container {
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    margin-top: 20px; /* Adjust as needed */
+}
+
+.user-image-container img {
+    width: 100px; /* Adjust the width of the image */
+    height: 100px; /* Adjust the height of the image */
+    border-radius: 50%; /* Make it a circle */
+    border: 2px solid #fff; /* Add a border around the circle */
+
+}
+
+ input[type="text"] {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    padding: 5px 2px;
+    position: relative;
+    z-index: 10; 
+}
+ input[type="password"] {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    padding: 5px 2px;
+    position: relative;
+    z-index: 10; 
+ }
+  input[type="email"] {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    padding: 5px 2px;
+    position: relative;
+    z-index: 10; 
+  }
+   input[type="tel"] {
+    display: block;
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #fff;
+    background: transparent;
+    outline: none;
+    padding: 5px 2px;
+    position: relative;
+    z-index: 10; 
+   }
+.change-password a {
+     color: #59E3FF; /* Change to the desired color */
+    text-decoration: underline;
+}
+.choose-file-button, .save-button {
+    background-color: #22A1C9; /* Change to the desired color */
+    color: white; /* Text color */
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.choose-file-button:hover, .save-button:hover {
+    background-color: #0056b3; /* Change to the desired hover color */
+}
+#choose-file {
+            display: none;
+        }
+.edit-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 5px; /* Adjust the spacing between the icon and the link */
+    fill: #59E3FF; /* Change the color of the icon */
+}
+.form-container {
+    position: relative; /* Set position relative for proper positioning of children */
+}
+
+
+

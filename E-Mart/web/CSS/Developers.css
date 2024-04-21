@@ -1,0 +1,80 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 12, 2024, 11:28:28 AM
+    Author     : DELL
+*/
+footer{
+    margin-top: 100px;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+  
+body {
+    background-color: black; /* Set the background color of the body to black */
+    color: white; /* Set text color to white for better visibility */
+  }
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Center the columns horizontally */
+  margin: 0 -15px; /* Adjust the negative margin to create equal spacing on both sides */
+}
+
+.column {
+  width: calc(30% - 60px); /* Adjust the width to include padding */
+  margin: 0 15px; /* Adjust the margin to create space between columns */
+  margin-bottom: 16px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+}
+.center {
+  text-align: center;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+
+.card img {
+  border-radius: 20px;
+  width: 100%;
+  height: 300px; /* Adjust the height as needed */
+  object-fit: cover;
+
+}
+
+.card {
+  border-radius: 30px; 
+  box-shadow: 2px 4px 4px 4px rgba(255, 255, 255, 0.2);
+  background-color:#fff;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+h2 {
+  color: black; 
+}

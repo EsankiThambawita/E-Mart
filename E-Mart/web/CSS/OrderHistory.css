@@ -7,99 +7,103 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : User
 */
 .profile-form table {
-            width: 100%;
-            border-radius: 50px;
-        }
+    width: 100%;
+    border-radius: 50px;
+}
 
-        .profile-form th, .profile-form td {
-            padding: 15px;
-            text-align: center;
-            font-family: 'Times New Roman', serif; /* Change font family */
-            color: #ffffff; /* Change font color */
-        }
+.profile-form th, .profile-form td {
+    padding: 15px;
+    text-align: center;
+    font-family: 'Times New Roman', serif; /* Change font family */
+    color: #ffffff; /* Change font color */
+}
 
-        .profile-form .line {
-            border-top: 1px solid #ccc;
-        }
-      
+.profile-form .line {
+    border-top: 1px solid #ccc;
+}
 
-        body {
-            background-color: #1B242A; /* Black background */
-            display: flex;
-            justify-content: center; /* Center horizontally */
-            align-items: center; /* Center vertically */
-            height: 100vh; /* Set the height of the viewport */
-        }
-        div.form-container {
-            display: block;
-            text-align: center;
-        }
-        /* Styling for the form */
-        .container {
-            display: flex;
-        }
-        .form-container {
-            margin-left: 20px; /* Create space between sidebar and form */
-            max-width: 900px;
-            padding: 60px 50px;
-            border: 0px solid #000000; /* Increased border width */
-            border-radius: 50px;
-            background: #4d5164;
-            box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-            font-family: 'Times New Roman', 'Times New Roman'; /* Change font family */
-        }
 
-        .profile-form table {
-            width: 100%;
-            border-radius: 50px;
-        }
+body {
+    background-color: black; /* Black background *
+    height: 100vh; /* Set the height of the viewport */
+}
 
-        .profile-form th, .profile-form td {
-            padding: 15px;
-            text-align: center;
-            font-family: 'Times New Roman', 'Times New Roman'; /* Change font family */
-            color: #000000; /* Change font color */
-        }
+.body-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-        .profile-form .line {
-            border-top: 1px solid #ccc;
-        }     
-       
-        
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            border: 2px solid white; /* Set the border color to white */
-        }
-          th, td {
-            border: 1px solid white; /* Set cell borders to white */
-            padding: 8px;
-            text-align: left;
-        }
-       
-        .profile-form tr:nth-child(odd) {
-    background-color: #D2D2D4; /* Set the background color for odd rows */
-        }
+div.form-container {
+    display: block;
+    text-align: center;
+}
+/* Styling for the form */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+.form-container {
+    margin-left: 20px; /* Create space between sidebar and form */
+    max-width: 900px;
+    padding: 60px 50px;
+    border: 0px solid #000000; /* Increased border width */
+    border-radius: 50px;
+    background: #000000; /* Change background color here */
+    font-family: 'Times New Roman', 'Times New Roman'; /* Change font family */
+}
 
-        .profile-form tr:nth-child(even) {
-    background-color: #aeb7f0; /* Set the background color for even rows */
-        }
-        .order-history {
-            color: white;
-            text-align: center;
-            font-size: 24px; /* Adjust font size as needed */
-            font-family: 'Courier New';
-        }
-        .return-button {
-            background-color: #0074D9; /* Blue background */
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s; /* Smooth transition */
-        }
-         /* Hover effect */
-         .return-button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-        }
+.profile-form table {
+    width: 100%;
+    border-radius: 50px;
+}
+
+.profile-form th, .profile-form td {
+    padding: 15px;
+    text-align: center;
+    font-family: 'Times New Roman', 'Times New Roman'; /* Change font family */
+    color: #fff; /* Change font color */
+}
+
+.profile-form .line {
+    border-top: 1px solid #ccc;
+}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 2px solid #4d4d4d; /*change border colors*/
+}
+th, td {
+    border: 1px solid #4d4d4d; /* change border colors */
+    padding: 8px;
+    text-align: left;
+}
+
+.profile-form tr:nth-child(odd) {
+    background-color:  #0d0d0d; /* Set the background color for odd rows */
+}
+
+.profile-form tr:nth-child(even) {
+    background-color: #000000 /* Set the background color for even rows */
+}
+.order-history {
+    color: white;
+    text-align: center;
+    font-size: 24px; /* Adjust font size as needed */
+    font-family: 'Courier New';
+}
+.return-button {
+    background-color: #0000b3; /* Blue background */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Smooth transition */
+}
+/* Hover effect */
+.return-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}

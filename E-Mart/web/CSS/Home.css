@@ -124,9 +124,9 @@ button {
 
 
 .rectangle img {
-    width: 300px;
-    height: 300px;
+    width: 90%;
     margin-top: 41px;
+    max-height: 100%;
 }
 
 .text1, .text2 {
@@ -324,4 +324,62 @@ button {
     font-weight: 700;
     color: #151663;
     cursor: pointer;
+}
+
+/*Clicking parts of second, third sections*/
+.rectangle-container .rectangle {
+    position: relative;
+}
+
+.rectangle-container .rectangle a {
+    display: block;
+    position: relative;
+}
+
+.rectangle-container .rectangle a img {
+    display: block;
+    transition: filter 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.rectangle-container .rectangle a:hover img {
+    filter: brightness(70%);
+}
+
+.rectangle-container .rectangle a:hover .text1,
+.rectangle-container .rectangle a:hover .text2 {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+
+/*Clicking part of fourth,fifth sections*/
+.category-container a,
+.nextcategory-container a {
+    display: block;
+    text-decoration: none; /* Remove underline from links */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.category-container a:hover,
+.nextcategory-container a:hover {
+    transform: scale(1.1); /* Increase size by 10% when hovered */
+}
+
+.category-container a:hover .line1,
+.category-container a:hover .line2,
+.nextcategory-container a:hover .line1,
+.nextcategory-container a:hover .line2 {
+    color: rgba(255, 255, 255, 0.9); /* Change text color when hovered */
+}
+
+a {
+    text-decoration: none;
+}
+
+.img-container{
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
 }
