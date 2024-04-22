@@ -16,7 +16,7 @@ public class Smartphone extends BaseProduct {
     private Double screenSize;
     private String color;
 
-    public Smartphone(int productId, String productName, double price, int quantity, List<String> photos,
+    public Smartphone(int productId, String productName, float price, int quantity, List<String> photos,
             String brand, String modelName, String productDescription, String category,
             String storageCapacity, Double screenSize, String color) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
