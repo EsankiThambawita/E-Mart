@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Log In</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Login.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Login.css"/>
     </head>
     <body>
         
@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-column">
                     <h2>Login</h2>
-                    <form>
+                    <form action="AdminLoginServlet" method="POST" >
                         <div class="input-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" required>
@@ -30,13 +30,14 @@
                             <label for="password">Password:</label>
                             <input type="password" id="password" name="password" required>
                         </div>
-                        <button type="submit">Login</button>
-                        <button type="button" class="google-login">Login with Google</button>
+                        <button type="submit" id="loginButton">Login</button>
+                        
+                       
                     </form>
                     <div class="links">
-                        <a href="#">Forgot password?</a>
+                        <a href="/AdminPanel/JSP/ForgotPassword.jsp">Forgot password?</a>
                         <span>|</span>
-                        <a href="#">Create an account</a>
+                        <a href="/AdminPanel/JSP/Register.jsp">Create an account</a>
                     </div>
                 </div>
             </div>

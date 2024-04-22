@@ -18,8 +18,10 @@
                 <div class="profile-pic">
                     <img src="/AdminPanel/Images/profile.png" alt="Profile Picture">
                     <div class="edit-profile-pic">
-                        <button>Edit Profile Picture</button>
+                        <button id="edit-profile-pic-button">Edit Profile Picture</button>
+                        <input type="file" id="profile-pic-input" accept="image/*" style="display: none;">
                     </div>
+
                 </div>
                 <div class="user-settings card">
                     <h2>User Settings</h2>
@@ -55,5 +57,11 @@
                 </div>
             </div>
         </div>
+<<<<<<< Updated upstream
+=======
+        </div>
+        
+        <<script src="/AdminPanel/JS/profile.js"></script>
+>>>>>>> Stashed changes
     </body>
 </html>

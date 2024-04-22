@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Forgot Password?</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\ForgotPassword.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/ForgotPassword.css"/>
     </head>
     <body>
         <div class="container">
@@ -28,7 +28,7 @@
                     <button type="submit">Reset Password</button>
                 </form>
                 <div class="links">
-                    <a href="#">Remembered your password? Login here</a>
+                    <a href="/AdminPanel/JSP/Login.jsp">Remembered your password? Login here</a>
                 </div>
             </div>
         </div>

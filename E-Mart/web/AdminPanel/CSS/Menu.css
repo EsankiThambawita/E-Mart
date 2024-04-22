@@ -16,7 +16,11 @@ body {
 .sidebar {
     background-color: navy;
     color: white;
+<<<<<<< Updated upstream
     width: 200px;
+=======
+    width: 210px;
+>>>>>>> Stashed changes
     height: 100vh;
     display: flex;
     flex-direction: column;
