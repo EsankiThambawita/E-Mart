@@ -50,7 +50,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .navbar-right {
     display: flex;
-    align-items: center;
+    margin-left: auto;
 }
 
 .icon {
