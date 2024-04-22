@@ -16,7 +16,7 @@ public class Monitor extends BaseProduct {
     private int refreshRate;
     private String resolution;
 
-    public Monitor(int productId, String productName, double price, int quantity, List<String> photos,
+    public Monitor(int productId, String productName, float price, int quantity, List<String> photos,
             String brand, String modelName, String productDescription, String category,
             int refreshRate, String screenSize, String resolution) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);

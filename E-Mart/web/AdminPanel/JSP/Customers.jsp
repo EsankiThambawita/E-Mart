@@ -10,9 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Customer Info</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Customers.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Customers.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
     </head>
     <body>
+        <div class="left-section">
+            <%@ include file="Menu.html" %>
+        </div>
+        
+        <div class="right-section">
+        <div class="navbar">
+            <%@ include file="navbar.html" %>
+        </div>
         <div class="container">
             <h1>Customers</h1>
             <table>
@@ -41,8 +51,6 @@
                 </tbody>
             </table>
         </div>
-<<<<<<< Updated upstream
-=======
         </div>
                 
         <!-- Popup Form -->
@@ -65,6 +73,7 @@
         </div>
                 
          <script src="/AdminPanel/JS/Customers.js"></script>
->>>>>>> Stashed changes
+
+        </div>
     </body>
 </html>

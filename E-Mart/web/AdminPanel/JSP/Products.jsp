@@ -10,9 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Products</title>
-        <link rel="stylesheet" href="/AdminPanel\CSS\Products.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Products.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
     </head>
     <body>
+        <div class="left-section">
+            <%@ include file="Menu.html" %>
+        </div>
+        
+        <div class="right-section">
+        <div class="navbar">
+            <%@ include file="navbar.html" %>
+        </div>
         <div class="container">
             <h1>Products</h1>
             <div class="search-bar">
@@ -59,6 +69,7 @@
                 <a href="#">3</a>
                 <!-- Add more pagination links here -->
             </div>
+        </div>
         </div>
     </body>
 </html>

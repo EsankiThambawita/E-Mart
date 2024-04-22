@@ -1,39 +1,14 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model;
-
-/**
- *
- * @author hp
- */
-
-
-import java.util.Date; // Import Date class for representing order date
+import java.util.Date;
 
 public class Order {
-    private Date date; // Date of the order
-    private String orderNumber; // Unique order number
-    private String orderStatus; // Status of the order
-    private String itemsPurchased; // Description of items purchased
-    private int quantity; // Quantity of items
-    private double totalPrice; // Total price of the order
-    private String shippingAddress; // Shipping address
-    private String billingAddress; // Billing address
-    
-    // Constructor
-    public Order(Date date, String orderNumber, String orderStatus, String itemsPurchased,
-                 int quantity, double totalPrice, String shippingAddress, String billingAddress) {
-        this.date = date;
-        this.orderNumber = orderNumber;
-        this.orderStatus = orderStatus;
-        this.itemsPurchased = itemsPurchased;
-        this.quantity = quantity;
-        this.totalPrice = totalPrice;
-        this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
-    }
+
+    private Date date;
+    private String orderNumber;
+    private String orderStatus;
+    private String itemsPurchased;
+    private int quantity;
+    private double totalPrice;
 
     // Getters and setters
     public Date getDate() {
@@ -84,19 +59,4 @@ public class Order {
         this.totalPrice = totalPrice;
     }
 
-    public String getShippingAddress() {
-        return shippingAddress;
-    }
-
-    public void setShippingAddress(String shippingAddress) {
-        this.shippingAddress = shippingAddress;
-    }
-
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
-    }
 }
