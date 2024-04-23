@@ -11,19 +11,23 @@ package Model;
 public class ShoppingCartObj {
 
     private String productName;
-    private double productPrice;
+    private int productPrice;
     private int quantity;
     private String description;
     private ProductCategory category;
     private String iconPath;
+    private int recordId;
+    private String email;
 
-    public ShoppingCartObj(String productName, double productPrice, int quantity, String description, ProductCategory category, String iconPath) {
+    public ShoppingCartObj(String productName, int productPrice, int quantity, String description, ProductCategory category, String iconPath, int recordId, String email) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
         this.description = description;
         this.category = category;
         this.iconPath = iconPath;
+        this.recordId = recordId;
+        this.email = email;
     }
 
     public String getProductName() {
@@ -34,11 +38,11 @@ public class ShoppingCartObj {
         this.productName = productName;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -49,9 +53,9 @@ public class ShoppingCartObj {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    public double getTotalPrice() {
-        return quantity * productPrice;
+    
+    public int getTotalPrice(){
+        return quantity*productPrice;
     }
 
     public String getDescription() {
@@ -76,6 +80,22 @@ public class ShoppingCartObj {
 
     public void setIconPath(String iconPath) {
         this.iconPath = iconPath;
+    }
+
+    public int getRecordId() {
+        return recordId;
+    }
+
+    public void setRecordId(int recordId) {
+        this.recordId = recordId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
 }

@@ -22,7 +22,7 @@
 
     <body>
         <%@ include file="Navbar.html" %>
-        <% DAO.fillMockCart(); %>
+        <% DAO.getAllCartItems(); %>
         <!-- Home page UI -->
         <div class="container">
             <img src="Images/Home/lens.jpg" alt="Background Image" class="background-image">

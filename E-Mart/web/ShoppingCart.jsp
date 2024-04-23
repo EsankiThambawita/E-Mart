@@ -77,7 +77,7 @@
                             <div class="col text-end order-total">
                                 <span>Total - </span>
                                 <% 
-                                    double total = 0;
+                                    int total = 0;
                                     for (ShoppingCartObj item : cartItems) {
                                         total += item.getTotalPrice();
                                     }
