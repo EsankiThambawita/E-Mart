@@ -15,8 +15,9 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.                                   |
-
+| 2024-04-13 | PC got corrupted by a virus                                      | By using a bootable USB I clean installed windows |
+| 2024-04-16 | Came across an issue when adding navbar and footer to all the pages.  | Fixed it by adding a div to seperate the html and fixing the css |
+| 2024-04-20 | Time consumption in using an actual database to test the backend | Used a mock database instead for testing |
 
 **3. Sandali**
 
