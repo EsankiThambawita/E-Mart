@@ -20,7 +20,7 @@ public class userDao {
 
     public static void saveUser(SignUpUser user) {
             String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/userdetails";//databasename
+        String url = "jdbc:mysql://localhost:3306/emart";//databasename
         String sql = "INSERT INTO usersignup (username, email, password, contact_number) VALUES (?, ?, ?, ?)";//table name
          try {
             Class.forName(driver);
