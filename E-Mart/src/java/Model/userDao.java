@@ -71,5 +71,40 @@ public class userDao {
     return user;
     }
 
+    public void updateUser(SignUpUser user) {
+      String driver = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/userdetails";
+        String sql = "UPDATE usersignup SET password = ? WHERE email = ?";
+
+        try {
+            // Load the JDBC driver (this line is not required in newer versions of JDBC)
+            Class.forName(driver);
+
+            // Obtain a connection to the database
+            try (Connection connection = DriverManager.getConnection(url, "root", "")) {
+                // Create a prepared statement
+                try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                    // Set parameters
+                    statement.setString(1, user.getPassword());
+                    statement.setString(2, user.getEmail());
+
+                    // Execute the update
+                    int rowsAffected = statement.executeUpdate();
+
+                    // Check if the update was successful
+                    if (rowsAffected > 0) {
+                        System.out.println("User password updated successfully.");
+                    } else {
+                        System.out.println("No user found with the provided email.");
+                    }
+                }
+            }
+   
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(userDao.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    
+    }
+
    
 }
