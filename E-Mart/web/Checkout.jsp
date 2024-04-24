@@ -7,6 +7,9 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map.Entry" %>
+<%@page import="Controller.CartControllerServlet"%>
+<%@page import="Model.CartService"%>
+<%@page import="Model.BillingDetails"%>
 
 <!DOCTYPE html>
 <html>
@@ -77,7 +80,7 @@
                     <label><i class="fas fa-mail-bulk"></i> Zip:</label><br>
                     <input type="text" name="zip" required placeholder="Zip"><br>
                 </div>
-
+                <input type="hidden" name="action" value="checkout"> <!-- Hidden field for action -->
                 <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
                 <div class="form-group">
                     <label><i class="fab fa-cc-visa"></i> Card Type:</label><br>
@@ -135,7 +138,7 @@
             }
         </script>
 
-        <form id="cartForm" action="CartController" method="post" style="display: none;">
+        <form id="cartForm" action="CartControllerServlet" method="post" style="display: none;">
             <input type="hidden" id="productName" name="productName">
             <input type="hidden" id="productPrice" name="productPrice">
             <input type="hidden" id="quantity" name="quantity" value="1">
