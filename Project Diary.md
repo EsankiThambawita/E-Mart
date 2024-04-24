@@ -29,7 +29,7 @@
 |2024-04-02  | Had issues when implementing client-side validation.(In SignUp page)|  Use JavaScript to perform client-side validation for fields and display informative error messages to users if validation fails. |       
 |2024-04-07  |Inconsistent whitespace in code(SignIn.css)                        | Manually reviewed and adjusted whitespace                          |
 |2024-04-09  |Encountered some issues with NetBeans.                             |Decided to reinstall NetBeans to resolve the issues efficiently.    |
-
+|2024-04-10  | Initially, faced challenges with picture sizes not displaying clearly (In developers.jsp)| Ensured clear picture display by setting width to 100% in the <img> tags.|
 
 **4. Adheesha**
 
