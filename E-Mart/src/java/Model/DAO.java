@@ -118,7 +118,7 @@ public class DAO {
     }
 
     public static List<ShoppingCartObj> getOrderConfirmationDetails() {
-        return generateMockShoppingCartObjs();
+        return getAllCartItems();
     }
 
     public static List<NewestProductObj> getNewArrivals() {
