@@ -74,24 +74,23 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-         // Retrieve form data
-        String email = (String) request.getSession().getAttribute("userEmail"); // Assuming user email is stored in session
+ // Retrieve form data
+        String email = (String) request.getSession().getAttribute("email"); 
         String currentPassword = request.getParameter("CurrentPassword");
         String newPassword = request.getParameter("NewPassword");
-        String confirmNewPassword = request.getParameter("ConfirmNewPassword");
+        String confirmNewPassword = request.getParameter("ReConfirmPassword");
 
         // Validate current password against database
         userDao userDao = new userDao();
         SignUpUser user = userDao.getUserByEmail(email);
         
-        if (user != null && user.getPassword().equals(currentPassword)) 
-        {
+        if (user != null && user.getPassword().equals(currentPassword)) {
             // Current password is correct
             if (newPassword.equals(confirmNewPassword)) {
                 // New password and confirm new password match
                 // Update password in the database
                 user.setPassword(newPassword);
-                userDao.saveUser(user);
+                userDao.updateUser(user); 
                 // Redirect to a success page or display a success message
                 response.sendRedirect("PasswordChanged.jsp"); // Redirect to a success page
             } else {
