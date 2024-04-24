@@ -25,7 +25,6 @@
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-03-31 | Having issues ensuring the code accurately aligns with the designed Figma page. | Consistently referencing Figma designs and carefully adjusting CSS styles to match text, colors, and layout                                  |
-|2024-04-01  |Form validation implementation (In SignIn page)                   |Created reusable JavaScript functions for form validation and integrated them into the JSP code.  | 
 |2024-04-02  | Had issues when implementing client-side validation.(In SignUp page)|  Use JavaScript to perform client-side validation for fields and display informative error messages to users if validation fails. |       
 |2024-04-07  |Inconsistent whitespace in code(SignIn.css)                        | Manually reviewed and adjusted whitespace                          |
 |2024-04-09  |Encountered some issues with NetBeans.                             |Decided to reinstall NetBeans to resolve the issues efficiently.    |
