@@ -3,8 +3,9 @@
     Created on : Apr 14, 2024, 3:36:48?PM
     Author     : User
 --%>
-<%@ page import="Model.User" %>
+<%@ page import="Model.SignUpUser" %>
 <%@ page import="Model.userDao" %>
+
 <%
     String error = request.getParameter("error");
     String errorMessage = "";
@@ -26,48 +27,48 @@
      <link href="CSS/ChangePassword.css" rel="stylesheet" type="text/css"/>
      <script> 
      function validation() {
-    var CurrentPassword = document.getElementById("CurrentPassword").value;
-    var NewPassword = document.getElementById("NewPassword").value;
-    var ReConfirmPassword = document.getElementById("ReConfirmPassword").value;
-     
+        var CurrentPassword = document.getElementById("CurrentPassword").value;
+        var NewPassword = document.getElementById("NewPassword").value;
+        var ReConfirmPassword = document.getElementById("ReConfirmPassword").value;
 
-    if (!CurrentPassword || !NewPassword || !ReConfirmPassword) {
-        alert("All fields must be filled out.");
-        return false;
+        if (!CurrentPassword || !NewPassword || !ReConfirmPassword) {
+            alert("All fields must be filled out.");
+            return false;
+        }
+
+        if (NewPassword.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+        }
+
+        if (NewPassword !== ReConfirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+
+        return true;
     }
-
-    if (NewPassword.length < 8) {
-        alert("Password must be at least 8 characters long.");
-        return false;
-    }
-
-    if (NewPassword !== ReConfirmPassword) {
-        alert("Passwords do not match.");
-        return false;
-    }
-
-    return true;
-}
-
-</script>
+    </script>
 </head>
 <body>
-  <%@ include file="Navbar.html" %>
-        <div class="body-wrapper">
-            <div style="color: red;"><%= errorMessage %></div>
- <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
-    <h2 style="text-align: center;">Change Password</h2>
+    <%@ include file="Navbar.html" %>
+    <div class="body-wrapper">
+        <div style="color: red;"><%= errorMessage %></div>
+        <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
+            <h2 style="text-align: center;">Change Password</h2>
 
-    <br><label for="currentpassword">Enter Current Password:</label>
-    <input type="password" id="CurrentPassword" name="CurrentPassword" placeholder="asddfgaa"><br><br>
-    
-    <label for="newpassword">Enter New Password:</label>
-    <input type="password" id="NewPassword" name="NewPassword" placeholder="asdfghjk"><br><br>
-    
-    <label for="email">ReConfirm Password:</label>
-    <input type="password" id="ReConfirmPassword" name="ReConfirmPassword" placeholder="rhgbefvw"><br><br>  
-    <button type="submit">Save Changes</button>   
-</form>
+            <br><label for="currentpassword">Enter Current Password:</label>
+            <input type="password" id="CurrentPassword" name="CurrentPassword" placeholder=" Password (8+ characters) ">
+            <a href="ForgotPassword.jsp">Forgot password?</a>
+            <br><br>
+            <label for="newpassword">Enter New Password:</label>
+            <input type="password" id="NewPassword" name="NewPassword" placeholder="Password (8+ characters)"><br><br>
+
+            <label for="ReConfirmPassword">ReConfirm Password:</label>
+            <input type="password" id="ReConfirmPassword" name="ReConfirmPassword" placeholder=" Password (8+ characters)"><br><br>  
+            <button type="submit">Save Changes</button>   
+        </form>
+    </div>
 </body>
 </html>
 
