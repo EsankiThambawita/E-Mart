@@ -1,13 +1,13 @@
 package Controller;
 
+
 import Model.BillingDetails;
-import Controller.CartService; // Import the CartService class
+import Model.CartService;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.*;
 import java.util.*;
-
 
 @WebServlet(name = "CartControllerServlet", urlPatterns = {"/CartControllerServlet"})
 public class CartControllerServlet extends HttpServlet {
@@ -30,62 +30,56 @@ public class CartControllerServlet extends HttpServlet {
         String action = request.getParameter("action");
         if (action != null) {
             switch (action) {
-                case "add":
-                    String productName = request.getParameter("productName");
-                    double productPrice = Double.parseDouble(request.getParameter("productPrice"));
-                    int quantity = Integer.parseInt(request.getParameter("quantity"));
-                    cartService.addToCart(productName, productPrice, quantity);
-                    // Store the selected items in a list
-                    List<String> selectedItems = new ArrayList<>();
-                    selectedItems.add(productName); // Add the selected product name
-                    // Set the list of selected items as an attribute in the request
-                    request.setAttribute("selectedItems", selectedItems);
-                    break;
-                case "remove":
-                    String removedProductName = request.getParameter("productName");
-                    cartService.removeFromCart(removedProductName);
-                    break;
-                case "update":
-                    String updatedProductName = request.getParameter("productName");
-                    int updatedQuantity = Integer.parseInt(request.getParameter("quantity"));
-                    cartService.updateCart(updatedProductName, updatedQuantity);
-                    break;
                 case "checkout":
-                    // Handle checkout
-                    String fullName = request.getParameter("fullName");
-                    String email = request.getParameter("email");
-                    String address = request.getParameter("address");
-                    String city = request.getParameter("city");
-                    String state = request.getParameter("state");
-                    String zip = request.getParameter("zip");
-                    String cardType = request.getParameter("cardType");
-                    String cardName = request.getParameter("cardName");
-                    String cardNumber = request.getParameter("cardNumber");
-                    String expiryDate = request.getParameter("expiryDate");
-                    String cvv = request.getParameter("cvv");
-                    BillingDetails billingDetails = new BillingDetails(fullName, email, address, city, state, zip, cardType, cardName, cardNumber, expiryDate, cvv);
-                    boolean checkoutSuccess = cartService.processCheckout(billingDetails);
-                    if (checkoutSuccess) {
-                        // Checkout successful
-                        response.sendRedirect("CheckoutSuccess.jsp");
-                    } else {
-                        // Checkout failed
-                        response.sendRedirect("CheckoutSuccess.jsp");
-                    }
+                    handleCheckout(request, response);
                     break;
                 default:
                     // Invalid action
+                    response.sendRedirect("ErrorPage.jsp");
                     break;
             }
-            String orderNumber = generateOrderNumber();
-
-        // Set order number as attribute in request
-        request.setAttribute("orderNumber", orderNumber);
-
-        // Forward the request to the JSP page
-        request.getRequestDispatcher("TrackOrder.jsp").forward(request, response);
+        } else {
+            // No action specified
+            response.sendRedirect("ErrorPage.jsp");
         }
-        
+    }
+
+    private void handleCheckout(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // Extract billing details from request
+        String fullName = request.getParameter("fullName");
+        String email = request.getParameter("email");
+        String address = request.getParameter("address");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String zip = request.getParameter("zip");
+        String cardType = request.getParameter("cardType");
+        String cardName = request.getParameter("cardName");
+        String cardNumber = request.getParameter("cardNumber");
+        String expiryDate = request.getParameter("expiryDate");
+        String cvv = request.getParameter("cvv");
+
+        // Create BillingDetails object
+        BillingDetails billingDetails = new BillingDetails(email,fullName, address, city, state, zip, cardType, cardName, cardNumber, expiryDate, cvv);
+
+        // Process checkout
+        boolean checkoutSuccess = false;
+        try {
+            checkoutSuccess = cartService.processCheckout(billingDetails);
+        } catch (Exception e) {
+            // Handle exceptions
+            e.printStackTrace(); // Log the exception
+            response.sendRedirect("OrderConfirmation.jsp"); // Redirect to failure page
+            return;
+        }
+
+        if (checkoutSuccess) {
+            // Checkout successful
+            response.sendRedirect("OrderConfirmation.jsp");
+        } else {
+            // Checkout failed
+            response.sendRedirect("CheckoutFailiure.jsp");
+        }
     }
 
     @Override
@@ -108,11 +102,5 @@ public class CartControllerServlet extends HttpServlet {
             out.println("</body>");
             out.println("</html>");
         }
-    }
-
-    private String generateOrderNumber() {
-        // Function to generate unique order number
-        UUID uuid = UUID.randomUUID();
-        return "ORD-" + uuid.toString(); // You can customize the format of the order number as needed
     }
 }

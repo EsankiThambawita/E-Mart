@@ -2,14 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Controller;
+package Model;
 
 /**
  *
  * @author hp
  */
-import Model.BillingDetails;
-import Model.CartItem;
 import java.util.*;
 import java.sql.*;
 
@@ -21,8 +19,9 @@ public class CartService {
         cart = new HashMap<>();
         // Initialize database connection
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/your_database", "username", "password");
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/billingdetails", "root", "");
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
         }
@@ -56,7 +55,7 @@ public class CartService {
     public boolean processCheckout(BillingDetails billingDetails) {
         // Insert billing details into database
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO billing_details (full_name, email, address, city, state, zip, card_type, card_name, card_number, expiry_date, cvv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO billingdetails (email,fullname, address, city, state, zip, cardType, cardName, cardNumber, expiryDate, cvv) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
             statement.setString(1, billingDetails.getFullName());
             statement.setString(2, billingDetails.getEmail());
             statement.setString(3, billingDetails.getAddress());
@@ -73,8 +72,13 @@ public class CartService {
                 return true;
             }
         } catch (SQLException e) {
-            e.printStackTrace();
-        }
+            // Log the exception
+        e.printStackTrace();
+        // You can also log the specific SQL error code and message
+        System.err.println("SQL Error Code: " + e.getErrorCode());
+        System.err.println("SQL Error Message: " + e.getMessage());
+    }
+        
         return false;
     }
 }

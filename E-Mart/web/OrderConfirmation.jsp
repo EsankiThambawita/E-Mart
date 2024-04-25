@@ -64,7 +64,7 @@
                         <button class="button button2" onclick="window.location.href = 'ProductCategory_Phones.jsp';">Continue Shopping</button>
                         <span class="text1">Total -</span>
                         <% 
-                                    double total = 0;
+                                    int total = 0;
                                     for (ShoppingCartObj item : confirmItems) {
                                         total += item.getTotalPrice();
                                     }
