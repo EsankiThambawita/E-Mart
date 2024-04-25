@@ -1,0 +1,73 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 20, 2024, 4:30:45 PM
+    Author     : Esanki Lakvindee
+*/
+
+
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f0f0f0;
+    padding: 2px 20px;
+    
+}
+
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.search-bar {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.search-bar input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.search-bar button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.navbar-right {
+    display: flex;
+    margin-left: auto;
+}
+
+.icon {
+    margin-right: 15px;
+}
+
+.admin-profile {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+}
+
+.admin-profile img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+
+.admin-name {
+    font-size: 14px;
+    font-weight: bold;
+}
+

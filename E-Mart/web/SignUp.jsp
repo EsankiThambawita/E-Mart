@@ -50,7 +50,7 @@
         <h2 style="text-align: center;">WELCOME TO E-MART!</h2>
         <h6 style="color: white;text-align: center;">Register your Account.</h6>
 
-        <form action="#" onsubmit="return validation()" method="post">
+        <form action="SignUpServlet" onsubmit="return validation()" method="post">
             <h4> <label for="username">Name</label></h4>
             
             <div class="form-control">

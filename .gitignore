@@ -26,15 +26,10 @@ replay_pid*
 E-Mart/nbproject/private/private.xml
 E-Mart/nbproject/private/private.properties
 E-Mart/nbproject/project.properties
-/E-Mart/dist/
-E-Mart/nbproject/genfiles.properties
+
+/E-Mart/nbproject/private
 E-Mart/nbproject/private/private.properties
 E-Mart/nbproject/project.properties
-E-Mart/nbproject/project.xml
-<<<<<<< OrderConfirmation-backend
-E-Mart/nbproject/build-impl.xml
-E-Mart/nbproject/genfiles.properties
-E-Mart/nbproject/project.properties
-E-Mart/nbproject/project.xml
-=======
+E-Mart/nbproject/private/private.properties
 
+E-Mart/nbproject/project.properties

@@ -8,125 +8,128 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 */
 
 body {
-  font-family: Arial, sans-serif;
-  background-color: #000000;
-  color: #ffffff;
+    font-family: Arial, sans-serif;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 .container {
-  background-color: #000000;
-  border: 1px solid #dddddd;
-  border-radius: 5px;
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 600px;
+    background-color: #000000;
+    border: 1px solid #dddddd;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+
 }
 
 h2, h3 {
-  color: #ffffff;
+    color: #ffffff;
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 th, td {
-  border: 1px solid #dddddd;
-  padding: 8px;
-  text-align: left;
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
 }
 
 th {
-  background-color: #ffffff;
-  color: #000000;
+    background-color: #ffffff;
+    color: #000000;
 }
 
 form {
-  margin-top: 20px;
+    margin-top: 20px;
 }
 
 .form-group {
-  margin-bottom: 20px;
-  width: 95%; /* Adjust form-group width */
+    margin-bottom: 20px;
+    width: 95%; /* Adjust form-group width */
 }
 
 label {
-  font-weight: bold;
-  width: 100%; /* Adjust label width */
-  display: inline-block; /* Make labels behave like inline elements */
-  margin-bottom: 8px;
-  color: #ffffff; /* Set label text color to white */
+    font-weight: bold;
+    width: 100%; /* Adjust label width */
+    display: inline-block; /* Make labels behave like inline elements */
+    margin-bottom: 8px;
+    color: #ffffff; /* Set label text color to white */
 }
 
 .form-group input[type="text"],
 .form-group input[type="email"],
 .form-group select,
 .form-group textarea {
-  width: 100%; /* Adjust input, select, and textarea width */
-  padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #dddddd;
-  background-color: #000000; /* Set background color to black */
-  color: #ffffff; /* Set text color to white */
+    width: 100%; /* Adjust input, select, and textarea width */
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #dddddd;
+    background-color: #000000; /* Set background color to black */
+    color: #ffffff; /* Set text color to white */
 }
 
 select {
-  padding: 10px;
-  border-radius: 3px;
-  border: 1px solid #dddddd;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #dddddd;
 }
 
 .btn {
-  background-color: #0d1b33;
-  color: white;
-  padding: 15px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 16px;
-  text-transform: uppercase;
+    background-color: #0d1b33;
+    color: white;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
 }
 
 .btn:hover {
-  background-color: #303f59;
+    background-color: #303f59;
 }
 
 .btn:active {
-  background-color: #303f59;
+    background-color: #303f59;
 }
 
 .btn:focus {
-  outline: none;
+    outline: none;
 }
 
 .row {
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: -10px;
-  margin-right: -10px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -10px;
+    margin-right: -10px;
 }
 
 .col-25, .col-50, .col-75 {
-  padding-left: 10px;
-  padding-right: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .col-25 {
-  flex: 25%;
+    flex: 25%;
 }
 
 .col-50 {
-  flex: 50%;
+    flex: 50%;
 }
 
 .col-75 {
-  flex: 75%;
+    flex: 75%;
 }
 
 @media screen and (max-width: 600px) {
-  .row {
-    flex-direction: column;
-  }
+    .row {
+        flex-direction: column;
+    }
 }

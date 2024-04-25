@@ -16,7 +16,7 @@
 
     <div class="form-wrapper">
         <h2 style="text-align: center;">SIGN IN</h2>
-        <form action="#"  method=" post">
+        <form action="SignInServlet"  method=" post">
             <h4> <label for="email">Email</label></h4>
             
             <br>

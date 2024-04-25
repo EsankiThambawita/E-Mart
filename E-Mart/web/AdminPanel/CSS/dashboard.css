@@ -1,0 +1,83 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 20, 2024, 3:49:15 PM
+    Author     : Esanki Lakvindee
+*/
+
+/* CSS for dashboard */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
+}
+
+.left-section {
+    float: left;
+    width: 200px; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    background-color: #f0f0f0;
+}
+
+.right-section {
+    margin-left: 200px;
+}
+
+.content {
+    display: flex;
+    width: 700px;
+}
+
+.card {
+    flex: 1;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    margin: 10px;
+}
+
+.card.left {
+    margin-right: 50px;
+    margin-left: 70px;
+    margin-top: 90px;
+}
+
+.card.right {
+    margin-left: 5px;
+    margin-top: 90px;
+}
+
+.card-header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+}
+
+.card-body {
+    padding: 10px;
+}
+
+form {
+    margin-top: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="file"],
+input[type="text"] {
+    width: 500px;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}

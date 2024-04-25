@@ -6,6 +6,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Created on : Apr 12, 2024, 11:28:28 AM
     Author     : DELL
 */
+footer{
+    margin-top: 100px;
+}
+
 html {
   box-sizing: border-box;
 }

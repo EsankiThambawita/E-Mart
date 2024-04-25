@@ -1,41 +1,74 @@
 <%-- 
     Document   : ChangePassword
-    Created on : Apr 11, 2024, 7:51:30?PM
+    Created on : Apr 14, 2024, 3:36:48?PM
     Author     : User
 --%>
+<%@ page import="Model.SignUpUser" %>
+<%@ page import="Model.userDao" %>
+
+<%
+    String error = request.getParameter("error");
+    String errorMessage = "";
+    if (error != null && error.equals("1")) {
+        errorMessage = "Incorrect current password. Please try again.";
+    } else if (error != null && error.equals("2")) {
+        errorMessage = "New password and confirm new password do not match.";
+    }
+%>
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Change Password</title>
-        <link href="CSS/ChangePassword.css" rel="stylesheet" />
-    </head>
-    <body>
-         
-      <div class="container">
-        <div class="form-container profile-form">
-             <h2 class="change-password">Change Password</h2>
-               <form method="post" action="Profile.jsp">
-            <table>
-                 <tr>
-                     <th>Enter Current Password</th>
-                     <td><input type="password" id="currentpassword" name="currentpassword"></td>
-                 </tr>
-                 <tr>
-                    <th>Enter New Password</th>
-                    <td><input type="password" id="newpassword" name="newpassword"></td>
-                 </tr>
-                 <tr>
-                    <th>Confirm New Password</th>
-                    <td><input type="password" id="confirmpassword" name="confirmpassword"></td>
-                 </tr>
-                 
-                   <tr>
-                    <td colspan="2"><button class="apply-button">Apply</button></td>
-                </tr> 
-            </table>
-        </div>
-      </div>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Change Password</title>
+     <link href="CSS/Common.css" rel="stylesheet" type="text/css"/>
+     <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
+     <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
+     <link href="CSS/ChangePassword.css" rel="stylesheet" type="text/css"/>
+     <script> 
+     function validation() {
+        var CurrentPassword = document.getElementById("CurrentPassword").value;
+        var NewPassword = document.getElementById("NewPassword").value;
+        var ReConfirmPassword = document.getElementById("ReConfirmPassword").value;
+
+        if (!CurrentPassword || !NewPassword || !ReConfirmPassword) {
+            alert("All fields must be filled out.");
+            return false;
+        }
+
+        if (NewPassword.length < 8) {
+            alert("Password must be at least 8 characters long.");
+            return false;
+        }
+
+        if (NewPassword !== ReConfirmPassword) {
+            alert("Passwords do not match.");
+            return false;
+        }
+
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <%@ include file="Navbar.html" %>
+    <div class="body-wrapper">
+        <div style="color: red;"><%= errorMessage %></div>
+        <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
+            <h2 style="text-align: center;">Change Password</h2>
+
+            <br><label for="currentpassword">Enter Current Password:</label>
+            <input type="password" id="CurrentPassword" name="CurrentPassword" placeholder=" Password (8+ characters) ">
+            <a href="ForgotPassword.jsp">Forgot password?</a>
+            <br><br>
+            <label for="newpassword">Enter New Password:</label>
+            <input type="password" id="NewPassword" name="NewPassword" placeholder="Password (8+ characters)"><br><br>
+
+            <label for="ReConfirmPassword">ReConfirm Password:</label>
+            <input type="password" id="ReConfirmPassword" name="ReConfirmPassword" placeholder=" Password (8+ characters)"><br><br>  
+            <button type="submit">Save Changes</button>   
+        </form>
+    </div>
 </body>
 </html>
-    
+

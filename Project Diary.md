@@ -15,8 +15,9 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.                                   |
-
+| 2024-04-13 | PC got corrupted by a virus                                      | By using a bootable USB I clean installed windows |
+| 2024-04-16 | Came across an issue when adding navbar and footer to all the pages.  | Fixed it by adding a div to seperate the html and fixing the css |
+| 2024-04-20 | Time consumption in using an actual database to test the backend | Used a mock database instead for testing |
 
 **3. Sandali**
 
@@ -24,11 +25,10 @@
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-03-31 | Having issues ensuring the code accurately aligns with the designed Figma page. | Consistently referencing Figma designs and carefully adjusting CSS styles to match text, colors, and layout                                  |
-|2024-04-01  |Form validation implementation (In SignIn page)                   |Created reusable JavaScript functions for form validation and integrated them into the JSP code.  | 
 |2024-04-02  | Had issues when implementing client-side validation.(In SignUp page)|  Use JavaScript to perform client-side validation for fields and display informative error messages to users if validation fails. |       
 |2024-04-07  |Inconsistent whitespace in code(SignIn.css)                        | Manually reviewed and adjusted whitespace                          |
 |2024-04-09  |Encountered some issues with NetBeans.                             |Decided to reinstall NetBeans to resolve the issues efficiently.    |
-
+|2024-04-10  | Initially, faced challenges with picture sizes not displaying clearly (In developers.jsp)| Ensured clear picture display by setting width to 100% in the <img> tags.|
 
 **4. Adheesha**
 
@@ -96,7 +96,10 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.                                   |
+| 2024-04-16 | OrderConfirmation page needed an extra button for "submit feedback" but when the css was added, it did not work for that button.                                             | Found that the issue was other css styles being conflicted and so used inline css and fixed the issue.                 |
+| 2024-04-17 | The database is not connecting to the netbeans                   | Found issue in code and fixed it.  |
+| 2024-04-24 | Products page of the admin panel is connecting to the database but does not retrieve values from it and show it.                   | Tried making some changes in the code and eventually fixed the error.  |
+
 
 
 **2. TPR Fernando**
@@ -112,7 +115,8 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.  
+| 2024-04-13 | The database is not connecting to the netbeans                    | After some digging, I figured out what was wrong with the code and managed to fix it|
+|2024-04-18  |Encountered a hurdle when trying to fetch the verification OTP from a website(twilio)|Attempted to implement email verification to obtain the verification code, but  it didn't work as expected. Recognizing the need for an alternative,  switched to using phone numbers. However, this transition came with its own set of challenges. I switch from Twilio to Vonage(website that we are using to get the OTP)for handling SMS services.With the help of a former graduate friend, I succeeded in overcoming this challenge and Fixed the issues and successfully integrated the verification system|
 
 
 **4. Adheesha**
