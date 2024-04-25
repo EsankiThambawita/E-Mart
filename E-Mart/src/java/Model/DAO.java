@@ -7,8 +7,17 @@ package Model;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+<<<<<<< Updated upstream
 import java.util.logging.Level;
 import java.util.logging.Logger;
+=======
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+
+>>>>>>> Stashed changes
 
 /**
  *
@@ -364,4 +373,41 @@ public class DAO {
         return newestItems;
     }
 
+    
+    //Feedback
+    public static String getCustomerEmail(int userId) {
+        String email = null;
+        Connection conn = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+
+        try {
+            conn = DatabaseConnection.getConnection(); // Replace with your database connection method
+            String sql = "SELECT email FROM users WHERE user_id = ?";
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, userId);
+            rs = stmt.executeQuery();
+            if (rs.next()) {
+                email = rs.getString("email");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            // Close resources
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                if (conn != null) {
+                    conn.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return email;
+    }
 }
