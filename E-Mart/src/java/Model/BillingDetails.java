@@ -9,11 +9,7 @@ package Model;
  * @author hp
  */
 
-
 public class BillingDetails {
-
-    public BillingDetails(String fullName1, String email1, String address1, String city1, String state1, String zip1, String cardType1, String cardName1, String cardNumber1, String expiryDate1, String cvv1) {
-    }
     private String fullName;
     private String email;
     private String address;
@@ -25,6 +21,22 @@ public class BillingDetails {
     private String cardNumber;
     private String expiryDate;
     private String cvv;
+
+    public BillingDetails(String fullName, String email, String address, String city, String state, String zip, String cardType, String cardName, String cardNumber, String expiryDate, String cvv) {
+        this.fullName = fullName;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.zip = zip;
+        this.cardType = cardType;
+        this.cardName = cardName;
+        this.cardNumber = cardNumber;
+        this.expiryDate = expiryDate;
+        this.cvv = cvv;
+    }
+
+
 
     public String getFullName() {
         return fullName;
