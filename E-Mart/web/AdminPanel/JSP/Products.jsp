@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="Model.DAO"%>
+<%@page import="Model.Smartphone"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -18,58 +21,59 @@
         <div class="left-section">
             <%@ include file="Menu.html" %>
         </div>
-        
+
         <div class="right-section">
-        <div class="navbar">
-            <%@ include file="navbar.html" %>
-        </div>
-        <div class="container">
-            <h1>Products</h1>
-            <div class="search-bar">
-                <input type="text" placeholder="Search...">
-                <button type="submit">Search</button>
+            <div class="navbar">
+                <%@ include file="navbar.html" %>
             </div>
-            <table>
-                <thead>
+            <div class="container">
+                <h1>Products</h1>
+                <div class="search-bar">
+                    <input type="text" placeholder="Search...">
+                    <button type="submit">Search</button>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Pieces</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                  
+                    <tbody>
+                        <% 
+                    List<Smartphone> products = DAO.getAllSmartphones();
+                    for (Smartphone item : products) {
+                    %>
                     <tr>
-                        <th>Product ID</th>
-                        <th>Product Name</th>
-                        <th>Category</th>
-                        <th>Pieces</th>
-                        <th>Price</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <% for (int i = 0; i < 10; i++) { %>
-                    <tr>
-                        <td>12345</td>
-                        <td>
-                            <img src="/AdminPanel/Images/S24.png" alt="Product Image">
-                            <span>Samsung Galaxy S24 Ultra</span>
-                        </td>
-                        <td>Category <%= i + 1 %></td>
-                        <td>10</td>
-                        <td>100,000</td>
+                        <td><%= item.getProductId() %></td>
+                        <td><%= item.getProductName() %></td>
+                        <td><%= item.getCategory() %></td>
+                        <td><%= item.getQuantity() %></td>
+                        <td>$<%= item.getPrice() %></td>
                         <td>In Stock</td>
                         <td>
-                            <button class="button1"><img src="/AdminPanel/Images/pen.svg" alt="alt" style="width: 30px; height: 30px;"/></button>
-                            <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="alt" style="width: 30px; height: 30px;"/></button>
+                            <button class="button1"><img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/></button>
+                            <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
                         </td>
                     </tr>
                     <% } %>
-                </tbody>
-            </table>
-            <button class="add-products-btn">Add More Products</button>
-            <div class="pagination">
-                <span>Pages:</span>
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <!-- Add more pagination links here -->
+                    </tbody>
+                </table>
+                <button class="add-products-btn">Add More Products</button>
+                <div class="pagination">
+                    <span>Pages:</span>
+                    <a href="#">1</a>
+                    <a href="#">2</a>
+                    <a href="#">3</a>
+                    <!-- Add more pagination links here -->
+                </div>
             </div>
-        </div>
         </div>
     </body>
 </html>

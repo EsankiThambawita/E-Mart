@@ -22,7 +22,12 @@
 
     <body>
         <%@ include file="Navbar.html" %>
+<<<<<<< Updated upstream
         <% DAO.fillMockCart(); %>
+=======
+        <% DAO.getAllCartItems(); %>
+        <% DAO.getAllSmartphones(); %>
+>>>>>>> Stashed changes
         <!-- Home page UI -->
         <div class="container">
             <img src="Images/Home/lens.jpg" alt="Background Image" class="background-image">

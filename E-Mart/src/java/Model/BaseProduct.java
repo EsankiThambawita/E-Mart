@@ -10,7 +10,7 @@ public class BaseProduct {
   private String productName;
   private float price;
   private int quantity;
-  private List<String> photos;
+  private String photo1;
   private String brand;
   private String modelName;
   private String productDescription;
@@ -18,13 +18,13 @@ public class BaseProduct {
 
   // Getters and Setters
 
-  public BaseProduct(int productId, String productName, float price, int quantity, List<String> photos,
+  public BaseProduct(int productId, String productName, float price, int quantity, String photos,
                      String brand, String modelName, String productDescription, String category) {
     this.productId = productId;
     this.productName = productName;
     this.price = price;
     this.quantity = quantity;
-    this.photos = photos;
+    this.photo1 = photos;
     this.brand = brand;
     this.modelName = modelName;
     this.productDescription = productDescription;
@@ -63,12 +63,12 @@ public class BaseProduct {
         this.quantity = quantity;
     }
 
-    public List<String> getPhotos() {
-        return photos;
+    public String getPhotos() {
+        return photo1;
     }
 
-    public void setPhotos(List<String> photos) {
-        this.photos = photos;
+    public void setPhotos(String photos) {
+        this.photo1 = photos;
     }
 
     public String getBrand() {
