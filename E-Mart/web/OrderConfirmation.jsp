@@ -9,6 +9,7 @@
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
 <%@page import="Controller.OrderConfirmationServlet"%>
+<%@ page import="Model.Feedback" %>
 <!DOCTYPE html>
 <html>
     <head>
