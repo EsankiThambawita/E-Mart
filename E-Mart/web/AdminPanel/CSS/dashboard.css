@@ -9,9 +9,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 /* CSS for dashboard */
 body {
-    margin: 0;
-    padding: 0;
     font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: row;
 }
 
 .left-section {
