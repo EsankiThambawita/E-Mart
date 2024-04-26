@@ -117,7 +117,7 @@
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-04-13 | The database is not connecting to the netbeans                    | After some digging, I figured out what was wrong with the code and managed to fix it|
-|2024-04-18  |Encountered a hurdle when trying to fetch the verification OTP from a website(twilio)|Attempted to implement email verification to obtain the verification code, but  it didn't work as expected. Recognizing the need for an alternative,  switched to using phone numbers. However, this transition came with its own set of challenges. I switch from Twilio to Vonage(website that we are using to get the OTP)for handling SMS services.With the help of a former graduate friend, I succeeded in overcoming this challenge and Fixed the issues and successfully integrated the verification system|
+|2024-04-18  |Encountered a hurdle when trying to fetch the verification OTP from a website(twilio)|Attempted to implement email verification to obtain the verification code, but  it didn't work as expected. Recognizing the need for an alternative,  switched to using phone numbers. However, this transition came with its own set of challenges. I switch from Twilio to Vonage(website that we are using to get the OTP)for handling SMS services.With the help of a former graduate friend, succeeded in overcoming this challenge and Fixed the issues and successfully integrated the verification system|
 
 
 **4. Adheesha**
