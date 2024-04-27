@@ -183,16 +183,16 @@ button:hover{
 
 /*submit button*/
 .submit-feedback {
-    background-color: #333; /* Dark color */
-    color: #fff; /* Text color */
-    padding: 6px 12px; /* Padding */
-    font-size: 14px; /* Font size */
+    background: none; /* Remove background */
     border: none; /* Remove border */
-    border-radius: 5px; /* Rounded corners */
+    color: #C0C0C0; /* Text color */
+    font-size: 14px; /* Font size */
     cursor: pointer; /* Cursor on hover */
-    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+    text-decoration: underline; /* Underline text */
+    transition: color 0.3s; /* Smooth transition for text color */
 }
 
 .submit-feedback:hover {
-    background-color: #555; /* Darken on hover */
+    color:#A9A9A9; /* Darken text color on hover */
 }
+

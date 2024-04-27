@@ -10,10 +10,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import Model.SendEmail;
-import jakarta.mail.MessagingException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import jakarta.mail.*;
+import jakarta.mail.internet.*;
+import java.util.Properties;
+import jakarta.activation.*;
+
+
+
 
 
 /**
@@ -26,18 +29,51 @@ public class SendEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String toEmail = "esankilakvindee2000@gmail.com"; // You can replace this with the recipient's email
-        String subject = "Thank you for your order!";
-        String body = "Dear Customer,\n\nThank you for placing your order. We appreciate your business.\n\nSincerely,\nThe eMart Team";
-        
-        try {
-            SendEmail.sendEmail(toEmail, subject, body); // Call the sendEmail method
-        }catch (MessagingException ex) {
-            Logger.getLogger(SendEmailServlet.class.getName()).log(Level.SEVERE, null, ex);
+            // Set up mail server
+            String host = "smtp.gmail.com";
+            String from = "esankilakvindee2000@gmail.com";
+            String to = "esankilakvindee2000@gmail.com";
+            String subject = "Order Confirmation";
+            String messageText = "Thank you for your order!";
+
+            Properties properties = new Properties();
+            properties.setProperty("mail.smtp.host", host);
+            properties.setProperty("mail.smtp.auth", "true");
+            properties.setProperty("mail.smtp.starttls.enable", "true");
+            properties.setProperty("mail.smtp.port", "587"); 
+
+            // Create Authenticator object to authenticate the sender's email and password
+            Authenticator authenticator = new Authenticator() {
+                @Override
+                protected PasswordAuthentication getPasswordAuthentication() {
+                    return new PasswordAuthentication(from, "emart2024");
+                }
+            };
+
+            // Get session
+            Session session = Session.getInstance(properties, authenticator);
+
+            // Create message
+            MimeMessage message = new MimeMessage(session);
+
+            try {
+                // Set the from, to, subject, and message text
+                message.setFrom(new InternetAddress(from));
+                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
+                message.setSubject(subject);
+                message.setText(messageText);
+
+                // Send message
+                Transport.send(message);
+                System.out.println("Email sent successfully");
+                
+                request.setAttribute("emailSent", true);
+                
+            } catch (MessagingException mex) {
+                mex.printStackTrace();
+            }
         }
-        // Handle exception
-        response.sendRedirect("OrderConfirmation.jsp");
-    }
+    
     }
 
    

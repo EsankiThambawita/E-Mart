@@ -10,7 +10,7 @@
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
 <%@page import="Controller.OrderConfirmationServlet"%>
-
+<%@page import="Controller.SendEmailServlet"%>
 
 
 <!DOCTYPE html>
@@ -25,6 +25,7 @@
         <script src="JS/Feedback-Rating.js" defer></script>
     </head>
     <body>
+        <input type="hidden" id="emailSent" value="<%= request.getAttribute("emailSent") %>">
 
         <%@ include file="Navbar.html" %>
         <div class="container">
@@ -111,6 +112,6 @@
         
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
-        
+        <script src="JS/Email.js"></script>
     </body>
 </html>
