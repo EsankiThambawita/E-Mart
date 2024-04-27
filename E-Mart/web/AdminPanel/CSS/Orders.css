@@ -54,6 +54,7 @@ table th {
     background-color: #f0f0f0;
 }
 
+/* Buttons */
 table td button {
     padding: 5px 10px;
     background-color: #333;
@@ -67,3 +68,7 @@ table td button:hover {
     background-color: #555;
 }
 
+/* Make buttons horizontal */
+table td .b2 {
+    margin-left: 3px;
+}
