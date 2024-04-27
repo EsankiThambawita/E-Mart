@@ -24,6 +24,9 @@ public class Smartwatch extends BaseProduct {
     }
 
     // Getters and Setters for specific fields (omitted for brevity)
+    public Smartwatch() {
+
+    }
 
     public String getScreenSize() {
         return screenSize;

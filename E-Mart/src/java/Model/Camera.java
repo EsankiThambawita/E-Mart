@@ -21,6 +21,10 @@ public class Camera extends BaseProduct {
         this.formFactor = formFactor;
     }
 
+    public Camera() {
+        
+    }
+
     public String getFormFactor() {
         return formFactor;
     }

@@ -8,7 +8,6 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.NewestProductObj"%>
-<%@page import="Controller.NewestItemsServlet"%>
 <!DOCTYPE html>
 <html>
     <head>
