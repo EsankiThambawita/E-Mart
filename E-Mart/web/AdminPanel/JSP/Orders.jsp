@@ -34,6 +34,7 @@
                         <th>Quantity</th>
                         <th>Total Price</th>
                         <th>Status</th>
+                        <th>Feedback</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -46,7 +47,8 @@
                         <td><%= i + 1 %></td>
                         <td>$<%= (i + 1) * 10 %>.00</td>
                         <td>Processing</td>
-                        <td><button>Edit</button></td>
+                        <td></td>
+                        <td><button class="b1">Edit</button><button class="b2">Delete</button></td>
                     </tr>
                     <% } %>
                 </tbody>
