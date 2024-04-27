@@ -11,3 +11,21 @@ stars.forEach(star => {
         showValue.innerHTML = this.value + " out of 5";
     });
 });
+
+
+function submitFeedback() {
+    // Get feedback value
+    var feedbackValue = document.querySelector('input[name="rating"]:checked').value;
+
+    // Send feedback value to the server
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', 'FeedbackServlet', true);
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            // Feedback submitted successfully
+            alert(xhr.responseText); // Show success message
+        }
+    };
+    xhr.send('feedback=' + encodeURIComponent(feedbackValue));
+}
