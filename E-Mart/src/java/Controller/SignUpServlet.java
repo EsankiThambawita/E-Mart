@@ -8,9 +8,9 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.SQLException;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -85,29 +85,14 @@ public class SignUpServlet extends HttpServlet {
         } else {
 
             // Create user object
-            SignUpUser user = new SignUpUser(username, email, password, contactNumber);
-
+            //SignUpUser user = new SignUpUser(username, password, contactNumber);
             // Save to the database
             userDao userDao = new userDao(); // Create an instance of userDao
-            
-            try {
-                userDao.saveUser(user);
-         // Generate a unique user ID using UUID
-                String userID = UUID.randomUUID().toString();
-
-                // Set the user ID as a cookie
-                Cookie userIDCookie = new Cookie("userID", userID);
-                // Set the cookie path to "/" so it's accessible throughout the application
-                userIDCookie.setPath("/");
-                response.addCookie(userIDCookie);
-            }
-            catch (Exception ex) {
-                Logger.getLogger(SignUpServlet.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        
-
-            //send saves to profile servlet
-            response.sendRedirect("Home.jsp");
+            userDao.insertDetails(email, username, password, contactNumber);
+                // Redirect to profile page
+        response.sendRedirect("ProfileServlet?email=" + email);
+   
+   
 
         }
 
