@@ -7,6 +7,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : Esanki Lakvindee
 */
 
+/*Import styles for stars*/
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css);
+
 body {
   margin: 0;
   padding: 0;
@@ -140,13 +143,56 @@ button:hover{
   letter-spacing: 3.84px;
 }
 
-.stars {
-  display: flex;
+/* stars*/
+.rating {
+    border: none;
+    float: left;
 }
 
-.star {
-  width: 60px;
-  height: 61px;
-  margin: 0 5px;
+.rating > input {
+    display: none;
 }
 
+.rating > label:before {
+    content: '\f005';
+    font-family: FontAwesome;
+    margin: 5px;
+    font-size: 1.5rem;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.rating > label {
+    color: #ddd;
+    float: right;
+    cursor: pointer;
+}
+
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: yellow;
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
+    color: yellow;
+}
+
+/*submit button*/
+.submit-feedback {
+    background-color: #333; /* Dark color */
+    color: #fff; /* Text color */
+    padding: 6px 12px; /* Padding */
+    font-size: 14px; /* Font size */
+    border: none; /* Remove border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Cursor on hover */
+    transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+.submit-feedback:hover {
+    background-color: #555; /* Darken on hover */
+}
