@@ -1,37 +1,42 @@
 package Model;
 
 public class SignUpUser {
-
-    public SignUpUser(String username, String email, String password, String contactNumber) {
-
-    }
-    private String username;
     private String email;
+    private String username;
     private String password;
     private String contactNumber;
 
-    String getUsername() {
-        return username;
+    public SignUpUser(String username, String password, String contactNumber, String email) {
+        this.email = email;
+        this.username = username;
+        this.password = password;
+        this.contactNumber = contactNumber;
 
     }
 
-    String getEmail() {
+    public Object getEmail() {
 
         return email;
 
     }
 
-    public  String getPassword() {
+    public String getUsername() {
+        return username;
+
+    }
+
+    public String getPassword() {
 
         return password;
 
     }
 
-    String getContactNumber() {
+    public String getContactNumber() {
         return contactNumber;
     }
 
     public void setPassword(String newPassword) {
-      
+
     }
+
 }
