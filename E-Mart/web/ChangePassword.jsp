@@ -27,11 +27,10 @@
      <link href="CSS/ChangePassword.css" rel="stylesheet" type="text/css"/>
      <script> 
      function validation() {
-        var CurrentPassword = document.getElementById("CurrentPassword").value;
         var NewPassword = document.getElementById("NewPassword").value;
         var ReConfirmPassword = document.getElementById("ReConfirmPassword").value;
 
-        if (!CurrentPassword || !NewPassword || !ReConfirmPassword) {
+        if ( !NewPassword || !ReConfirmPassword) {
             alert("All fields must be filled out.");
             return false;
         }
@@ -55,11 +54,11 @@
     <div class="body-wrapper">
         <div style="color: red;"><%= errorMessage %></div>
         <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
+            <a href="Profile.jsp">Go to Profile</a>
             <h2 style="text-align: center;">Change Password</h2>
 
-            <br><label for="currentpassword">Enter Current Password:</label>
-            <input type="password" id="CurrentPassword" name="CurrentPassword" placeholder=" Password (8+ characters) ">
-            <a href="ForgotPassword.jsp">Forgot password?</a>
+            <br><label for="email">Email Address:</label>
+            <input type="email" id="email" name="email" placeholder=" emartshop@gmail.com"  style="width: 585px;">
             <br><br>
             <label for="newpassword">Enter New Password:</label>
             <input type="password" id="NewPassword" name="NewPassword" placeholder="Password (8+ characters)"><br><br>
