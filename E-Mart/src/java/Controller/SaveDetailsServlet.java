@@ -60,14 +60,8 @@ public class SaveDetailsServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        // Retrieve form data
-        String email = request.getParameter("email");
-        String username = request.getParameter("username");
-        String contactNumber = request.getParameter("contactNumber");
+        
 
-        userDao userDao = new userDao();
-        SignUpUser user = new SignUpUser(username, email, " ", contactNumber);
-        userDao.saveUser(user);
     }
 
     /**
@@ -81,7 +75,13 @@ public class SaveDetailsServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        //processRequest(request, response);
+        // Retrieve form data
+        String email = request.getParameter("email");
+        String username = request.getParameter("username");
+        String contactNumber = request.getParameter("contactNumber");
+        userDao.updateDetails(email, username, contactNumber);
+        response.sendRedirect("Profile.jsp");
     }
 
     /**

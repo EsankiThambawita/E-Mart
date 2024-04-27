@@ -22,6 +22,10 @@ public class Laptop extends BaseProduct{
         this.CPU = CPU;
         this.memory = memory;
     }
+    
+    public Laptop(){
+        
+    }
 
     public String getStorageCapacity() {
         return storageCapacity;
