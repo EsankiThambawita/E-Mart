@@ -46,7 +46,7 @@
                     </thead>
                   
                     <tbody>
-                        <% 
+                        <% DAO.getAllSmartphones();
                     List<Smartphone> products = DAO.getAllSmartphones();
                     for (Smartphone item : products) {
                     %>
