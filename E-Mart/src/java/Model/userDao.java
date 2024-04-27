@@ -8,102 +8,93 @@ package Model;
  *
  * @author DELL
  */
-import Model.SignUpUser;
-import java.sql.Connection; //it is sql not jms
+import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+
 public class userDao {
 
-    public static void saveUser(SignUpUser user) {
-            String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/emart";//databasename
-        String sql = "INSERT INTO usersignup (username, email, password, contact_number) VALUES (?, ?, ?, ?)";//table name
-         try {
+    static Statement st;
+
+    public static void insertDetails(String email, String username, String password, String contactNumber) {
+        connectToDB();
+        String query = "INSERT INTO users(email,username,password,contactNumber)  VALUES(' " + email + " ', ' " + username + " ', ' " + password + " ', ' " + contactNumber + " ')";
+        try {
+            st.executeUpdate(query);
+            System.out.println("Record inserted");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    public static  void connectToDB() {
+        String driver = "com.mysql.cj.jdbc.Driver";
+        String url = "jdbc:mysql://localhost:3306/emart";
+
+        try {
             Class.forName(driver);
-            Connection connection = (Connection) DriverManager.getConnection(url, "root", "");
-
-            try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                statement.setString(1, user.getUsername());
-                statement.setString(2, user.getEmail());
-                statement.setString(3, user.getPassword());
-                statement.setString(4, user.getContactNumber());
-
-                statement.executeUpdate();
-            }
+            //stablish the connection
+            Connection con = DriverManager.getConnection(url, "root", "");
+            //Statement st=con.createStatement();
+            st = con.createStatement();
+            
         } catch (ClassNotFoundException | SQLException ex) {
             Logger.getLogger(userDao.class.getName()).log(Level.SEVERE, null, ex);
         }
-    
+    }
+
+    public static void updateDetails(String email, String username, String contactNumber) {
+        connectToDB();
+        String query = "UPDATE users SET username = '" + username + "', contactNumber = '" + contactNumber + "' WHERE email = '" + email + "'";
+        try {
+            st.executeUpdate(query);
+            System.out.println("Details updated successfully.");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
+
     }
 
     public SignUpUser getUserByEmail(String email) {
-      String driver = "com.mysql.cj.jdbc.Driver";
-    String url = "jdbc:mysql://localhost:3306/userdetails";
-    String sql = "SELECT * FROM usersignup WHERE email = ?";
+      connectToDB();
+    String query = "SELECT * FROM users WHERE email = '" + email + "'";
+    ResultSet rs = null;
     SignUpUser user = null;
-    
+
     try {
-        Class.forName(driver);
-        Connection connection = DriverManager.getConnection(url, "root", "");
-        
-        try (PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, email);
-            
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next()) {
-                    String username = resultSet.getString("username");
-                    String password = resultSet.getString("password");
-                    String contactNumber = resultSet.getString("contact_number");
-                    
-                    // Create a new User object with fetched data
-                    user = new SignUpUser(username, email, password, contactNumber);
-                }
-            }
+        rs = st.executeQuery(query);
+        if (rs.next()) {
+            user = new SignUpUser(rs.getString("username"), rs.getString("email"), rs.getString("password"), rs.getString("contactNumber"));
         }
-    } catch (ClassNotFoundException | SQLException ex) {
-        Logger.getLogger(userDao.class.getName()).log(Level.SEVERE, null, ex);
-    }
-    
-    return user;
-    }
-
-    public void updateUser(SignUpUser user) {
-      String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/userdetails";
-        String sql = "UPDATE usersignup SET password = ? WHERE email = ?";
-
+    } catch (SQLException ex) {
+        System.out.println(ex.getMessage());
+    } finally {
         try {
-            // Load the JDBC driver (this line is not required in newer versions of JDBC)
-            Class.forName(driver);
-
-            // Obtain a connection to the database
-            try (Connection connection = DriverManager.getConnection(url, "root", "")) {
-                // Create a prepared statement
-                try (PreparedStatement statement = connection.prepareStatement(sql)) {
-                    // Set parameters
-                    statement.setString(1, user.getPassword());
-                    statement.setString(2, user.getEmail());
-
-                    // Execute the update
-                    int rowsAffected = statement.executeUpdate();
-
-                    // Check if the update was successful
-                    if (rowsAffected > 0) {
-                        System.out.println("User password updated successfully.");
-                    } else {
-                        System.out.println("No user found with the provided email.");
-                    }
-                }
+            if (rs != null) {
+                rs.close();
             }
-   
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(userDao.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
         }
-    
+    }
+
+    return user;
+}
+
+    public void updatePassword(String email, String newPassword) {
+         connectToDB();
+        String query = "UPDATE users SET password = '" + newPassword + "' WHERE email = '" + email + "'";
+        try {
+            st.executeUpdate(query);
+            System.out.println("Password updated successfully.");
+        } catch (SQLException ex) {
+            System.out.println(ex.getMessage());
+        }
     }
 
    
