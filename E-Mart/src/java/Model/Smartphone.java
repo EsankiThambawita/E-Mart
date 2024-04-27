@@ -25,6 +25,9 @@ public class Smartphone extends BaseProduct {
         this.color = color;
     }
 
+    public Smartphone(){
+        
+    }
     // Getters and Setters for specific fields (omitted for brevity)
 
     public String getStorageCapacity() {

@@ -25,6 +25,10 @@ public class Monitor extends BaseProduct {
         this.resolution = resolution;
     }
 
+    public Monitor(){
+        
+    }
+    
     // Getters and Setters for specific fields (omitted for brevity)
 
     public String getScreenSize() {
