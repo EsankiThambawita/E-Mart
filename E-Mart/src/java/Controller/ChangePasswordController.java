@@ -38,7 +38,7 @@ public class ChangePasswordController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChangePasswordController</title>");            
+            out.println("<title>Servlet ChangePasswordController</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet ChangePasswordController at " + request.getContextPath() + "</h1>");
@@ -74,33 +74,18 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
- // Retrieve form data
-        String email = (String) request.getSession().getAttribute("email"); 
-        String currentPassword = request.getParameter("CurrentPassword");
+        // Retrieve form data
+        String email = (String) request.getSession().getAttribute("email");
         String newPassword = request.getParameter("NewPassword");
         String confirmNewPassword = request.getParameter("ReConfirmPassword");
 
         // Validate current password against database
         userDao userDao = new userDao();
-        SignUpUser user = userDao.getUserByEmail(email);
-        
-        if (user != null && user.getPassword().equals(currentPassword)) {
-            // Current password is correct
-            if (newPassword.equals(confirmNewPassword)) {
-                // New password and confirm new password match
-                // Update password in the database
-                user.setPassword(newPassword);
-                userDao.updateUser(user); 
-                // Redirect to a success page or display a success message
-                response.sendRedirect("PasswordChanged.jsp"); // Redirect to a success page
-            } else {
-                // New password and confirm new password do not match
-                response.sendRedirect("ChangePassword.jsp?error=2"); // Redirect back to change password page with an error parameter
-            }
-        } else {
-            // Current password is incorrect
-            response.sendRedirect("ChangePassword.jsp?error=1"); // Redirect back to change password page with an error parameter
-        }
+        userDao.updatePassword(email, newPassword);
+      
+
+        // Password updated successfully, redirect to a success page
+        response.sendRedirect("Profile.jsp");
     }
 
     /**
