@@ -88,7 +88,5 @@
                 </div>
             </div>
         </div>
-                    
-       <script src="/AdminPanel/JS/products.js"></script>
     </body>
 </html>
