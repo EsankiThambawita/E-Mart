@@ -1,9 +1,3 @@
-<%-- 
-    Document   : Login
-    Created on : Apr 20, 2024, 6:00:24 PM
-    Author     : Esanki Lakvindee
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -21,7 +15,7 @@
                 </div>
                 <div class="form-column">
                     <h2>Login</h2>
-                    <form action="AdminLoginServlet" method="POST" >
+                    <form action="/AdminLoginServlet" method="POST" >
                         <div class="input-group">
                             <label for="email">Email:</label>
                             <input type="email" id="email" name="email" required>
@@ -31,13 +25,7 @@
                             <input type="password" id="password" name="password" required>
                         </div>
                         <button type="submit" id="loginButton">Login</button>
-                        
-                       
                     </form>
-                    <div class="links">
-                        <a href="/AdminPanel/JSP/ForgotPassword.jsp">Forgot password?</a>
-                        <span>|</span>
-                        <a href="/AdminPanel/JSP/Register.jsp">Create an account</a>
                     </div>
                 </div>
             </div>
