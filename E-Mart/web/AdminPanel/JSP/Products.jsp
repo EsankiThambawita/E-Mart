@@ -96,14 +96,10 @@
                                 </div>
 
 
-                    </tr>
-                    <% } %>
-
                                 <!-- Delete button -->
                                 <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
                                     <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/>
                                 </button>
-                               <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
 
                             </td>
 
