@@ -10,7 +10,7 @@ public class BaseProduct {
 
     private int productId;
     private String productName;
-    private float price;
+    private int price;
     private int quantity;
     private String photo1;
     private String brand;
@@ -19,7 +19,7 @@ public class BaseProduct {
     private String category;
 
     // Getters and Setters
-    public BaseProduct(int productId, String productName, float price, int quantity, String photos,
+    public BaseProduct(int productId, String productName, int price, int quantity, String photos,
             String brand, String modelName, String productDescription, String category) {
         this.productId = productId;
         this.productName = productName;
@@ -52,11 +52,11 @@ public class BaseProduct {
         this.productName = productName;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

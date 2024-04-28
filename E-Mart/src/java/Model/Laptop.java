@@ -14,7 +14,7 @@ public class Laptop extends BaseProduct{
     private String CPU;
     private String memory;
 
-    public Laptop(int productId, String productName, float price, int quantity, String photos,
+    public Laptop(int productId, String productName, int price, int quantity, String photos,
             String brand, String modelName, String productDescription, String category,
             String storageCapacity, String CPU, String memory) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
