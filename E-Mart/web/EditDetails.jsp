@@ -21,7 +21,7 @@
 
 <form id="editForm" action="SaveDetailsServlet" method="post"  style="border: 2px solid #007bff; padding: 20px;">
 
-    <h2 style="text-align: center; margin-top: 0;">Edit Details</h2>
+    <a href="Profile.jsp">Back to Profile</a><h2 style="text-align: center; margin-top: 0;">Edit Details</h2>
 
 
     
