@@ -38,27 +38,6 @@ h1 {
     text-align: center;
 }
 
-.search-bar {
-    margin-bottom: 20px;
-    text-align: right;
-}
-
-.search-bar input[type="text"] {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-right: 10px;
-}
-
-.search-bar button {
-    padding: 8px 15px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
 table {
     width: 100%;
     border-collapse: collapse;
@@ -118,3 +97,5 @@ table td:nth-child(2) img {
 table td:nth-child(2) span {
     vertical-align: middle;
 }
+
+

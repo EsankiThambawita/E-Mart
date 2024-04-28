@@ -16,6 +16,7 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/Products.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
     </head>
     <body>
         <div class="left-section">
@@ -28,10 +29,17 @@
             </div>
             <div class="container">
                 <h1>Products</h1>
-                <div class="search-bar">
-                    <input type="text" placeholder="Search...">
-                    <button type="submit">Search</button>
+                <div class="dropdown">
+                  <button class="dropbtn">Product Categories</button>
+                  <div class="dropdown-content">
+                    <a href="#" onclick="showProducts('Smartphones')">Smartphones</a>
+                    <a href="#" onclick="showProducts('Laptops')">Laptops</a>
+                    <a href="#" onclick="showProducts('Cameras')">Cameras</a>
+                    <a href="#" onclick="showProducts('Monitors')">Monitors</a>
+                    <a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a>
+                  </div>
                 </div>
+
                 <table>
                     <thead>
                         <tr>
@@ -47,9 +55,9 @@
                   
                     <tbody>
                         <% DAO.getAllSmartphones();
-                    List<Smartphone> products = DAO.getAllSmartphones();
-                    for (Smartphone item : products) {
-                    %>
+                        List<Smartphone> products = DAO.getAllSmartphones();
+                        for (Smartphone item : products) {
+                        %>
                     
                     
                     <tr>
@@ -60,9 +68,12 @@
                         <td>$<%= item.getPrice() %></td>
                         <td>In Stock</td>
                         <td>
-                            <button class="button1"><img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/></button>
+                            <button class="button1" onclick="handleEditButtonClick('<%= item.getProductId() %>')">
+                                <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
+                            </button>
                             <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
                         </td>
+
                     </tr>
                     <% } %>
                     </tbody>
@@ -73,7 +84,7 @@
                     <a href="#">1</a>
                     <a href="#">2</a>
                     <a href="#">3</a>
-                    <!-- Add more pagination links here -->
+                    <!-- Add more pagination links here --> 
                 </div>
             </div>
         </div>

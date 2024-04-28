@@ -9,9 +9,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 /* CSS for dashboard */
 body {
+    margin: 0;
+    padding: 0;
     font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: row;
+    background-color: #f0f0f0;
 }
 
 .left-section {
@@ -25,59 +26,117 @@ body {
     margin-left: 200px;
 }
 
-.content {
-    display: flex;
-    width: 700px;
+.container {
+    width: 1000px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card {
-    flex: 1;
-    background-color: #f0f0f0;
+h1 {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+table th, table td {
     border: 1px solid #ccc;
-    margin: 10px;
-}
-
-.card.left {
-    margin-right: 50px;
-    margin-left: 70px;
-    margin-top: 90px;
-}
-
-.card.right {
-    margin-left: 5px;
-    margin-top: 90px;
-}
-
-.card-header {
-    background-color: #333;
-    color: #fff;
     padding: 10px;
 }
 
-.card-body {
-    padding: 10px;
+table th {
+    background-color: #f0f0f0;
 }
 
-form {
-    margin-top: 10px;
+img {
+    width: 50px;
+    height: 50px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-input[type="file"],
-input[type="text"] {
-    width: 500px;
-    padding: 8px;
-    margin-bottom: 10px;
-}
-
-button {
-    padding: 10px;
+.add-products-btn {
+    padding: 10px 20px;
     background-color: #333;
     color: #fff;
     border: none;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+.pagination {
+    text-align: center;
+}
+
+.pagination span {
+    margin-right: 10px;
+}
+
+.pagination a {
+    padding: 5px 10px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    margin-right: 5px;
+}
+
+.pagination a:hover {
+    background-color: #555;
+}
+
+table td:nth-child(2) img {
+    vertical-align: middle;
+    margin-right: 10px; 
+    width: 50px; 
+}
+
+table td:nth-child(2) span {
+    vertical-align: middle;
+}
+
+/* Dropdown styles */
+.dropbtn {
+  background-color: black;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: brown;
 }
