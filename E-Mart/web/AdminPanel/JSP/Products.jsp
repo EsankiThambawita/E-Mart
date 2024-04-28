@@ -17,6 +17,7 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
+         <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
     </head>
     <body>
         <div class="left-section">
@@ -68,9 +69,32 @@
                         <td>$<%= item.getPrice() %></td>
                         <td>In Stock</td>
                         <td>
-                            <button class="button1" onclick="handleEditButtonClick('<%= item.getProductId() %>')">
+                            <button class="button1" onclick="openForm()">
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
                             </button>
+                                
+                                <!-- The form -->
+                                <div class="form-popup" id="myForm">
+                                    <form action="/Controller/AdminEditProductServlet" class="form-container" method="post">
+                                        <h1>Edit Product</h1>
+
+                                        <label for="pieces"><b>Pieces</b></label>
+                                        <input type="number" placeholder="Enter Pieces" name="pieces" required><br>
+
+                                        <label for="price"><b>Price</b></label>
+                                        <input type="number" step="0.01" placeholder="Enter Price" name="price" required><br>
+
+                                        <label for="status"><b>Status</b></label>
+                                        <input type="text" placeholder="Enter Status" name="status" required><br>
+
+                                        <!-- Hidden input field to store the product ID -->
+                                        <input type="hidden" name="productId" id="productId">
+
+                                        <button type="submit" class="btn">Save Changes</button>
+                                        <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+                                    </form>
+                                </div>
+                                
                             <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
                         </td>
 
@@ -88,6 +112,6 @@
                 </div>
             </div>
         </div>
-        <script src="/AdminPanel/JS/products.js"></script>
+        <script src="/AdminPanel/JS/form.js"></script>
     </body>
 </html>
