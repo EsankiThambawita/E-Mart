@@ -15,7 +15,7 @@ public class Smartwatch extends BaseProduct {
     private String screenSize;
     private String color;
 
-    public Smartwatch(int productId, String productName, float price, int quantity, String photos,
+    public Smartwatch(int productId, String productName, int price, int quantity, String photos,
             String brand, String modelName, String productDescription, String category,
             String screenSize, String color) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
@@ -24,6 +24,9 @@ public class Smartwatch extends BaseProduct {
     }
 
     // Getters and Setters for specific fields (omitted for brevity)
+    public Smartwatch() {
+
+    }
 
     public String getScreenSize() {
         return screenSize;

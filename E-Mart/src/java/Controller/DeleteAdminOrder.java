@@ -4,22 +4,21 @@
  */
 package Controller;
 
-import Model.SignUpUser;
-import Model.userDao;
+import Model.DAO;
+import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.io.PrintWriter;
 
 /**
  *
- * @author DELL
+ * @author robin
  */
-@WebServlet(name = "ChangePasswordController", urlPatterns = {"/ChangePasswordController"})
-public class ChangePasswordController extends HttpServlet {
+@WebServlet(name = "DeleteAdminOrder", urlPatterns = {"/DeleteAdminOrder"})
+public class DeleteAdminOrder extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +37,10 @@ public class ChangePasswordController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChangePasswordController</title>");
+            out.println("<title>Servlet DeleteAdminOrder</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ChangePasswordController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeleteAdminOrder at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +58,7 @@ public class ChangePasswordController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -74,18 +73,10 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        // Retrieve form data
-        String email = (String) request.getSession().getAttribute("email");
-        String newPassword = request.getParameter("NewPassword");
-        String confirmNewPassword = request.getParameter("ReConfirmPassword");
-
-        // Validate current password against database
-        userDao userDao = new userDao();
-        userDao.updatePassword(email, newPassword);
-      
-
-        // Password updated successfully, redirect to a success page
-        response.sendRedirect("Profile.jsp");
+        
+        int orderId = Integer.parseInt(request.getParameter("orderId"));
+        DAO.removeOrderItem(orderId);
+        response.sendRedirect("/AdminPanel/JSP/Orders.jsp");
     }
 
     /**
@@ -96,5 +87,6 @@ public class ChangePasswordController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold
+    }// </editor-fold>
+
 }

@@ -3,14 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/src/java/Model/ShoppingCartObj.java</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/src/java/Model/AdminDAO.java</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/web/AdminPanel/JSP/Products.jsp</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/web/index.jsp</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/web/ShoppingCart.jsp</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/src/java/Model/DAO.java</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/web/AdminPanel/JSP/index.jsp</file>
-            <file>file:/C:/Users/Esanki%20Lakvindee/Documents/GitHub/E-Mart/E-Mart/src/java/Model/Smartphone.java</file>
+            <file>file:/D:/NSBM/E-Mart/E-Mart/src/java/Model/AdminOrderObj.java</file>
+            <file>file:/D:/NSBM/E-Mart/E-Mart/src/java/Controller/ClearCart.java</file>
+            <file>file:/D:/NSBM/E-Mart/E-Mart/web/AdminPanel/JSP/Orders.jsp</file>
+            <file>file:/D:/NSBM/E-Mart/E-Mart/web/ShoppingCart.jsp</file>
+            <file>file:/D:/NSBM/E-Mart/E-Mart/src/java/Model/DAO.java</file>
         </group>
     </open-files>
 </project-private>

@@ -89,7 +89,7 @@ public class SignInServlet extends HttpServlet {
             }
 
             // Database connection parameters
-            String url = "jdbc:mysql://localhost:3306/userdetails";//databse name
+            String url = "jdbc:mysql://localhost:3306/emart";//databse name
 
             try {
                 // Load the MySQL driver

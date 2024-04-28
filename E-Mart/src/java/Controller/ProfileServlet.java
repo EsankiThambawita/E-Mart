@@ -18,8 +18,8 @@ import java.io.PrintWriter;
  *
  * @author DELL
  */
-@WebServlet(name = "ChangePasswordController", urlPatterns = {"/ChangePasswordController"})
-public class ChangePasswordController extends HttpServlet {
+@WebServlet(name = "ProfileServlet", urlPatterns = {"/ProfileServlet"})
+public class ProfileServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class ChangePasswordController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ChangePasswordController</title>");
+            out.println("<title>Servlet ProfileServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ChangePasswordController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ProfileServlet at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -60,6 +60,16 @@ public class ChangePasswordController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
+        // Fetch data from the database
+        String email = request.getParameter("email"); // Assuming email is used as a unique identifier
+        userDao userDao = new userDao();
+        SignUpUser user = userDao.getUserByEmail(email);
+
+        // Set the user object as an attribute in the request
+        request.setAttribute("user", user);
+
+        // Forward the request to the profile JSP
+        request.getRequestDispatcher("Profile.jsp").forward(request, response);
     }
 
     /**
@@ -73,19 +83,7 @@ public class ChangePasswordController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        // Retrieve form data
-        String email = (String) request.getSession().getAttribute("email");
-        String newPassword = request.getParameter("NewPassword");
-        String confirmNewPassword = request.getParameter("ReConfirmPassword");
-
-        // Validate current password against database
-        userDao userDao = new userDao();
-        userDao.updatePassword(email, newPassword);
-      
-
-        // Password updated successfully, redirect to a success page
-        response.sendRedirect("Profile.jsp");
+        processRequest(request, response);
     }
 
     /**
@@ -96,5 +94,6 @@ public class ChangePasswordController extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold
+    }// </editor-fold>
+
 }

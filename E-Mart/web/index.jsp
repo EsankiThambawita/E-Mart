@@ -8,7 +8,6 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.NewestProductObj"%>
-<%@page import="Controller.NewestItemsServlet"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -23,12 +22,9 @@
     <body>
         <%@ include file="Navbar.html" %>
 
-        <% DAO.fillMockCart(); %>
-
         <% DAO.getAllCartItems(); %>
         <% DAO.getAllSmartphones(); %>
-
-        <% DAO.getAllCartItems(); %>
+        <% DAO.getNewArrivals(); %>
 
         <!-- Home page UI -->
         <div class="container">
@@ -147,75 +143,74 @@
                                 
                             </div>-->
         </div>
-    </div>
 
-    <!--Fourth section -->
-    <div class="categories-text">Categories</div>
+        <!--Fourth section -->
+        <div class="categories-text">Categories</div>
 
-    <div class="category-container">
-        <a href="ProductCategory_Phones.jsp" class="category1">
-            <div class="column1">
-                <img src="Images/Home/phone.png" alt="Image 1" style="height: 160px; width: 100px;">
-            </div>
-            <div class="column2">
-                <div class="line1">Smartphones</div>
-                <div class="line2">Explore our sleek smartphones, packed with cutting-edge tech for seamless connectivity and entertainment</div>
-            </div>
-        </a>
+        <div class="category-container">
+            <a href="ProductCategory_Phones.jsp" class="category1">
+                <div class="column1">
+                    <img src="Images/Home/phone.png" alt="Image 1" style="height: 160px; width: 100px;">
+                </div>
+                <div class="column2">
+                    <div class="line1">Smartphones</div>
+                    <div class="line2">Explore our sleek smartphones, packed with cutting-edge tech for seamless connectivity and entertainment</div>
+                </div>
+            </a>
 
-        <a href="ProductCategory_Laptops.jsp" class="category2">
-            <div class="column1">
-                <img src="Images/Home/laptop.png" alt="Image 2" style="height: 130px; width: 120px;">
-            </div>
-            <div class="column2">
-                <div class="line1">Laptops</div>
-                <div class="line2">Enhance productivity with our versatile range of laptops, meticulously designed to meet your diverse needs.</div>
-            </div>
-        </a>
+            <a href="ProductCategory_Laptops.jsp" class="category2">
+                <div class="column1">
+                    <img src="Images/Home/laptop.png" alt="Image 2" style="height: 130px; width: 120px;">
+                </div>
+                <div class="column2">
+                    <div class="line1">Laptops</div>
+                    <div class="line2">Enhance productivity with our versatile range of laptops, meticulously designed to meet your diverse needs.</div>
+                </div>
+            </a>
 
-        <a href="ProductCategory_Cameras.jsp" class="category3">
-            <div class="column1">
-                <img src="Images/Home/camera.png" alt="Image 3" style="height: 130px; width: 110px;">
-            </div>
-            <div class="column2">
-                <div class="line1">Cameras</div>
-                <div class="line2">Capture life's moments in stunning detail with our carefully curated selection of cameras.</div>
-            </div>
-        </a>
-    </div>
-
-    <!-- Fifth section -->
-    <div class="nextcategory-container">
-        <a href="ProductCategory_Smartwatches.jsp" class="category4">
-            <div class="column1">
-                <img src="Images/Home/watch.png" alt="Image 3" style="height: 150px; width: 130px;">
-            </div>
-            <div class="column2">
-                <div class="line1">Smart<br><br>Watches</div>
-                <div class="line2">Stay connected, organized, and impeccably stylish with our innovative collection of smartwatches."</div>
-            </div>
-        </a>
-
-        <a href="ProductCategory_Monitors.jsp" class="category5">
-            <div class="column1">
-                <img src="Images/Home/monitor.png" alt="Image 3" style="height: 130px; width: 130px;">
-            </div>
-            <div class="column2">
-                <div class="line1">Monitors</div>
-                <div class="line2">Immerse yourself in breathtaking visuals with our premium lineup of meticulously engineered monitors.</div>
-            </div>
-        </a>
-    </div>
-
-
-    <!-- Sixth section -->
-    <div class="longrectangle-container">
-        <div class="longrectangle">
-            <p class="sentence">Experience Next-Level Performance with E-Mart Electronics</p>
-            <button class="start-shopping" onclick="window.location.href = 'ProductCategory_Phones.jsp';">Start Shopping</button>
+            <a href="ProductCategory_Cameras.jsp" class="category3">
+                <div class="column1">
+                    <img src="Images/Home/camera.png" alt="Image 3" style="height: 130px; width: 110px;">
+                </div>
+                <div class="column2">
+                    <div class="line1">Cameras</div>
+                    <div class="line2">Capture life's moments in stunning detail with our carefully curated selection of cameras.</div>
+                </div>
+            </a>
         </div>
-    </div>
-    <%@ include file="Footer.html" %>
-    <script src="JS/Common.js"></script>
-</body>
+
+        <!-- Fifth section -->
+        <div class="nextcategory-container">
+            <a href="ProductCategory_Smartwatches.jsp" class="category4">
+                <div class="column1">
+                    <img src="Images/Home/watch.png" alt="Image 3" style="height: 150px; width: 130px;">
+                </div>
+                <div class="column2">
+                    <div class="line1">Smart<br><br>Watches</div>
+                    <div class="line2">Stay connected, organized, and impeccably stylish with our innovative collection of smartwatches."</div>
+                </div>
+            </a>
+
+            <a href="ProductCategory_Monitors.jsp" class="category5">
+                <div class="column1">
+                    <img src="Images/Home/monitor.png" alt="Image 3" style="height: 130px; width: 130px;">
+                </div>
+                <div class="column2">
+                    <div class="line1">Monitors</div>
+                    <div class="line2">Immerse yourself in breathtaking visuals with our premium lineup of meticulously engineered monitors.</div>
+                </div>
+            </a>
+        </div>
+
+
+        <!-- Sixth section -->
+        <div class="longrectangle-container">
+            <div class="longrectangle">
+                <p class="sentence">Experience Next-Level Performance with E-Mart Electronics</p>
+                <button class="start-shopping" onclick="window.location.href = 'ProductCategory_Phones.jsp';">Start Shopping</button>
+            </div>
+        </div>
+        <%@ include file="Footer.html" %>
+        <script src="JS/Common.js"></script>
+    </body>
 </html>

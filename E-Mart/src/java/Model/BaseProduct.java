@@ -1,35 +1,40 @@
 package Model;
 
 import java.util.*;
+
 /**
  *
  * @author robin
  */
 public class BaseProduct {
-  private int productId;
-  private String productName;
-  private float price;
-  private int quantity;
-  private String photo1;
-  private String brand;
-  private String modelName;
-  private String productDescription;
-  private String category;
 
-  // Getters and Setters
+    private int productId;
+    private String productName;
+    private int price;
+    private int quantity;
+    private String photo1;
+    private String brand;
+    private String modelName;
+    private String productDescription;
+    private String category;
 
-  public BaseProduct(int productId, String productName, float price, int quantity, String photos,
-                     String brand, String modelName, String productDescription, String category) {
-    this.productId = productId;
-    this.productName = productName;
-    this.price = price;
-    this.quantity = quantity;
-    this.photo1 = photos;
-    this.brand = brand;
-    this.modelName = modelName;
-    this.productDescription = productDescription;
-    this.category = category;
-  }
+    // Getters and Setters
+    public BaseProduct(int productId, String productName, int price, int quantity, String photos,
+            String brand, String modelName, String productDescription, String category) {
+        this.productId = productId;
+        this.productName = productName;
+        this.price = price;
+        this.quantity = quantity;
+        this.photo1 = photos;
+        this.brand = brand;
+        this.modelName = modelName;
+        this.productDescription = productDescription;
+        this.category = category;
+    }
+
+    public BaseProduct() {
+
+    }
 
     public int getProductId() {
         return productId;
@@ -47,11 +52,11 @@ public class BaseProduct {
         this.productName = productName;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -103,9 +108,8 @@ public class BaseProduct {
         this.category = category;
     }
 
-  @Override
-  public String toString() {
-    return "BaseProduct [productId=" + productId + ", name=" + productName + "]";
-  }
+    @Override
+    public String toString() {
+        return "BaseProduct [productId=" + productId + ", name=" + productName + "]";
+    }
 }
-

@@ -8,7 +8,6 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
-<%@page import="Controller.ShoppingCartServlet"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>

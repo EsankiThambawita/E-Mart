@@ -7,9 +7,6 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map.Entry" %>
-<%@page import="Controller.CartControllerServlet"%>
-<%@page import="Model.CartService"%>
-<%@page import="Model.BillingDetails"%>
 
 <!DOCTYPE html>
 <html>
@@ -55,7 +52,7 @@
             </table>
 
             <h3>Billing Details <i class="fas fa-user"></i></h3>
-            <form action="CartControllerServlet" method="post">
+            <form action="CheckoutServlet" method="post">
                 <div class="form-group">
                     <label><i class="fas fa-user"></i> Full Name:</label><br>
                     <input type="text" name="fullName" required placeholder="John Doe"><br>
@@ -81,34 +78,14 @@
                     <input type="text" name="zip" required placeholder="Zip"><br>
                 </div>
                 <input type="hidden" name="action" value="checkout"> <!-- Hidden field for action -->
-                <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
-                <div class="form-group">
-                    <label><i class="fab fa-cc-visa"></i> Card Type:</label><br>
-                    <select name="cardType" required>
-                        <option value="visa">Visa</option>
-                        <option value="mastercard">Mastercard</option>
-                        <option value="amex">American Express</option>
-                        <option value="discover">Discover</option>
-                    </select><br>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-user"></i> Name on Card:</label><br>
-                    <input type="text" name="cardName" required placeholder="John Doe"><br>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-credit-card"></i> Credit Card Number:</label><br>
-                    <input type="text" name="cardNumber" required placeholder="1111-2222-3333-4444"><br>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-calendar-alt"></i> Expiry Date (MM/YYYY):</label><br>
-                    <input type="text" name="expiryDate" required placeholder="MM/YYYY"><br>
-                </div>
-                <div class="form-group">
-                    <label><i class="fas fa-lock"></i> CVV:</label><br>
-                    <input type="text" name="cvv" required placeholder="CVV"><br>
-                </div>
+            <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
+             <div class="form-group">
+               <label for="cashOnDelivery">Cash on Delivery</label>
+                  <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cod" checked>
+              </div>
 
                 <input type="submit" value="Submit Payment" class="btn btn-darkblue">
+             </div>
             </form>
         </div>
 

@@ -99,7 +99,8 @@
 | 2024-04-16 | OrderConfirmation page needed an extra button for "submit feedback" but when the css was added, it did not work for that button.                                             | Found that the issue was other css styles being conflicted and so used inline css and fixed the issue.                 |
 | 2024-04-17 | The database is not connecting to the netbeans                   | Found issue in code and fixed it.  |
 | 2024-04-24 | Products page of the admin panel is connecting to the database but does not retrieve values from it and show it.                   | Tried making some changes in the code and eventually fixed the error.  |
-
+| 2024-04-25 | Created the code to send the order confirmation email but it did not work. Code was right with no errors.| |
+| 2024-04-26 | Found some difficulty storing the feedback rating in the database.| |
 
 
 **2. TPR Fernando**
@@ -116,7 +117,7 @@
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-04-13 | The database is not connecting to the netbeans                    | After some digging, I figured out what was wrong with the code and managed to fix it|
-|2024-04-18  |Encountered a hurdle when trying to fetch the verification OTP from a website(twilio)|Attempted to implement email verification to obtain the verification code, but  it didn't work as expected. Recognizing the need for an alternative,  switched to using phone numbers. However, this transition came with its own set of challenges. I switch from Twilio to Vonage(website that we are using to get the OTP)for handling SMS services.With the help of a former graduate friend, I succeeded in overcoming this challenge and Fixed the issues and successfully integrated the verification system|
+|2024-04-18  |Encountered a hurdle when trying to fetch the verification OTP from a website(twilio)|Attempted to implement email verification to obtain the verification code, but  it didn't work as expected. Recognizing the need for an alternative,  switched to using phone numbers. However, this transition came with its own set of challenges. I switch from Twilio to Vonage(website that we are using to get the OTP)for handling SMS services.With the help of a former graduate friend, succeeded in overcoming this challenge and Fixed the issues and successfully integrated the verification system|
 
 
 **4. Adheesha**
@@ -133,6 +134,8 @@
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 |2024-04-13 |Implementation of backend of Contact page, and css didnt apply to the checkout page                           | Implemented by using JS and deleted the old css file and restored with new new css Contact1.css
+|2024-04-18|form data wasnt being eneterd to the databse                        | reviewed the code and fixed it
+| 2024-04-27| when the submit button was pressed wasnt being directed to OrderConfirmation.jsp page | did some research, reviewd the code and fixed the issue
 
 
 **6. Chanuka**

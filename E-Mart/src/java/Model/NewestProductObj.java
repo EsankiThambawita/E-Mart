@@ -10,25 +10,16 @@ package Model;
  */
 public class NewestProductObj {
 
-    private int productId;
     private String productName;
-    private double productPrice;
+    private int productPrice;
     private String iconPath;
 
-    public NewestProductObj(int productId, String productName, double productPrice, String iconPath) {
-        this.productId = productId;
+    public NewestProductObj(String productName, int productPrice, String iconPath) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.iconPath = iconPath;
     }
-
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
+ 
 
     public String getProductName() {
         return productName;
@@ -38,11 +29,11 @@ public class NewestProductObj {
         this.productName = productName;
     }
 
-    public double getProductPrice() {
+    public int getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(double productPrice) {
+    public void setProductPrice(int productPrice) {
         this.productPrice = productPrice;
     }
 

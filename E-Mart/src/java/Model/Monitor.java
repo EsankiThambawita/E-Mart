@@ -16,7 +16,7 @@ public class Monitor extends BaseProduct {
     private int refreshRate;
     private String resolution;
 
-    public Monitor(int productId, String productName, float price, int quantity, String photos,
+    public Monitor(int productId, String productName, int price, int quantity, String photos,
             String brand, String modelName, String productDescription, String category,
             int refreshRate, String screenSize, String resolution) {
         super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
@@ -25,6 +25,10 @@ public class Monitor extends BaseProduct {
         this.resolution = resolution;
     }
 
+    public Monitor(){
+        
+    }
+    
     // Getters and Setters for specific fields (omitted for brevity)
 
     public String getScreenSize() {

@@ -48,7 +48,7 @@ public class DAO {
             while (resultSet.next()) {
                 int productId = resultSet.getInt("productId");
                 String productName = resultSet.getString("productName");
-                float price = resultSet.getFloat("price");
+                int price = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");
                 String brand = resultSet.getString("brand");
                 String modelName = resultSet.getString("modelName");
@@ -87,31 +87,6 @@ public class DAO {
         return products;
     }
 
-<<<<<<< Updated upstream
-    public static List<Laptop> getAllLaptops() {
-        return generateMockDataLaptop();
-        //TODO: add real sql code
-    }
-
-    public static List<Camera> getAllCamera() {
-        return generateMockDataCamera();
-        //TODO: add real sql code
-    }
-
-    public static List<Smartwatch> getAllSmartwatches() {
-        return generateMockDataSmartwatches();
-        //TODO: add real sql code
-    }
-
-    public static List<Monitor> getAllMonitor() {
-        return generateMockDataMonitor();
-        //TODO: add real sql code
-    }
-<<<<<<< Updated upstream
-=======
-    
-    public static List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
-=======
     //TODO
 //    public static List<Laptop> getAllLaptops() {
 //        return generateMockDataLaptop();
@@ -132,10 +107,6 @@ public class DAO {
 //        return generateMockDataMonitor();
 //        //TODO: add real sql code
 //    }
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-
-    //public static List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
     public static List<ShoppingCartObj> getAllCartItems() {
         List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
         Connection connection = null;
@@ -194,9 +165,6 @@ public class DAO {
         return currentCartSnap;
     }
 
-//    public static void fillMockCart() {
-//        currentCartSnap = generateMockShoppingCartObjs();
-//    }
     public static void removeAllCartItems() {
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM shoppingcart")) {
             statement.executeUpdate();
@@ -210,158 +178,187 @@ public class DAO {
     }
 
     public static List<NewestProductObj> getNewArrivals() {
-        return generateMockNewestItems();
+        List<NewestProductObj> newitems = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch shopping cart items
+            String query = "SELECT * FROM smartphone ORDER BY productId DESC";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items to the shopping cart list
+            while (resultSet.next()) {
+                String productName = resultSet.getString("productName");
+                int productPrice = resultSet.getInt("price");
+                String iconPath = resultSet.getString("photo1");
+
+                // Creating ShoppingCartItem object and adding it to the list
+                NewestProductObj items = new NewestProductObj(productName, productPrice, iconPath);
+                newitems.add(items);
+            }
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return newitems;
     }
 
-    //Mock Data
-    private static List<Smartphone> generateMockDataSmartphone() {
-        List<Smartphone> products = new ArrayList<>();
+    public static List<AdminOrderObj> getAdminOrders() {
+        List<AdminOrderObj> orders = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-        // Mock data for smartphones
-<<<<<<< Updated upstream
-        products.add(new Smartphone(1, "Smartphone A", 799, 100,
-=======
-<<<<<<< Updated upstream
-        products.add(new Smartphone(1, "Smartphone A", 799.99f, 100,
->>>>>>> Stashed changes
-                new ArrayList<>(), "Brand X", "Model 1", "High-end smartphone with great features", "Smartphone",
-                "512GB", 6.5, "Black"));
-        products.add(new Smartphone(2, "Smartphone B", 699, 150,
-                new ArrayList<>(), "Brand Y", "Model 2", "Affordable smartphone with good performance", "Smartphone",
-=======
-        products.add(new Smartphone(1, "Smartphone A", 799, 100,
-                "Images/Home/monitor.png", "Brand X", "Model 1", "High-end smartphone with great features", "Smartphone",
-                "512GB", 6.5, "Black"));
-        products.add(new Smartphone(2, "Smartphone B", 699, 150,
-                "Images/Home/monitor.png", "Brand Y", "Model 2", "Affordable smartphone with good performance", "Smartphone",
->>>>>>> Stashed changes
-                "256GB", 6.0, "Silver"));
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-        return products;
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch from smartphone
+            String query = "SELECT o.*, "
+                    + "CASE "
+                    + "  WHEN o.productId IN (SELECT productId FROM camera) THEN (SELECT productName FROM camera WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM smartphone) THEN (SELECT productName FROM smartphone WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM smartwatch) THEN (SELECT productName FROM smartwatch WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM laptop) THEN (SELECT productName FROM laptop WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM monitor) THEN (SELECT productName FROM monitor WHERE productId = o.productId) "
+                    + "END AS productName "
+                    + "FROM orders o";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int orderNumber = resultSet.getInt("orderId");
+                int productId = resultSet.getInt("productId");
+                int quantity = resultSet.getInt("quantity");
+                java.util.Date orderDate = resultSet.getDate("orderDate");
+                String orderStatus = resultSet.getString("orderStatus");
+                int totalPrice = resultSet.getInt("totalPrice");
+                String shippingAddress = resultSet.getString("address");
+                String customerName = resultSet.getString("name");
+                String feedback = resultSet.getString("feedback");
+                String email = resultSet.getString("email");
+                String productName = resultSet.getString("productName"); // Retrieve product name
+
+                // Creating Smartphone object and adding it to the list
+                AdminOrderObj order = new AdminOrderObj(orderDate, orderNumber, orderStatus, productId, quantity,
+                        totalPrice, shippingAddress, customerName, feedback, email);
+                order.setProductName(productName);
+                orders.add(order);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return orders;
     }
 
-<<<<<<< Updated upstream
-    private static List<Laptop> generateMockDataLaptop() {
-        List<Laptop> products = new ArrayList<>();
-
-        // Mock data for laptops
-        products.add(new Laptop(3, "Laptop A", 1299, 50,
-                new ArrayList<>(), "Brand Z", "Model 3", "Powerful laptop for professional use", "Laptop",
-                "1TB SSD", "Intel i7", "16GB"));
-        products.add(new Laptop(4, "Laptop B", 999, 80,
-                new ArrayList<>(), "Brand W", "Model 4", "Mid-range laptop suitable for everyday tasks", "Laptop",
-                "512GB SSD", "Intel i5", "8GB"));
-        return products;
+    public static void removeOrderItem(int orderId) {
+        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM orders WHERE orderId = ?")) {
+            statement.setInt(1, orderId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error while deleting order: " + e.getMessage());
+        }
     }
 
-    private static List<Camera> generateMockDataCamera() {
-        List<Camera> products = new ArrayList<>();
-        // Mock data for cameras
-        products.add(new Camera(5, "Camera A", 599, 30,
-                new ArrayList<>(), "Brand V", "Model 5", "Compact camera for photography enthusiasts", "Camera",
-                "Compact"));
-        products.add(new Camera(5, "Camera B", 399, 20,
-                new ArrayList<>(), "Brand X", "Model 6", "Compact camera for photography enthusiasts", "Camera",
-                "Compact"));
-        return products;
-    }
+    public static void updateProduct(String productId, int quantity, int price) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
 
-    private static List<Smartwatch> generateMockDataSmartwatches() {
-        List<Smartwatch> products = new ArrayList<>();
-        // Mock data for smartwatches
-        products.add(new Smartwatch(6, "Smartwatch A", 299, 80,
-                new ArrayList<>(), "Brand U", "Model 6", "Feature-rich smartwatch for fitness tracking", "Smartwatch",
-                "1.3 inches", "Red"));
-        products.add(new Smartwatch(7, "Smartwatch B", 199, 120,
-                new ArrayList<>(), "Brand T", "Model 7", "Affordable smartwatch with basic features", "Smartwatch",
-                "1.1 inches", "Blue"));
-        return products;
-    }
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-    private static List<Monitor> generateMockDataMonitor() {
-        List<Monitor> products = new ArrayList<>();
-        // Mock data for monitors
-        products.add(new Monitor(8, "Monitor A", 399, 40,
-                new ArrayList<>(), "Brand S", "Model 8", "High-quality monitor for gaming and multimedia", "Monitor",
-                144, "27 inches", "2560x1440"));
-        products.add(new Monitor(9, "Monitor B", 249, 60,
-                new ArrayList<>(), "Brand R", "Model 9", "Budget-friendly monitor for everyday use", "Monitor",
-                60, "24 inches", "1920x1080"));
-        return products;
-    }
-=======
-//    private static List<Laptop> generateMockDataLaptop() {
-//        List<Laptop> products = new ArrayList<>();
-//
-//        // Mock data for laptops
-//        products.add(new Laptop(3, "Laptop A", 1299, 50,
-//                new ArrayList<>(), "Brand Z", "Model 3", "Powerful laptop for professional use", "Laptop",
-//                "1TB SSD", "Intel i7", "16GB"));
-//        products.add(new Laptop(4, "Laptop B", 999, 80,
-//                new ArrayList<>(), "Brand W", "Model 4", "Mid-range laptop suitable for everyday tasks", "Laptop",
-//                "512GB SSD", "Intel i5", "8GB"));
-//        return products;
-//    }
-//
-//    private static List<Camera> generateMockDataCamera() {
-//        List<Camera> products = new ArrayList<>();
-//        // Mock data for cameras
-//        products.add(new Camera(5, "Camera A", 599, 30,
-//                new ArrayList<>(), "Brand V", "Model 5", "Compact camera for photography enthusiasts", "Camera",
-//                "Compact"));
-//        products.add(new Camera(5, "Camera B", 399, 20,
-//                new ArrayList<>(), "Brand X", "Model 6", "Compact camera for photography enthusiasts", "Camera",
-//                "Compact"));
-//        return products;
-//    }
-//
-//    private static List<Smartwatch> generateMockDataSmartwatches() {
-//        List<Smartwatch> products = new ArrayList<>();
-//        // Mock data for smartwatches
-//        products.add(new Smartwatch(6, "Smartwatch A", 299, 80,
-//                new ArrayList<>(), "Brand U", "Model 6", "Feature-rich smartwatch for fitness tracking", "Smartwatch",
-//                "1.3 inches", "Red"));
-//        products.add(new Smartwatch(7, "Smartwatch B", 199, 120,
-//                new ArrayList<>(), "Brand T", "Model 7", "Affordable smartwatch with basic features", "Smartwatch",
-//                "1.1 inches", "Blue"));
-//        return products;
-//    }
-//
-//    private static List<Monitor> generateMockDataMonitor() {
-//        List<Monitor> products = new ArrayList<>();
-//        // Mock data for monitors
-//        products.add(new Monitor(8, "Monitor A", 399, 40,
-//                new ArrayList<>(), "Brand S", "Model 8", "High-quality monitor for gaming and multimedia", "Monitor",
-//                144, "27 inches", "2560x1440"));
-//        products.add(new Monitor(9, "Monitor B", 249, 60,
-//                new ArrayList<>(), "Brand R", "Model 9", "Budget-friendly monitor for everyday use", "Monitor",
-//                60, "24 inches", "1920x1080"));
-//        return products;
-//    }
->>>>>>> Stashed changes
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-    private static List<ShoppingCartObj> generateMockShoppingCartObjs() {
-        List<ShoppingCartObj> cartProducts = new ArrayList<>();
+            // Fetch category first
+            String getCategoryQuery = "SELECT category FROM smartphone WHERE productId=?";
+            PreparedStatement getCategoryStatement = connection.prepareStatement(getCategoryQuery);
+            getCategoryStatement.setString(1, productId);
+            resultSet = getCategoryStatement.executeQuery();
+            String category = null;
+            if (resultSet.next()) {
+                category = resultSet.getString("category");
+            }
 
-        cartProducts.add(new ShoppingCartObj("Monitor A", 399, 1,
-                "34 inches", ProductCategory.Monitor, "Images/Home/monitor.png", 1, "boy@gmail.com"));
-        cartProducts.add(new ShoppingCartObj("Smartphone X", 899, 2,
-                "256GB", ProductCategory.Smartphone, "Images/Home/phone.png", 2, "girl@gmail.com"));
-        cartProducts.add(new ShoppingCartObj("Laptop Y", 1299, 1,
-                "512GB", ProductCategory.Laptop, "Images/Home/laptop.png", 3, "bi@gmail.com"));
-        return cartProducts;
-    }
+            // Prepare SQL statement
+            String sql = "UPDATE " + category + " SET quantity=?, price=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
 
-    private static List<NewestProductObj> generateMockNewestItems() {
-        List<NewestProductObj> newestItems = new ArrayList<>();
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productId);
 
-        newestItems.add(new NewestProductObj(5, "Laptop Beta", 150000, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png"));
-        newestItems.add(new NewestProductObj(1, "Monitor A", 250000, "Images/ProductCategory&Details/Monitors/AsusProArtDisplayPA278CV.png"));
-        newestItems.add(new NewestProductObj(2, "Smartphone X", 100000, "Images/ProductCategory&Details/Phones/i14p.png"));
-        newestItems.add(new NewestProductObj(3, "Laptop Y", 250000, "Images/ProductCategory&Details/Laptops/HPSpectre.png"));
-        newestItems.add(new NewestProductObj(4, "Laptop Z", 350000, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png"));
-
-        return newestItems;
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+            }
+        }
     }
 
 }

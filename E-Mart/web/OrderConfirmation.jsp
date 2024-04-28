@@ -5,10 +5,14 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
 <%@page import="Controller.OrderConfirmationServlet"%>
+<%@page import="Controller.SendEmailServlet"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,8 +25,11 @@
         <script src="JS/Feedback-Rating.js" defer></script>
     </head>
     <body>
+        <input type="hidden" id="emailSent" value="<%= request.getAttribute("emailSent") %>">
+
         <%@ include file="Navbar.html" %>
         <div class="container">
+
             <div class="confirmation">
                 <h1>Thank you for your order!</h1>
                 <div class="order-summary">
@@ -57,6 +64,7 @@
                                             <span class="price">LKR 300,000</span>
                                         </div>-->
 
+
                     <div class="line"></div>
 
                     <div class="button-container">
@@ -76,26 +84,34 @@
                 </div>
             </div>
 
+
             <div class="feedback">
                 <h3>How was your shopping experience?</h3>
-                <form id="feedbackForm" action="FeedbackServlet" method="post">
-                    <div class="stars">
-                        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star1">
-                        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star2">
-                        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star3">
-                        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star4">
-                        <img src="Images/OrderConfirmation/Star-Empty.png" alt="Star" class="star" id="star5">
-                    </div>
-                    <input type="hidden" id="feedbackValue" name="feedback" value="">
-                </form>
-                <div class="submit-feedback" onclick="alert('Thank you for your feedback!');" style="background-color: black; margin-top:50px; border: 1px solid grey; color: #fff; padding: 6px 12px; font-size: 10px; text-transform: uppercase; cursor: pointer; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.3s, color 0.3s;" onmouseover="this.style.backgroundColor = '#78909c'" onmouseout="this.style.backgroundColor = 'black'">
-                    Submit Feedback
-                </div>
 
+                <!-- Star rating section -->
+                <div class="stars">
+                    <fieldset class="rating">
+                        <input type="radio" id="star5" name="rating" value="5"/><label for="star5" class="full" title="Awesome"></label>
+                        <input type="radio" id="star4" name="rating" value="4"/><label for="star4" class="full"></label>
+                        <input type="radio" id="star3" name="rating" value="3"/><label for="star3" class="full"></label>
+                        <input type="radio" id="star2" name="rating" value="2"/><label for="star2" class="full"></label>
+                        <input type="radio" id="star1" name="rating" value="1"/><label for="star1" class="full"></label>
+                    </fieldset>
+                </div>
+                <!-- Submit button -->
+                <div>
+                    <button type="button" class="submit-feedback" onclick="submitFeedback()">
+                        Submit Feedback
+                    </button>
+                </div>
+                
             </div>
 
-        </div>
+       
+            </div>
+        
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
+        <script src="JS/Email.js"></script>
     </body>
 </html>
