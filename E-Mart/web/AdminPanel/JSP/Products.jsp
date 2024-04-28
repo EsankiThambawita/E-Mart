@@ -19,6 +19,8 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/horizontal-menu.css"/>
+
     </head>
     <body>
         <div class="left-section">
@@ -31,18 +33,15 @@
             </div>
             <div class="container">
                 <h1>Products</h1>
-                <div class="dropdown">
-                    <button class="dropbtn">Product Categories</button>
-                    <div class="dropdown-content">
-                        <a href="#" onclick="showProducts('Smartphones')">Smartphones</a>
-                        <a href="#" onclick="showProducts('Laptops')">Laptops</a>
-                        <a href="#" onclick="showProducts('Cameras')">Cameras</a>
-                        <a href="#" onclick="showProducts('Monitors')">Monitors</a>
-                        <a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a>
-                    </div>
-                </div>
+                <ul class="horizontal-menu">
+                    <li><a href="#" onclick="showProducts('Smartphones')">Smartphones</a></li>
+                    <li><a href="#" onclick="showProducts('Laptops')">Laptops</a></li>
+                    <li><a href="#" onclick="showProducts('Cameras')">Cameras</a></li>
+                    <li><a href="#" onclick="showProducts('Monitors')">Monitors</a></li>
+                    <li><a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a></li>
+                </ul>
 
-                <table>
+                <table id="product-table">
                     <thead>
                         <tr>
                             <th>Product ID</th>
@@ -54,15 +53,12 @@
                         </tr>
                     </thead>
 
-                    <tbody>
-                        <% 
+
+                    <tbody id="product-table-body">
+                        <% DAO.getSmartphoneDetails();
                         List<Smartphone> products = DAO.getAllSmartphones();
                         for (Smartphone item : products) {
                         %>
-
-
-
-
 
                         <tr>
                             <td><%= item.getProductId() %></td>
@@ -114,17 +110,7 @@
                 </div>
             </div>
         </div>
-        <script>
-            function openForm(productId) {
-                var formId = "myForm_" + productId;
-                document.getElementById(formId).style.display = "block";
-            }
-
-            function closeForm(productId) {
-                var formId = "myForm_" + productId;
-                document.getElementById(formId).style.display = "none";
-            }
-        </script>            
-        <!--        <script src="/AdminPanel/JS/form.js"></script>-->
+                   
+        <script src="/AdminPanel/JS/form.js"></script>
     </body>
 </html>
