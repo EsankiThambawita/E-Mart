@@ -6,15 +6,16 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.AdminOrderObj"%>
+<%@page import="Controller.DeleteAdminOrder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Orders</title>
-        <link rel="stylesheet" href="/AdminPanel/CSS/Orders.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/Orders.css"/>        
     </head>
     <body>
         <div class="left-section">
@@ -32,8 +33,8 @@
                         <tr>
                             <th>Date</th>
                             <th>Order ID</th>
-                            <th>Customer Name</th>
-                            <th>Products</th>
+                            <th>Customer Email</th>
+                            <th class="products">Products</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Feedback</th>
@@ -50,17 +51,20 @@
                         <tr>
                             <td>1/23/2024</td>
                             <td><%= order.getOrderDate() %></td>
-                            <td><%= order.getCustomerName() %></td>
-                            <td><%= 1 %></td>
-                            <td><%=  1 %></td>
-                            <td>$<%= 1  %></td>
-                            <td>4 star</td>
-                            <td>Processing</td>
+                            <td><%= order.getEmail() %></td>
+                            <td><%= order.getProductName() %></td>
+                            <td><%= order.getQuantity() %></td>
+                            <td>LKR <%= order.getTotalPrice() %></td>
+                            <td><%= order.getFeedback()  %> Stars</td>
+                            <td><%= order.getOrderStatus()  %></td>
                             <td><button>Processing</button>
                                 <button>Delivering</button>
                                 <button>Delivered</button>
                             </td>
-                            <td><button>Delete</button></td>
+                            <td><form action="/DeleteAdminOrder" method="post">
+                                    <input type="hidden" name="orderId" value="<%= order.getOrderNumber() %>">
+                                    <button type="submit">Delete</button>
+                                </form></td>
                         </tr>
                         <% } %>
                     </tbody>

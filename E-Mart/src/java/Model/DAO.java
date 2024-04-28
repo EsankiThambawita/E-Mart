@@ -48,7 +48,7 @@ public class DAO {
             while (resultSet.next()) {
                 int productId = resultSet.getInt("productId");
                 String productName = resultSet.getString("productName");
-                float price = resultSet.getFloat("price");
+                int price = resultSet.getInt("price");
                 int quantity = resultSet.getInt("quantity");
                 String brand = resultSet.getString("brand");
                 String modelName = resultSet.getString("modelName");
@@ -243,7 +243,15 @@ public class DAO {
             statement = connection.createStatement();
 
             // SQL query to fetch from smartphone
-            String query = "SELECT * FROM orders where orderId = 1 ";
+            String query = "SELECT o.*, "
+                    + "CASE "
+                    + "  WHEN o.productId IN (SELECT productId FROM camera) THEN (SELECT productName FROM camera WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM smartphone) THEN (SELECT productName FROM smartphone WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM smartwatch) THEN (SELECT productName FROM smartwatch WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM laptop) THEN (SELECT productName FROM laptop WHERE productId = o.productId) "
+                    + "  WHEN o.productId IN (SELECT productId FROM monitor) THEN (SELECT productName FROM monitor WHERE productId = o.productId) "
+                    + "END AS productName "
+                    + "FROM orders o";
 
             // Executing the query
             resultSet = statement.executeQuery(query);
@@ -256,14 +264,16 @@ public class DAO {
                 java.util.Date orderDate = resultSet.getDate("orderDate");
                 String orderStatus = resultSet.getString("orderStatus");
                 int totalPrice = resultSet.getInt("totalPrice");
-                String shippingAddress = resultSet.getString("shippingAddress");
-                String billingAddress = resultSet.getString("billingAddress");
-                String customerName = resultSet.getString("customerName");
+                String shippingAddress = resultSet.getString("address");
+                String customerName = resultSet.getString("name");
                 String feedback = resultSet.getString("feedback");
+                String email = resultSet.getString("email");
+                String productName = resultSet.getString("productName"); // Retrieve product name
 
                 // Creating Smartphone object and adding it to the list
                 AdminOrderObj order = new AdminOrderObj(orderDate, orderNumber, orderStatus, productId, quantity,
-                        totalPrice, shippingAddress, billingAddress, customerName, feedback);
+                        totalPrice, shippingAddress, customerName, feedback, email);
+                order.setProductName(productName);
                 orders.add(order);
             }
 
@@ -288,294 +298,16 @@ public class DAO {
         return orders;
     }
 
-    public static List<Camera> getCameraDetails() {
-        List<Camera> cameraDetails = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch from smartphone
-            String query = "SELECT * FROM camera WHERE productId = 1 ";
-
-            // Executing the query
-            resultSet = statement.executeQuery(query);
-
-            // Iterating over the result set and adding items from smartphone
-            while (resultSet.next()) {
-                String productName = resultSet.getString("productName");
-                int quantity = resultSet.getInt("quantity");
-
-                Camera product = new Camera();
-                product.setProductName(productName);
-                product.setQuantity(quantity);
-                cameraDetails.add(product);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-        } finally {
-            // Closing the connection, statement, and result set
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-            }
+    public static void removeOrderItem(int orderId) {
+        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM orders WHERE orderId = ?")) {
+            statement.setInt(1, orderId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error while deleting order: " + e.getMessage());
         }
-        return cameraDetails;
     }
-    
-    public static List<Laptop> getLaptopDetails() {
-        List<Laptop> Details = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
 
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch from smartphone
-            String query = "SELECT * FROM Laptop WHERE productId = 1 ";
-
-            // Executing the query
-            resultSet = statement.executeQuery(query);
-
-            // Iterating over the result set and adding items from smartphone
-            while (resultSet.next()) {
-                String productName = resultSet.getString("productName");
-                int quantity = resultSet.getInt("quantity");
-
-                Laptop product = new Laptop();
-                product.setProductName(productName);
-                product.setQuantity(quantity);
-                Details.add(product);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-        } finally {
-            // Closing the connection, statement, and result set
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-            }
-        }
-        return Details;
-    }
-    
-    public static List<Monitor> getMonitorDetails() {
-        List<Monitor> Details = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch from smartphone
-            String query = "SELECT * FROM Monitor WHERE productId = 1 ";
-
-            // Executing the query
-            resultSet = statement.executeQuery(query);
-
-            // Iterating over the result set and adding items from smartphone
-            while (resultSet.next()) {
-                String productName = resultSet.getString("productName");
-                int quantity = resultSet.getInt("quantity");
-
-                Monitor product = new Monitor();
-                product.setProductName(productName);
-                product.setQuantity(quantity);
-                Details.add(product);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-        } finally {
-            // Closing the connection, statement, and result set
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-            }
-        }
-        return Details;
-    }
-    
-    public static List<Smartphone> getSmartphoneDetails() {
-        List<Smartphone> Details = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch from smartphone
-            String query = "SELECT * FROM Smartphone WHERE productId = 1 ";
-
-            // Executing the query
-            resultSet = statement.executeQuery(query);
-
-            // Iterating over the result set and adding items from smartphone
-            while (resultSet.next()) {
-                String productName = resultSet.getString("productName");
-                int quantity = resultSet.getInt("quantity");
-
-                Smartphone product = new Smartphone();
-                product.setProductName(productName);
-                product.setQuantity(quantity);
-                Details.add(product);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-        } finally {
-            // Closing the connection, statement, and result set
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-            }
-        }
-        return Details;
-    }
-    
-    public static List<Smartwatch> getSmartwatchDetails() {
-        List<Smartwatch> Details = new ArrayList<>();
-        Connection connection = null;
-        Statement statement = null;
-        ResultSet resultSet = null;
-        try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch from smartphone
-            String query = "SELECT * FROM Smartwatch WHERE productId = 1 ";
-
-            // Executing the query
-            resultSet = statement.executeQuery(query);
-
-            // Iterating over the result set and adding items from smartphone
-            while (resultSet.next()) {
-                String productName = resultSet.getString("productName");
-                int quantity = resultSet.getInt("quantity");
-
-                Smartwatch product = new Smartwatch();
-                product.setProductName(productName);
-                product.setQuantity(quantity);
-                Details.add(product);
-            }
-
-        } catch (Exception e) {
-            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-        } finally {
-            // Closing the connection, statement, and result set
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
-            }
-        }
-        return Details;
-    }
-    
-    
-//MOCK DATA
-    private static List<ShoppingCartObj> generateMockShoppingCartObjs() {
-        List<ShoppingCartObj> cartProducts = new ArrayList<>();
-
-        cartProducts.add(new ShoppingCartObj("Monitor A", 399, 1,
-                "34 inches", ProductCategory.Monitor, "Images/Home/monitor.png", 1, "boy@gmail.com"));
-        cartProducts.add(new ShoppingCartObj("Smartphone X", 899, 2,
-                "256GB", ProductCategory.Smartphone, "Images/Home/phone.png", 2, "girl@gmail.com"));
-        cartProducts.add(new ShoppingCartObj("Laptop Y", 1299, 1,
-                "512GB", ProductCategory.Laptop, "Images/Home/laptop.png", 3, "bi@gmail.com"));
-        return cartProducts;
-    }
-//
-
-//    private static List<NewestProductObj> generateMockNewestItems() {
-//        List<NewestProductObj> newestItems = new ArrayList<>();
-//
-//        newestItems.add(new NewestProductObj(5, "Laptop Beta", 150000, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png"));
-//        newestItems.add(new NewestProductObj(1, "Monitor A", 250000, "Images/ProductCategory&Details/Monitors/AsusProArtDisplayPA278CV.png"));
-//        newestItems.add(new NewestProductObj(2, "Smartphone X", 100000, "Images/ProductCategory&Details/Phones/i14p.png"));
-//        newestItems.add(new NewestProductObj(3, "Laptop Y", 250000, "Images/ProductCategory&Details/Laptops/HPSpectre.png"));
-//        newestItems.add(new NewestProductObj(4, "Laptop Z", 350000, "Images/ProductCategory&Details/Laptops/AcerChromebookSpin.png"));
-//
-//        return newestItems;
-//    }
-
-    public static void updateProduct(String productId, int quantity, double price) {
+    public static void updateProduct(String productId, int quantity, int price) {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -587,7 +319,7 @@ public class DAO {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             // Fetch category first
-            String getCategoryQuery = "SELECT category FROM products WHERE productId=?";
+            String getCategoryQuery = "SELECT category FROM smartphone WHERE productId=?";
             PreparedStatement getCategoryStatement = connection.prepareStatement(getCategoryQuery);
             getCategoryStatement.setString(1, productId);
             resultSet = getCategoryStatement.executeQuery();
@@ -608,7 +340,7 @@ public class DAO {
             // Execute update
             statement.executeUpdate();
         } catch (SQLException e) {
-            e.printStackTrace();
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
@@ -624,7 +356,7 @@ public class DAO {
                     connection.close();
                 }
             } catch (SQLException e) {
-                e.printStackTrace();
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
             }
         }
     }

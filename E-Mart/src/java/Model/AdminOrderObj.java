@@ -5,13 +5,13 @@
 package Model;
 
 import java.util.Date;
-import java.util.List;
 
 /**
  *
  * @author robin
  */
 public class AdminOrderObj {
+
     private Date orderDate;
     private int orderNumber;
     private String orderStatus;
@@ -19,11 +19,12 @@ public class AdminOrderObj {
     private int quantity;
     private int totalPrice;
     private String shippingAddress;
-    private String billingAddress;
     private String customerName;
     private String feedback;
+    private String email;
+    private String productName;
 
-    public AdminOrderObj(Date orderDate, int orderNumber, String orderStatus, int productId, int quantity, int totalPrice, String shippingAddress, String billingAddress, String customerName, String feedback) {
+    public AdminOrderObj(Date orderDate, int orderNumber, String orderStatus, int productId, int quantity, int totalPrice, String shippingAddress, String customerName, String feedback, String email) {
         this.orderDate = orderDate;
         this.orderNumber = orderNumber;
         this.orderStatus = orderStatus;
@@ -31,12 +32,26 @@ public class AdminOrderObj {
         this.quantity = quantity;
         this.totalPrice = totalPrice;
         this.shippingAddress = shippingAddress;
-        this.billingAddress = billingAddress;
         this.customerName = customerName;
         this.feedback = feedback;
+        this.email = email;
     }
-    
-    
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
     public Date getOrderDate() {
         return orderDate;
@@ -94,14 +109,6 @@ public class AdminOrderObj {
         this.shippingAddress = shippingAddress;
     }
 
-    public String getBillingAddress() {
-        return billingAddress;
-    }
-
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
-    }
-
     public String getCustomerName() {
         return customerName;
     }
@@ -117,6 +124,13 @@ public class AdminOrderObj {
     public void setFeedback(String feedback) {
         this.feedback = feedback;
     }
+
+    void setProductName(String productName) {
+        this.productName = productName;
+    }
     
-    
+    public String getProductName() {
+        return productName;
+    }
+
 }
