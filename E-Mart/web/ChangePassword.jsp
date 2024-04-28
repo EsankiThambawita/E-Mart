@@ -54,7 +54,7 @@
     <div class="body-wrapper">
         <div style="color: red;"><%= errorMessage %></div>
         <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
-            <a href="Profile.jsp">Go to Profile</a>
+            <a href="Profile.jsp">Back to Profile</a>
             <h2 style="text-align: center;">Change Password</h2>
 
             <br><label for="email">Email Address:</label>
