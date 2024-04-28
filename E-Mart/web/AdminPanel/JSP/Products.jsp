@@ -17,12 +17,13 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/Products.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
-        <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/horizontal-menu.css"/>
 
+
     </head>
     <body>
+       
         <div class="left-section">
             <%@ include file="Menu.html" %>
         </div>
@@ -53,9 +54,9 @@
                         </tr>
                     </thead>
 
-
-                    <tbody id="product-table-body">
-                        <% DAO.getSmartphoneDetails();
+                  
+                    <tbody>
+                        <% 
                         List<Smartphone> products = DAO.getAllSmartphones();
                         for (Smartphone item : products) {
                         %>
@@ -70,6 +71,7 @@
                                 <button class="button1" onclick="openForm('<%= item.getProductId() %>')">
                                     <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
                                 </button>
+
 
                                 <!-- The form -->
                                 <div class="form-popup" id="myForm_<%= item.getProductId() %>">
@@ -93,13 +95,23 @@
                                     </form>
                                 </div>
 
-                                <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
+
+                    </tr>
+                    <% } %>
+
+                                <!-- Delete button -->
+                                <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
+                                    <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/>
+                                </button>
+                               <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
+
                             </td>
 
                         </tr>
                         <% } %>
                     </tbody>
                 </table>
+  
                 <button class="add-products-btn">Add More Products</button>
                 <div class="pagination">
                     <span>Pages:</span>
@@ -110,7 +122,22 @@
                 </div>
             </div>
         </div>
-                   
-        <script src="/AdminPanel/JS/form.js"></script>
+
+        <script>
+            function openForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "block";
+            }
+
+            function closeForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "none";
+            }
+        </script>            
+
+        <script src="/AdminPanel/JS/products.js"></script>
+        <script src="/AdminPanel/JS/delete.js"></script>
+
     </body>
+
 </html>
