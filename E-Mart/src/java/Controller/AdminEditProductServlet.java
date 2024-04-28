@@ -4,14 +4,14 @@
  */
 package Controller;
 
-import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import Model.DAO;
+
 
 /**
  *
@@ -23,10 +23,6 @@ public class AdminEditProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        // Forward the request to the form.jsp
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminPanel/JSP/form.jsp");
-        dispatcher.forward(request, response);
     
     }
 
@@ -34,7 +30,18 @@ public class AdminEditProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        // Retrieve form data
+        String productId = request.getParameter("productId");
+        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        double price = Double.parseDouble(request.getParameter("price"));
+        String category = request.getParameter("category");
+
+        // Update database
+        DAO.updateProduct(productId, quantity, price); 
+
+        // Redirect back to the page where the form was submitted from
+        response.sendRedirect("Products.jsp");
+    
     }
 
 }
