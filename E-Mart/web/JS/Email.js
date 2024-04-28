@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', function() {
     if (emailSent) {
         alert("Email sent successfully!");
     } else {
-        alert("Failed to send email. Please try again later.");
+        alert("Failed to send the email. Please try again later.");
     }
 });
 
