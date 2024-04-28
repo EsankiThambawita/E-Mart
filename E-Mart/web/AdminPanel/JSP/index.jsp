@@ -19,13 +19,18 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/dashboard.css"/>
     </head>
     <body>
+        <div class="dropdown">
+          <button class="dropbtn">Products</button>
+          <div class="dropdown-content">
+            <a href="#">Smartphones</a>
+            <a href="#">Laptops</a>
+            <a href="#">Cameras</a>
+            <a href="#">Monitors</a>
+            <a href="#">Smartwatches</a>
+          </div>
+        </div>
         
-        <% 
-            List<Smartphone> products = DAO.getAllSmartphones();
-            for (Smartphone item : products) {
-        %>
-        <p><%= item.getColor() %></p>
-        <% } %>
+        
         <!--        <div class="left-section">
         
     </div>
