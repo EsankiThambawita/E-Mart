@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -22,7 +23,11 @@ public class AdminEditProductServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
+        // Forward the request to the form.jsp
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/AdminPanel/JSP/form.jsp");
+        dispatcher.forward(request, response);
+    
     }
 
 
