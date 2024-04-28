@@ -77,6 +77,7 @@
             </div>
             
             <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
+<<<<<<< Updated upstream
             <div class="form-group">
                 <label><i class="fab fa-cc-visa"></i> Card Type:</label><br>
                 <select name="cardType" required>
@@ -104,6 +105,58 @@
             </div>
             
             <input type="submit" value="Submit Payment" class="btn btn-darkblue">
+=======
+             <div class="form-group">
+               <label for="cashOnDelivery">Cash on Delivery</label>
+                  <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cod" checked>
+              </div>
+
+                <input type="submit" value="Submit Payment" class="btn btn-darkblue" onclick="redirectToOrderConfirmation()">
+
+             </div>
+            </form>
+        </div>
+
+
+        <!-- Adding Cart functionality -->
+        <script>
+            function addToCart(productName, productPrice) {
+                document.getElementById("productName").value = productName;
+                document.getElementById("productPrice").value = productPrice;
+                document.getElementById("action").value = "add";
+                document.getElementById("cartForm").submit();
+            }
+
+            function removeFromCart(productName) {
+                document.getElementById("productName").value = productName;
+                document.getElementById("action").value = "remove";
+                document.getElementById("cartForm").submit();
+            }
+
+            function updateCart(productName, productPrice) {
+                var quantity = document.getElementById(productName).value;
+                document.getElementById("productName").value = productName;
+                document.getElementById("productPrice").value = productPrice;
+                document.getElementById("quantity").value = quantity;
+                document.getElementById("action").value = "update";
+                document.getElementById("cartForm").submit();
+            }
+            
+              function redirectToOrderConfirmation() {
+              window.location.href = "OrderConfirmation.jsp";
+              }
+           </script>
+
+            
+           
+        </script>
+
+        <form id="cartForm" action="CartControllerServlet" method="post" style="display: none;">
+            <input type="hidden" id="productName" name="productName">
+            <input type="hidden" id="productPrice" name="productPrice">
+            <input type="hidden" id="quantity" name="quantity" value="1">
+            <input type="hidden" id="action" name="action">
+>>>>>>> Stashed changes
         </form>
     </div>
     
