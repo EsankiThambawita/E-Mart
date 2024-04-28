@@ -16,10 +16,17 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/Products.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
+<<<<<<< Updated upstream
         <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
          <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
+=======
+        <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/horizontal-menu.css"/>
+
+>>>>>>> Stashed changes
     </head>
     <body>
+       
         <div class="left-section">
             <%@ include file="Menu.html" %>
         </div>
@@ -30,6 +37,7 @@
             </div>
             <div class="container">
                 <h1>Products</h1>
+<<<<<<< Updated upstream
                 <div class="dropdown">
                   <button class="dropbtn">Product Categories</button>
                   <div class="dropdown-content">
@@ -40,6 +48,16 @@
                     <a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a>
                   </div>
                 </div>
+=======
+                <ul class="horizontal-menu">
+                    <li><a href="#" onclick="showProducts('Smartphones')">Smartphones</a></li>
+                    <li><a href="#" onclick="showProducts('Laptops')">Laptops</a></li>
+                    <li><a href="#" onclick="showProducts('Cameras')">Cameras</a></li>
+                    <li><a href="#" onclick="showProducts('Monitors')">Monitors</a></li>
+                    <li><a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a></li>
+                </ul>
+        
+>>>>>>> Stashed changes
 
                 <table>
                     <thead>
@@ -52,6 +70,7 @@
                             <th>Action</th>
                         </tr>
                     </thead>
+<<<<<<< Updated upstream
                   
                     <tbody>
                         <% DAO.getSmartphoneDetails();
@@ -74,6 +93,30 @@
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
                             </button>
                                 
+=======
+
+                    <tbody>
+                        <% 
+                        List<Smartphone> products = DAO.getAllSmartphones();
+                        for (Smartphone item : products) {
+                        %>
+
+
+
+
+
+                        <tr>
+                            <td><%= item.getProductId() %></td>
+                            <td><%= item.getProductName() %></td>
+                            <td><%= item.getCategory() %></td>
+                            <td><%= item.getQuantity() %></td>
+                            <td><%= item.getPrice() %></td>
+                            <td>
+                                <button class="button1" onclick="openForm('<%= item.getProductId() %>')">
+                                    <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
+                                </button>
+
+>>>>>>> Stashed changes
                                 <!-- The form -->
                                 <div class="form-popup" id="myForm">
                                     <form action="AdminEditProductServlet" class="form-container" method="post">
@@ -99,8 +142,19 @@
                             <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
                         </td>
 
+<<<<<<< Updated upstream
                     </tr>
                     <% } %>
+=======
+                                <!-- Delete button -->
+                                <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
+                                    <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/>
+                                </button>
+                            </td>
+
+                        </tr>
+                        <% } %>
+>>>>>>> Stashed changes
                     </tbody>
                 </table>
                 <button class="add-products-btn">Add More Products</button>
@@ -113,6 +167,25 @@
                 </div>
             </div>
         </div>
+<<<<<<< Updated upstream
         <script src="/AdminPanel/JS/form.js"></script>
+=======
+        <script>
+            function openForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "block";
+            }
+
+            function closeForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "none";
+            }
+        </script>            
+
+        <script src="/AdminPanel/JS/products.js"></script>
+        <script src="/AdminPanel/JS/delete.js"></script>
+
+>>>>>>> Stashed changes
     </body>
+
 </html>
