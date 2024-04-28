@@ -59,56 +59,35 @@
                             </div>
                         </a>
                     </div>
-                    <table>
+                    <br>
+                    <h1>Profile</h1>
+                    <%
+        SignUpUser user = (SignUpUser) request.getAttribute("user");
+        if (user != null) {
+                    %>
+                    <p>Name: <%= user.getUsername() %></p>
+                    <br>
+                    <p>Email: <%= user.getEmail() %></p>
+                    <br>
+                    <p>Password: <%= user.getPassword() %></p>
+                    <br>
+                    <p> Contact Number:<%= user.getContactNumber() %></p>
+                    <!-- Add more fields as needed -->
+                    <% } else { %>
+                      <p>Name: </p>
+                    <br>
+                    <p>Email: </p>
+                    <br>
+                    <p>Password: </p>
+                    <br>
+                    <p> Contact Number:</p>
+                    <% } %>
 
-                        <th><h1>Profile</h1></th> 
-
-                        <tr>
-
-                            <th>Name</th>
-                            <th>Email</th>
-                        </tr>
-                        <%
-                              SignUpUser user = (SignUpUser) request.getAttribute("user");
-                              if (user != null) {
-                        %>
-                         <tr>
-
-                            <td> <input type="text" id="username" name="username" value="<%= user.getUsername() %>"></td>  
-                            <td><input type="email" id="email" name="email" value="<%= user.getEmail() %>"></td>
-                        </tr>
-                          <%
-                         } else {
-                        %>
-                        <%
-                            }
-                        %>
-                       
-                        <tr>
-                            <th>Password</th>
-
-                            <th>Contact Number</th>
-                        </tr>
-                         <%
-                          if (user != null) {
-                            %>
-                        <tr>
-                            <td><input type="password" id="password" name="password" value="<%= user.getPassword() %>"></td>
-
-                            <td> <input type="tel" id="contact-number" name="ContactNumber" value="<%= user.getContactNumber() %>"></td>
-                        </tr>
-                         <%
-                         } else {
-                        %>
-                        <%
-                            }
-                        %>
-                    </table><br>
                     <table>
                         <tr>
                             <td>
                                 <div class="button-row change-email">
-                                    <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image?</label>
+                                    <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image</label>
                                     <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" style="display: none;">
                                 </div>
                             </td>
