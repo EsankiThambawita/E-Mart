@@ -361,4 +361,38 @@ public class DAO {
         }
     }
 
+    public static void deleteProduct(String productId) {
+    Connection connection = null;
+    PreparedStatement statement = null;
+
+    try {
+        // Establishing connection to the database
+        connection = getConnection();
+
+        // Prepare SQL statement to delete the product
+        String sql = "DELETE FROM smartphone WHERE productId = ?";
+        statement = connection.prepareStatement(sql);
+
+        // Set the productId parameter
+        statement.setString(1, productId);
+
+        // Execute the delete statement
+        statement.executeUpdate();
+    } catch (SQLException e) {
+        System.err.println("Error while deleting product: " + e.getMessage());
+    } finally {
+        // Close resources
+        try {
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            System.err.println("Error while closing connection: " + e.getMessage());
+        }
+    }
+    }
+
 }
