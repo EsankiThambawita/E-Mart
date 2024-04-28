@@ -68,9 +68,12 @@
                         <td>$<%= item.getPrice() %></td>
                         <td>In Stock</td>
                         <td>
-                            <button class="button1"><img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/></button>
+                            <button class="button1" onclick="handleEditButtonClick('<%= item.getProductId() %>')">
+                                <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
+                            </button>
                             <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
                         </td>
+
                     </tr>
                     <% } %>
                     </tbody>

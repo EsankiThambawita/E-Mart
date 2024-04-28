@@ -3,15 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-function showProducts(category) {
-        // Send an AJAX request to fetch products of the selected category
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                // Update the table with the received data
-                document.getElementById("productTable").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "getProducts.jsp?category=" + category, true);
-        xhttp.send();
-    }
+function handleEditButtonClick(productId) {
+    // Redirect to the EditProductServlet with the productId as a parameter
+    window.location.href = "/yourappname/EditProductServlet?productId=" + productId;
+}
+
