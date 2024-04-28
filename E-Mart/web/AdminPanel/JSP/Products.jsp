@@ -50,6 +50,8 @@
                     List<Smartphone> products = DAO.getAllSmartphones();
                     for (Smartphone item : products) {
                     %>
+                    
+                    
                     <tr>
                         <td><%= item.getProductId() %></td>
                         <td><%= item.getProductName() %></td>
