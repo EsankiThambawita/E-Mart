@@ -74,13 +74,13 @@
                     <p> Contact Number:<%= user.getContactNumber() %></p>
                     <!-- Add more fields as needed -->
                     <% } else { %>
-                      <p>Name: </p>
+                    <p><span style="font-weight: bold;">Name:</span> <%= session.getAttribute("username")%></p>
                     <br>
-                    <p>Email: </p>
+                    <p><span style="font-weight: bold;">Email:</span><%= session.getAttribute("email")%> </p>
                     <br>
-                    <p>Password: </p>
+                    <p><span style="font-weight: bold;">Password:</span><%= session.getAttribute("password")%> </p>
                     <br>
-                    <p> Contact Number:</p>
+                    <p> <span style="font-weight: bold;">Contact Number:</span><%= session.getAttribute("contactNumber")%></p>
                     <% } %>
 
                     <table>
