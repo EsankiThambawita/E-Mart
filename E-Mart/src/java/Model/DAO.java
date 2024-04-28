@@ -7,6 +7,8 @@ package Model;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -572,4 +574,59 @@ public class DAO {
 //
 //        return newestItems;
 //    }
+
+    public static void updateProduct(String productId, int quantity, double price) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+        ResultSet resultSet = null;
+
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Fetch category first
+            String getCategoryQuery = "SELECT category FROM products WHERE productId=?";
+            PreparedStatement getCategoryStatement = connection.prepareStatement(getCategoryQuery);
+            getCategoryStatement.setString(1, productId);
+            resultSet = getCategoryStatement.executeQuery();
+            String category = null;
+            if (resultSet.next()) {
+                category = resultSet.getString("category");
+            }
+
+            // Prepare SQL statement
+            String sql = "UPDATE " + category + " SET quantity=?, price=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 }
