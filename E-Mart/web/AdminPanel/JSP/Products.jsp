@@ -8,6 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.Smartphone"%>
+<%@page import="Controller.AdminEditProductServlet"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -17,7 +18,7 @@
         <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css"/>
         <link rel="stylesheet" href="/AdminPanel/CSS/dropdown.css"/>
-         <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
+        <link rel="stylesheet" href="/AdminPanel/CSS/form.css"/>
     </head>
     <body>
         <div class="left-section">
@@ -31,14 +32,14 @@
             <div class="container">
                 <h1>Products</h1>
                 <div class="dropdown">
-                  <button class="dropbtn">Product Categories</button>
-                  <div class="dropdown-content">
-                    <a href="#" onclick="showProducts('Smartphones')">Smartphones</a>
-                    <a href="#" onclick="showProducts('Laptops')">Laptops</a>
-                    <a href="#" onclick="showProducts('Cameras')">Cameras</a>
-                    <a href="#" onclick="showProducts('Monitors')">Monitors</a>
-                    <a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a>
-                  </div>
+                    <button class="dropbtn">Product Categories</button>
+                    <div class="dropdown-content">
+                        <a href="#" onclick="showProducts('Smartphones')">Smartphones</a>
+                        <a href="#" onclick="showProducts('Laptops')">Laptops</a>
+                        <a href="#" onclick="showProducts('Cameras')">Cameras</a>
+                        <a href="#" onclick="showProducts('Monitors')">Monitors</a>
+                        <a href="#" onclick="showProducts('Smartwatches')">Smartwatches</a>
+                    </div>
                 </div>
 
                 <table>
@@ -52,31 +53,31 @@
                             <th>Action</th>
                         </tr>
                     </thead>
-                  
+
                     <tbody>
-                        <% DAO.getSmartphoneDetails();
+                        <% 
                         List<Smartphone> products = DAO.getAllSmartphones();
                         for (Smartphone item : products) {
                         %>
-                       
-                       
-                        
-                        
-                        
-                    <tr>
-                        <td><%= item.getProductId() %></td>
-                        <td><%= item.getProductName() %></td>
-                        <td><%= item.getCategory() %></td>
-                        <td><%= item.getQuantity() %></td>
-                        <td><%= item.getPrice() %></td>
-                        <td>
-                            <button class="button1" onclick="openForm()">
-                                <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
-                            </button>
-                                
+
+
+
+
+
+                        <tr>
+                            <td><%= item.getProductId() %></td>
+                            <td><%= item.getProductName() %></td>
+                            <td><%= item.getCategory() %></td>
+                            <td><%= item.getQuantity() %></td>
+                            <td><%= item.getPrice() %></td>
+                            <td>
+                                <button class="button1" onclick="openForm('<%= item.getProductId() %>')">
+                                    <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;"/>
+                                </button>
+
                                 <!-- The form -->
-                                <div class="form-popup" id="myForm">
-                                    <form action="AdminEditProductServlet" class="form-container" method="post">
+                                <div class="form-popup" id="myForm_<%= item.getProductId() %>">
+                                    <form action="/AdminEditProductServlet" class="form-container" method="post">
                                         <h1>Edit Product</h1>
 
                                         <label for="pieces"><b>Quantity</b></label>
@@ -85,7 +86,7 @@
                                         <label for="price"><b>Price</b></label>
                                         <input type="number" step="0.01" placeholder="Enter Price" name="price" required><br>
 
-                                         <!-- Hidden input field to store the product ID -->
+                                        <!-- Hidden input field to store the product ID -->
                                         <input type="hidden" name="productId" value="<%= item.getProductId() %>">
 
                                         <!-- Hidden input field to store the category -->
@@ -95,12 +96,12 @@
                                         <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
                                     </form>
                                 </div>
-                                
-                            <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
-                        </td>
 
-                    </tr>
-                    <% } %>
+                                <button class="button2"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;"/></button>
+                            </td>
+
+                        </tr>
+                        <% } %>
                     </tbody>
                 </table>
                 <button class="add-products-btn">Add More Products</button>
@@ -113,6 +114,17 @@
                 </div>
             </div>
         </div>
-        <script src="/AdminPanel/JS/form.js"></script>
+        <script>
+            function openForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "block";
+            }
+
+            function closeForm(productId) {
+                var formId = "myForm_" + productId;
+                document.getElementById(formId).style.display = "none";
+            }
+        </script>            
+        <!--        <script src="/AdminPanel/JS/form.js"></script>-->
     </body>
 </html>

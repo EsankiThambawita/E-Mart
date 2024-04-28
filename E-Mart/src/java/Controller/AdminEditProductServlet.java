@@ -33,14 +33,14 @@ public class AdminEditProductServlet extends HttpServlet {
         // Retrieve form data
         String productId = request.getParameter("productId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
-        double price = Double.parseDouble(request.getParameter("price"));
+        int price = Integer.parseInt(request.getParameter("price"));
         String category = request.getParameter("category");
 
         // Update database
         DAO.updateProduct(productId, quantity, price); 
 
         // Redirect back to the page where the form was submitted from
-        response.sendRedirect("Products.jsp");
+        response.sendRedirect("/AdminPanel/JSP/Products.jsp");
     
     }
 
