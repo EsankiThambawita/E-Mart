@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.mail.*;
 import jakarta.mail.internet.*;
 import java.util.Properties;
-import jakarta.activation.*;
+
 
 
 
@@ -31,7 +31,7 @@ public class SendEmailServlet extends HttpServlet {
             throws ServletException, IOException {
             // Set up mail server
             String host = "smtp.gmail.com";
-            String from = "esankilakvindee2000@gmail.com";
+            String from = "emart9005@gmail.com";
             String to = "esankilakvindee2000@gmail.com";
             String subject = "Order Confirmation";
             String messageText = "Thank you for your order!";
