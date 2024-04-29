@@ -12,6 +12,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -35,8 +36,12 @@ public class AdminLoginServlet extends HttpServlet {
 
         // Check if the password is correct
         if ("emart24051".equals(Password)) {
-            
-            response.sendRedirect("/AdminPanel/JSP/Menu.jsp");
+            // Create a session
+            HttpSession session = request.getSession();
+            // Store user information in session
+            session.setAttribute("email", Email);
+            // Redirect to profile page
+            response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Profile.jsp");
         } else {
             // Password is incorrect, display an error message
             request.setAttribute("errorMessage", "Incorrect password");
@@ -45,8 +50,6 @@ public class AdminLoginServlet extends HttpServlet {
 
         AdminLogin login = new AdminLogin();
         login.insertloginData(Email, Password);
-
-       
 
     }
 
