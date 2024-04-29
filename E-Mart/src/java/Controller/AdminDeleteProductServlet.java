@@ -26,7 +26,7 @@ public class AdminDeleteProductServlet extends HttpServlet {
         // Call your DAO method to delete the product from the database
         DAO.deleteProduct(productId);
         // Redirect back to the products page
-        response.sendRedirect("Products.jsp");
+        response.sendRedirect("/AdminPanel/JSP/Products.jsp");
     }
 
   
