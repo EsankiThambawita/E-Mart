@@ -10,14 +10,12 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.mail.*;
-import jakarta.mail.internet.*;
-import java.util.Properties;
-
-
-
-
-
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 /**
  *
@@ -29,51 +27,60 @@ public class SendEmailServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            // Set up mail server
-            String host = "smtp.gmail.com";
-            String from = "emart9005@gmail.com";
-            String to = "esankilakvindee2000@gmail.com";
-            String subject = "Order Confirmation";
-            String messageText = "Thank you for your order!";
+        PrintWriter out= response.getWriter();   
+        String apiKey = "mlsn.1e09da5329b79f474aff9bc3ccb8ddc06df779561f248f8fc202c9764dea4a33";
+        String senderEmail = "MS_1iz77E@trial-k68zxl2enw9lj905.mlsender.net";
+        String recipientEmail = "esankilakvindee2000@gmail.com";
 
-            Properties properties = new Properties();
-            properties.setProperty("mail.smtp.host", host);
-            properties.setProperty("mail.smtp.auth", "true");
-            properties.setProperty("mail.smtp.starttls.enable", "true");
-            properties.setProperty("mail.smtp.port", "587"); 
+        String url = "https://api.mailersend.com/v1/email";
+        String payload = "{\n" +
+                "    \"from\": {\n" +
+                "        \"email\": \"" + senderEmail + "\"\n" +
+                "    },\n" +
+                "    \"to\": [\n" +
+                "        {\n" +
+                "            \"email\": \"" + recipientEmail + "\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"subject\": \"Hello from MailerSend!\",\n" +
+                "    \"text\": \"Greetings from the team, you got this message through MailerSend.\",\n" +
+                "    \"html\": \"Greetings from the team, you got this message through MailerSend.\"\n" +
+                "}";
 
-            // Create Authenticator object to authenticate the sender's email and password
-            Authenticator authenticator = new Authenticator() {
-                @Override
-                protected PasswordAuthentication getPasswordAuthentication() {
-                    return new PasswordAuthentication(from, "emart2024");
-                }
-            };
+        try {
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-            // Get session
-            Session session = Session.getInstance(properties, authenticator);
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+            con.setRequestProperty("Authorization", "Bearer " + apiKey);
 
-            // Create message
-            MimeMessage message = new MimeMessage(session);
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(payload);
+            wr.flush();
+            wr.close();
 
-            try {
-                // Set the from, to, subject, and message text
-                message.setFrom(new InternetAddress(from));
-                message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-                message.setSubject(subject);
-                message.setText(messageText);
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
 
-                // Send message
-                Transport.send(message);
-                System.out.println("Email sent successfully");
-                
-                request.setAttribute("emailSent", true);
-                
-            } catch (MessagingException mex) {
-                mex.printStackTrace();
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder MailResponse = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                MailResponse.append(inputLine);
             }
+            in.close();
+
+            out.println("Response : " + MailResponse.toString());
+        } catch (IOException e) {
+            out.println(e.toString());
         }
     
+    }
+
     }
 
    
