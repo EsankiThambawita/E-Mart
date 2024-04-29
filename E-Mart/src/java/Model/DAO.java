@@ -395,4 +395,44 @@ public class DAO {
     }
     }
 
+    public static void addProduct(String productId, String productName, String category, int quantity, double price) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            // Get connection
+            connection = getConnection();
+
+            // Create SQL query
+            String query = "INSERT INTO smartphone (productId, productName, category, quantity, price) VALUES (?, ?, ?, ?, ?)";
+
+            // Create PreparedStatement
+            statement = connection.prepareStatement(query);
+
+            // Set parameters
+            statement.setString(1, productId);
+            statement.setString(2, productName);
+            statement.setString(3, category);
+            statement.setInt(4, quantity);
+            statement.setDouble(5, price);
+
+            // Execute the query
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle or log the exception appropriately
+        } finally {
+            // Close the connection and statement
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle or log the exception appropriately
+            }
+        }
+    }
+
 }
