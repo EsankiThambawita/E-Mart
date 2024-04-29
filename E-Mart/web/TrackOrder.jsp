@@ -120,7 +120,7 @@
                         </div>
                         <div class="tracking-milestones">
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon active" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
+                                <img class="tracking-mile-icon inactive" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
                                 <p class="tracking-mile-des">Order Processing</p>
                             </div>
                             <div class="tracking-mile">
