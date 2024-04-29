@@ -31,7 +31,7 @@
             <%@ include file="navbar.html" %>
         </div>
         <div class="container" style="width:2000px;">
-            <h1>Products</h1>
+            <h1>Cameras</h1>
             <ul class="horizontal-menu">
                 <li><a href="/AdminPanel/JSP/Products.jsp">Smartphones</a></li>
                 <li><a href="/AdminPanel/JSP/Laptop.jsp">Laptops</a></li>
@@ -79,7 +79,7 @@
                         <td><%= item.getBrand() %></td>
                         <td><%= item.getModelName() %></td>
                         <td><%= item.getProductDescription() %></td>
-                        <td>..</td>
+                        <td><%= item.getFormFactor() %></td>
                         <td>
                             <button class="button1" onclick="openForm('<%= item.getProductId() %>')">
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;">
