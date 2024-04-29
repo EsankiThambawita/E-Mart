@@ -547,60 +547,54 @@ public class DAO {
         }
     }
 
-    public static void updateProduct(String productId, int quantity, int price) {
-        Connection connection = null;
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
+    public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color) {
+    Connection connection = null;
+    PreparedStatement statement = null;
 
+    try {
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        // Establishing connection to the database
+        connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+        // Prepare SQL statement
+        String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=? WHERE productId=?";
+        statement = connection.prepareStatement(sql);
+
+        // Set parameters
+        statement.setInt(1, quantity);
+        statement.setDouble(2, price);
+        statement.setString(3, productName);
+        statement.setString(4, brand);
+        statement.setString(5, modelName);
+        statement.setString(6, productDescription);
+        statement.setString(7, storageCapacity);
+        statement.setString(8, screenSize);
+        statement.setString(9, color);
+        statement.setString(10, productId);
+
+        // Execute update
+        statement.executeUpdate();
+    } catch (SQLException e) {
+        Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+    } finally {
+        // Close resources
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-
-            // Establishing connection to the database
-            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-            // Fetch category first
-            String getCategoryQuery = "SELECT category FROM smartphone WHERE productId=?";
-            PreparedStatement getCategoryStatement = connection.prepareStatement(getCategoryQuery);
-            getCategoryStatement.setString(1, productId);
-            resultSet = getCategoryStatement.executeQuery();
-            String category = null;
-            if (resultSet.next()) {
-                category = resultSet.getString("category");
+            if (statement != null) {
+                statement.close();
             }
-
-            // Prepare SQL statement
-            String sql = "UPDATE " + category + " SET quantity=?, price=? WHERE productId=?";
-            statement = connection.prepareStatement(sql);
-
-            // Set parameters
-            statement.setInt(1, quantity);
-            statement.setDouble(2, price);
-            statement.setString(3, productId);
-
-            // Execute update
-            statement.executeUpdate();
+            if (connection != null) {
+                connection.close();
+            }
         } catch (SQLException e) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            // Close resources
-            try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            }
         }
     }
+}
 
+    
     public static void deleteProduct(String productId) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -634,6 +628,41 @@ public class DAO {
             }
         }
     }
+    
+    public static void deleteLaptop(String productId) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            // Establishing connection to the database
+            connection = getConnection();
+
+            // Prepare SQL statement to delete the product
+            String sql = "DELETE FROM laptop WHERE productId = ?";
+            statement = connection.prepareStatement(sql);
+
+            // Set the productId parameter
+            statement.setString(1, productId);
+
+            // Execute the delete statement
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error while deleting product: " + e.getMessage());
+        } finally {
+            // Close resources
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while closing connection: " + e.getMessage());
+            }
+        }
+    }
+
 
     public static void addProduct(String productId, String productName, String category, int quantity, int price) {
         Connection connection = null;
