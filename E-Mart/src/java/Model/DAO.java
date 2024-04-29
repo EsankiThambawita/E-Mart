@@ -58,10 +58,12 @@ public class DAO {
                 Double screenSize = resultSet.getDouble("screenSize");
                 String color = resultSet.getString("color");
                 String photo1 = resultSet.getString("photo1");
-                //to be added more photos (photo2,photo3,photo4)
+                String photo2 = resultSet.getString("photo2");
+                String photo3 = resultSet.getString("photo3");
+                String photo4 = resultSet.getString("photo4");
 
                 // Creating Smartphone object and adding it to the list
-                Smartphone smartphone = new Smartphone(productId, productName, price, quantity, photo1,
+                Smartphone smartphone = new Smartphone(productId, productName, price, quantity, photo1,photo2,photo3, photo4,
                         brand, modelName, productDescription, category, storageCapacity, screenSize, color);
                 products.add(smartphone);
             }
@@ -87,26 +89,264 @@ public class DAO {
         return products;
     }
 
-    //TODO
-//    public static List<Laptop> getAllLaptops() {
-//        return generateMockDataLaptop();
-//        //TODO: add real sql code
-//    }
-//
-//    public static List<Camera> getAllCamera() {
-//        return generateMockDataCamera();
-//        //TODO: add real sql code
-//    }
-//
-//    public static List<Smartwatch> getAllSmartwatches() {
-//        return generateMockDataSmartwatches();
-//        //TODO: add real sql code
-//    }
-//
-//    public static List<Monitor> getAllMonitor() {
-//        return generateMockDataMonitor();
-//        //TODO: add real sql code
-//    }
+    public static List<Laptop> getAllLaptops() {
+        List<Laptop> products = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch from smartphone
+            String query = "SELECT * FROM laptop";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("productId");
+                String productName = resultSet.getString("productName");
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity");
+                String photo1 = resultSet.getString("photo1");
+                String photo2 = resultSet.getString("photo2");
+                String photo3 = resultSet.getString("photo3");
+                String photo4 = resultSet.getString("photo4");
+                String brand = resultSet.getString("brand");
+                String modelName = resultSet.getString("modelName");
+                String productDescription = resultSet.getString("productDescription");
+                String category = resultSet.getString("category");
+                String storageCapacity = resultSet.getString("storageCapacity");
+                String CPU = resultSet.getString("CPU");
+                String memory = resultSet.getString("memory");
+
+                // Creating Smartphone object and adding it to the list
+                Laptop laptop = new Laptop( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
+                brand,  modelName,  productDescription,  category, storageCapacity,  CPU,  memory);
+                products.add(laptop);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return products;
+    }
+
+    public static List<Camera> getAllCamera() {
+        List<Camera> products = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch from smartphone
+            String query = "SELECT * FROM camera";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("productId");
+                String productName = resultSet.getString("productName");
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity");
+                String photo1 = resultSet.getString("photo1");
+                String photo2 = resultSet.getString("photo2");
+                String photo3 = resultSet.getString("photo3");
+                String photo4 = resultSet.getString("photo4");
+                String brand = resultSet.getString("brand");
+                String modelName = resultSet.getString("modelName");
+                String productDescription = resultSet.getString("productDescription");
+                String category = resultSet.getString("category");
+                String formFactor = resultSet.getString("formFactor");
+
+                // Creating Smartphone object and adding it to the list
+                Camera camera = new Camera( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
+                brand,  modelName,  productDescription,  category, formFactor);
+                products.add(camera);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return products;
+    }
+
+    public static List<Smartwatch> getAllSmartwatches() {
+        List<Smartwatch> products = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch from smartphone
+            String query = "SELECT * FROM smartwatch";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("productId");
+                String productName = resultSet.getString("productName");
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity");
+                String photo1 = resultSet.getString("photo1");
+                String photo2 = resultSet.getString("photo2");
+                String photo3 = resultSet.getString("photo3");
+                String photo4 = resultSet.getString("photo4");
+                String brand = resultSet.getString("brand");
+                String modelName = resultSet.getString("modelName");
+                String productDescription = resultSet.getString("productDescription");
+                String category = resultSet.getString("category");
+                String screenSize = resultSet.getString("screenSize");
+                String color = resultSet.getString("color");
+
+                // Creating Smartphone object and adding it to the list
+                Smartwatch smartwatch = new Smartwatch( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
+                brand,  modelName,  productDescription,  category, screenSize, color);
+                products.add(smartwatch);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return products;
+    }
+
+    public static List<Monitor> getAllMonitor() {
+        List<Monitor> products = new ArrayList<>();
+        Connection connection = null;
+        Statement statement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            statement = connection.createStatement();
+
+            // SQL query to fetch from smartphone
+            String query = "SELECT * FROM monitor";
+
+            // Executing the query
+            resultSet = statement.executeQuery(query);
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int productId = resultSet.getInt("productId");
+                String productName = resultSet.getString("productName");
+                int price = resultSet.getInt("price");
+                int quantity = resultSet.getInt("quantity");
+                String photo1 = resultSet.getString("photo1");
+                String photo2 = resultSet.getString("photo2");
+                String photo3 = resultSet.getString("photo3");
+                String photo4 = resultSet.getString("photo4");
+                String brand = resultSet.getString("brand");
+                String modelName = resultSet.getString("modelName");
+                String productDescription = resultSet.getString("productDescription");
+                String category = resultSet.getString("category");
+                String screenSize = resultSet.getString("screenSize");
+                int refreshRate = resultSet.getInt("refreshRate");
+                String resolution = resultSet.getString("resolution");
+
+                // Creating Smartphone object and adding it to the list
+                Monitor monitor = new Monitor( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
+                brand,  modelName,  productDescription,  category,  refreshRate,screenSize, resolution);
+                products.add(monitor);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return products;
+    }
+    
+    
     public static List<ShoppingCartObj> getAllCartItems() {
         List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
         Connection connection = null;
@@ -362,41 +602,41 @@ public class DAO {
     }
 
     public static void deleteProduct(String productId) {
-    Connection connection = null;
-    PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-    try {
-        // Establishing connection to the database
-        connection = getConnection();
-
-        // Prepare SQL statement to delete the product
-        String sql = "DELETE FROM smartphone WHERE productId = ?";
-        statement = connection.prepareStatement(sql);
-
-        // Set the productId parameter
-        statement.setString(1, productId);
-
-        // Execute the delete statement
-        statement.executeUpdate();
-    } catch (SQLException e) {
-        System.err.println("Error while deleting product: " + e.getMessage());
-    } finally {
-        // Close resources
         try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            // Establishing connection to the database
+            connection = getConnection();
+
+            // Prepare SQL statement to delete the product
+            String sql = "DELETE FROM smartphone WHERE productId = ?";
+            statement = connection.prepareStatement(sql);
+
+            // Set the productId parameter
+            statement.setString(1, productId);
+
+            // Execute the delete statement
+            statement.executeUpdate();
         } catch (SQLException e) {
-            System.err.println("Error while closing connection: " + e.getMessage());
+            System.err.println("Error while deleting product: " + e.getMessage());
+        } finally {
+            // Close resources
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while closing connection: " + e.getMessage());
+            }
         }
-    }
     }
 
     public static void addProduct(String productId, String productName, String category, int quantity, int price) {
-         Connection connection = null;
+        Connection connection = null;
         PreparedStatement statement = null;
 
         try {

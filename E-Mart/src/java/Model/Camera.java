@@ -14,10 +14,10 @@ public class Camera extends BaseProduct {
 
     private String formFactor;
 
-    public Camera(int productId, String productName, int price, int quantity, String photos,
+    public Camera(int productId, String productName, int price, int quantity, String photo1, String photo2,String photo3,String photo4,
             String brand, String modelName, String productDescription, String category,
             String formFactor) {
-        super(productId, productName, price, quantity, photos, brand, modelName, productDescription, category);
+        super(productId, productName, price, quantity, photo1,photo2,photo3, photo4, brand, modelName, productDescription, category);
         this.formFactor = formFactor;
     }
 
