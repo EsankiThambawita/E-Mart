@@ -4,6 +4,7 @@
  */
 package Controller;
 
+import Model.AdminLogin;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -22,39 +23,32 @@ public class AdminLoginServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
 
-            // Check if email and password are not empty
-            if (email != null && !email.isEmpty() && password != null && !password.isEmpty()) {
-                // Implement logic to check if the email and password match an admin profile
-                if (isValidAdmin(email, password)) {
-                    // Redirect to Products.jsp if the admin is valid
-                    response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Products.jsp");
-                } else {
-                    // Redirect back to the login page with an error message
-                    response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Login.jsp?error=invalid");
-                }
-            } else {
-                // Redirect back to the login page with an error message if email or password is empty
-                response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Login.jsp?error=empty");
-            }
+        String Email = request.getParameter("email");
+        String Password = request.getParameter("password");
+
+        // Check if the password is correct
+        if ("emart24051".equals(Password)) {
+            
+            response.sendRedirect("/AdminPanel/JSP/Menu.jsp");
+        } else {
+            // Password is incorrect, display an error message
+            request.setAttribute("errorMessage", "Incorrect password");
+            request.getRequestDispatcher("/AdminPanel/JSP/Login.jsp").forward(request, response);
         }
 
-        // Method to validate admin credentials (replace with your actual validation logic)
-        private boolean isValidAdmin(String email, String password) {
-            // Implement your logic to validate the admin credentials here
-            // For example, check if the email and password match an admin profile in the database
-            // Return true if the admin is valid, false otherwise
-            return false; // Placeholder return value
-        }
-    
+        AdminLogin login = new AdminLogin();
+        login.insertloginData(Email, Password);
+
+       
+
+    }
 
     @Override
     public String getServletInfo() {

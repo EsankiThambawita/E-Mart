@@ -1,4 +1,7 @@
-
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package Model;
 
 import java.sql.*;
@@ -674,25 +677,13 @@ public class DAO {
     public static void UpdateOrderStatus(int orderId, String orderStatus) {
         Connection connection = null;
         PreparedStatement statement = null;
-        ResultSet resultSet = null;
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
             // Establishing connection to the database
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            // Fetch current order status
-            String query = "SELECT orderStatus FROM orders WHERE orderId=?";
-            PreparedStatement getOrderStatus = connection.prepareStatement(query);
-            getOrderStatus.setInt(1, orderId);
-            resultSet = getOrderStatus.executeQuery();
-            String currentOrderStatus = null;
-            if (resultSet.next()) {
-                currentOrderStatus = resultSet.getString("orderStatus");
-            }
-
             // Prepare SQL statement
-            String sql = "UPDATE " + currentOrderStatus + " SET orderStatus=? WHERE orderId=?";
+            String sql = "UPDATE orders SET orderStatus=? WHERE orderId=?";
             statement = connection.prepareStatement(sql);
 
             // Set parameters
@@ -704,14 +695,9 @@ public class DAO {
         } catch (SQLException e) {
             // Log the exception with additional context information
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Error updating order status", e);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             // Close resources in reverse order of acquisition
             try {
-                if (resultSet != null) {
-                    resultSet.close();
-                }
                 if (statement != null) {
                     statement.close();
                 }

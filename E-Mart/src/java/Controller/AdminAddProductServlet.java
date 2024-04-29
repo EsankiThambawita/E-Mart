@@ -12,36 +12,36 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import Model.DAO;
 
-
 /**
  *
  * @author Esanki Lakvindee
  */
-@WebServlet(name = "AdminEditProductServlet", urlPatterns = {"/AdminEditProductServlet"})
-public class AdminEditProductServlet extends HttpServlet {
+@WebServlet(name = "AdminAddProductServlet", urlPatterns = {"/AdminAddProductServlet"})
+public class AdminAddProductServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-    
+        
     }
 
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Retrieve form data
-        String productId = request.getParameter("productId");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
-        int price = Integer.parseInt(request.getParameter("price"));
-        String category = request.getParameter("category");
+            // Retrieve form inputs
+            String productId = request.getParameter("productId");
+            String productName = request.getParameter("productName");
+            String category = request.getParameter("category");
+            int quantity = Integer.parseInt(request.getParameter("pieces"));
+            int price = Integer.parseInt(request.getParameter("price"));
 
-        // Update database
-        DAO.updateProduct(productId, quantity, price); 
+            // Call DAO method to add the product to the database
+            DAO.addProduct(productId, productName, category, quantity, price);
 
-        // Redirect back to the page where the form was submitted from
-        response.sendRedirect("/AdminPanel/JSP/Products.jsp");
-    
+            // Redirect back to the products page or any other appropriate page
+            response.sendRedirect("/AdminPanel/JSP/Products.jsp");
+
     }
 
 }

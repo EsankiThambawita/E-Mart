@@ -1,13 +1,13 @@
 <%-- 
-    Document   : Products
-    Created on : Apr 20, 2024, 7:46:23 PM
+    Document   : Smartwatch
+    Created on : Apr 29, 2024, 5:11:39 PM
     Author     : Esanki Lakvindee
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
-<%@page import="Model.Smartphone"%>
+<%@page import="Model.Smartwatch"%>
 <%@page import="Controller.AdminEditProductServlet"%>
 <!DOCTYPE html>
 <html>
@@ -31,7 +31,7 @@
             <%@ include file="navbar.html" %>
         </div>
         <div class="container" style="width:2000px;">
-            <h1>Smartphones</h1>
+            <h1>Smartwatches</h1>
             <ul class="horizontal-menu">
                 <li><a href="/AdminPanel/JSP/Products.jsp">Smartphones</a></li>
                 <li><a href="/AdminPanel/JSP/Laptop.jsp">Laptops</a></li>
@@ -39,6 +39,8 @@
                 <li><a href="/AdminPanel/JSP/Monitor.jsp">Monitors</a></li>
                 <li><a href="/AdminPanel/JSP/Smartwatch.jsp">Smartwatches</a></li>
             </ul>
+
+
 
             <table id="product-table">
                 <thead>
@@ -55,7 +57,6 @@
                         <th>Brand</th>
                         <th>Model Name</th>
                         <th>Product Description</th>
-                        <th>Storage Capacity</th>
                         <th>Screen Size</th>
                         <th>Color</th>
                         <th>Action</th>
@@ -63,8 +64,8 @@
                 </thead>
                 <tbody>
                     <% 
-                    List<Smartphone> products = DAO.getAllSmartphones();
-                    for (Smartphone item : products) {
+                    List<Smartwatch> products = DAO.getAllSmartwatches();
+                    for (Smartwatch item : products) {
                     %>
                     <tr>
                         <td><%= item.getProductId() %></td>
@@ -79,7 +80,6 @@
                         <td><%= item.getBrand() %></td>
                         <td><%= item.getModelName() %></td>
                         <td><%= item.getProductDescription() %></td>
-                        <td><%= item.getStorageCapacity() %></td>
                         <td><%= item.getScreenSize() %></td>
                         <td><%= item.getColor() %></td>
                         <td>

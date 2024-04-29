@@ -89,6 +89,19 @@ public class SignUpServlet extends HttpServlet {
             // Save to the database
             userDao userDao = new userDao(); // Create an instance of userDao
             userDao.insertDetails(email, username, password, contactNumber);
+             // Generate unique UserID
+            String userID = UUID.randomUUID().toString();
+            // Set session attributes
+            HttpSession session = request.getSession();
+            session.setAttribute("username", username);
+            session.setAttribute("email", email);
+            session.setAttribute("password", password);
+            session.setAttribute("contactNumber", contactNumber);
+
+            // Set cookie with UserID
+            Cookie cookie = new Cookie("UserID", userID);
+            cookie.setMaxAge(24 * 60 * 60); 
+
                 // Redirect to profile page
         response.sendRedirect("ProfileServlet?email=" + email);
    

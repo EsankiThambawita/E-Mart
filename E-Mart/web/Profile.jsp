@@ -69,65 +69,63 @@
                     <br>
                     <p>Email: <%= user.getEmail() %></p>
                     <br>
-                    <p>Password: <%= user.getPassword() %></p>
-                    <br>
                     <p> Contact Number:<%= user.getContactNumber() %></p>
                     <!-- Add more fields as needed -->
                     <% } else { %>
-                      <p>Name: </p>
+                    <p><span style="font-weight: bold;">Name:</span> <%= session.getAttribute("username")%></p>
                     <br>
-                    <p>Email: </p>
+                    <p><span style="font-weight: bold;">Email:</span><%= session.getAttribute("email")%> </p>
                     <br>
-                    <p>Password: </p>
-                    <br>
-                    <p> Contact Number:</p>
+                    <p> <span style="font-weight: bold;">Contact Number:</span><%= session.getAttribute("contactNumber")%></p>
                     <% } %>
+                    <form action="ProfilePictureServlet" method="post" enctype="multipart/form-data">
+                        <table>
+                            <tr>
+                                <td>
+                                    <div class="button-row change-email">
+                                        <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image</label>
+                                        <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" style="display: none;">
+                                    </div>
+                                </td>
+                                <td>
+                                    <a href="ChangePassword.jsp" style="color: #59E3FF;">Change Password</a>
+                                </td>
+                            </tr> 
+                        </table>
+                    </form>
+                        <br>
+                        <p style="text-align: center;"><a href="Home.jsp" style="color: white;">Back To Home</a></p>
+                        <script>
+                            window.onload = function () {
+                                let profilePic = document.getElementById("profile-pic");
+                                let inputFile = document.getElementById("input-file");
+                                let chooseFile = document.getElementById("choose-file");
 
-                    <table>
-                        <tr>
-                            <td>
-                                <div class="button-row change-email">
-                                    <label for="input-file" style="color: #59E3FF; text-decoration: underline; cursor: pointer;">Update Image</label>
-                                    <input type="file" accept="image/jpeg, image/png, image/jpg" id="input-file" style="display: none;">
-                                </div>
-                            </td>
-                            <td>
-                                <a href="ChangePassword.jsp" style="color: #59E3FF;">Change Password</a>
-                            </td>
-                        </tr> 
-                    </table>
+                                inputFile.onchange = function () {
+                                    if (validateFile(inputFile)) {
+                                        profilePic.src = URL.createObjectURL(inputFile.files[0]);
+                                    } else {
+                                        input.value = ""; // Clear the file input field if validation fails
+                                    }
+                                };
 
-                    <script>
-                        window.onload = function () {
-                            let profilePic = document.getElementById("profile-pic");
-                            let inputFile = document.getElementById("input-file");
-                            let chooseFile = document.getElementById("choose-file");
-
-                            inputFile.onchange = function () {
-                                if (validateFile(inputFile)) {
-                                    profilePic.src = URL.createObjectURL(inputFile.files[0]);
-                                } else {
-                                    input.value = ""; // Clear the file input field if validation fails
-                                }
+                                document.querySelector('label[for="input-file"]').addEventListener('click', function () {
+                                    chooseFile.click();
+                                });
                             };
 
-                            document.querySelector('label[for="input-file"]').addEventListener('click', function () {
-                                chooseFile.click();
-                            });
-                        };
+                            function validateFile(input) {
+                                var file = input.files[0];
+                                var allowedTypes = ["image/jpeg", "image/png", "image/jpg"]; // Allowed image types
 
-                        function validateFile(input) {
-                            var file = input.files[0];
-                            var allowedTypes = ["image/jpeg", "image/png", "image/jpg"]; // Allowed image types
-
-                            if (file && !allowedTypes.includes(file.type)) {
-                                // File is not an image, show an error message
-                                alert("Please select a valid image file (JPEG, PNG, JPG).");
-                                return false;
+                                if (file && !allowedTypes.includes(file.type)) {
+                                    // File is not an image, show an error message
+                                    alert("Please select a valid image file (JPEG, PNG, JPG).");
+                                    return false;
+                                }
+                                return true;
                             }
-                            return true;
-                        }
-                    </script>
+                        </script>
                 </div>
             </div>
         </div>
