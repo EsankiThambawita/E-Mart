@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/form.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/horizontal-menu.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/AddProducts.css">
 </head>
 <body>
     <div class="left-section">
@@ -92,7 +93,7 @@
                 <div class="modal-content">
                     <span class="close" onclick="closetheForm()">&times;</span>
                     <h2>Add Product</h2>
-                    <form id="addProductForm">
+                    <form id="addProductForm" method="POST" action="/AdminAddProductServlet">
                         <label for="productId">Product ID:</label>
                         <input type="text" id="productId" name="productId" required><br>
                         <label for="productName">Product Name:</label>
@@ -103,18 +104,18 @@
                         <input type="number" id="pieces" name="pieces" required><br>
                         <label for="price">Price:</label>
                         <input type="number" id="price" name="price" required><br>
-                        <button type="submit">Save</button>
+                        <button type="submit" onclick="saveProduct()">Save</button>
+
                     </form>
                 </div>
             </div>
 
-            <div class="pagination">
+            <!--<div class="pagination">
                 <span>Pages:</span>
                 <a href="#">1</a>
                 <a href="#">2</a>
-                <a href="#">3</a>
-                <!-- Add more pagination links here --> 
-            </div>
+                <a href="#">3</a> 
+            </div>-->
         </div>
     </div>
 

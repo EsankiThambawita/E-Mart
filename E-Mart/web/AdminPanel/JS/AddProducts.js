@@ -11,6 +11,12 @@ function saveProduct() {
     var pieces = document.getElementById("pieces").value;
     var price = document.getElementById("price").value;
 
+    // Validate form data
+    if (!productId || !productName || !category || !pieces || !price) {
+        alert("Please fill out all fields.");
+        return;
+    }
+
     // Create form data object
     var formData = new FormData();
     formData.append("productId", productId);
@@ -22,11 +28,21 @@ function saveProduct() {
     // AJAX request to servlet
     var xhr = new XMLHttpRequest();
     xhr.open("POST", "/AdminAddProductServlet", true);
+    xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     xhr.onreadystatechange = function() {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            // Reload the page after successful insertion
-            location.reload();
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                // Show success message after successful insertion
+                alert("New product added");
+                // Reload the page after successful insertion
+                location.reload();
+            } else {
+                // Show error message if insertion fails
+                alert("Failed to add new product. Please try again. Status: " + xhr.status);
+                console.error(xhr.statusText);
+            }
         }
     };
     xhr.send(formData); // Send form data to servlet
 }
+
