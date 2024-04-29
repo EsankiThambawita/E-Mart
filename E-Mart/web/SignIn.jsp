@@ -35,8 +35,6 @@
     <input type="password" id="password"  required>
     <label>8+ characters</label>
 </div>
-            
-            <br>
             <a href="#0">Forgot password?</a>
             
   <button class=" " type="submit">SIGN IN</button>
@@ -47,6 +45,8 @@
                 </div>
             <br>
             <p style="text-align: center;">New to E-Mart? <a href="SignUp.jsp">Sign up now</a></p>
+            <br>
+             <p style="text-align: center;"><a href="Home.jsp">Back To Home</a>
             <br>
         </form>  
     </div>
