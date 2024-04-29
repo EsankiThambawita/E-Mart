@@ -34,7 +34,7 @@ public class AdminAddProductServlet extends HttpServlet {
             String productName = request.getParameter("productName");
             String category = request.getParameter("category");
             int quantity = Integer.parseInt(request.getParameter("pieces"));
-            double price = Double.parseDouble(request.getParameter("price"));
+            int price = Integer.parseInt(request.getParameter("price"));
 
             // Call DAO method to add the product to the database
             DAO.addProduct(productId, productName, category, quantity, price);
