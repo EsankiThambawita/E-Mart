@@ -395,8 +395,8 @@ public class DAO {
     }
     }
 
-    public static void addProduct(String productId, String productName, String category, int quantity, double price) {
-        Connection connection = null;
+    public static void addProduct(String productId, String productName, String category, int quantity, int price) {
+         Connection connection = null;
         PreparedStatement statement = null;
 
         try {
@@ -414,7 +414,7 @@ public class DAO {
             statement.setString(2, productName);
             statement.setString(3, category);
             statement.setInt(4, quantity);
-            statement.setDouble(5, price);
+            statement.setInt(5, price);
 
             // Execute the query
             statement.executeUpdate();
