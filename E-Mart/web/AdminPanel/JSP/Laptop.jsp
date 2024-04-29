@@ -1,6 +1,6 @@
 <%-- 
-    Document   : Products
-    Created on : Apr 20, 2024, 7:46:23 PM
+    Document   : Laptop
+    Created on : Apr 29, 2024, 4:32:55 PM
     Author     : Esanki Lakvindee
 --%>
 
@@ -39,8 +39,6 @@
                 <li><a href="/AdminPanel/JSP/Monitor.jsp">Monitors</a></li>
                 <li><a href="/AdminPanel/JSP/Smartwatch.jsp">Smartwatches</a></li>
             </ul>
-
-
 
             <table id="product-table">
                 <thead>
