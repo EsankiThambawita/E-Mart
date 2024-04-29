@@ -54,6 +54,8 @@
     <div class="body-wrapper">
         <div style="color: red;"><%= errorMessage %></div>
         <form action="ChangePasswordController" onsubmit="return validation()" method="post" style="border: 2px solid #007bff; background-color: #1a1a1a; width: 600px; height: 450px;">
+              <input type="hidden" id="email" name="email" value="<%= request.getSession().getAttribute("email") %>">
+            <!-- Rest of your form -->
             <a href="Profile.jsp">Back to Profile</a>
             <h2 style="text-align: center;">Change Password</h2>
 
