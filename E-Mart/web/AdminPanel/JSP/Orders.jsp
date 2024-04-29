@@ -57,9 +57,13 @@
                             <td>LKR <%= order.getTotalPrice() %></td>
                             <td><%= order.getFeedback()  %> Stars</td>
                             <td><%= order.getOrderStatus()  %></td>
-                            <td><button>Processing</button>
-                                <button>Delivering</button>
-                                <button>Delivered</button>
+                            <td>
+                                <form action="/AdminEditOrderStatusServlet" method="post">
+                                    <input type="hidden" name="orderId" value="<%= order.getOrderNumber() %>">
+                                    <button type="submit" name="orderStatus" value="processing">Processing</button>
+                                    <button type="submit" name="orderStatus" value="delivering">Delivering</button>
+                                    <button type="submit" name="orderStatus" value="delivered">Delivered</button>
+                                </form>
                             </td>
                             <td><form action="/DeleteAdminOrder" method="post">
                                     <input type="hidden" name="orderId" value="<%= order.getOrderNumber() %>">
