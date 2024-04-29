@@ -225,3 +225,7 @@ body {
 .contact-link i {
     color: white;
 }
+
+.nav-link.support-link {
+    opacity: 1;
+}

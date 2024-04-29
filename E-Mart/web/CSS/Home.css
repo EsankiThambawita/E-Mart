@@ -383,3 +383,7 @@ a {
     justify-content: center;
     align-items: center;
 }
+
+.nav-link.home-link {
+    opacity: 1;
+}

@@ -31,8 +31,8 @@ nav {
     letter-spacing: 0.08em;
 }
 
-.nav-link.active {
-    opacity: 1;
+.nav-link:hover{
+    opacity: 1
 }
 
 .nav-actions {
@@ -59,13 +59,20 @@ nav {
     border-color: white;
 }
 
+.text-input-area:focus {
+    border-color: transparent; /* Set the border color to transparent when focused */
+    outline: none; /* Remove the outline that appears by default */
+    background-color: black;
+}
+
 .input-area-icon {
 }
 
 .text-input-area {
     padding: 7px;
-    background-color: transparent;
+    background-color: black;
     border: 0;
+    color: white;
 }
 
 .nav-action-buttons {

@@ -155,3 +155,7 @@ body {
 body {
     margin: 0;
 }
+
+.nav-link.aboutUs-link {
+    opacity: 1;
+}
