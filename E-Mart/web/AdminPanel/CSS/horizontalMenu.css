@@ -18,8 +18,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 10px;
     display: flex; /* Use flexbox for layout */
     max-width: 900px; /* Limit the maximum width of the menu */
-    margin-left: auto; /* Center the menu */
-    margin-right: auto; /* Center the menu */
+    
 }
 
 .horizontal-menu li {
