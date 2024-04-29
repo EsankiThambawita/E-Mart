@@ -63,7 +63,7 @@ public class DAO {
                 String photo4 = resultSet.getString("photo4");
 
                 // Creating Smartphone object and adding it to the list
-                Smartphone smartphone = new Smartphone(productId, productName, price, quantity, photo1,photo2,photo3, photo4,
+                Smartphone smartphone = new Smartphone(productId, productName, price, quantity, photo1, photo2, photo3, photo4,
                         brand, modelName, productDescription, category, storageCapacity, screenSize, color);
                 products.add(smartphone);
             }
@@ -128,8 +128,8 @@ public class DAO {
                 String memory = resultSet.getString("memory");
 
                 // Creating Smartphone object and adding it to the list
-                Laptop laptop = new Laptop( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
-                brand,  modelName,  productDescription,  category, storageCapacity,  CPU,  memory);
+                Laptop laptop = new Laptop(productId, productName, price, quantity, photo1, photo2, photo3, photo4,
+                        brand, modelName, productDescription, category, storageCapacity, CPU, memory);
                 products.add(laptop);
             }
 
@@ -191,8 +191,8 @@ public class DAO {
                 String formFactor = resultSet.getString("formFactor");
 
                 // Creating Smartphone object and adding it to the list
-                Camera camera = new Camera( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
-                brand,  modelName,  productDescription,  category, formFactor);
+                Camera camera = new Camera(productId, productName, price, quantity, photo1, photo2, photo3, photo4,
+                        brand, modelName, productDescription, category, formFactor);
                 products.add(camera);
             }
 
@@ -255,8 +255,8 @@ public class DAO {
                 String color = resultSet.getString("color");
 
                 // Creating Smartphone object and adding it to the list
-                Smartwatch smartwatch = new Smartwatch( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
-                brand,  modelName,  productDescription,  category, screenSize, color);
+                Smartwatch smartwatch = new Smartwatch(productId, productName, price, quantity, photo1, photo2, photo3, photo4,
+                        brand, modelName, productDescription, category, screenSize, color);
                 products.add(smartwatch);
             }
 
@@ -320,8 +320,8 @@ public class DAO {
                 String resolution = resultSet.getString("resolution");
 
                 // Creating Smartphone object and adding it to the list
-                Monitor monitor = new Monitor( productId,  productName,  price,  quantity, photo1,photo2,photo3, photo4,
-                brand,  modelName,  productDescription,  category,  refreshRate,screenSize, resolution);
+                Monitor monitor = new Monitor(productId, productName, price, quantity, photo1, photo2, photo3, photo4,
+                        brand, modelName, productDescription, category, refreshRate, screenSize, resolution);
                 products.add(monitor);
             }
 
@@ -345,8 +345,7 @@ public class DAO {
         }
         return products;
     }
-    
-    
+
     public static List<ShoppingCartObj> getAllCartItems() {
         List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
         Connection connection = null;
@@ -700,6 +699,43 @@ public class DAO {
                 }
             } catch (SQLException e) {
                 e.printStackTrace(); // Handle or log the exception appropriately
+            }
+        }
+    }
+
+    public static void UpdateOrderStatus(int orderId, String orderStatus) {
+        Connection connection = null;
+        PreparedStatement statement = null;
+
+        try {
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE orders SET orderStatus=? WHERE orderId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setString(1, orderStatus);
+            statement.setInt(2, orderId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            // Log the exception with additional context information
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Error updating order status", e);
+        } finally {
+            // Close resources in reverse order of acquisition
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                // Log the exception with additional context information
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, "Error closing resources", e);
             }
         }
     }
