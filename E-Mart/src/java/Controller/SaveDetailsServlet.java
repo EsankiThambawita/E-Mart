@@ -78,10 +78,10 @@ public class SaveDetailsServlet extends HttpServlet {
         //processRequest(request, response);
         // Retrieve form data
         String email = request.getParameter("email");
-        String username = request.getParameter("username");
-        String contactNumber = request.getParameter("contactNumber");
-        userDao.updateDetails(email, username, contactNumber);
-        response.sendRedirect("Profile.jsp");
+        String newusername = request.getParameter("username");
+        String newcontactNumber = request.getParameter("contactNumber");
+        userDao.updateDetails(email, newusername, newcontactNumber);
+        response.sendRedirect("Home.jsp");
     }
 
     /**
