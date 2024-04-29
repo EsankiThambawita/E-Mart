@@ -60,17 +60,12 @@ public class FeedbackServlet extends HttpServlet {
             throws ServletException, IOException {
             // Retrieve feedback value from request
             String feedbackValue = request.getParameter("feedback");
-            
-            // Get current date
-            java.util.Date date = new java.util.Date();
-            java.sql.Timestamp timestamp = new java.sql.Timestamp(date.getTime());
-
+     
             // Insert feedback into the database
             try {
                 Class.forName("com.mysql.cj.jdbc.Driver");
                 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/emart", "root", "");
-                PreparedStatement pst = con.prepareStatement("INSERT INTO feedback (date,feedback) VALUES (?, ?)");
-                pst.setTimestamp(1, timestamp);
+                PreparedStatement pst = con.prepareStatement("INSERT INTO orders (feedback) VALUES (?)");
                 pst.setString(2, feedbackValue);
                 pst.executeUpdate();
                 con.close();
