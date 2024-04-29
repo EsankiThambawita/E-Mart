@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
-<%@page import="Model.Smartphone"%>
+<%@page import="Model.Smartwatch"%>
 <%@page import="Controller.AdminEditProductServlet"%>
 <!DOCTYPE html>
 <html>
@@ -17,8 +17,8 @@
     <link rel="stylesheet" href="/AdminPanel/CSS/Products.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/horizontalMenu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/form.css">
-    <link rel="stylesheet" href="/AdminPanel/CSS/horizontal-menu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/AddProducts.css">
 </head>
 <body>
@@ -30,7 +30,7 @@
         <div class="navbar">
             <%@ include file="navbar.html" %>
         </div>
-        <div class="container">
+        <div class="container" style="width:2000px;">
             <h1>Products</h1>
             <ul class="horizontal-menu">
                 <li><a href="/AdminPanel/JSP/Products.jsp">Smartphones</a></li>
@@ -40,6 +40,8 @@
                 <li><a href="/AdminPanel/JSP/Smartwatch.jsp">Smartwatches</a></li>
             </ul>
 
+
+
             <table id="product-table">
                 <thead>
                     <tr>
@@ -48,13 +50,22 @@
                         <th>Category</th>
                         <th>Pieces</th>
                         <th>Price</th>
+                        <th>Photo 1</th>
+                        <th>Photo 2</th>
+                        <th>Photo 3</th>
+                        <th>Photo 4</th>
+                        <th>Brand</th>
+                        <th>Model Name</th>
+                        <th>Product Description</th>
+                        <th>Screen Size</th>
+                        <th>Color</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <% 
-                    List<Smartphone> products = DAO.getAllSmartphones();
-                    for (Smartphone item : products) {
+                    List<Smartwatch> products = DAO.getAllSmartwatches();
+                    for (Smartwatch item : products) {
                     %>
                     <tr>
                         <td><%= item.getProductId() %></td>
@@ -62,6 +73,15 @@
                         <td><%= item.getCategory() %></td>
                         <td><%= item.getQuantity() %></td>
                         <td><%= item.getPrice() %></td>
+                        <td><%= item.getPhoto1() %></td>
+                        <td><%= item.getPhoto2() %></td>
+                        <td><%= item.getPhoto3() %></td>
+                        <td><%= item.getPhoto4() %></td>
+                        <td><%= item.getBrand() %></td>
+                        <td><%= item.getModelName() %></td>
+                        <td><%= item.getProductDescription() %></td>
+                        <td><%= item.getScreenSize() %></td>
+                        <td></td>
                         <td>
                             <button class="button1" onclick="openForm('<%= item.getProductId() %>')">
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;">
@@ -143,4 +163,3 @@
     
 </body>
 </html>
-
