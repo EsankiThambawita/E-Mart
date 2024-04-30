@@ -136,7 +136,7 @@
 |2024-04-13 |Implementation of backend of Contact page, and css didnt apply to the checkout page                           | Implemented by using JS and deleted the old css file and restored with new new css Contact1.css
 |2024-04-18|form data wasnt being eneterd to the databse                        | reviewed the code and fixed it
 | 2024-04-27| when the submit button was pressed wasnt being directed to OrderConfirmation.jsp page | did some research, reviewd the code and fixed the issue
-
+|2024-04-30|Error was given trying to delte a customer record from the Customers.jsp in the Admin panel | So I reviewd the code and corrected it
 
 **6. Chanuka**
 
