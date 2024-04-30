@@ -663,45 +663,56 @@ public class DAO {
     }
 
 
-    public static void addProduct(String productId, String productName, String category, int quantity, int price) {
-        Connection connection = null;
-        PreparedStatement statement = null;
+    public static void addProduct(String productId, String productName, String category, int quantity, int price, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color) {
+    Connection connection = null;
+    PreparedStatement statement = null;
 
+    try {
+        // Get connection
+        connection = getConnection();
+
+        // Create SQL query
+        String query = "INSERT INTO products (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, screenSize, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+        // Create PreparedStatement
+        statement = connection.prepareStatement(query);
+
+        // Set parameters
+        statement.setString(1, productId);
+        statement.setString(2, productName);
+        statement.setString(3, category);
+        statement.setInt(4, quantity);
+        statement.setInt(5, price);
+        statement.setString(6, photo1);
+        statement.setString(7, photo2);
+        statement.setString(8, photo3);
+        statement.setString(9, photo4);
+        statement.setString(10, brand);
+        statement.setString(11, modelName);
+        statement.setString(12, productDescription);
+        statement.setString(13, storageCapacity);
+        statement.setString(14, screenSize);
+        statement.setString(15, color);
+
+        // Execute the query
+        statement.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace(); // Handle or log the exception appropriately
+    } finally {
+        // Close the connection and statement
         try {
-            // Get connection
-            connection = getConnection();
-
-            // Create SQL query
-            String query = "INSERT INTO smartphone (productId, productName, category, quantity, price) VALUES (?, ?, ?, ?, ?)";
-
-            // Create PreparedStatement
-            statement = connection.prepareStatement(query);
-
-            // Set parameters
-            statement.setString(1, productId);
-            statement.setString(2, productName);
-            statement.setString(3, category);
-            statement.setInt(4, quantity);
-            statement.setInt(5, price);
-
-            // Execute the query
-            statement.executeUpdate();
+            if (statement != null) {
+                statement.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
         } catch (SQLException e) {
             e.printStackTrace(); // Handle or log the exception appropriately
-        } finally {
-            // Close the connection and statement
-            try {
-                if (statement != null) {
-                    statement.close();
-                }
-                if (connection != null) {
-                    connection.close();
-                }
-            } catch (SQLException e) {
-                e.printStackTrace(); // Handle or log the exception appropriately
-            }
         }
     }
+}
+
 
     public static void UpdateOrderStatus(int orderId, String orderStatus) {
         Connection connection = null;
