@@ -29,7 +29,7 @@ public class Checkout {
 
     private void connectToDB() {
         String driver = "com.mysql.cj.jdbc.Driver";
-        String url = "jdbc:mysql://localhost:3306/checkoutdetails";
+        String url = "jdbc:mysql://localhost:3306/emart";
         
         try {
             Class.forName(driver);
