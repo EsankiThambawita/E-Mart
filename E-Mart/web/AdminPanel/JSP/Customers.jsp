@@ -3,6 +3,13 @@
     Created on : Apr 20, 2024, 9:18:18 PM
     Author     : Esanki Lakvindee
 --%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.SQLException"%>
+
+
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -28,26 +35,42 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Address</th>
                         <th>Email</th>
+                        <th>Username</th>
+                        <th>Password</th>
                         <th>Contact</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <% for (int i = 0; i < 10; i++) { %>
-                    <tr>
-                        <td>Customer <%= i + 1 %></td>
-                        <td><%= i + 1 %> Main St, City, Country</td>
-                        <td>customer<%= i + 1 %>@example.com</td>
-                        <td>123-456-<%= i * 1111 %></td>
-                        <td>
-                         <button class="editBtn">Edit</button>
-                         <button class="saveBtn" style="display: none;">Save</button>
-                        </td>
-                    </tr>
-                    <% } %>
+                     <% 
+                try {
+                    Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/emart", "root", "");
+                    Statement stmt = conn.createStatement();
+                    ResultSet rs = stmt.executeQuery("SELECT * FROM users");
+                    while (rs.next()) {
+                %>
+                <tr>
+                    <td><%= rs.getString("email") %></td>
+                    <td><%= rs.getString("username") %></td>
+                    <td><%= rs.getString("password") %></td>
+                     <td><%= rs.getString("contactNumber") %></td>
+                     <td>
+                        <form action="/AdminDeleteCustomerServlet" method="post">
+                        <input type="hidden" name="email" value="<%= rs.getString("email") %>">
+                        <button type="submit">Delete</button>
+                        </form>
+                       </td>                
+                </tr>
+                <% 
+                    }
+                    rs.close();
+                    stmt.close();
+                    conn.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+                %>
                 </tbody>
             </table>
         </div>
