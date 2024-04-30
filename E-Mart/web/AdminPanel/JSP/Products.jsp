@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/horizontalMenu.css">
-    <link rel="stylesheet" href="/AdminPanel/CSS/form.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/editForm.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/AddProducts.css">
 </head>
 <body>
