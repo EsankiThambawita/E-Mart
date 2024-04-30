@@ -8,7 +8,7 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.Laptop"%>
-<%@page import="Controller.AdminEditProductServlet"%>
+<%@page import="Controller.AdminEditLaptopServlet"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -89,17 +89,40 @@
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;">
                             </button>
                             <div class="form-popup" id="myForm_<%= item.getProductId() %>">
-                                <form action="/AdminEditProductServlet" class="form-container" method="post">
+                                <form action="/AdminEditLaptoptServlet" class="form-container" method="post">
                                     <h1>Edit Product</h1>
                                     <label for="pieces"><b>Quantity</b></label>
-                                    <input type="number" placeholder="Enter quantity" name="quantity" required><br>
+                                    <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
                                     <label for="price"><b>Price</b></label>
-                                    <input type="number" step="0.01" placeholder="Enter Price" name="price" required><br>
+                                    <input type="number" step="0.01" placeholder="Enter Price" name="price" value="<%= item.getPrice() %>" required><br>
                                     <input type="hidden" name="productId" value="<%= item.getProductId() %>">
                                     <input type="hidden" name="category" value="<%= item.getCategory() %>">
+                                    <label for="productName"><b>Product Name</b></label>
+                                    <input type="text" placeholder="Enter product name" name="productName" value="<%= item.getProductName() %>" required><br>
+                                    <label for="photo1"><b>Photo 1</b></label>
+                                    <input type="text" placeholder="Enter URL for photo 1" name="photo1" value="<%= item.getPhoto1() %>"><br>
+                                    <label for="photo2"><b>Photo 2</b></label>
+                                    <input type="text" placeholder="Enter URL for photo 2" name="photo2" value="<%= item.getPhoto2() %>"><br>
+                                    <label for="photo3"><b>Photo 3</b></label>
+                                    <input type="text" placeholder="Enter URL for photo 3" name="photo3" value="<%= item.getPhoto3() %>"><br>
+                                    <label for="photo4"><b>Photo 4</b></label>
+                                    <input type="text" placeholder="Enter URL for photo 4" name="photo4" value="<%= item.getPhoto4() %>"><br>
+                                    <label for="brand"><b>Brand</b></label>
+                                    <input type="text" placeholder="Enter brand" name="brand" value="<%= item.getBrand() %>" required><br>
+                                    <label for="modelName"><b>Model Name</b></label>
+                                    <input type="text" placeholder="Enter model name" name="modelName" value="<%= item.getModelName() %>" required><br>
+                                    <label for="productDescription"><b>Product Description</b></label>
+                                    <textarea placeholder="Enter product description" name="productDescription" required><%= item.getProductDescription() %></textarea><br>
+                                    <label for="storageCapacity"><b>Storage Capacity</b></label>
+                                    <input type="text" placeholder="Enter storage capacity" name="storageCapacity" value="<%= item.getStorageCapacity() %>" required><br>
+                                    <label for="cpu"><b>CPU</b></label>
+                                    <input type="text" placeholder="Enter CPU details" name="cpu" value="<%= item.getCpu() %>"><br>
+                                    <label for="memory"><b>Memory</b></label>
+                                    <input type="text" placeholder="Enter memory details" name="memory" value="<%= item.getMemory() %>"><br>
                                     <button type="submit" class="btn">Save Changes</button>
                                     <button type="button" class="btn cancel" onclick="closeForm('<%= item.getProductId() %>')">Close</button>
                                 </form>
+
                             </div>
                             <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
                                 <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;">
