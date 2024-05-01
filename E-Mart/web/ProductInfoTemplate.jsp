@@ -21,30 +21,41 @@
 
 <body>
 <!-- Retrieve the product Details from the servlet -->
+
 <%
-    try{
-        ResultSet productRS = (ResultSet) request.getAttribute("productResultSet");
-        while (productRS.next()) {
-    %>
+    String productName = (String) request.getAttribute("productName");
+    int price = (int) request.getAttribute("price");
+    String brand = (String) request.getAttribute("brand");
+    String modelName = (String) request.getAttribute("modelName");
+    String storageCapacity = (String) request.getAttribute("storageCapacity");
+    double screenSize = (double) request.getAttribute("screenSize");
+    String color = (String) request.getAttribute("color");
+    String productDescription = (String) request.getAttribute("productDescription");
+    String photo1 = (String) request.getAttribute("photo1");
+    String photo2 = (String) request.getAttribute("photo2");
+    String photo3 = (String) request.getAttribute("photo3");
+    String photo4 = (String) request.getAttribute("photo4");
+%>
+
 <!--Main container to contain the 2 columns-->
 <container class="container">
 
     <!--Left gallery-->
     <div class="left-column">
-        <img src="<%= productRS.getString("photo1") %>" class="thumbnail" id="ProductImg">
+        <img src="<%= photo1 %>" class="thumbnail" id="ProductImg">
 
         <div class="small-img-row">
             <div class="small-img-col">
-                <img src="<%= productRS.getString("photo2") %>" width="100%" class="small-img">
+                <img src="<%= photo1 %>" width="100%" class="small-img">
             </div>
             <div class="small-img-col">
-                <img src="<%= productRS.getString("photo3") %>" width="100%" class="small-img">
+                <img src="<%= photo2 %>" width="100%" class="small-img">
             </div>
             <div class="small-img-col">
-                <img src="<%= productRS.getString("photo4") %>" width="100%" class="small-img">
+                <img src="<%= photo3 %>" width="100%" class="small-img">
             </div>
             <div class="small-img-col">
-                <img src="<%= productRS.getString("photo5") %>" width="100%" class="small-img">
+                <img src="<%= photo4 %>" width="100%" class="small-img">
             </div>
         </div>
 
@@ -54,8 +65,8 @@
 
     <!--Right product info and stuff-->
     <div class="right-column">
-        <h1 class="name"><%= productRS.getString("productName") %></h1>
-        <h3 class="price"><%= productRS.getInt("price") %></h3>
+        <h1 class="name"><%= productName %></h1>
+        <h3 class="price"><%= price %></h3>
 
         <!--In stock/out of stock square thingy-->
         <div class="availability">In Stock</div>
@@ -64,23 +75,23 @@
         <table class="info-table">
             <tr>
                 <td>Brand</td>
-                <td><%= productRS.getString("brand") %></td>
+                <td><%= brand %></td>
             </tr>
             <tr>
                 <td>Model Name</td>
-                <td><%= productRS.getString("modelName") %></td>
+                <td><%= modelName %></td>
             </tr>
             <tr>
                 <td>Storage Capacity</td>
-                <td><%= productRS.getString("storageCapacity") %></td>
+                <td><%= storageCapacity %></td>
             </tr>
             <tr>
                 <td>Screen Size</td>
-                <td><%= productRS.getDouble("screenSize") %></td>
+                <td><%= screenSize %></td>
             </tr>
             <tr>
                 <td>Color</td>
-                <td><%= productRS.getString("color") %></td>
+                <td><%= color %></td>
             </tr>
         </table>
         <div class="option-buttons">
@@ -92,19 +103,11 @@
             <i id="wishlist-icon" class="far fa-star"></i><p>Wishlist</p>
         </div>
 
-        <p class="description"><%= productRS.getString("productDescription") %>
+        <p class="description"><%= productDescription %>
         </p>
     </div>
 
 </container>
-<%
-}
-    productRS.close(); //close the resultset
-    }catch(SQLException e){
-        e.printStackTrace();
-}
-
-%>
 
 <script src="../../JS/ProductDetailsScript.js"></script>
 
