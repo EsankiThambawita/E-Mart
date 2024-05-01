@@ -46,61 +46,86 @@
 
         <div class="card-container">
             <div class="card">
-                <a href="SamsungS24U.jsp">
-                    <img src="Images/ProductCategory&Details/Phones/s24u.webp" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="1">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Phones/s24u.webp" alt="product 1">
+                    </a>
+                </form>
                 <h2>Samsung Galaxy S24 Ultra</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="1">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
+            
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="SamsungS22U.jsp">
-                    <img src="Images/ProductCategory&Details/Phones/s22u.webp" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="2">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Phones/s22u.webp" alt="product 1">
+                    </a>
+                </form>    
                 <h2>Samsung Galaxy S22 Ultra</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+               <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="2">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="Applei14p.jsp">
-                    <img src="Images/ProductCategory&Details/Phones/i14p.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="3">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Phones/i14p.png" alt="product 1">
+                    </a>
+                </form>    
                 <h2>Apple Iphone 14 Pro</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                 <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="3">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="Applei15p.jsp">
-                    <img src="Images/ProductCategory&Details/Phones/i15p.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="4">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Phones/i15p.png" alt="product 1">
+                    </a>
+                </form>
                 <h2>Apple Iphone 15 Pro</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                 <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="4">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
         </div>
         <%@ include file="Footer.html" %>
