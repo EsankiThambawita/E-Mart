@@ -101,6 +101,9 @@
 | 2024-04-24 | Products page of the admin panel is connecting to the database but does not retrieve values from it and show it.                   | Tried making some changes in the code and eventually fixed the error.  |
 | 2024-04-25 | Created the code to send the order confirmation email but it did not work. Code was right with no errors.|Found out that code is not right so I got an API key from mailersend and wrote the code and it was successful |
 | 2024-04-26 | Found some difficulty storing the feedback rating in the database.| Figured out the database tables and connected it successfully.|
+| 2024-04-28 | The products page of the admin panel was not organized enough for the categories| Made individual pages for each and every categories|
+| 2024-04-29 | | Figured out the database tables and connected it successfully.|
+| 2024-04-30 | Found some difficulty storing the feedback rating in the database.| Figured out the database tables and connected it successfully.|
 
 
 **2. TPR Fernando**
