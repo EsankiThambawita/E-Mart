@@ -89,7 +89,7 @@
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;">
                             </button>
                             <div class="form-popup" id="myForm_<%= item.getProductId() %>">
-                                <form action="/AdminEditLaptoptServlet" class="form-container" method="post">
+                                <form action="/AdminEditLaptopServlet" class="form-container" method="post">
                                     <h1>Edit Product</h1>
                                     <label for="pieces"><b>Quantity</b></label>
                                     <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
