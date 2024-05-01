@@ -22,7 +22,7 @@
 
 <body>
 <%@ include file="Navbar.html" %>
-<div class="body-wrapper" style="margin-top: 200px; margin-bottom: 200px;">
+<div class="body-wrapper" style="margin-top: 100px; margin-bottom: 200px;">
     <div class="container">
 
         <div class="form-container profile-form" style="border: 2px solid #9696A1; background-color: #1a1a1a;">
