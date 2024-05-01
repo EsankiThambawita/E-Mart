@@ -93,10 +93,10 @@ public class SignUpServlet extends HttpServlet {
             String userID = UUID.randomUUID().toString();
             // Set session attributes
             HttpSession session = request.getSession();
-            session.setAttribute("username", username);
-            session.setAttribute("email", email);
-            session.setAttribute("password", password);
-            session.setAttribute("contactNumber", contactNumber);
+            session.setAttribute("username", username.trim());
+            session.setAttribute("email", email.trim());
+            session.setAttribute("password", password.trim());
+            session.setAttribute("contactNumber", contactNumber.trim());
 
             // Set cookie with UserID
             Cookie cookie = new Cookie("UserID", userID);
