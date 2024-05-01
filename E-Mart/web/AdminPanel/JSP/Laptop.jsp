@@ -27,10 +27,8 @@
     </div>
 
     <div class="right-section">
-        <div class="navbar">
-            <%@ include file="navbar.html" %>
-        </div>
-        <div class="container" style="width:2000px;">
+      
+        <div class="container" >
             <h1>Laptops</h1>
             <ul class="horizontal-menu">
                 <li><a href="/AdminPanel/JSP/Products.jsp">Smartphones</a></li>
@@ -90,7 +88,7 @@
                             </button>
                             <div class="form-popup" id="myForm_<%= item.getProductId() %>">
                                 <form action="/AdminEditLaptopServlet" class="form-container" method="post">
-                                    <h1>Edit Product</h1>
+                                    <h1>Edit Laptop</h1>
                                     <label for="pieces"><b>Quantity</b></label>
                                     <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
                                     <label for="price"><b>Price</b></label>
@@ -137,7 +135,7 @@
             <div id="addProductModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <span class="close" onclick="closetheForm()">&times;</span>
-                    <h2>Add Product</h2>
+                    <h2>Add Laptop</h2>
                     <form id="addProductForm" method="POST" action="/AdminAddLaptopServlet">
                     <label for="productId">Product ID:</label>
                     <input type="text" id="productId" name="productId" required><br>

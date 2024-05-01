@@ -47,7 +47,7 @@ public class AdminAddProductServlet extends HttpServlet {
             String color = request.getParameter("color");
 
             // Call DAO method to add the product to the database
-            DAO.addProduct(productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, screenSize, color);
+            DAO.addSmartphone(productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, screenSize, color);
 
             // Redirect back to the products page or any other appropriate page
             response.sendRedirect("/AdminPanel/JSP/Products.jsp");
