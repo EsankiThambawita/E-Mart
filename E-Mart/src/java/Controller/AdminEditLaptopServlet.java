@@ -40,7 +40,7 @@ public class AdminEditLaptopServlet extends HttpServlet {
         String memory = request.getParameter("memory");
 
         // Call DAO method to update the laptop in the database
-        DAO.updateLaptop(productId, quantity, price, productName, brand, modelName, productDescription, storageCapacity, cpu, memory);
+        DAO.updateLaptop(productId, quantity, price, productName, brand, modelName, productDescription, storageCapacity, cpu, memory,photo1, photo2, photo3, photo4);
 
         // Redirect back to the products page or any other appropriate page
         response.sendRedirect("/AdminPanel/JSP/Laptop.jsp");
@@ -49,4 +49,4 @@ public class AdminEditLaptopServlet extends HttpServlet {
 
     }
 
-}
+
