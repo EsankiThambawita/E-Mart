@@ -7,6 +7,9 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map.Entry" %>
+<%@page import="java.util.List"%>
+<%@page import="Model.DAO"%>
+<%@page import="Model.ShoppingCartObj"%>
 
 <!DOCTYPE html>
 <html>
@@ -30,25 +33,24 @@
                     <th>Price</th>
                 </tr>
                 <% 
-                Map<String, Double> cart = (Map<String, Double>) session.getAttribute("cart");
-                if (cart != null) {
-                    double total = 0;
-                    for (Map.Entry<String, Double> entry : cart.entrySet()) { %>
+                    List<ShoppingCartObj> cartItems = DAO.getAllCartItems();
+                    for (ShoppingCartObj item : cartItems) {
+                %>
                 <tr>
-                    <td><%= entry.getKey() %></td>
-                    <td>$<%= entry.getValue() %></td>
+                    <td><%= item.getProductName() %></td>
+                    <td><%= item.getProductPrice() %></td>
                 </tr>
-                <% total += entry.getValue();
-                } %>
+                <% } %>
                 <tr>
+                    <% 
+                            int total = 0;
+                            for (ShoppingCartObj item : cartItems) {
+                            total += item.getTotalPrice();
+                        }
+                    %>
                     <td><b>Total:</b></td>
                     <td><b>$<%= total %></b></td>
                 </tr>
-                <% } else { %>
-                <tr>
-                    <td colspan="2">Your cart is empty</td>
-                </tr>
-                <% } %>
             </table>
 
             <h3>Billing Details <i class="fas fa-user"></i></h3>
@@ -78,42 +80,18 @@
                     <input type="text" name="zip" required placeholder="Zip"><br>
                 </div>
                 <input type="hidden" name="action" value="checkout"> <!-- Hidden field for action -->
-            <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
-             <div class="form-group">
-               <label for="cashOnDelivery">Cash on Delivery</label>
-                  <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cod" checked>
-              </div>
+                <h3>Payment Method <i class="fas fa-credit-card"></i></h3>
+                <div class="form-group">
+                    <label for="cashOnDelivery">Cash on Delivery</label>
+                    <input type="radio" id="cashOnDelivery" name="paymentMethod" value="cod" checked>
+                </div>
 
                 <input type="submit" value="Submit Payment" class="btn btn-darkblue">
-             </div>
             </form>
         </div>
 
 
         <!-- Adding Cart functionality -->
-        <script>
-            function addToCart(productName, productPrice) {
-                document.getElementById("productName").value = productName;
-                document.getElementById("productPrice").value = productPrice;
-                document.getElementById("action").value = "add";
-                document.getElementById("cartForm").submit();
-            }
-
-            function removeFromCart(productName) {
-                document.getElementById("productName").value = productName;
-                document.getElementById("action").value = "remove";
-                document.getElementById("cartForm").submit();
-            }
-
-            function updateCart(productName, productPrice) {
-                var quantity = document.getElementById(productName).value;
-                document.getElementById("productName").value = productName;
-                document.getElementById("productPrice").value = productPrice;
-                document.getElementById("quantity").value = quantity;
-                document.getElementById("action").value = "update";
-                document.getElementById("cartForm").submit();
-            }
-        </script>
 
         <form id="cartForm" action="CartControllerServlet" method="post" style="display: none;">
             <input type="hidden" id="productName" name="productName">
