@@ -546,52 +546,59 @@ public class DAO {
         }
     }
 
-    public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color) {
-    Connection connection = null;
-    PreparedStatement statement = null;
+    public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color, String cpu, String memory, String photo1, String photo2, String photo3, String photo4) {
+            Connection connection = null;
+            PreparedStatement statement = null;
 
-    try {
-        Class.forName("com.mysql.cj.jdbc.Driver");
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
 
-        // Establishing connection to the database
-        connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+                // Establishing connection to the database
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-        // Prepare SQL statement
-        String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=? WHERE productId=?";
-        statement = connection.prepareStatement(sql);
+                // Prepare SQL statement
+                String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=?, cpu=?, memory=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
+                statement = connection.prepareStatement(sql);
 
-        // Set parameters
-        statement.setInt(1, quantity);
-        statement.setDouble(2, price);
-        statement.setString(3, productName);
-        statement.setString(4, brand);
-        statement.setString(5, modelName);
-        statement.setString(6, productDescription);
-        statement.setString(7, storageCapacity);
-        statement.setString(8, screenSize);
-        statement.setString(9, color);
-        statement.setString(10, productId);
+                // Set parameters
+                statement.setInt(1, quantity);
+                statement.setDouble(2, price);
+                statement.setString(3, productName);
+                statement.setString(4, brand);
+                statement.setString(5, modelName);
+                statement.setString(6, productDescription);
+                statement.setString(7, storageCapacity);
+                statement.setString(8, screenSize);
+                statement.setString(9, color);
+                statement.setString(10, cpu);
+                statement.setString(11, memory);
+                statement.setString(12, photo1);
+                statement.setString(13, photo2);
+                statement.setString(14, photo3);
+                statement.setString(15, photo4);
+                statement.setString(16, productId);
 
-        // Execute update
-        statement.executeUpdate();
-    } catch (SQLException e) {
-        Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-    } finally {
-        // Close resources
-        try {
-            if (statement != null) {
-                statement.close();
+                // Execute update
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                // Close resources
+                try {
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+                }
             }
-            if (connection != null) {
-                connection.close();
-            }
-        } catch (SQLException e) {
-            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
         }
-    }
-}
+
 
     
     public static void deleteProduct(String productId) {
@@ -750,5 +757,53 @@ public class DAO {
             }
         }
     }
+
+    public static void updateLaptop(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory) {
+            Connection connection = null;
+            PreparedStatement statement = null;
+
+            try {
+                Class.forName("com.mysql.cj.jdbc.Driver");
+
+                // Establishing connection to the database
+                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+                // Prepare SQL statement
+                String sql = "UPDATE laptop SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, cpu=?, memory=? WHERE productId=?";
+                statement = connection.prepareStatement(sql);
+
+                // Set parameters
+                statement.setInt(1, quantity);
+                statement.setDouble(2, price);
+                statement.setString(3, productName);
+                statement.setString(4, brand);
+                statement.setString(5, modelName);
+                statement.setString(6, productDescription);
+                statement.setString(7, storageCapacity);
+                statement.setString(8, cpu);
+                statement.setString(9, memory);
+                statement.setString(10, productId);
+
+                // Execute update
+                statement.executeUpdate();
+            } catch (SQLException e) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+            } finally {
+                // Close resources
+                try {
+                    if (statement != null) {
+                        statement.close();
+                    }
+                    if (connection != null) {
+                        connection.close();
+                    }
+                } catch (SQLException e) {
+                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+                }
+            }
+        }
+
 
 }
