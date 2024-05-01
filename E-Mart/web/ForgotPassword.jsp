@@ -54,6 +54,7 @@
 
             
   <button class=" " type="submit">Send The OTP</button>
+     <p style="text-align: center;"><a href="Home.jsp">Back To Home</a>
       
               
         </form>  
