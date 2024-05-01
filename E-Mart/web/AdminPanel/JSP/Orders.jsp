@@ -49,8 +49,8 @@
                             for (AdminOrderObj order : orders) {
                         %>
                         <tr>
-                            <td>1/23/2024</td>
                             <td><%= order.getOrderDate() %></td>
+                            <td><%= order.getOrderNumber() %></td>
                             <td><%= order.getEmail() %></td>
                             <td><%= order.getProductName() %></td>
                             <td><%= order.getQuantity() %></td>
