@@ -56,8 +56,8 @@
                     <br>
                     <h1>Profile</h1>
                     <%
-        SignUpUser user = (SignUpUser) request.getAttribute("user");
-        if (user != null) {
+                        SignUpUser user = (SignUpUser) request.getAttribute("user");
+                        if (user != null) {
                     %>
                     <p>Name: <%= user.getUsername() %></p>
                     <br>
@@ -88,7 +88,7 @@
                         </table>
                     </form>
                         <br>
-                        <p style="text-align: center;"><a href="Home.jsp" style="color: white;">Back To Home</a></p>
+                        <p style="text-align: center;"><a href="index.jsp" style="color: white;">Back To Home</a></p>
                         <script>
                             window.onload = function () {
                                 let profilePic = document.getElementById("profile-pic");

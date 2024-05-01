@@ -15,10 +15,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-
+import java.sql.*;
 public class userDao {
 
     static Statement st;
+    private static Connection con;
 
     public static void insertDetails(String email, String username, String password, String contactNumber) {
         connectToDB();
@@ -37,9 +38,9 @@ public class userDao {
 
         try {
             Class.forName(driver);
-            //stablish the connection
-            Connection con = DriverManager.getConnection(url, "root", "");
-            //Statement st=con.createStatement();
+            // Establish the connection
+            con = DriverManager.getConnection(url, "root", "");
+            // Statement st=con.createStatement();
             st = con.createStatement();
 
         } catch (ClassNotFoundException | SQLException ex) {
@@ -47,15 +48,18 @@ public class userDao {
         }
     }
 
+
     public static void updateDetails(String email, String newusername, String newcontactNumber) {
         connectToDB();
         // Check if email exists
-        String checkQuery = "SELECT * FROM users WHERE email = '" + email + "'";
+        String checkQuery = "SELECT * FROM users WHERE email = ?";
         ResultSet rs = null;
         boolean emailExists = false;
 
         try {
-            rs = st.executeQuery(checkQuery);
+            PreparedStatement checkStatement = con.prepareStatement(checkQuery);
+            checkStatement.setString(1, email);
+            rs = checkStatement.executeQuery();
             emailExists = rs.next(); // Check if there's a result
         } catch (SQLException ex) {
             System.out.println(ex.getMessage());
@@ -71,9 +75,13 @@ public class userDao {
 
         // Update details only if email exists
         if (emailExists) {
-            String updateQuery = "UPDATE users SET username = '" + newusername + "', contactNumber = '" + newcontactNumber + "' WHERE email = '" + email + "'";
+            String updateQuery = "UPDATE users SET username = ?, contactNumber = ? WHERE email = ?";
             try {
-                st.executeUpdate(updateQuery);
+                PreparedStatement updateStatement = con.prepareStatement(updateQuery);
+                updateStatement.setString(1, newusername);
+                updateStatement.setString(2, newcontactNumber);
+                updateStatement.setString(3, email);
+                updateStatement.executeUpdate();
                 System.out.println("Details updated successfully.");
             } catch (SQLException ex) {
                 System.out.println(ex.getMessage());
@@ -82,10 +90,7 @@ public class userDao {
             System.out.println("Email address not found. Update failed.");
             // You can send an error message to the user here
         }
-
     }
-
-   
 
     public SignUpUser getUserByEmail(String email) {
         connectToDB();

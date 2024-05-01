@@ -11,7 +11,7 @@
     <div class="nav-actions">
         <div class="nav-action-buttons">
             <% 
-                String loggedInUser = (String) session.getAttribute("username");
+                String loggedInUser = (String) session.getAttribute("email");
                 if (loggedInUser != null) { // User is logged in
             %>
             <a href="Profile.jsp" class="nav-button">
