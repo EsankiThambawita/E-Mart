@@ -4,8 +4,6 @@
  */
 package Controller;
 
-import Model.SignUpUser;
-import Model.userDao;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -13,6 +11,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -20,6 +24,23 @@ import java.io.PrintWriter;
  */
 @WebServlet(name = "ChangePasswordController", urlPatterns = {"/ChangePasswordController"})
 public class ChangePasswordController extends HttpServlet {
+    
+    public Statement st; // Declare Statement as a member variable
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        try {
+            // Initialize the Statement in the init method
+            String driver = "com.mysql.cj.jdbc.Driver";
+            String url = "jdbc:mysql://localhost:3306/emart";
+            Class.forName(driver);
+            Connection con = DriverManager.getConnection(url, "root", "");
+            st = con.createStatement();
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(ChangePasswordController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -74,16 +95,25 @@ public class ChangePasswordController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        // Retrieve form data
-        String email = (String) request.getSession().getAttribute("email");
+        response.setContentType("text/html");
+        PrintWriter out = response.getWriter();
+      
+        
+        String oldPassword=request.getParameter("oldPassword");
         String newPassword = request.getParameter("NewPassword");
         String confirmNewPassword = request.getParameter("ReConfirmPassword");
+        
+          try {
+             init();
+            String q1 = "UPDATE users SET password = ' " + newPassword + " '  WHERE password = ' " + oldPassword + " ' ";
+            int x = st.executeUpdate(q1);
 
-        // Validate current password against database
-        userDao userDao = new userDao();
-        userDao.updatePassword(email, newPassword);
-      
+        } catch (SQLException ex) {
+            Logger.getLogger(ChangePasswordController.class.getName()).log(Level.SEVERE, null, ex);
+        }
 
+
+  
         // Password updated successfully, redirect to a success page
         response.sendRedirect("Profile.jsp");
     }
