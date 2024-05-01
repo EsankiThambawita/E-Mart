@@ -668,6 +668,7 @@ public class DAO {
     }
 
 
+
     public static void addProduct(String productId, String productName, String category, int quantity, int price, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color) {
     Connection connection = null;
     PreparedStatement statement = null;
@@ -756,6 +757,7 @@ public class DAO {
         }
     }
 
+    
     public static void updateLaptop(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory, String photo1, String photo2, String photo3, String photo4) {
             Connection connection = null;
             PreparedStatement statement = null;
@@ -807,5 +809,50 @@ public class DAO {
             }
         }
 
+
+
+
+    public static void addLaptop(String productId, String productName, String category, int quantity, int price, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory) {
+            Connection connection = null;
+            PreparedStatement statement = null;
+
+            try {
+                // Get connection
+                connection = getConnection();
+
+                // SQL query to insert laptop details into the database
+                String query = "INSERT INTO laptop (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, cpu, memory) " +
+                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+                // Create a prepared statement
+                statement = connection.prepareStatement(query);
+
+                // Set parameters for the query
+                statement.setString(1, productId);
+                statement.setString(2, productName);
+                statement.setString(3, category);
+                statement.setInt(4, quantity);
+                statement.setInt(5, price);
+                statement.setString(6, photo1);
+                statement.setString(7, photo2);
+                statement.setString(8, photo3);
+                statement.setString(9, photo4);
+                statement.setString(10, brand);
+                statement.setString(11, modelName);
+                statement.setString(12, productDescription);
+                statement.setString(13, storageCapacity);
+                statement.setString(14, cpu);
+                statement.setString(15, memory);
+
+                // Execute the query
+                statement.executeUpdate();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+               
+            } 
+             
+
+    }
 
 }
