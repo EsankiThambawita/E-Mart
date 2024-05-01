@@ -9,6 +9,9 @@
 <%@ page import="Controller.TrackOrderServlet" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Model.ShoppingCartObj" %>
+<%@page import="Model.DAO"%>
+<%@page import="Model.AdminOrderObj"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -21,35 +24,7 @@
         <link rel="stylesheet" href="CSS/Navbar.css">
         <link rel="stylesheet" href="CSS/Footer.css">
         <link href="CSS\TrackOrder.css" rel="stylesheet" />
-        <script>
-            function validation() {
-                var username = document.getElementById("username").value;
 
-
-                if (!username || !email || !password || !confirmPassword || !contactNumber) {
-                    alert("All fields must be filled out.");
-                    return false;
-                }
-
-                if (password.length < 8) {
-                    alert("Password must be at least 8 characters long.");
-                    return false;
-                }
-
-                if (password !== confirmPassword) {
-                    alert("Passwords do not match.");
-                    return false;
-                }
-
-                if (!/^\d{10}$/.test(contactNumber)) {
-                    alert("Contact number must be a 10-digit number.");
-                    return false;
-                }
-
-                return true;
-            }
-
-        </script>
     </head>
 
     <body>
@@ -67,40 +42,27 @@
                 </h1>
             </div>
             <% 
-           // Get the cart items from the stored place
-           List<ShoppingCartObj> cartItems = (List<ShoppingCartObj>) session.getAttribute("cartItems"); // session
-
-           int totalQuantity = 0;
-
-           // Check if cartItems is not null before iterating over it
-           if (cartItems != null) {
-               // Iterate over cart items and sum up their quantities
-               for (ShoppingCartObj item : cartItems) {
-                   totalQuantity += item.getQuantity();
-               }
-           }
+                               List<AdminOrderObj> orders = DAO.getAdminOrders();
+                               for (AdminOrderObj order : orders) {
             %>
             <div class="order-tracking-card">
                 <div class="order-details-row">
                     <div class="order-details-col">
                         <h2 class="order-detail-col-title">Order Number</h2>
-                        <p class="order-detail-col-content"> <%= request.getAttribute("orderNumber") %> </p>
+                        <p class="order-detail-col-content"> <%= order.getOrderNumber() %> </p>
                     </div>
                     <div class="order-details-col">
-                        <h2 class="order-detail-col-title">Item purchased </h2>  <!-- here -->
+                        <h2 class="order-detail-col-title">Item purchased </h2>
+                        <%= order.getProductName() %>
                         <div class="order-detail-col-content">
-                            <% List<String> selectedItems = (List<String>) request.getAttribute("selectedItems");
-                            if (selectedItems != null && !selectedItems.isEmpty()) {
-                                for (String item : selectedItems) { %>
-                            <p><%= item %></p>
-                            <% }
-                       } %>
+
                         </div>
                     </div>
                     <div class="order-details-col">
                         <h2 class="order-detail-col-title">Quantity </h2><!-- here -->
-                        <p class="order-detail-col-content"> <%= totalQuantity %> </p><!-- here -->
+                        <p class="order-detail-col-content"><%= order.getQuantity() %> </p><!-- here -->
                     </div>
+
                     <div class="order-details-col">
                         <h2 class="order-detail-col-title">Order Number</h2>
                         <a href="MyReturns.jsp" class="button-white">Return</a>
@@ -119,77 +81,67 @@
                             </div>
                         </div>
                         <div class="tracking-milestones">
+                            <input type="hidden" name="orderStatus" id="orderStatus" value="<%= order.getOrderStatus() %>">
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
+                                <img class="tracking-mile-icon inactive" id="processingIcon" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
                                 <p class="tracking-mile-des">Order Processing</p>
                             </div>
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" src="Images/TrackOrder/OutForDeliveryIcon.png" alt="Delivery">
+                                <img class="tracking-mile-icon inactive" id="deliveryIcon" src="Images/TrackOrder/OutForDeliveryIcon.png" alt="Delivery">
                                 <p class="tracking-mile-des">Out For Delivery</p>
                             </div>
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" src="Images/TrackOrder/DeliveredIcon.png" alt="Delivered">
+                                <img class="tracking-mile-icon inactive" id="deliveredIcon" src="Images/TrackOrder/DeliveredIcon.png" alt="Delivered">
                                 <p class="tracking-mile-des">Delivered</p>
                             </div>
+                            
+                            
+                            <script>
+                                // Get the order status from the hidden input field
+                                var orderStatus = document.getElementById("orderStatus").value;
+
+                                // Update the class of the tracking-mile-icon elements based on the order status
+                                switch (orderStatus) {
+                                    case "processing":
+                                        document.getElementById("processingIcon").classList.remove("inactive");
+                                        document.getElementById("processingIcon").classList.add("active");
+                                        updateProgressBar(20); // Set progress to 20%
+                                        break;
+                                    case "Outfordelivery":
+                                        document.getElementById("deliveryIcon").classList.remove("inactive");
+                                        document.getElementById("deliveryIcon").classList.add("active");
+                                        updateProgressBar(51); // Set progress to 51%
+                                        break;
+                                    case "delivered":
+                                        document.getElementById("deliveredIcon").classList.remove("inactive");
+                                        document.getElementById("deliveredIcon").classList.add("active");
+                                        updateProgressBar(100); // Set progress to 100%
+                                        break;
+                                    default:
+                                        break;
+                                }
+
+                                // Function to update the width of the progress bar
+                                function updateProgressBar(progress) {
+                                    var progressBar = document.querySelector(".progress-bar-progress");
+                                    progressBar.style.width = progress + "%";
+                                }
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
 
+        </div>
 
 
-            <script>
-                function confirmCancellation() {
-                    // Display confirmation popup
-                    var confirmed = confirm("Are you sure you want to cancel the order?");
 
-                    // If user confirms, proceed with canceling the orderdiliverd sataus
+        <% } %>
 
-                    if (confirmed) {
-                        // Redirect to cancel order servlet or perform cancelation logic here
-                        window.location.href = "CancelOrderServlet";
-                    }
-                }
-            </script>       
-            <script>
-                // Get the order status from the servlet attribute
-                var orderStatus = '<%= request.getAttribute("orderStatus") %>';
+        }
 
-                // Update the border color and status text based on the order status
-                var orderStatusIcon = document.getElementById("orderStatusIcon");
-                var orderStatusText = document.getElementById("orderStatusText");
 
-                switch (orderStatus) {
-                    case "Processing":
-                        orderStatusIcon.classList.add("active");
-                        orderStatusText.innerText = "Order Processing";
-                        // Update progress bar
-                        var progressBar = document.querySelector(".progress-bar-progress");
-                        progressBar.style.width = "20%";
-                        break;
-                    case "OutForDelivery":
-                        orderStatusIcon.classList.remove("active");
-                        orderStatusIcon.classList.add("inactive");
-                        orderStatusIcon.style.borderColor = "#3B7BF8"; // Change to the desired color
-                        orderStatusText.innerText = "Out For Delivery";
-                        // Update progress bar
-                        var progressBar = document.querySelector(".progress-bar-progress");
-                        progressBar.style.width = "51%";
-                        break;
-                    case "Delivered":
-                        orderStatusIcon.classList.remove("active");
-                        orderStatusIcon.classList.add("inactive");
-                        orderStatusIcon.style.borderColor = "#3B7BF8"; // Change to the desired color
-                        orderStatusText.innerText = "Delivered";
-                        // Update progress bar
-                        var progressBar = document.querySelector(".progress-bar-progress");
-                        progressBar.style.width = "100%";
-                        break;
-                    default:
-                        break;
-                }
-            </script>
-            <%@ include file="Footer.html" %>
-            <script src="JS/Common.js"></script>
+        <%@ include file="Footer.html" %>
+        <script src="JS/Common.js"></script>
     </body>
 </html>
