@@ -18,8 +18,8 @@
     <link rel="stylesheet" href="/AdminPanel/CSS/navbar.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/horizontalMenu.css">
-    <link rel="stylesheet" href="/AdminPanel/CSS/form.css">
-    <link rel="stylesheet" href="/AdminPanel/CSS/AddProducts.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/editForm.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/AddProductsForm.css">
 </head>
 <body>
     <div class="left-section">
@@ -116,7 +116,7 @@
                                     <label for="storageCapacity"><b>Storage Capacity</b></label>
                                     <input type="text" placeholder="Enter storage capacity" name="storageCapacity" value="<%= item.getStorageCapacity() %>" required><br>
                                     <label for="cpu"><b>CPU</b></label>
-                                    <input type="text" placeholder="Enter CPU details" name="cpu" value="<%= item.getCpu() %>"><br>
+                                    <input type="text" placeholder="Enter CPU details" name="cpu" value="<%= item.getCPU() %>"><br>
                                     <label for="memory"><b>Memory</b></label>
                                     <input type="text" placeholder="Enter memory details" name="memory" value="<%= item.getMemory() %>"><br>
                                     <button type="submit" class="btn">Save Changes</button>

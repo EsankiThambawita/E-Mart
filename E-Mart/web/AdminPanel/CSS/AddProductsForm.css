@@ -3,21 +3,27 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Apr 29, 2024, 4:59:37 AM
+    Created on : May 1, 2024, 9:35:41 AM
     Author     : Esanki Lakvindee
 */
 
 /* Popup form content */
+
 .modal-content {
     background-color: #fefefe;
-    margin: 5% auto; /* 5% from the top and centered */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: 20px;
     border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on content */
+    width: 50%; /* You can adjust the width as needed */
     border-radius: 5px;
     max-height: 80%; /* Set maximum height */
     overflow-y: auto; /* Enable vertical scrolling */
+    z-index: 9999; /* Ensure modal is on top of other content */
 }
+
 
 /* Center input fields */
 .modal-content input[type="text"],
@@ -45,4 +51,19 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 
 .modal-content button[type="submit"]:hover {
     background-color: #45a049;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
 }
