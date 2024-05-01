@@ -138,20 +138,39 @@
                 <div class="modal-content">
                     <span class="close" onclick="closetheForm()">&times;</span>
                     <h2>Add Product</h2>
-                    <form id="addProductForm" method="POST" action="/AdminAddProductServlet">
-                        <label for="productId">Product ID:</label>
-                        <input type="text" id="productId" name="productId" required><br>
-                        <label for="productName">Product Name:</label>
-                        <input type="text" id="productName" name="productName" required><br>
-                        <label for="category">Category:</label>
-                        <input type="text" id="category" name="category" required><br>
-                        <label for="pieces">Pieces:</label>
-                        <input type="number" id="pieces" name="pieces" required><br>
-                        <label for="price">Price:</label>
-                        <input type="number" id="price" name="price" required><br>
-                        <button type="submit" onclick="saveProduct()">Save</button>
-
-                    </form>
+                    <form id="addProductForm" method="POST" action="/AdminAddLaptopServlet">
+                    <label for="productId">Product ID:</label>
+                    <input type="text" id="productId" name="productId" required><br>
+                    <label for="productName">Product Name:</label>
+                    <input type="text" id="productName" name="productName" required><br>
+                    <label for="category">Category:</label>
+                    <input type="text" id="category" name="category" required><br>
+                    <label for="pieces">Pieces:</label>
+                    <input type="number" id="pieces" name="pieces" required><br>
+                    <label for="price">Price:</label>
+                    <input type="number" step="0.01" id="price" name="price" required><br>
+                    <label for="photo1">Photo 1:</label>
+                    <input type="text" id="photo1" name="photo1"><br>
+                    <label for="photo2">Photo 2:</label>
+                    <input type="text" id="photo2" name="photo2"><br>
+                    <label for="photo3">Photo 3:</label>
+                    <input type="text" id="photo3" name="photo3"><br>
+                    <label for="photo4">Photo 4:</label>
+                    <input type="text" id="photo4" name="photo4"><br>
+                    <label for="brand">Brand:</label>
+                    <input type="text" id="brand" name="brand" required><br>
+                    <label for="modelName">Model Name:</label>
+                    <input type="text" id="modelName" name="modelName" required><br>
+                    <label for="productDescription">Product Description:</label>
+                    <textarea id="productDescription" name="productDescription" required></textarea><br>
+                    <label for="storageCapacity">Storage Capacity:</label>
+                    <input type="text" id="storageCapacity" name="storageCapacity" required><br>
+                    <label for="cpu">CPU:</label>
+                    <input type="text" id="cpu" name="cpu"><br>
+                    <label for="memory">Memory:</label>
+                    <input type="text" id="memory" name="memory"><br>
+                    <button type="submit">Save</button>
+                </form>
                 </div>
             </div>
 
@@ -184,7 +203,7 @@
         }
     </script>
 
-    <script src="/AdminPanel/JS/delete.js"></script>
+    <script src="/AdminPanel/JS/deleteLaptop.js"></script>
     
 </body>
 </html>
