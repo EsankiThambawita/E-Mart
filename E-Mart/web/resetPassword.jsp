@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>reset Password</title>
-           <link href="ForgotPassword.css" rel="stylesheet" type="text/css"/> 
+           <link href="CSS\ForgotPassword.css" rel="stylesheet" type="text/css"/> 
            
     </head>
 
@@ -27,7 +27,7 @@
                <input type="password" name="password" placeholder="Enter new password" required>
             </div>
             
- <h4> <label for="Confirm new password" name="Confirm new password">Confirm new password</label></h4>
+ <h4> <label for="Confirmnewpassword" name="Confirmnewpassword">Confirm new password</label></h4>
             
             <br>
             
