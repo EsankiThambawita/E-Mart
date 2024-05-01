@@ -27,7 +27,7 @@
                 <div class="circle"></div>
                 <div class="circle"></div>
                 <div class="text">Upgrade your life with E-Mart: Where every click brings you closer to the latest in digital innovation. Shop smarter, live better.</div>
-                <hr class="line">
+           
             </div>
 
             <div class="container-right">
