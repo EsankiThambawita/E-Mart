@@ -4,30 +4,30 @@
  */
 package Controller;
 
+import Model.DAO;
 import java.io.IOException;
+import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import Model.DAO;
 
 /**
  *
  * @author Esanki Lakvindee
  */
-@WebServlet(name = "AdminDeleteProductServlet", urlPatterns = {"/AdminDeleteProductServlet"})
-public class AdminDeleteProductServlet extends HttpServlet {
+@WebServlet(name = "AdminDeleteMonitorServlet", urlPatterns = {"/AdminDeleteMonitorServlet"})
+public class AdminDeleteMonitorServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String productId = request.getParameter("productId");
         // Call your DAO method to delete the product from the database
-        DAO.deleteSmartphone(productId);
+        DAO.deleteMonitor(productId);
         // Redirect back to the products page
-        response.sendRedirect("/AdminPanel/JSP/Products.jsp");
+        response.sendRedirect("/AdminPanel/JSP/Monitor.jsp");
     }
 
-  
 }

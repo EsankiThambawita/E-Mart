@@ -28,7 +28,7 @@
 
     <div class="right-section">
         
-        <div class="container" style="width:2000px;">
+        <div class="container">
             <h1>Smartphones</h1>
             <ul class="horizontal-menu">
                 <li><a href="/AdminPanel/JSP/Products.jsp">Smartphones</a></li>
@@ -86,7 +86,7 @@
                             </button>
                             <div class="form-popup" id="myForm_<%= item.getProductId() %>">
                             <form action="/AdminEditProductServlet" class="form-container" method="post">
-                                <h1>Edit Product</h1>
+                                <h1>Edit Smartphone</h1>
                                 <label for="pieces_<%= item.getProductId() %>"><b>Quantity</b></label>
                                 <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
                                 <label for="price_<%= item.getProductId() %>"><b>Price</b></label>
@@ -121,7 +121,7 @@
                         </div>
 
 
-                            <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
+                            <button class="button2" onclick="deleteSmartphone('<%= item.getProductId() %>')">
                                 <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;">
                             </button>
                         </td>
@@ -134,7 +134,7 @@
             <div id="addProductModal" class="modal" style="display: none;">
             <div class="modal-content">
                 <span class="close" onclick="closetheForm()">&times;</span>
-                <h2>Add Product</h2>
+                <h2>Add Smartphone</h2>
                 <form id="addProductForm" method="POST" action="/AdminAddProductServlet">
                     <label for="productId">Product ID:</label>
                     <input type="text" id="productId" name="productId" required><br>

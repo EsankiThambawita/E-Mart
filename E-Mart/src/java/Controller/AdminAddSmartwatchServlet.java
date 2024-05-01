@@ -16,32 +16,34 @@ import jakarta.servlet.http.HttpServletResponse;
  *
  * @author Esanki Lakvindee
  */
-@WebServlet(name = "AdminEditCameraServlet", urlPatterns = {"/AdminEditCameraServlet"})
-public class AdminEditCameraServlet extends HttpServlet {
+@WebServlet(name = "AdminAddSmartwatchServlet", urlPatterns = {"/AdminAddSmartwatchServlet"})
+public class AdminAddSmartwatchServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-               // Retrieve form inputs
+                // Retrieve form data
                 String productId = request.getParameter("productId");
                 String productName = request.getParameter("productName");
                 String category = request.getParameter("category");
-                int quantity = Integer.parseInt(request.getParameter("quantity"));
+                int pieces = Integer.parseInt(request.getParameter("pieces"));
                 double price = Double.parseDouble(request.getParameter("price"));
-                String photo1 = request.getParameter("photo1");
-                String photo2 = request.getParameter("photo2");
-                String photo3 = request.getParameter("photo3");
-                String photo4 = request.getParameter("photo4");
+                String photo1 = "Images/Home/" + request.getParameter("photo1");
+                String photo2 = "Images/Home/" + request.getParameter("photo2");
+                String photo3 = "Images/Home/" + request.getParameter("photo3");
+                String photo4 = "Images/Home/" + request.getParameter("photo4");
                 String brand = request.getParameter("brand");
                 String modelName = request.getParameter("modelName");
                 String productDescription = request.getParameter("productDescription");
-                String formFactor = request.getParameter("formFactor");
+                String screenSize = request.getParameter("screenSize");
+                String color = request.getParameter("color");
 
-                // Call DAO method to update the camera in the database
-                DAO.updateCamera(productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, formFactor);
+                // Call method to add smartwatch to the database
+                DAO.addSmartwatch(productId, pieces, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, screenSize, color);
 
-                // Redirect back to the products page or any other appropriate page
-                response.sendRedirect("/AdminPanel/JSP/Camera.jsp");
+                // Redirect back to the smartwatch page
+                response.sendRedirect("/AdminPanel/JSP/Smartwatch.jsp");
 
     }
+
 }
