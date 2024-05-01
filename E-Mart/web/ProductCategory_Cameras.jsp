@@ -48,62 +48,85 @@
 
         <div class="card-container">
             <div class="card">
-                <a href="NikonD5600.jsp">
-                    <img src="Images/ProductCategory&Details/Cameras/NikonD5600.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="9">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Cameras/NikonD5600.png" alt="product 1">
+                    </a>
+                </form>
                 <h2>Nikon D5600</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="9">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="NikonD7500.jsp">
-                    <img src="Images/ProductCategory&Details/Cameras/NikonD7500.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="10">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Cameras/NikonD7500.png" alt="product 1">
+                    </a>
+                </form>   
                 <h2>Nikon D7500</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                 <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="10">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="SonyAlpha9II.jsp">
-                    <img src="Images/ProductCategory&Details/Cameras/SonyAlpha9II.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="11">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Cameras/SonyAlpha9II.png" alt="product 1">
+                    </a>
+                </form>   
                 <h2>Sony Alpha 9 II</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="11">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
 
             <hr class="vertical-line"/>
 
             <div class="card">
-                <a href="SonyRX10IV.jsp
-                   ">
-                    <img src="Images/ProductCategory&Details/Cameras/SonyRX10IV.png" alt="product 1">
-                </a>
+                <form id="productForm" action="ProductServlet" method="get">
+                    <input type="hidden" name="id" value="12">
+                    <a href="#" onclick="document.getElementById('productForm').submit();">
+                        <img src="Images/ProductCategory&Details/Cameras/SonyRX10IV.png" alt="product 1">
+                    </a>
+                </form>   
                 <h2>Sony RX 10 IV</h2>
                 <h3>Rs. 100000</h3>
 
-                <div class="btn-container">
-                    <button class="buy">Buy Now</button>
-                    <button class="cart">Add to Cart</button>
-                </div>
+                <form id="buttonForm" action="#" method="post">
+                    <input type="hidden" id="productID" name="id" value="12">    
+                    <div class="btn-container">
+                        <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
+                    </div>
+                </form>
             </div>
         </div>
         <%@ include file="Footer.html" %>
