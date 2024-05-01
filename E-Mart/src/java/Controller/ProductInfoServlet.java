@@ -1,8 +1,5 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package Controller;
+
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -40,7 +37,20 @@ public class ProductInfoServlet extends HttpServlet {
             ResultSet rs = st.executeQuery();
 
             //Forward the result to the JSP
-            request.setAttribute("productResultSet", rs);
+            if(rs.next()) {
+                request.setAttribute("productName", rs.getString("productName"));
+                request.setAttribute("price", rs.getInt("price"));
+                request.setAttribute("brand", rs.getString("brand"));
+                request.setAttribute("modelName", rs.getString("modelName"));
+                request.setAttribute("storageCapacity", rs.getString("storageCapacity"));
+                request.setAttribute("screenSize", rs.getDouble("screenSize"));
+                request.setAttribute("color", rs.getString("color"));
+                request.setAttribute("productDescription", rs.getString("productDescription"));
+                request.setAttribute("photo1", rs.getString("photo1"));
+                request.setAttribute("photo2", rs.getString("photo2"));
+                request.setAttribute("photo3", rs.getString("photo3"));
+                request.setAttribute("photo4", rs.getString("photo4"));
+            }
             request.getRequestDispatcher("ProductInfoTemplate.jsp").forward(request, response);
 
             rs.close();
@@ -60,5 +70,4 @@ public class ProductInfoServlet extends HttpServlet {
 
     }
 }
-
 
