@@ -91,14 +91,7 @@
         </div>
 
 
-        <!-- Adding Cart functionality -->
-
-        <form id="cartForm" action="CartControllerServlet" method="post" style="display: none;">
-            <input type="hidden" id="productName" name="productName">
-            <input type="hidden" id="productPrice" name="productPrice">
-            <input type="hidden" id="quantity" name="quantity" value="1">
-            <input type="hidden" id="action" name="action">
-        </form>
+        
 
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>

@@ -19,7 +19,7 @@ public class Checkout {
       Statement st;
     public void addCheckout(String name, String mail, String add, String citys, String states, int zips) {
        connectToDB();
-        String query = "INSERT INTO billingdetails(name,email,address,city,state,zip) VALUES('"+name+"','"+mail+"','"+add+"','"+citys+"','"+states+"','"+zips+"')";
+        String query = "INSERT INTO orders(name,email,address,city,state,zip) VALUES('"+name+"','"+mail+"','"+add+"','"+citys+"','"+states+"','"+zips+"')";
         try {
             st.executeUpdate(query);           
         } catch (SQLException ex) {
