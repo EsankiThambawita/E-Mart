@@ -758,7 +758,7 @@ public class DAO {
         }
     }
 
-    public static void updateLaptop(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory) {
+    public static void updateLaptop(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory, String photo1, String photo2, String photo3, String photo4) {
             Connection connection = null;
             PreparedStatement statement = null;
 
@@ -769,7 +769,7 @@ public class DAO {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
                 // Prepare SQL statement
-                String sql = "UPDATE laptop SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, cpu=?, memory=? WHERE productId=?";
+                String sql = "UPDATE laptop SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, cpu=?, memory=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
                 statement = connection.prepareStatement(sql);
 
                 // Set parameters
@@ -782,7 +782,11 @@ public class DAO {
                 statement.setString(7, storageCapacity);
                 statement.setString(8, cpu);
                 statement.setString(9, memory);
-                statement.setString(10, productId);
+                statement.setString(10, photo1);
+                statement.setString(11, photo2);
+                statement.setString(12, photo3);
+                statement.setString(13, photo4);
+                statement.setString(14, productId);
 
                 // Execute update
                 statement.executeUpdate();
