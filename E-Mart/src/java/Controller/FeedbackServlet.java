@@ -58,26 +58,28 @@ public class FeedbackServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-            // Retrieve feedback value from request
-            String feedbackValue = request.getParameter("feedback");
-     
-            // Insert feedback into the database
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-                Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/emart", "root", "");
-                PreparedStatement pst = con.prepareStatement("INSERT INTO orders (feedback) VALUES (?)");
-                pst.setString(2, feedbackValue);
+        // Retrieve feedback value and orderId from request
+        String feedbackValue = request.getParameter("feedback");
+        String orderId = request.getParameter("orderId");
+
+        // Insert feedback into the database along with orderId
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            try (Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/emart", "root", "")) {
+                PreparedStatement pst = con.prepareStatement("UPDATE orders SET feedback = ? WHERE orderId = ?");
+                pst.setString(1, feedbackValue);
+                pst.setString(2, orderId);
                 pst.executeUpdate();
-                con.close();
-            } catch (Exception e) {
-                e.printStackTrace();
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
-            // Send response back to client
-            response.setContentType("text/plain");
-            PrintWriter out = response.getWriter();
-            out.print("Feedback saved successfully");
-            out.flush();
-
+        // Send response back to client
+        response.setContentType("text/plain");
+        PrintWriter out = response.getWriter();
+        out.print("Feedback saved successfully");
+        out.flush();
     }
+
 }

@@ -10,6 +10,7 @@
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
 <%@page import="Controller.OrderConfirmationServlet"%>
+<%@page import="Model.AdminOrderObj"%>
 
 
 <%@ page import="java.io.BufferedReader" %>
@@ -107,70 +108,82 @@
                 </div>
                 <!-- Submit button -->
                 <div>
-                    <button type="button" class="submit-feedback" onclick="submitFeedback()">
-                        Submit Feedback
-                    </button>
+                    <%
+                        List<AdminOrderObj> orders = DAO.getAdminOrders();
+                        int lastOrderId = 0; // Initialize with 0 or any other default value
+                        int lastIndex = orders.size() - 1;
+                        if (lastIndex >= 0) {
+                            // Get the orderId of the last order
+                            lastOrderId = orders.get(lastIndex).getOrderNumber();
+                        }
+                    %>
+
+<button type="button" class="submit-feedback" onclick="submitFeedback()" data-orderid="<%= lastOrderId %>">
+    Submit Feedback
+</button>
+
                 </div>
-                
+
             </div>
 
-       
-            </div>
-                
-        
-                <%String apiKey = "mlsn.1e09da5329b79f474aff9bc3ccb8ddc06df779561f248f8fc202c9764dea4a33";
-                String senderEmail = "MS_1iz77E@trial-k68zxl2enw9lj905.mlsender.net";
-                String recipientEmail = "esankilakvindee2000@gmail.com";
 
-                String url = "https://api.mailersend.com/v1/email";
-                String payload = "{\n" +
-                        "    \"from\": {\n" +
-                        "        \"email\": \"" + senderEmail + "\"\n" +
-                        "    },\n" +
-                        "    \"to\": [\n" +
-                        "        {\n" +
-                        "            \"email\": \"" + recipientEmail + "\"\n" +
-                        "        }\n" +
-                        "    ],\n" +
-                        "    \"subject\": \"Hello from MailerSend!\",\n" +
-                        "    \"text\": \"Greetings from the team, you got this message through MailerSend.\",\n" +
-                        "    \"html\": \"Greetings from the team, you got this message through MailerSend.\"\n" +
-                        "}";
+        </div>
 
-                try {
-                    URL obj = new URL(url);
-                    HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-                    con.setRequestMethod("POST");
-                    con.setRequestProperty("Content-Type", "application/json");
-                    con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
-                    con.setRequestProperty("Authorization", "Bearer " + apiKey);
+        <%String apiKey = "mlsn.1e09da5329b79f474aff9bc3ccb8ddc06df779561f248f8fc202c9764dea4a33";
+        String senderEmail = "MS_1iz77E@trial-k68zxl2enw9lj905.mlsender.net";
+        String recipientEmail = "esankilakvindee2000@gmail.com";
 
-                    con.setDoOutput(true);
-                    DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-                    wr.writeBytes(payload);
-                    wr.flush();
-                    wr.close();
+        String url = "https://api.mailersend.com/v1/email";
+        String payload = "{\n" +
+                "    \"from\": {\n" +
+                "        \"email\": \"" + senderEmail + "\"\n" +
+                "    },\n" +
+                "    \"to\": [\n" +
+                "        {\n" +
+                "            \"email\": \"" + recipientEmail + "\"\n" +
+                "        }\n" +
+                "    ],\n" +
+                "    \"subject\": \"Hello from MailerSend!\",\n" +
+                "    \"text\": \"Greetings from the team, you got this message through MailerSend.\",\n" +
+                "    \"html\": \"Greetings from the team, you got this message through MailerSend.\"\n" +
+                "}";
 
-                    int responseCode = con.getResponseCode();
-                    System.out.println("Response Code : " + responseCode);
+        try {
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-                    BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String inputLine;
-                    StringBuilder MailResponse = new StringBuilder();
+            con.setRequestMethod("POST");
+            con.setRequestProperty("Content-Type", "application/json");
+            con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+            con.setRequestProperty("Authorization", "Bearer " + apiKey);
 
-                    while ((inputLine = in.readLine()) != null) {
-                        MailResponse.append(inputLine);
-                    }
-                    in.close();
-                } catch (Exception e) {
-                }%>
-    
-    
-                    
-                    
+            con.setDoOutput(true);
+            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+            wr.writeBytes(payload);
+            wr.flush();
+            wr.close();
+
+            int responseCode = con.getResponseCode();
+            System.out.println("Response Code : " + responseCode);
+
+            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+            String inputLine;
+            StringBuilder MailResponse = new StringBuilder();
+
+            while ((inputLine = in.readLine()) != null) {
+                MailResponse.append(inputLine);
+            }
+            in.close();
+        } catch (Exception e) {
+        }%>
+
+
+
+
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
         <script src="JS/Email.js"></script>
+        <script src="JS/Feedback-Rating.js"></script>
     </body>
 </html>

@@ -7,7 +7,7 @@ let stars = document.querySelectorAll('input');
 let showValue = document.querySelector('#rating-value');
 
 stars.forEach(star => {
-    star.addEventListener('click', function() {
+    star.addEventListener('click', function () {
         showValue.innerHTML = this.value + " out of 5";
     });
 });
@@ -17,15 +17,18 @@ function submitFeedback() {
     // Get feedback value
     var feedbackValue = document.querySelector('input[name="rating"]:checked').value;
 
-    // Send feedback value to the server
+    // Get orderId
+    var orderId = document.querySelector('.submit-feedback').dataset.orderid;
+
+    // Send feedback value and orderId to the server
     var xhr = new XMLHttpRequest();
     xhr.open('POST', 'FeedbackServlet', true);
     xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.onreadystatechange = function() {
+    xhr.onreadystatechange = function () {
         if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
             // Feedback submitted successfully
             alert(xhr.responseText); // Show success message
         }
     };
-    xhr.send('feedback=' + encodeURIComponent(feedbackValue));
+    xhr.send('feedback=' + encodeURIComponent(feedbackValue) + '&orderId=' + encodeURIComponent(orderId));
 }
