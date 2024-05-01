@@ -546,7 +546,7 @@ public class DAO {
         }
     }
 
-    public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color, String cpu, String memory, String photo1, String photo2, String photo3, String photo4) {
+    public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color, String photo1, String photo2, String photo3, String photo4) {
             Connection connection = null;
             PreparedStatement statement = null;
 
@@ -557,7 +557,7 @@ public class DAO {
                 connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
                 // Prepare SQL statement
-                String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=?, cpu=?, memory=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
+                String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
                 statement = connection.prepareStatement(sql);
 
                 // Set parameters
@@ -570,13 +570,11 @@ public class DAO {
                 statement.setString(7, storageCapacity);
                 statement.setString(8, screenSize);
                 statement.setString(9, color);
-                statement.setString(10, cpu);
-                statement.setString(11, memory);
-                statement.setString(12, photo1);
-                statement.setString(13, photo2);
-                statement.setString(14, photo3);
-                statement.setString(15, photo4);
-                statement.setString(16, productId);
+                statement.setString(10, photo1);
+                statement.setString(11, photo2);
+                statement.setString(12, photo3);
+                statement.setString(13, photo4);
+                statement.setString(14, productId);
 
                 // Execute update
                 statement.executeUpdate();
