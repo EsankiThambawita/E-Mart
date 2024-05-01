@@ -1206,7 +1206,7 @@ public class DAO {
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
             // Prepare SQL statement
-            String sql = "INSERT INTO smartwatch (productId, pieces, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, screenSize, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO smartwatch (productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, screenSize, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             statement = connection.prepareStatement(sql);
 
             // Set parameters
