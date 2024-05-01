@@ -30,7 +30,7 @@ public class AdminEditProductServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // Retrieve form data
+         // Retrieve form data including photo parameters
         String productId = request.getParameter("productId");
         int quantity = Integer.parseInt(request.getParameter("quantity"));
         double price = Double.parseDouble(request.getParameter("price"));
@@ -41,13 +41,18 @@ public class AdminEditProductServlet extends HttpServlet {
         String storageCapacity = request.getParameter("storageCapacity");
         String screenSize = request.getParameter("screenSize");
         String color = request.getParameter("color");
+        String cpu = request.getParameter("cpu"); // Add CPU parameter
+        String memory = request.getParameter("memory"); 
+        String photo1 = "Images/Home/" + request.getParameter("photo1");
+        String photo2 = "Images/Home/" + request.getParameter("photo2"); 
+        String photo3 = "Images/Home/" + request.getParameter("photo3");
+        String photo4 = "Images/Home/" + request.getParameter("photo4"); 
 
-        // Update database
-        DAO.updateSmartphone(productId, quantity, price, productName, brand, modelName, productDescription, storageCapacity, screenSize, color); 
+        // Update database including photo parameters
+        DAO.updateSmartphone(productId, quantity, price, productName, brand, modelName, productDescription, storageCapacity, screenSize, color, cpu, memory, photo1, photo2, photo3, photo4); 
 
         // Redirect back to the page where the form was submitted from
         response.sendRedirect("/AdminPanel/JSP/Products.jsp");
-    
     }
 
 }

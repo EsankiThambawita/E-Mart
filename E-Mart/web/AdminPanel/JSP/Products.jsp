@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="/AdminPanel/CSS/Menu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/horizontalMenu.css">
     <link rel="stylesheet" href="/AdminPanel/CSS/editForm.css">
-    <link rel="stylesheet" href="/AdminPanel/CSS/AddProducts.css">
+    <link rel="stylesheet" href="/AdminPanel/CSS/AddProductsForm.css">
 </head>
 <body>
     <div class="left-section">
@@ -85,33 +85,41 @@
                                 <img src="/AdminPanel/Images/pen.svg" alt="Edit" style="width: 20px; height: 20px;">
                             </button>
                             <div class="form-popup" id="myForm_<%= item.getProductId() %>">
-                                <form action="/AdminEditProductServlet" class="form-container" method="post">
-                                    <h1>Edit Product</h1>
-                                    <label for="pieces_<%= item.getProductId() %>"><b>Quantity</b></label>
-                                    <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
-                                    <label for="price_<%= item.getProductId() %>"><b>Price</b></label>
-                                    <input type="number" step="0.01" placeholder="Enter Price" name="price" value="<%= item.getPrice() %>" required><br>
-                                    <input type="hidden" name="productId" value="<%= item.getProductId() %>">
-                                    <input type="hidden" name="category" value="<%= item.getCategory() %>">
-                                    <label for="productName_<%= item.getProductId() %>"><b>Product Name</b></label>
-                                    <input type="text" placeholder="Enter product name" name="productName" value="<%= item.getProductName() %>" required><br>
-                                    <label for="brand_<%= item.getProductId() %>"><b>Brand</b></label>
-                                    <input type="text" placeholder="Enter brand" name="brand" value="<%= item.getBrand() %>" required><br>
-                                    <label for="modelName_<%= item.getProductId() %>"><b>Model Name</b></label>
-                                    <input type="text" placeholder="Enter model name" name="modelName" value="<%= item.getModelName() %>" required><br>
-                                    <label for="productDescription_<%= item.getProductId() %>"><b>Product Description</b></label>
-                                    <textarea placeholder="Enter product description" name="productDescription" required><%= item.getProductDescription() %></textarea><br>
-                                    <label for="storageCapacity_<%= item.getProductId() %>"><b>Storage Capacity</b></label>
-                                    <input type="text" placeholder="Enter storage capacity" name="storageCapacity" value="<%= item.getStorageCapacity() %>" required><br>
-                                    <label for="screenSize_<%= item.getProductId() %>"><b>Screen Size</b></label>
-                                    <input type="text" placeholder="Enter screen size" name="screenSize" value="<%= item.getScreenSize() %>" required><br>
-                                    <label for="color_<%= item.getProductId() %>"><b>Color</b></label>
-                                    <input type="text" placeholder="Enter color" name="color" value="<%= item.getColor() %>" required><br>
-                                    <button type="submit" class="btn">Save Changes</button>
-                                    <button type="button" class="btn cancel" onclick="closeForm('<%= item.getProductId() %>')">Close</button>
+                            <form action="/AdminEditProductServlet" class="form-container" method="post">
+                                <h1>Edit Product</h1>
+                                <label for="pieces_<%= item.getProductId() %>"><b>Quantity</b></label>
+                                <input type="number" placeholder="Enter quantity" name="quantity" value="<%= item.getQuantity() %>" required><br>
+                                <label for="price_<%= item.getProductId() %>"><b>Price</b></label>
+                                <input type="number" step="0.01" placeholder="Enter Price" name="price" value="<%= item.getPrice() %>" required><br>
+                                <input type="hidden" name="productId" value="<%= item.getProductId() %>">
+                                <input type="hidden" name="category" value="<%= item.getCategory() %>">
+                                <label for="productName_<%= item.getProductId() %>"><b>Product Name</b></label>
+                                <input type="text" placeholder="Enter product name" name="productName" value="<%= item.getProductName() %>" required><br>
+                                <label for="brand_<%= item.getProductId() %>"><b>Brand</b></label>
+                                <input type="text" placeholder="Enter brand" name="brand" value="<%= item.getBrand() %>" required><br>
+                                <label for="modelName_<%= item.getProductId() %>"><b>Model Name</b></label>
+                                <input type="text" placeholder="Enter model name" name="modelName" value="<%= item.getModelName() %>" required><br>
+                                <label for="productDescription_<%= item.getProductId() %>"><b>Product Description</b></label>
+                                <textarea placeholder="Enter product description" name="productDescription" required><%= item.getProductDescription() %></textarea><br>
+                                <label for="storageCapacity_<%= item.getProductId() %>"><b>Storage Capacity</b></label>
+                                <input type="text" placeholder="Enter storage capacity" name="storageCapacity" value="<%= item.getStorageCapacity() %>" required><br>
+                                <label for="screenSize_<%= item.getProductId() %>"><b>Screen Size</b></label>
+                                <input type="text" placeholder="Enter screen size" name="screenSize" value="<%= item.getScreenSize() %>" required><br>
+                                <label for="color_<%= item.getProductId() %>"><b>Color</b></label>
+                                <input type="text" placeholder="Enter color" name="color" value="<%= item.getColor() %>" required><br>
+                                <label for="photo1_<%= item.getProductId() %>"><b>Photo 1</b></label>
+                                <input type="text" placeholder="Enter URL for photo 1" name="photo1" value="<%= item.getPhoto1() %>"><br>
+                                <label for="photo2_<%= item.getProductId() %>"><b>Photo 2</b></label>
+                                <input type="text" placeholder="Enter URL for photo 2" name="photo2" value="<%= item.getPhoto2() %>"><br>
+                                <label for="photo3_<%= item.getProductId() %>"><b>Photo 3</b></label>
+                                <input type="text" placeholder="Enter URL for photo 3" name="photo3" value="<%= item.getPhoto3() %>"><br>
+                                <label for="photo4_<%= item.getProductId() %>"><b>Photo 4</b></label>
+                                <input type="text" placeholder="Enter URL for photo 4" name="photo4" value="<%= item.getPhoto4() %>"><br>
+                                <button type="submit" class="btn">Save Changes</button>
+                                <button type="button" class="btn cancel" onclick="closeForm('<%= item.getProductId() %>')">Close</button>
+                            </form>
+                        </div>
 
-                                </form>
-                            </div>
 
                             <button class="button2" onclick="deleteProduct('<%= item.getProductId() %>')">
                                 <img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px;">
@@ -159,6 +167,7 @@
                     <label for="color">Color:</label>
                     <input type="text" id="color" name="color" required><br>
                     <button type="submit" onclick="saveProduct()">Save</button>
+                    <span class="close" onclick="closetheForm()">&times;</span>
                 </form>
             </div>
         </div>
@@ -191,6 +200,7 @@
         function closetheForm() {
             document.getElementById("addProductModal").style.display = "none";
         }
+
     </script>
 
     <script src="/AdminPanel/JS/delete.js"></script>
