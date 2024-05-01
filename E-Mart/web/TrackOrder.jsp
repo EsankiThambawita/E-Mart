@@ -42,8 +42,8 @@
                 </h1>
             </div>
             <% 
-                               List<AdminOrderObj> orders = DAO.getAdminOrders();
-                               for (AdminOrderObj order : orders) {
+    List<AdminOrderObj> orders = DAO.getAdminOrders();
+    for (AdminOrderObj order : orders) {
             %>
             <div class="order-tracking-card">
                 <div class="order-details-row">
@@ -59,12 +59,12 @@
                         </div>
                     </div>
                     <div class="order-details-col">
-                        <h2 class="order-detail-col-title">Quantity </h2><!-- here -->
-                        <p class="order-detail-col-content"><%= order.getQuantity() %> </p><!-- here -->
+                        <h2 class="order-detail-col-title">Quantity </h2>
+                        <p class="order-detail-col-content"><%= order.getQuantity() %> </p>
                     </div>
 
                     <div class="order-details-col">
-                        <h2 class="order-detail-col-title">Order Number</h2>
+                        <h2 class="order-detail-col-title">Actions</h2>
                         <a href="MyReturns.jsp" class="button-white">Return</a>
                         <a href="" class="button-acrylic">Cancel Order</a>
                     </div>
@@ -77,68 +77,67 @@
                     <div class="progress-visual">
                         <div class="tracking-progress">
                             <div class="progress-bar">
-                                <div class="progress-bar-progress"></div>
+                                <div class="progress-bar-progress" id="progressBar_<%= order.getOrderNumber() %>"></div>
                             </div>
                         </div>
                         <div class="tracking-milestones">
-                            <input type="hidden" name="orderStatus" id="orderStatus" value="<%= order.getOrderStatus() %>">
+                            <input type="hidden" name="orderStatus" id="orderStatus_<%= order.getOrderNumber() %>" value="<%= order.getOrderStatus() %>">
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" id="processingIcon" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
+                                <img class="tracking-mile-icon inactive" id="processingIcon_<%= order.getOrderNumber() %>" src="Images/TrackOrder/OrderProcessingIcon.png" alt="Processing">
                                 <p class="tracking-mile-des">Order Processing</p>
                             </div>
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" id="deliveryIcon" src="Images/TrackOrder/OutForDeliveryIcon.png" alt="Delivery">
+                                <img class="tracking-mile-icon inactive" id="deliveryIcon_<%= order.getOrderNumber() %>" src="Images/TrackOrder/OutForDeliveryIcon.png" alt="Delivery">
                                 <p class="tracking-mile-des">Out For Delivery</p>
                             </div>
                             <div class="tracking-mile">
-                                <img class="tracking-mile-icon inactive" id="deliveredIcon" src="Images/TrackOrder/DeliveredIcon.png" alt="Delivered">
+                                <img class="tracking-mile-icon inactive" id="deliveredIcon_<%= order.getOrderNumber() %>" src="Images/TrackOrder/DeliveredIcon.png" alt="Delivered">
                                 <p class="tracking-mile-des">Delivered</p>
                             </div>
-                            
-                            
-                            <script>
-                                // Get the order status from the hidden input field
-                                var orderStatus = document.getElementById("orderStatus").value;
 
-                                // Update the class of the tracking-mile-icon elements based on the order status
-                                switch (orderStatus) {
-                                    case "processing":
-                                        document.getElementById("processingIcon").classList.remove("inactive");
-                                        document.getElementById("processingIcon").classList.add("active");
-                                        updateProgressBar(20); // Set progress to 20%
-                                        break;
-                                    case "Outfordelivery":
-                                        document.getElementById("deliveryIcon").classList.remove("inactive");
-                                        document.getElementById("deliveryIcon").classList.add("active");
-                                        updateProgressBar(51); // Set progress to 51%
-                                        break;
-                                    case "delivered":
-                                        document.getElementById("deliveredIcon").classList.remove("inactive");
-                                        document.getElementById("deliveredIcon").classList.add("active");
-                                        updateProgressBar(100); // Set progress to 100%
-                                        break;
-                                    default:
-                                        break;
-                                }
+                            <script>
+                                document.addEventListener("DOMContentLoaded", function () {
+                                    // Get the order status from the hidden input field
+                                    var orderStatus = document.getElementById("orderStatus_<%= order.getOrderNumber() %>").value;
+
+                                    // Update the class of the tracking-mile-icon elements based on the order status
+                                    switch (orderStatus.toLowerCase()) {
+                                        case "processing":
+                                            document.getElementById("processingIcon_<%= order.getOrderNumber() %>").classList.remove("inactive");
+                                            document.getElementById("processingIcon_<%= order.getOrderNumber() %>").classList.add("active");
+                                            updateProgressBar(<%= order.getOrderNumber() %>, 20); // Set progress to 20%
+                                            break;
+                                        case "outfordelivery":
+                                            document.getElementById("deliveryIcon_<%= order.getOrderNumber() %>").classList.remove("inactive");
+                                            document.getElementById("deliveryIcon_<%= order.getOrderNumber() %>").classList.add("active");
+                                            updateProgressBar(<%= order.getOrderNumber() %>, 51); // Set progress to 51%
+                                            break;
+                                        case "delivered":
+                                            document.getElementById("deliveredIcon_<%= order.getOrderNumber() %>").classList.remove("inactive");
+                                            document.getElementById("deliveredIcon_<%= order.getOrderNumber() %>").classList.add("active");
+                                            updateProgressBar(<%= order.getOrderNumber() %>, 100); // Set progress to 100%
+                                            break;
+                                        default:
+                                            break;
+                                    }
+                                });
 
                                 // Function to update the width of the progress bar
-                                function updateProgressBar(progress) {
-                                    var progressBar = document.querySelector(".progress-bar-progress");
-                                    progressBar.style.width = progress + "%";
+                                function updateProgressBar(orderNumber, progress) {
+                                    var progressBar = document.getElementById("progressBar_" + orderNumber);
+                                    if (progressBar) {
+                                        progressBar.style.width = progress + "%";
+                                    }
                                 }
                             </script>
                         </div>
                     </div>
                 </div>
             </div>
-
+            <% } %>
         </div>
 
 
-
-        <% } %>
-
-        }
 
 
         <%@ include file="Footer.html" %>

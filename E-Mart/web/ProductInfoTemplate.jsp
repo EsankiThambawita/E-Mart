@@ -80,7 +80,7 @@
             </tr>
             <tr>
                 <td>Color</td>
-                <td><td><%= productRS.getString("color") %></td></td>
+                <td><%= productRS.getString("color") %></td>
             </tr>
         </table>
         <div class="option-buttons">

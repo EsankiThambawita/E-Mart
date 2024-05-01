@@ -41,12 +41,6 @@
                             <span>Order History</span>
                         </a>
                     </div>
-                    <div class="sidebar-item">
-                        <a href="MyReturns.jsp">
-                            <img src="Images/Profile/MyReturns.svg"><br>
-                            <span>My<br> Returns</span>
-                        </a>
-                    </div>
                 </div>
 
                 <div class="form-container profile-form" action="ProfilePictureServlet" method="post" enctype="multipart/form-data" style="border: 2px solid #007bff; height: 530px; margin-top: 30px">
