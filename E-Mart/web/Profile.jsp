@@ -19,7 +19,7 @@
         <link href="CSS/Profile.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="body-wrapper">
             <div class="container">
                 <div class="sidebar" style="border: 2px solid #007bff;"><br>

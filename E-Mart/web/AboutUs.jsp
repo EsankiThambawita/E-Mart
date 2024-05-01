@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <!--        <div id="wave"></div>-->
 
         <h1 class="center">Why Us?</h1>

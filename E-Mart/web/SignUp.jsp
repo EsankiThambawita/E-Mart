@@ -95,7 +95,7 @@
             <p style="text-align: center;">Already Have an Account? <a href="SignIn.jsp">Sign In</a>
 </p>
             <br>
-              <p style="text-align: center;"><a href="Home.jsp">Back To Home</a>
+              <p style="text-align: center;"><a href="index.jsp">Back To Home</a>
 </p>
 
         </form> 

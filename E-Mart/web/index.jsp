@@ -20,7 +20,7 @@
     </head>
 
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
 
         <% DAO.getAllCartItems(); %>
         <% DAO.getAllSmartphones(); %>

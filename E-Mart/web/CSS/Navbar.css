@@ -165,3 +165,18 @@ nav {
     overflow: hidden;
 }
 
+.nav-button {
+    display: flex;
+    align-items: center; /* Align items vertically */s
+}
+
+.nav-action-buttons {
+    display: flex;
+    gap: 2rem;
+    align-items: center; /* Align items vertically */
+}
+
+.indicator {
+    font-size: 18px;
+    color: white;
+}

@@ -11,43 +11,43 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>E-mart SignIn</title>
-           <link href="CSS/SignIn.css" rel="stylesheet" type="text/css"/>       
+        <link href="CSS/SignIn.css" rel="stylesheet" type="text/css"/>       
     </head>
 
     <div class="form-wrapper">
         <h2 style="text-align: center;">SIGN IN</h2>
-        <form action="SignInServlet"  method=" post">
+        <form action="SignInServlet"  method="post">
             <h4> <label for="email">Email</label></h4>
-            
+
             <br>
-            
+
             <div class="form-control">
-                <input type="text" id="email" required>
+                <input type="text" id="email" name="email" required>
                 <label>emartshop@gmail.com</label>
             </div>
-            
+
             <br>
-            
+
             <h4><label for="password">Password</label></h4>
-            
+
             <br>
-           <div class="form-control">
-    <input type="password" id="password"  required>
-    <label>8+ characters</label>
-</div>
-            <a href="#0">Forgot password?</a>
-            
-  <button class=" " type="submit">SIGN IN</button>
-            
-                <div class="remember-me">
-                    <input type="checkbox" id="remember-me">
-                    <label for="remember-me">Remember me</label>
-                </div>
+            <div class="form-control">
+                <input type="password" id="password" name="password" required>
+                <label>8+ characters</label>
+            </div>
+            <a href="ForgotPassword.jsp">Forgot password?</a>
+
+            <button class=" " type="submit">SIGN IN</button>
+
+            <div class="remember-me">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Remember me</label>
+            </div>
             <br>
             <p style="text-align: center;">New to E-Mart? <a href="SignUp.jsp">Sign up now</a></p>
             <br>
-             <p style="text-align: center;"><a href="Home.jsp">Back To Home</a>
-            <br>
+            <p style="text-align: center;"><a href="Home.jsp">Back To Home</a>
+                <br>
         </form>  
     </div>
 </body> 
