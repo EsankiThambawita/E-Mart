@@ -147,13 +147,13 @@
                     <label for="price">Price:</label>
                     <input type="number" id="price" name="price" required><br>
                     <label for="photo1">Photo 1:</label>
-                    <input type="file" id="photo1" name="photo1"><br>
+                    <input type="text" id="photo1" name="photo1"><br>
                     <label for="photo2">Photo 2:</label>
-                    <input type="file" id="photo2" name="photo2"><br>
+                    <input type="text" id="photo2" name="photo2"><br>
                     <label for="photo3">Photo 3:</label>
-                    <input type="file" id="photo3" name="photo3"><br>
+                    <input type="text" id="photo3" name="photo3"><br>
                     <label for="photo4">Photo 4:</label>
-                    <input type="file" id="photo4" name="photo4"><br>
+                    <input type="text" id="photo4" name="photo4"><br>
                     <label for="brand">Brand:</label>
                     <input type="text" id="brand" name="brand" required><br>
                     <label for="modelName">Model Name:</label>

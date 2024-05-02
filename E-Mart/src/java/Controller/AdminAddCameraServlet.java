@@ -29,10 +29,10 @@ public class AdminAddCameraServlet extends HttpServlet {
             String category = request.getParameter("category");
             int quantity = Integer.parseInt(request.getParameter("pieces")); // Assuming "pieces" represents quantity
             double price = Double.parseDouble(request.getParameter("price"));
-            String photo1 = "Images/Home/" + request.getParameter("photo1");
-            String photo2 = "Images/Home/" + request.getParameter("photo2");
-            String photo3 = "Images/Home/" + request.getParameter("photo3");
-            String photo4 = "Images/Home/" + request.getParameter("photo4");
+            String photo1 = request.getParameter("photo1");
+            String photo2 = request.getParameter("photo2");
+            String photo3 = request.getParameter("photo3");
+            String photo4 = request.getParameter("photo4");
             String brand = request.getParameter("brand");
             String modelName = request.getParameter("modelName");
             String productDescription = request.getParameter("productDescription");

@@ -1231,11 +1231,11 @@ public class DAO {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        } 
-   
+        }  
     }
 
-
-
+    public static void addToCart(){
+        
+    }
 
 }
