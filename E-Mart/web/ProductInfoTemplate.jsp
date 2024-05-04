@@ -94,10 +94,13 @@
                 <td><%= color %></td>
             </tr>
         </table>
-        <div class="option-buttons">
-            <button class="buy-now">Buy Now</button>
-            <button class="add-to-cart">Add to Cart</button>
-        </div>
+            <form action="ShoppingServlet" method="post">
+                <input type="hidden" name="ID" calue="<%= productID %>">
+                <div class="option-buttons">
+                    <button type="submit" class="buy-now" name="action" value="buy_now">Buy Now</button>
+                    <button type="submit" class="add-to-cart" name="action" value="add_to_cart">Add to Cart</button>
+                </div>
+            </form>
 
         <div class="favourite">
             <i id="wishlist-icon" class="far fa-star"></i><p>Wishlist</p>
