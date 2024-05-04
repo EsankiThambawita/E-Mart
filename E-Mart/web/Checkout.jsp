@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
     <body style="background-color: #000000; color: #ffffff;">
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="container">
             <h2><i class="fas fa-shopping-cart"></i> Checkout</h2>
             <h3>Cart <i class="fas fa-shopping-cart"></i></h3>
@@ -91,14 +91,7 @@
         </div>
 
 
-        <!-- Adding Cart functionality -->
-
-        <form id="cartForm" action="CartControllerServlet" method="post" style="display: none;">
-            <input type="hidden" id="productName" name="productName">
-            <input type="hidden" id="productPrice" name="productPrice">
-            <input type="hidden" id="quantity" name="quantity" value="1">
-            <input type="hidden" id="action" name="action">
-        </form>
+        
 
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>

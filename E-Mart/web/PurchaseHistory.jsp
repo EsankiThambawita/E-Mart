@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<%@ include file="Navbar.html" %>
+<%@ include file="Navbar.jsp" %>
 <div class="body-wrapper">
     <div class="container">
 

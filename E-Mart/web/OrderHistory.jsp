@@ -21,7 +21,7 @@
 </head>
 
 <body>
-<%@ include file="Navbar.html" %>
+<%@ include file="Navbar.jsp" %>
 <div class="body-wrapper" style="margin-top: 100px; margin-bottom: 200px;">
     <div class="container">
 

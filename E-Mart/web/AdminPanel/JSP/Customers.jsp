@@ -27,9 +27,6 @@
         </div>
         
         <div class="right-section">
-        <div class="navbar">
-            <%@ include file="navbar.html" %>
-        </div>
         <div class="container">
             <h1>Customers</h1>
             <table>

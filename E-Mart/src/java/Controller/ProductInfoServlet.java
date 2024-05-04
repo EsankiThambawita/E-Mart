@@ -17,7 +17,7 @@ import java.sql.PreparedStatement;
 public class ProductInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int  productID = Integer.parseInt(request.getParameter("productID"));
+        int productID = Integer.parseInt(request.getParameter("productID"));
 
         //Establishing a connection
         String url = "jdbc:mysql://localhost:3306/emart";
@@ -60,9 +60,6 @@ public class ProductInfoServlet extends HttpServlet {
         }catch(ClassNotFoundException | SQLException e){
             e.printStackTrace();
         }
-
-
-
     }
 
     @Override

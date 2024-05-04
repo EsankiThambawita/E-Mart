@@ -16,7 +16,7 @@
         <link href="CSS/EditDetails.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="body-wrapper">
 
             <form id="editForm" action="SaveDetailsServlet" method="post"  style="border: 2px solid #007bff; padding: 20px;">

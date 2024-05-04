@@ -18,7 +18,7 @@
     </head>
 
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <h1 class="center">Developers</h1>
 
         <br>

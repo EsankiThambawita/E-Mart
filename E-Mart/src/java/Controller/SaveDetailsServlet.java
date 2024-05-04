@@ -11,6 +11,7 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -81,7 +82,13 @@ public class SaveDetailsServlet extends HttpServlet {
         String newusername = request.getParameter("username");
         String newcontactNumber = request.getParameter("contactNumber");
         userDao.updateDetails(email, newusername, newcontactNumber);
-        response.sendRedirect("Home.jsp");
+        
+        HttpSession session = request.getSession();
+        session.setAttribute("email", email.trim());
+        session.setAttribute("username", newusername.trim());
+        session.setAttribute("contactNumber", newcontactNumber.trim());
+        
+        response.sendRedirect("Profile.jsp");
     }
 
     /**
