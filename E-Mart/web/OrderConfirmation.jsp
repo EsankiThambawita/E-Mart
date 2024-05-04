@@ -20,7 +20,7 @@
 <%@ page import="java.net.HttpURLConnection" %>
 <%@ page import="java.net.URL" %>
 
-
+<% String recentEmail = ""; %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -35,7 +35,7 @@
     <body>
         <input type="hidden" id="emailSent" value="<%= request.getAttribute("emailSent") %>">
 
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="container">
 
             <div class="confirmation">
@@ -111,16 +111,18 @@
                     <%
                         List<AdminOrderObj> orders = DAO.getAdminOrders();
                         int lastOrderId = 0; // Initialize with 0 or any other default value
+                        String email = "";
                         int lastIndex = orders.size() - 1;
                         if (lastIndex >= 0) {
                             // Get the orderId of the last order
                             lastOrderId = orders.get(lastIndex).getOrderNumber();
+                            recentEmail = orders.get(lastIndex).getEmail();
                         }
                     %>
 
-<button type="button" class="submit-feedback" onclick="submitFeedback()" data-orderid="<%= lastOrderId %>">
-    Submit Feedback
-</button>
+                    <button type="button" class="submit-feedback" onclick="submitFeedback()" data-orderid="<%= lastOrderId %>">
+                        Submit Feedback
+                    </button>
 
                 </div>
 
@@ -129,54 +131,57 @@
 
         </div>
 
-
-        <%String apiKey = "mlsn.1e09da5329b79f474aff9bc3ccb8ddc06df779561f248f8fc202c9764dea4a33";
+        <%
+        String apiKey = "mlsn.1e09da5329b79f474aff9bc3ccb8ddc06df779561f248f8fc202c9764dea4a33";
         String senderEmail = "MS_1iz77E@trial-k68zxl2enw9lj905.mlsender.net";
-        String recipientEmail = "esankilakvindee2000@gmail.com";
+        String recipientEmail = recentEmail;
 
         String url = "https://api.mailersend.com/v1/email";
         String payload = "{\n" +
-                "    \"from\": {\n" +
-                "        \"email\": \"" + senderEmail + "\"\n" +
-                "    },\n" +
-                "    \"to\": [\n" +
-                "        {\n" +
-                "            \"email\": \"" + recipientEmail + "\"\n" +
-                "        }\n" +
-                "    ],\n" +
-                "    \"subject\": \"Hello from MailerSend!\",\n" +
-                "    \"text\": \"Greetings from the team, you got this message through MailerSend.\",\n" +
-                "    \"html\": \"Greetings from the team, you got this message through MailerSend.\"\n" +
-                "}";
+        "    \"from\": {\n" +
+        "        \"email\": \"" + senderEmail + "\"\n" +
+        "    },\n" +
+        "    \"to\": [\n" +
+        "        {\n" +
+        "            \"email\": \"" + recipientEmail + "\"\n" +
+        "        }\n" +
+        "    ],\n" +
+        "    \"subject\": \"Thank You for Your Purchase!\",\n" +
+        "    \"html\": \"Dear Customer,<br>Thank you for choosing E-mart! We appreciate your support and hope you enjoy your recent purchase. If you have any questions, feel free to reach out to us.<br>Best regards,<br>E-mart.\"\n" +
+        "}";
 
         try {
-            URL obj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+        URL obj = new URL(url);
+        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-            con.setRequestMethod("POST");
-            con.setRequestProperty("Content-Type", "application/json");
-            con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
-            con.setRequestProperty("Authorization", "Bearer " + apiKey);
+        con.setRequestMethod("POST");
+        con.setRequestProperty("Content-Type", "application/json");
+        con.setRequestProperty("X-Requested-With", "XMLHttpRequest");
+        con.setRequestProperty("Authorization", "Bearer " + apiKey);
 
-            con.setDoOutput(true);
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(payload);
-            wr.flush();
-            wr.close();
+        con.setDoOutput(true);
+        DataOutputStream wr = new DataOutputStream(con.getOutputStream());
+        wr.writeBytes(payload);
+        wr.flush();
+        wr.close();
 
-            int responseCode = con.getResponseCode();
-            System.out.println("Response Code : " + responseCode);
+        int responseCode = con.getResponseCode();
+        System.out.println("Response Code : " + responseCode);
 
-            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            String inputLine;
-            StringBuilder MailResponse = new StringBuilder();
+        BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+        String inputLine;
+        StringBuilder MailResponse = new StringBuilder();
 
-            while ((inputLine = in.readLine()) != null) {
-                MailResponse.append(inputLine);
-            }
-            in.close();
-        } catch (Exception e) {
-        }%>
+        while ((inputLine = in.readLine()) != null) {
+        MailResponse.append(inputLine);
+        }
+        in.close();
+        } catch (Exception e) { %>
+
+        <code><%= e.toString() %></code>
+
+        <% } %>
+
 
 
 
