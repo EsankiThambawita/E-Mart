@@ -62,45 +62,50 @@
                 </div>
             </div>
 
+
+    </div>
+
+    <hr class="vertical-line"/>
+
+    <!--Right product info and stuff-->
+    <div class="right-column">
+        <h1 class="name"><%= productName %></h1>
+        <h3 class="price"><%= price %></h3>
+
+        <!--In stock/out of stock square thingy-->
+        <div class="availability">In Stock</div>
+
+        <!--Product details table-->
+        <table class="info-table">
+            <tr>
+                <td>Brand</td>
+                <td><%= brand %></td>
+            </tr>
+            <tr>
+                <td>Model Name</td>
+                <td><%= modelName %></td>
+            </tr>
+            <tr>
+                <td>Storage Capacity</td>
+                <td><%= storageCapacity %></td>
+            </tr>
+            <tr>
+                <td>Screen Size</td>
+                <td><%= screenSize %></td>
+            </tr>
+            <tr>
+                <td>Color</td>
+                <td><%= color %></td>
+            </tr>
+        </table>
+            <form action="ShoppingServlet" method="post">
+                <input type="hidden" name="ID" calue="<%= productID %>">
+                <div class="option-buttons">
+                    <button type="submit" class="buy-now" name="action" value="buy_now">Buy Now</button>
+                    <button type="submit" class="add-to-cart" name="action" value="add_to_cart">Add to Cart</button>
+                </div>
+            </form>
         </div>
-
-        <hr class="vertical-line"/>
-
-        <!--Right product info and stuff-->
-        <div class="right-column">
-            <h1 class="name"><%= productName %></h1>
-            <h3 class="price"><%= price %></h3>
-
-            <!--In stock/out of stock square thingy-->
-            <div class="availability">In Stock</div>
-
-            <!--Product details table-->
-            <table class="info-table">
-                <tr>
-                    <td>Brand</td>
-                    <td><%= brand %></td>
-                </tr>
-                <tr>
-                    <td>Model Name</td>
-                    <td><%= modelName %></td>
-                </tr>
-                <tr>
-                    <td>Storage Capacity</td>
-                    <td><%= storageCapacity %></td>
-                </tr>
-                <tr>
-                    <td>Screen Size</td>
-                    <td><%= screenSize %></td>
-                </tr>
-                <tr>
-                    <td>Color</td>
-                    <td><%= color %></td>
-                </tr>
-            </table>
-            <div class="option-buttons">
-                <button class="buy-now">Buy Now</button>
-                <button class="add-to-cart">Add to Cart</button>
-            </div>
 
             <div class="favourite">
                 <i id="wishlist-icon" class="far fa-star"></i><p>Wishlist</p>
