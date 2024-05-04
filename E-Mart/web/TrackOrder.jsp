@@ -28,7 +28,7 @@
     </head>
 
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <!-- Start Body Wrapper -->
         <div class="body-wrapper">
 

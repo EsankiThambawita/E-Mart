@@ -17,7 +17,7 @@
 
     </head>
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="category-icons">
             <div>
                 <a href="ProductCategory_Phones.jsp">

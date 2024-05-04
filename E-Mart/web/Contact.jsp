@@ -17,7 +17,7 @@
         <link href="CSS/Contact.css" rel="stylesheet" type="text/css"/>
         <script src="https://kit.fontawesome.com/7942e54de0.js" crossorigin="anonymous"></script>
     </head>
-    <%@ include file="Navbar.html" %>
+    <%@ include file="Navbar.jsp" %>
     <body>
         <div class="wrapper-center contact-page-content">
             <img src="/letter_send 1.png" alt="" class="bg-graphic">

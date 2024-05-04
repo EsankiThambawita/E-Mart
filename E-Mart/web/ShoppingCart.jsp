@@ -24,7 +24,7 @@
 
 
     <body>
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="wrapper-center d-flex mt-5 pt-5 mb-5">
             <h1 class="title">Thank you for your purchase</h1>
 

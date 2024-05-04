@@ -23,7 +23,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     </head>
     <body style="background-color: #000000; color: #ffffff;">
-        <%@ include file="Navbar.html" %>
+        <%@ include file="Navbar.jsp" %>
         <div class="container">
             <h2><i class="fas fa-shopping-cart"></i> Checkout</h2>
             <h3>Cart <i class="fas fa-shopping-cart"></i></h3>
