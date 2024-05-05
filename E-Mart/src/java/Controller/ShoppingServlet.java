@@ -21,6 +21,7 @@ public class ShoppingServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String productID = request.getParameter("ID");
         String action = request.getParameter("action");
+        String category = request.getParameter("category");
 
 
         String driver = "com.mysql.jdbc.Driver";

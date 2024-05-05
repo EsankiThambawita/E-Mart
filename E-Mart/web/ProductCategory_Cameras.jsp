@@ -58,7 +58,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="9">    
+                    <input type="hidden" id="productID" name="id" value="9">
+                    <input type="hidden" id="category" name="category" value="camera"
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>

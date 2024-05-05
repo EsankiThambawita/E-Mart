@@ -99,7 +99,8 @@
             </tr>
         </table>
             <form action="ShoppingServlet" method="post">
-                <input type="hidden" name="ID" calue="<%= productID %>">
+                <input type="hidden" name="ID" value="<%= productID %>">
+                <input type="hidden" name="category" value="<%= category %>">
                 <div class="option-buttons">
                     <button type="submit" class="buy-now" name="action" value="buy_now">Buy Now</button>
                     <button type="submit" class="add-to-cart" name="action" value="add_to_cart">Add to Cart</button>
