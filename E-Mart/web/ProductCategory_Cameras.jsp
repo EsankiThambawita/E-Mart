@@ -59,7 +59,7 @@
 
                 <form id="buttonForm" action="#" method="post">
                     <input type="hidden" id="productID" name="id" value="9">
-                    <input type="hidden" id="category" name="category" value="camera"
+                    <input type="hidden" id="category" name="category" value="camera">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -72,6 +72,8 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="10">
+                    <input type="hidden" id="category" name="category" value="camera">
+                    <input type="hidden" id="category" name="category" value="camera">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Cameras/NikonD7500.png" alt="product 1">
                     </a>
@@ -80,7 +82,8 @@
                 <h3>Rs. 100000</h3>
 
                  <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="10">    
+                    <input type="hidden" id="productID" name="id" value="10"> 
+                    <input type="hidden" id="category" name="category" value="camera">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -93,6 +96,7 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="11">
+                    <input type="hidden" id="category" name="category" value="camera">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Cameras/SonyAlpha9II.png" alt="product 1">
                     </a>
@@ -101,7 +105,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="11">    
+                    <input type="hidden" id="productID" name="id" value="11"> 
+                    <input type="hidden" id="category" name="category" value="camera">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -114,6 +119,7 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="12">
+                    <input type="hidden" id="category" name="category" value="camera">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Cameras/SonyRX10IV.png" alt="product 1">
                     </a>
@@ -122,7 +128,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="12">    
+                    <input type="hidden" id="productID" name="id" value="12">
+                    <input type="hidden" id="category" name="category" value="camera">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
