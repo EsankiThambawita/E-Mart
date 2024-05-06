@@ -87,39 +87,53 @@
                             </tr> 
                         </table>
                     </form>
-                        <br>
-                        <p style="text-align: center;"><a href="#" style="color: white;">Log Out</a></p>
-                        <script>
-                            window.onload = function () {
-                                let profilePic = document.getElementById("profile-pic");
-                                let inputFile = document.getElementById("input-file");
-                                let chooseFile = document.getElementById("choose-file");
+                    <br>
+                    <p style="text-align: center;"><a href="#" id="logout-link" style="color: white;">Log Out</a></p>
+                    <script>
+                        window.onload = function () {
+                            let profilePic = document.getElementById("profile-pic");
+                            let inputFile = document.getElementById("input-file");
+                            let chooseFile = document.getElementById("choose-file");
 
-                                inputFile.onchange = function () {
-                                    if (validateFile(inputFile)) {
-                                        profilePic.src = URL.createObjectURL(inputFile.files[0]);
-                                    } else {
-                                        input.value = ""; // Clear the file input field if validation fails
-                                    }
-                                };
-
-                                document.querySelector('label[for="input-file"]').addEventListener('click', function () {
-                                    chooseFile.click();
-                                });
+                            inputFile.onchange = function () {
+                                if (validateFile(inputFile)) {
+                                    profilePic.src = URL.createObjectURL(inputFile.files[0]);
+                                } else {
+                                    input.value = ""; // Clear the file input field if validation fails
+                                }
                             };
 
-                            function validateFile(input) {
-                                var file = input.files[0];
-                                var allowedTypes = ["image/jpeg", "image/png", "image/jpg"]; // Allowed image types
+                            document.querySelector('label[for="input-file"]').addEventListener('click', function () {
+                                chooseFile.click();
+                            });
+                        };
 
-                                if (file && !allowedTypes.includes(file.type)) {
-                                    // File is not an image, show an error message
-                                    alert("Please select a valid image file (JPEG, PNG, JPG).");
-                                    return false;
-                                }
-                                return true;
+                        function validateFile(input) {
+                            var file = input.files[0];
+                            var allowedTypes = ["image/jpeg", "image/png", "image/jpg"]; // Allowed image types
+
+                            if (file && !allowedTypes.includes(file.type)) {
+                                // File is not an image, show an error message
+                                alert("Please select a valid image file (JPEG, PNG, JPG).");
+                                return false;
                             }
-                        </script>
+                            return true;
+                        }
+                        document.getElementById("logout-link").addEventListener("click", function (event) {
+                            event.preventDefault(); // Prevent default behavior of the anchor tag
+
+                            // Send an AJAX request to the server to invalidate the session
+                            var xhr = new XMLHttpRequest();
+                            xhr.open("GET", "LogoutServlet", true); // Replace "LogoutServlet" with the actual servlet URL for logout
+                            xhr.onreadystatechange = function () {
+                                if (xhr.readyState === 4 && xhr.status === 200) {
+                                    // Redirect the user to the login page or any other appropriate page after logout
+                                    window.location.href = "index.jsp"; // Replace "login.html" with the actual login page URL
+                                }
+                            };
+                            xhr.send();
+                        });
+                    </script>
                 </div>
             </div>
         </div>
