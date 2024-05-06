@@ -26,14 +26,16 @@
         <!-- Retrieve the product Details from the servlet -->
 
         <%
-            String productName = (String) request.getAttribute("productName");
             String category = (String) request.getAttribute("category");
+            if(category.equals("smartphone")) {
+            
+            String productName = (String) request.getAttribute("productName");
             int productID = (int) request.getAttribute("productID");
             int price = (int) request.getAttribute("price");
             String brand = (String) request.getAttribute("brand");
             String modelName = (String) request.getAttribute("modelName");
             String storageCapacity = (String) request.getAttribute("storageCapacity");
-            double screenSize = (double) request.getAttribute("screenSize");
+            String screenSize = (String) request.getAttribute("screenSize");
             String color = (String) request.getAttribute("color");
             String productDescription = (String) request.getAttribute("productDescription");
             String photo1 = (String) request.getAttribute("photo1");
@@ -118,7 +120,95 @@
 
         </div>            
     </container>
+    <%}
+            else if(category.equals("smartwatch")) {
+            String productName = (String) request.getAttribute("productName");
+            int productID = (int) request.getAttribute("productID");
+            int price = (int) request.getAttribute("price");
+            String brand = (String) request.getAttribute("brand");
+            String modelName = (String) request.getAttribute("modelName");
+            String screenSize = (String) request.getAttribute("screenSize");
+            String color = (String) request.getAttribute("color");
+            String productDescription = (String) request.getAttribute("productDescription");
+            String photo1 = (String) request.getAttribute("photo1");
+            String photo2 = (String) request.getAttribute("photo2");
+            String photo3 = (String) request.getAttribute("photo3");
+            String photo4 = (String) request.getAttribute("photo4");
+    %>
 
+    <!--Main container to contain the 2 columns-->
+    <container class="container">
+
+        <!--Left gallery-->
+        <div class="left-column">
+            <img src="<%= photo1 %>" class="thumbnail" id="ProductImg">
+
+            <div class="small-img-row">
+                <div class="small-img-col">
+                    <img src="<%= photo1 %>" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="<%= photo2 %>" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="<%= photo3 %>" width="100%" class="small-img">
+                </div>
+                <div class="small-img-col">
+                    <img src="<%= photo4 %>" width="100%" class="small-img">
+                </div>
+            </div>
+
+
+        </div>
+
+        <hr class="vertical-line"/>
+
+        <!--Right product info and stuff-->
+        <div class="right-column">
+            <h1 class="name"><%= productName %></h1>
+            <h3 class="price"><%= price %></h3>
+
+            <!--In stock/out of stock square thingy-->
+            <div class="availability">In Stock</div>
+
+            <!--Product details table-->
+            <table class="info-table">
+                <tr>
+                    <td>Brand</td>
+                    <td><%= brand %></td>
+                </tr>
+                <tr>
+                    <td>Model Name</td>
+                    <td><%= modelName %></td>
+                </tr>
+                <tr>
+                    <td>Screen Size</td>
+                    <td><%= screenSize %></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td><%= color %></td>
+                </tr>
+            </table>
+            <form action="ShoppingServlet" method="post">
+                <input type="hidden" name="ID" value="<%= productID %>">
+                <input type="hidden" name="category" value="<%= category %>">
+                <div class="option-buttons">
+                    <button type="submit" class="buy-now" name="action" value="buy_now">Buy Now</button>
+                    <button type="submit" class="add-to-cart" name="action" value="add_to_cart">Add to Cart</button>
+                </div>
+            </form>
+
+            <div class="favourite">
+                <i id="wishlist-icon" class="far fa-star"></i><p>Wishlist</p>
+            </div>
+
+            <p class="description"><%= productDescription %>
+            </p>
+
+        </div>            
+    </container>
+    <%}%>
     <script src="../../JS/ProductDetailsScript.js"></script>
 
 </body>
