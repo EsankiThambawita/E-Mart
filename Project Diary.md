@@ -17,7 +17,9 @@
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-04-13 | PC got corrupted by a virus                                      | By using a bootable USB I clean installed windows |
 | 2024-04-16 | Came across an issue when adding navbar and footer to all the pages.  | Fixed it by adding a div to seperate the html and fixing the css |
-| 2024-04-20 | Time consumption in using an actual database to test the backend | Used a mock database instead for testing |
+| 2024-04-26 | Side menu not extending down fully when scrolled in the admin panel  | Fixed it by making the position set to fixed attribute |
+| 2024-05-01 | After user logs in nav bar profile icon changes messing up the spacing  |  |
+
 
 **3. Sandali**
 
@@ -111,7 +113,9 @@
 
 | Date       | Challenges Faced                                                 | How They Were Overcome                                              | 
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
-| 2024-03-30 | Debugging feature X                                              | Found issue in code and fixed it.  
+| 2024-04-20 | Time consumption in using an actual database to test the backend | Used a mock database instead for testing |
+| 2024-04-28 | Difficulty in fetching different attrbutes from different tables in the database in the shoppingCart page | Used a complex sql query to fetch all the values using the product id as the foreign key|
+| 2024-05-6 | MySQl servers randomly stopped working / Phpmyadmin stopped working |                                        |
 
 
 **3. Sandali**
