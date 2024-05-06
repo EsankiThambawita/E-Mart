@@ -50,6 +50,7 @@
             <div class="card">
                  <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="17">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Monitors/AsusProArtDisplayPA278CV.png" alt="product 1">
                     </a>
@@ -58,7 +59,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="17">    
+                    <input type="hidden" id="productID" name="id" value="17"> 
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -71,6 +73,7 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="18">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Monitors/DellUltraSharpU2723QE.webp" alt="product 1">
                     </a>
@@ -79,7 +82,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="18">    
+                    <input type="hidden" id="productID" name="id" value="18">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -92,6 +96,7 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="19">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Monitors/SamsungOdysseyG9.webp" alt="product 1">
                     </a>
@@ -100,7 +105,8 @@
                 <h3>Rs. 100000</h3>
 
                  <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="19">    
+                    <input type="hidden" id="productID" name="id" value="19"> 
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>
@@ -113,6 +119,7 @@
             <div class="card">
                 <form id="productForm" action="ProductServlet" method="get">
                     <input type="hidden" name="id" value="20">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <a href="#" onclick="document.getElementById('productForm').submit();">
                         <img src="Images/ProductCategory&Details/Monitors/SamsungUR59C.webp" alt="product 1">
                     </a>
@@ -121,7 +128,8 @@
                 <h3>Rs. 100000</h3>
 
                 <form id="buttonForm" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="20">    
+                    <input type="hidden" id="productID" name="id" value="20">
+                    <input type="hidden" id="category" name="category" value="monitor">
                     <div class="btn-container">
                         <button class="buy" onclick="document.getElementById('buttonForm').action='CheckoutServlet';">Buy Now</button>
                         <button class="cart" onclick="document.getElementById('buttonForm').action='CartServlet';">Add to Cart</button>

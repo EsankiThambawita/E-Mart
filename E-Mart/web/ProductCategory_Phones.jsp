@@ -57,6 +57,7 @@
             <div class="card">
                 <form id="productForm_<%= item.getProductId() %>" action="ProductInfoServlet" method="get">
                     <input type="hidden" name="productID" value="<%= item.getProductId() %>">
+                    <input type="hidden" id="category" name="category" value="smartphone">
                     <a href="#" onclick="document.getElementById('productForm_<%= item.getProductId() %>').submit();">
                         <img src="<%= item.getPhoto1() %>" alt="product 1">
                     </a>

@@ -18,6 +18,9 @@ public class ProductInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int productID = Integer.parseInt(request.getParameter("productID"));
+        
+        // Retrieve the value of the hidden input field "category"
+        String category = request.getParameter("category");
 
         //Establishing a connection
         String url = "jdbc:mysql://localhost:3306/emart";
@@ -50,6 +53,9 @@ public class ProductInfoServlet extends HttpServlet {
                 request.setAttribute("photo2", rs.getString("photo2"));
                 request.setAttribute("photo3", rs.getString("photo3"));
                 request.setAttribute("photo4", rs.getString("photo4"));
+                
+                // Set the category attribute
+                request.setAttribute("category", category);
             }
             request.getRequestDispatcher("ProductInfoTemplate.jsp").forward(request, response);
 
