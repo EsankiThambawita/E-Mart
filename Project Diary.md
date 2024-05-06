@@ -115,7 +115,7 @@
 |------------|------------------------------------------------------------------|---------------------------------------------------------------------|
 | 2024-04-20 | Time consumption in using an actual database to test the backend | Used a mock database instead for testing |
 | 2024-04-28 | Difficulty in fetching different attrbutes from different tables in the database in the shoppingCart page | Used a complex sql query to fetch all the values using the product id as the foreign key|
-| 2024-05-6 | MySQl servers randomly stopped working / Phpmyadmin stopped working |                                        |
+| 2024-05-6 | MySQl servers randomly stopped working / Phpmyadmin stopped working | made a new data folder in mysql config files and replaced the old data folder by naming it data_old and copying the neccesary files to the new  data folder |
 
 
 **3. Sandali**
