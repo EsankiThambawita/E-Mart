@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <title>Samsung Galaxy S22 Ultra</title>
-        
+
         <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" type="text/css" href="../../CSS/ProductDetailsStyles.css">
@@ -27,6 +27,8 @@
 
         <%
             String productName = (String) request.getAttribute("productName");
+            String category = (String) request.getAttribute("category");
+            int productID = (int) request.getAttribute("productID");
             int price = (int) request.getAttribute("price");
             String brand = (String) request.getAttribute("brand");
             String modelName = (String) request.getAttribute("modelName");
@@ -63,41 +65,41 @@
             </div>
 
 
-    </div>
+        </div>
 
-    <hr class="vertical-line"/>
+        <hr class="vertical-line"/>
 
-    <!--Right product info and stuff-->
-    <div class="right-column">
-        <h1 class="name"><%= productName %></h1>
-        <h3 class="price"><%= price %></h3>
+        <!--Right product info and stuff-->
+        <div class="right-column">
+            <h1 class="name"><%= productName %></h1>
+            <h3 class="price"><%= price %></h3>
 
-        <!--In stock/out of stock square thingy-->
-        <div class="availability">In Stock</div>
+            <!--In stock/out of stock square thingy-->
+            <div class="availability">In Stock</div>
 
-        <!--Product details table-->
-        <table class="info-table">
-            <tr>
-                <td>Brand</td>
-                <td><%= brand %></td>
-            </tr>
-            <tr>
-                <td>Model Name</td>
-                <td><%= modelName %></td>
-            </tr>
-            <tr>
-                <td>Storage Capacity</td>
-                <td><%= storageCapacity %></td>
-            </tr>
-            <tr>
-                <td>Screen Size</td>
-                <td><%= screenSize %></td>
-            </tr>
-            <tr>
-                <td>Color</td>
-                <td><%= color %></td>
-            </tr>
-        </table>
+            <!--Product details table-->
+            <table class="info-table">
+                <tr>
+                    <td>Brand</td>
+                    <td><%= brand %></td>
+                </tr>
+                <tr>
+                    <td>Model Name</td>
+                    <td><%= modelName %></td>
+                </tr>
+                <tr>
+                    <td>Storage Capacity</td>
+                    <td><%= storageCapacity %></td>
+                </tr>
+                <tr>
+                    <td>Screen Size</td>
+                    <td><%= screenSize %></td>
+                </tr>
+                <tr>
+                    <td>Color</td>
+                    <td><%= color %></td>
+                </tr>
+            </table>
             <form action="ShoppingServlet" method="post">
                 <input type="hidden" name="ID" value="<%= productID %>">
                 <input type="hidden" name="category" value="<%= category %>">
@@ -106,7 +108,6 @@
                     <button type="submit" class="add-to-cart" name="action" value="add_to_cart">Add to Cart</button>
                 </div>
             </form>
-        </div>
 
             <div class="favourite">
                 <i id="wishlist-icon" class="far fa-star"></i><p>Wishlist</p>
@@ -114,8 +115,8 @@
 
             <p class="description"><%= productDescription %>
             </p>
-        </div>
 
+        </div>            
     </container>
 
     <script src="../../JS/ProductDetailsScript.js"></script>

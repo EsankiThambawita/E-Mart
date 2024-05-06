@@ -43,8 +43,7 @@ public class ShoppingServlet extends HttpServlet {
 
             //inserting data to the ShoppingCart table
             while (resultSet.next()){
-                String insertQuery = "INSERT INTO shoppingcart (recordId, email, productName, productPrice, quantity, description, category, iconPath, productId) VALUES (" +
-                        resultSet.getInt("recordId") + ", '" +
+                String insertQuery = "INSERT INTO shoppingcart (email, productName, productPrice, quantity, description, category, iconPath, productId) VALUES (" +
                         resultSet.getString("email") + "', '" +
                         resultSet.getString("productName") + "', " +
                         resultSet.getInt("productPrice") + ", " +

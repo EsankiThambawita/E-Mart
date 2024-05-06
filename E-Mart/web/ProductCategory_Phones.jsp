@@ -57,7 +57,7 @@
             <div class="card">
                 <form id="productForm_<%= item.getProductId() %>" action="ProductInfoServlet" method="get">
                     <input type="hidden" name="productID" value="<%= item.getProductId() %>">
-                    <input type="hidden" id="category" name="category" value="smartphone">
+                    <input type="hidden" id="category" name="category" value="<%= item.getCategory() %>">
                     <a href="#" onclick="document.getElementById('productForm_<%= item.getProductId() %>').submit();">
                         <img src="<%= item.getPhoto1() %>" alt="product 1">
                     </a>
@@ -69,8 +69,8 @@
                     <input type="hidden" id="productID" name="id" value="<%= item.getProductId() %>">   
                     
                     <div class="btn-container">
-                        <button class="buy" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='BuyNowServlet';">Buy Now</button>
-                        <button class="cart" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='AddToCartServlet';">Add to Cart</button>
+                        <button class="buy" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='ShoppingServlet';">Buy Now</button>
+                        <button class="cart" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='ShoppingServlet';">Add to Cart</button>
                     </div>
                 </form>
             

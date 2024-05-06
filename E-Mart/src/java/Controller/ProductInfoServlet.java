@@ -34,7 +34,7 @@ public class ProductInfoServlet extends HttpServlet {
             conn = DriverManager.getConnection(url, user, password);
 
             //Retrieve the data from the database
-            String query = "select * from smartphone where productID = ?";
+            String query = "select * from smartphone where productId = ?";
             PreparedStatement st = conn.prepareStatement(query);
             st.setInt(1, productID);
             ResultSet rs = st.executeQuery();
@@ -42,6 +42,7 @@ public class ProductInfoServlet extends HttpServlet {
             //Forward the result to the JSP
             if(rs.next()) {
                 request.setAttribute("productName", rs.getString("productName"));
+                request.setAttribute("productID", rs.getInt("productId"));
                 request.setAttribute("price", rs.getInt("price"));
                 request.setAttribute("brand", rs.getString("brand"));
                 request.setAttribute("modelName", rs.getString("modelName"));

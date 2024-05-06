@@ -88,7 +88,7 @@
                         </table>
                     </form>
                         <br>
-                        <p style="text-align: center;"><a href="index.jsp" style="color: white;">Back To Home</a></p>
+                        <p style="text-align: center;"><a href="#" style="color: white;">Log Out</a></p>
                         <script>
                             window.onload = function () {
                                 let profilePic = document.getElementById("profile-pic");
