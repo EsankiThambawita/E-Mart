@@ -66,12 +66,17 @@
                 <h2><%= item.getProductName() %></h2>
                 <h3><%= item.getPrice() %></h3>
 
-                <form id="buttonForm_<%= item.getProductId() %>" action="#" method="post">
-                    <input type="hidden" id="productID" name="id" value="<%= item.getProductId() %>">   
-
+                <form id="buttonForm_<%= item.getProductId() %>" action="#" method="get">
+                    <input type="hidden" id="productID" name="ID" value="<%= item.getProductId() %>">   
+                    <input type="hidden" id="productName" name="productName" value="<%= item.getProductName() %>"> 
+                    <input type="hidden" id="productPrice" name="productPrice" value="<%= item.getPrice() %>">
+                    <input type="hidden" id="quantity" name="quantity" value="<%= item.getQuantity() %>">
+                    <input type="hidden" id="description" name="description" value="<%= item.getProductDescription() %>">
+                    <input type="hidden" name="category" value="<%= item.getCategory() %>">
+                    <input type="hidden" name="iconPath" value="<%= item.getPhoto1() %>">
                     <div class="btn-container">
-                        <button class="buy" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action = 'ShoppingServlet';">Buy Now</button>
-                        <button class="cart" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action = 'ShoppingServlet';">Add to Cart</button>
+                        <button value="buy" name="action" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='ShoppingServlet';">Buy Now</button>
+                        <button value="cart" name="action" onclick="document.getElementById('buttonForm_<%= item.getProductId() %>').action='ShoppingServlet';">Add to Cart</button>
                     </div>
                 </form>
 
