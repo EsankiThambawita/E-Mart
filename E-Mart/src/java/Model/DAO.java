@@ -483,15 +483,7 @@ public class DAO {
             statement = connection.createStatement();
 
             // SQL query to fetch from smartphone
-            String query = "SELECT o.*, "
-                    + "CASE "
-                    + "  WHEN o.productId IN (SELECT productId FROM camera) THEN (SELECT productName FROM camera WHERE productId = o.productId) "
-                    + "  WHEN o.productId IN (SELECT productId FROM smartphone) THEN (SELECT productName FROM smartphone WHERE productId = o.productId) "
-                    + "  WHEN o.productId IN (SELECT productId FROM smartwatch) THEN (SELECT productName FROM smartwatch WHERE productId = o.productId) "
-                    + "  WHEN o.productId IN (SELECT productId FROM laptop) THEN (SELECT productName FROM laptop WHERE productId = o.productId) "
-                    + "  WHEN o.productId IN (SELECT productId FROM monitor) THEN (SELECT productName FROM monitor WHERE productId = o.productId) "
-                    + "END AS productName "
-                    + "FROM orders o";
+            String query = "SELECT * FROM orders";
 
             // Executing the query
             resultSet = statement.executeQuery(query);
@@ -499,7 +491,7 @@ public class DAO {
             // Iterating over the result set and adding items from smartphone
             while (resultSet.next()) {
                 int orderNumber = resultSet.getInt("orderId");
-                int productId = resultSet.getInt("productId");
+                String productId = resultSet.getString("productId");
                 int quantity = resultSet.getInt("quantity");
                 java.util.Date orderDate = resultSet.getDate("orderDate");
                 String orderStatus = resultSet.getString("orderStatus");
@@ -508,12 +500,10 @@ public class DAO {
                 String customerName = resultSet.getString("name");
                 String feedback = resultSet.getString("feedback");
                 String email = resultSet.getString("email");
-                String productName = resultSet.getString("productName"); // Retrieve product name
 
                 // Creating Smartphone object and adding it to the list
                 AdminOrderObj order = new AdminOrderObj(orderDate, orderNumber, orderStatus, productId, quantity,
                         totalPrice, shippingAddress, customerName, feedback, email);
-                order.setProductName(productName);
                 orders.add(order);
             }
 
@@ -548,58 +538,56 @@ public class DAO {
     }
 
     public static void updateSmartphone(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color, String photo1, String photo2, String photo3, String photo4) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productName);
+            statement.setString(4, brand);
+            statement.setString(5, modelName);
+            statement.setString(6, productDescription);
+            statement.setString(7, storageCapacity);
+            statement.setString(8, screenSize);
+            statement.setString(9, color);
+            statement.setString(10, photo1);
+            statement.setString(11, photo2);
+            statement.setString(12, photo3);
+            statement.setString(13, photo4);
+            statement.setString(14, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-                // Prepare SQL statement
-                String sql = "UPDATE smartphone SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, screenSize=?, color=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
-                statement = connection.prepareStatement(sql);
-
-                // Set parameters
-                statement.setInt(1, quantity);
-                statement.setDouble(2, price);
-                statement.setString(3, productName);
-                statement.setString(4, brand);
-                statement.setString(5, modelName);
-                statement.setString(6, productDescription);
-                statement.setString(7, storageCapacity);
-                statement.setString(8, screenSize);
-                statement.setString(9, color);
-                statement.setString(10, photo1);
-                statement.setString(11, photo2);
-                statement.setString(12, photo3);
-                statement.setString(13, photo4);
-                statement.setString(14, productId);
-
-                // Execute update
-                statement.executeUpdate();
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                // Close resources
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-                }
             }
         }
+    }
 
-
-    
     public static void deleteSmartphone(String productId) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -633,7 +621,7 @@ public class DAO {
             }
         }
     }
-    
+
     public static void deleteLaptop(String productId) {
         Connection connection = null;
         PreparedStatement statement = null;
@@ -668,58 +656,55 @@ public class DAO {
         }
     }
 
-
-
     public static void addSmartphone(String productId, String productName, String category, int quantity, int price, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String storageCapacity, String screenSize, String color) {
-    Connection connection = null;
-    PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-    try {
-        // Get connection
-        connection = getConnection();
-
-        // Create SQL query
-        String query = "INSERT INTO smartphone (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, screenSize, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-
-        // Create PreparedStatement
-        statement = connection.prepareStatement(query);
-
-        // Set parameters
-        statement.setString(1, productId);
-        statement.setString(2, productName);
-        statement.setString(3, category);
-        statement.setInt(4, quantity);
-        statement.setInt(5, price);
-        statement.setString(6, photo1);
-        statement.setString(7, photo2);
-        statement.setString(8, photo3);
-        statement.setString(9, photo4);
-        statement.setString(10, brand);
-        statement.setString(11, modelName);
-        statement.setString(12, productDescription);
-        statement.setString(13, storageCapacity);
-        statement.setString(14, screenSize);
-        statement.setString(15, color);
-
-        // Execute the query
-        statement.executeUpdate();
-    } catch (SQLException e) {
-        e.printStackTrace(); // Handle or log the exception appropriately
-    } finally {
-        // Close the connection and statement
         try {
-            if (statement != null) {
-                statement.close();
-            }
-            if (connection != null) {
-                connection.close();
-            }
+            // Get connection
+            connection = getConnection();
+
+            // Create SQL query
+            String query = "INSERT INTO smartphone (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, screenSize, color) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
+            // Create PreparedStatement
+            statement = connection.prepareStatement(query);
+
+            // Set parameters
+            statement.setString(1, productId);
+            statement.setString(2, productName);
+            statement.setString(3, category);
+            statement.setInt(4, quantity);
+            statement.setInt(5, price);
+            statement.setString(6, photo1);
+            statement.setString(7, photo2);
+            statement.setString(8, photo3);
+            statement.setString(9, photo4);
+            statement.setString(10, brand);
+            statement.setString(11, modelName);
+            statement.setString(12, productDescription);
+            statement.setString(13, storageCapacity);
+            statement.setString(14, screenSize);
+            statement.setString(15, color);
+
+            // Execute the query
+            statement.executeUpdate();
         } catch (SQLException e) {
             e.printStackTrace(); // Handle or log the exception appropriately
+        } finally {
+            // Close the connection and statement
+            try {
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                e.printStackTrace(); // Handle or log the exception appropriately
+            }
         }
     }
-}
-
 
     public static void UpdateOrderStatus(int orderId, String orderStatus) {
         Connection connection = null;
@@ -758,156 +743,151 @@ public class DAO {
         }
     }
 
-    
     public static void updateLaptop(String productId, int quantity, double price, String productName, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory, String photo1, String photo2, String photo3, String photo4) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE laptop SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, cpu=?, memory=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productName);
+            statement.setString(4, brand);
+            statement.setString(5, modelName);
+            statement.setString(6, productDescription);
+            statement.setString(7, storageCapacity);
+            statement.setString(8, cpu);
+            statement.setString(9, memory);
+            statement.setString(10, photo1);
+            statement.setString(11, photo2);
+            statement.setString(12, photo3);
+            statement.setString(13, photo4);
+            statement.setString(14, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-                // Prepare SQL statement
-                String sql = "UPDATE laptop SET quantity=?, price=?, productName=?, brand=?, modelName=?, productDescription=?, storageCapacity=?, cpu=?, memory=?, photo1=?, photo2=?, photo3=?, photo4=? WHERE productId=?";
-                statement = connection.prepareStatement(sql);
-
-                // Set parameters
-                statement.setInt(1, quantity);
-                statement.setDouble(2, price);
-                statement.setString(3, productName);
-                statement.setString(4, brand);
-                statement.setString(5, modelName);
-                statement.setString(6, productDescription);
-                statement.setString(7, storageCapacity);
-                statement.setString(8, cpu);
-                statement.setString(9, memory);
-                statement.setString(10, photo1);
-                statement.setString(11, photo2);
-                statement.setString(12, photo3);
-                statement.setString(13, photo4);
-                statement.setString(14, productId);
-
-                // Execute update
-                statement.executeUpdate();
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                // Close resources
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-                }
             }
         }
-
-
-
+    }
 
     public static void addLaptop(String productId, String productName, String category, int quantity, int price, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String storageCapacity, String cpu, String memory) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-            try {
-                // Get connection
-                connection = getConnection();
+        try {
+            // Get connection
+            connection = getConnection();
 
-                // SQL query to insert laptop details into the database
-                String query = "INSERT INTO laptop (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, cpu, memory) " +
-                               "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // SQL query to insert laptop details into the database
+            String query = "INSERT INTO laptop (productId, productName, category, quantity, price, photo1, photo2, photo3, photo4, brand, modelName, productDescription, storageCapacity, cpu, memory) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                // Create a prepared statement
-                statement = connection.prepareStatement(query);
+            // Create a prepared statement
+            statement = connection.prepareStatement(query);
 
-                // Set parameters for the query
-                statement.setString(1, productId);
-                statement.setString(2, productName);
-                statement.setString(3, category);
-                statement.setInt(4, quantity);
-                statement.setInt(5, price);
-                statement.setString(6, photo1);
-                statement.setString(7, photo2);
-                statement.setString(8, photo3);
-                statement.setString(9, photo4);
-                statement.setString(10, brand);
-                statement.setString(11, modelName);
-                statement.setString(12, productDescription);
-                statement.setString(13, storageCapacity);
-                statement.setString(14, cpu);
-                statement.setString(15, memory);
+            // Set parameters for the query
+            statement.setString(1, productId);
+            statement.setString(2, productName);
+            statement.setString(3, category);
+            statement.setInt(4, quantity);
+            statement.setInt(5, price);
+            statement.setString(6, photo1);
+            statement.setString(7, photo2);
+            statement.setString(8, photo3);
+            statement.setString(9, photo4);
+            statement.setString(10, brand);
+            statement.setString(11, modelName);
+            statement.setString(12, productDescription);
+            statement.setString(13, storageCapacity);
+            statement.setString(14, cpu);
+            statement.setString(15, memory);
 
-                // Execute the query
-                statement.executeUpdate();
+            // Execute the query
+            statement.executeUpdate();
 
-            } catch (SQLException e) {
-                e.printStackTrace();
-               
-            } 
-             
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }
 
     }
 
     public static void updateCamera(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String formFactor) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE camera SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, formFactor=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productName);
+            statement.setString(4, category);
+            statement.setString(5, photo1);
+            statement.setString(6, photo2);
+            statement.setString(7, photo3);
+            statement.setString(8, photo4);
+            statement.setString(9, brand);
+            statement.setString(10, modelName);
+            statement.setString(11, productDescription);
+            statement.setString(12, formFactor);
+            statement.setString(13, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-                // Prepare SQL statement
-                String sql = "UPDATE camera SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, formFactor=? WHERE productId=?";
-                statement = connection.prepareStatement(sql);
-
-                // Set parameters
-                statement.setInt(1, quantity);
-                statement.setDouble(2, price);
-                statement.setString(3, productName);
-                statement.setString(4, category);
-                statement.setString(5, photo1);
-                statement.setString(6, photo2);
-                statement.setString(7, photo3);
-                statement.setString(8, photo4);
-                statement.setString(9, brand);
-                statement.setString(10, modelName);
-                statement.setString(11, productDescription);
-                statement.setString(12, formFactor);
-                statement.setString(13, productId);
-
-                // Execute update
-                statement.executeUpdate();
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                // Close resources
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-                }
             }
         }
+    }
 
     public static void deleteCamera(String productId) {
-         Connection connection = null;
+        Connection connection = null;
         PreparedStatement statement = null;
 
         try {
@@ -940,142 +920,141 @@ public class DAO {
         }
     }
 
-    
-        public static void updateMonitor(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String screenSize, String refreshRate, String resolution) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+    public static void updateMonitor(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String screenSize, String refreshRate, String resolution) {
+        Connection connection = null;
+        PreparedStatement statement = null;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE monitor SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, screenSize=?, refreshRate=?, resolution=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productName);
+            statement.setString(4, category);
+            statement.setString(5, photo1);
+            statement.setString(6, photo2);
+            statement.setString(7, photo3);
+            statement.setString(8, photo4);
+            statement.setString(9, brand);
+            statement.setString(10, modelName);
+            statement.setString(11, productDescription);
+            statement.setString(12, screenSize);
+            statement.setString(13, refreshRate);
+            statement.setString(14, resolution);
+            statement.setString(15, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-                // Prepare SQL statement
-                String sql = "UPDATE monitor SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, screenSize=?, refreshRate=?, resolution=? WHERE productId=?";
-                statement = connection.prepareStatement(sql);
-
-                // Set parameters
-                statement.setInt(1, quantity);
-                statement.setDouble(2, price);
-                statement.setString(3, productName);
-                statement.setString(4, category);
-                statement.setString(5, photo1);
-                statement.setString(6, photo2);
-                statement.setString(7, photo3);
-                statement.setString(8, photo4);
-                statement.setString(9, brand);
-                statement.setString(10, modelName);
-                statement.setString(11, productDescription);
-                statement.setString(12, screenSize);
-                statement.setString(13, refreshRate);
-                statement.setString(14, resolution);
-                statement.setString(15, productId);
-
-                // Execute update
-                statement.executeUpdate();
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                // Close resources
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-                }
             }
+        }
 
     }
 
     public static void addCamera(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String formFactor) {
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-                // Prepare SQL statement
-                String sql = "INSERT INTO camera (productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, formFactor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-                statement = connection.prepareStatement(sql);
+            // Prepare SQL statement
+            String sql = "INSERT INTO camera (productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, formFactor) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            statement = connection.prepareStatement(sql);
 
-                // Set parameters
-                statement.setString(1, productId);
-                statement.setInt(2, quantity);
-                statement.setDouble(3, price);
-                statement.setString(4, productName);
-                statement.setString(5, category);
-                statement.setString(6, photo1);
-                statement.setString(7, photo2);
-                statement.setString(8, photo3);
-                statement.setString(9, photo4);
-                statement.setString(10, brand);
-                statement.setString(11, modelName);
-                statement.setString(12, productDescription);
-                statement.setString(13, formFactor);
+            // Set parameters
+            statement.setString(1, productId);
+            statement.setInt(2, quantity);
+            statement.setDouble(3, price);
+            statement.setString(4, productName);
+            statement.setString(5, category);
+            statement.setString(6, photo1);
+            statement.setString(7, photo2);
+            statement.setString(8, photo3);
+            statement.setString(9, photo4);
+            statement.setString(10, brand);
+            statement.setString(11, modelName);
+            statement.setString(12, productDescription);
+            statement.setString(13, formFactor);
 
-                // Execute update
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+    }
 
     public static void addMonitor(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String screenSize, String refreshRate, String resolution) {
 
-            Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
-            try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
 
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-                // Create SQL query
-                String query = "INSERT INTO monitor (productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, screenSize, refreshRate, resolution) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            // Create SQL query
+            String query = "INSERT INTO monitor (productId, quantity, price, productName, category, photo1, photo2, photo3, photo4, brand, modelName, productDescription, screenSize, refreshRate, resolution) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-                // Create PreparedStatement
-                statement = connection.prepareStatement(query);
+            // Create PreparedStatement
+            statement = connection.prepareStatement(query);
 
-                // Set parameters
-                statement.setString(1, productId);
-                statement.setInt(2, quantity);
-                statement.setDouble(3, price);
-                statement.setString(4, productName);
-                statement.setString(5, category);
-                statement.setString(6, photo1);
-                statement.setString(7, photo2);
-                statement.setString(8, photo3);
-                statement.setString(9, photo4);
-                statement.setString(10, brand);
-                statement.setString(11, modelName);
-                statement.setString(12, productDescription);
-                statement.setString(13, screenSize);
-                statement.setString(14, refreshRate);
-                statement.setString(15, resolution);
+            // Set parameters
+            statement.setString(1, productId);
+            statement.setInt(2, quantity);
+            statement.setDouble(3, price);
+            statement.setString(4, productName);
+            statement.setString(5, category);
+            statement.setString(6, photo1);
+            statement.setString(7, photo2);
+            statement.setString(8, photo3);
+            statement.setString(9, photo4);
+            statement.setString(10, brand);
+            statement.setString(11, modelName);
+            statement.setString(12, productDescription);
+            statement.setString(13, screenSize);
+            statement.setString(14, refreshRate);
+            statement.setString(15, resolution);
 
-                // Execute update
-                statement.executeUpdate();
-            } catch (SQLException e) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            
-            }
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+
         }
+    }
 
     public static void deleteMonitor(String productId) {
         Connection connection = null;
@@ -1112,58 +1091,58 @@ public class DAO {
     }
 
     public static void updateSmartwatch(String productId, int quantity, double price, String productName, String category, String photo1, String photo2, String photo3, String photo4, String brand, String modelName, String productDescription, String screenSize, String color) {
-           Connection connection = null;
-            PreparedStatement statement = null;
+        Connection connection = null;
+        PreparedStatement statement = null;
 
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Prepare SQL statement
+            String sql = "UPDATE smartwatch SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, screenSize=?, color=? WHERE productId=?";
+            statement = connection.prepareStatement(sql);
+
+            // Set parameters
+            statement.setInt(1, quantity);
+            statement.setDouble(2, price);
+            statement.setString(3, productName);
+            statement.setString(4, category);
+            statement.setString(5, photo1);
+            statement.setString(6, photo2);
+            statement.setString(7, photo3);
+            statement.setString(8, photo4);
+            statement.setString(9, brand);
+            statement.setString(10, modelName);
+            statement.setString(11, productDescription);
+            statement.setString(12, screenSize);
+            statement.setString(13, color);
+            statement.setString(14, productId);
+
+            // Execute update
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            // Close resources
             try {
-                Class.forName("com.mysql.cj.jdbc.Driver");
-
-                // Establishing connection to the database
-                connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
-                // Prepare SQL statement
-                String sql = "UPDATE smartwatch SET quantity=?, price=?, productName=?, category=?, photo1=?, photo2=?, photo3=?, photo4=?, brand=?, modelName=?, productDescription=?, screenSize=?, color=? WHERE productId=?";
-                statement = connection.prepareStatement(sql);
-
-                // Set parameters
-                statement.setInt(1, quantity);
-                statement.setDouble(2, price);
-                statement.setString(3, productName);
-                statement.setString(4, category);
-                statement.setString(5, photo1);
-                statement.setString(6, photo2);
-                statement.setString(7, photo3);
-                statement.setString(8, photo4);
-                statement.setString(9, brand);
-                statement.setString(10, modelName);
-                statement.setString(11, productDescription);
-                statement.setString(12, screenSize);
-                statement.setString(13, color);
-                statement.setString(14, productId);
-
-                // Execute update
-                statement.executeUpdate();
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
             } catch (SQLException e) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-            } catch (ClassNotFoundException ex) {
-                Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-            } finally {
-                // Close resources
-                try {
-                    if (statement != null) {
-                        statement.close();
-                    }
-                    if (connection != null) {
-                        connection.close();
-                    }
-                } catch (SQLException e) {
-                    Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
-                }
             }
+        }
     }
 
     public static void deleteSmartwatch(String productId) {
-            Connection connection = null;
+        Connection connection = null;
         PreparedStatement statement = null;
 
         try {
@@ -1232,11 +1211,11 @@ public class DAO {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, e);
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
-        }  
+        }
     }
 
-    public static void addToCart(){
-        
+    public static void addToCart() {
+
     }
 
 }

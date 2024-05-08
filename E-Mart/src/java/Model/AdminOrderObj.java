@@ -15,7 +15,7 @@ public class AdminOrderObj {
     private Date orderDate;
     private int orderNumber;
     private String orderStatus;
-    private int productId;
+    private String productId;
     private int quantity;
     private int totalPrice;
     private String shippingAddress;
@@ -24,7 +24,7 @@ public class AdminOrderObj {
     private String email;
     private String productName;
 
-    public AdminOrderObj(Date orderDate, int orderNumber, String orderStatus, int productId, int quantity, int totalPrice, String shippingAddress, String customerName, String feedback, String email) {
+    public AdminOrderObj(Date orderDate, int orderNumber, String orderStatus, String productId, int quantity, int totalPrice, String shippingAddress, String customerName, String feedback, String email) {
         this.orderDate = orderDate;
         this.orderNumber = orderNumber;
         this.orderStatus = orderStatus;
@@ -37,11 +37,11 @@ public class AdminOrderObj {
         this.email = email;
     }
 
-    public int getProductId() {
+    public String getProductId() {
         return productId;
     }
 
-    public void setProductId(int productId) {
+    public void setProductId(String productId) {
         this.productId = productId;
     }
 
@@ -75,14 +75,6 @@ public class AdminOrderObj {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
-    }
-
-    public int getproductId() {
-        return productId;
-    }
-
-    public void setproductId(int products) {
-        this.productId = products;
     }
 
     public int getQuantity() {

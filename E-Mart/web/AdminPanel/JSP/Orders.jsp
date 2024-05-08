@@ -31,7 +31,7 @@
                             <th>Date</th>
                             <th>Order ID</th>
                             <th>Customer Email</th>
-                            <th class="products">Products</th>
+                            <th class="products">Product IDs</th>
                             <th>Quantity</th>
                             <th>Total Price</th>
                             <th>Feedback</th>
@@ -49,7 +49,7 @@
                             <td><%= order.getOrderDate() %></td>
                             <td><%= order.getOrderNumber() %></td>
                             <td><%= order.getEmail() %></td>
-                            <td><%= order.getProductName() %></td>
+                            <td><%= order.getProductId() %></td>
                             <td><%= order.getQuantity() %></td>
                             <td>LKR <%= order.getTotalPrice() %></td>
                             <td><%= order.getFeedback()  %> Stars</td>
