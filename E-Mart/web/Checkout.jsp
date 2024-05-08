@@ -4,12 +4,13 @@
     Author     : hp
 --%>
 
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.Map.Entry" %>
+<%@page import="java.util.Map" %>
+<%@page import="java.util.HashMap" %>
+<%@page import="java.util.Map.Entry" %>
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
+<%@page import="java.time.LocalDate" %>
 
 <!DOCTYPE html>
 <html>
@@ -27,6 +28,7 @@
         <div class="container">
             <h2><i class="fas fa-shopping-cart"></i> Checkout</h2>
             <h3>Cart <i class="fas fa-shopping-cart"></i></h3>
+            <form action="CheckoutServlet" method="post">
             <table>
                 <tr>
                     <th>Product</th>
@@ -36,25 +38,34 @@
                     List<ShoppingCartObj> cartItems = DAO.getAllCartItems();
                     for (ShoppingCartObj item : cartItems) {
                 %>
+                <input type="hidden" name="orderDate" value="<%= LocalDate.now() %>"> 
                 <tr>
-                    <td><%= item.getProductName() %></td>
+                    <td>
+                        <%= item.getProductName() %>
+                    </td>
                     <td><%= item.getProductPrice() %></td>
                 </tr>
                 <% } %>
                 <tr>
                     <% 
+                            int quantity = 0;
                             int total = 0;
                             for (ShoppingCartObj item : cartItems) {
                             total += item.getTotalPrice();
+                            quantity += item.getQuantity();
                         }
                     %>
                     <td><b>Total:</b></td>
-                    <td><b>$<%= total %></b></td>
+                    <td>
+                        <input type="hidden" name="totalPrice" value="<%= total %>"> 
+                        <input type="hidden" name="quantity" value="<%= quantity %>"> 
+                        <b>$<%= total %></b>
+                    </td>
                 </tr>
             </table>
 
             <h3>Billing Details <i class="fas fa-user"></i></h3>
-            <form action="CheckoutServlet" method="post">
+          
                 <div class="form-group">
                     <label><i class="fas fa-user"></i> Full Name:</label><br>
                     <input type="text" name="fullName" required placeholder="John Doe"><br>
@@ -91,7 +102,7 @@
         </div>
 
 
-        
+
 
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>
