@@ -376,10 +376,11 @@ public class DAO {
                 String iconPath = resultSet.getString("iconPath");
                 int recordId = resultSet.getInt("recordId");
                 String email = resultSet.getString("email");
+                int productId = resultSet.getInt("productId");
 
                 // Creating ShoppingCartItem object and adding it to the list
                 ShoppingCartObj cartItem = new ShoppingCartObj(productName, productPrice, quantity, description,
-                        category, iconPath, recordId, email);
+                        category, iconPath, recordId, email, productId);
                 currentCartSnap.add(cartItem);
             }
         } catch (Exception e) {

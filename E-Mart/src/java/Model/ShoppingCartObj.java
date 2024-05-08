@@ -18,8 +18,9 @@ public class ShoppingCartObj {
     private String iconPath;
     private int recordId;
     private String email;
+    private int productId;
 
-    public ShoppingCartObj(String productName, int productPrice, int quantity, String description, ProductCategory category, String iconPath, int recordId, String email) {
+    public ShoppingCartObj(String productName, int productPrice, int quantity, String description, ProductCategory category, String iconPath, int recordId, String email, int productId) {
         this.productName = productName;
         this.productPrice = productPrice;
         this.quantity = quantity;
@@ -28,6 +29,15 @@ public class ShoppingCartObj {
         this.iconPath = iconPath;
         this.recordId = recordId;
         this.email = email;
+        this.productId = productId;
+    }
+
+    public int getProductId() {
+        return productId;
+    }
+
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 
     public String getProductName() {
