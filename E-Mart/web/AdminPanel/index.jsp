@@ -148,7 +148,14 @@
                             <label for="productName">Product Name:</label>
                             <input type="text" id="productName" name="productName" required><br>
                             <label for="category">Category:</label>
-                            <input type="text" id="category" name="category" required><br>
+                            <select id="category" name="category" required>
+                                <option value="">Select a category</option>
+                                <option value="camera">Camera</option>
+                                <option value="smartphone">Smartphone</option>
+                                <option value="smartwatch">Smartwatch</option>
+                                <option value="laptop">Laptop</option>
+                                <option value="monitor">Monitor</option>
+                            </select><br>
                             <label for="pieces">Pieces:</label>
                             <input type="number" id="pieces" name="pieces" required><br>
                             <label for="price">Price:</label>
