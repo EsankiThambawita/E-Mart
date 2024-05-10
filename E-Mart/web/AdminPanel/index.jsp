@@ -30,7 +30,7 @@
     </head>
     <body>
         <div class="left-section">
-            <%@ include file="Menu.html" %>
+            <%@ include file="/AdminPanel/JSP/Menu.html" %>
         </div>
 
         <div class="right-section">

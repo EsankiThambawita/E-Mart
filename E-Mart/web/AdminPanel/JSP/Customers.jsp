@@ -8,10 +8,14 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.SQLException"%>
-
-
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    if (session == null || session.getAttribute("adminEmail") == null) {
+        response.sendRedirect("/AdminPanel/JSP/Login.jsp"); // Redirect to the login page if not logged in
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>

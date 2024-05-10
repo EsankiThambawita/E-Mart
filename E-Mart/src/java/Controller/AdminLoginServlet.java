@@ -39,9 +39,9 @@ public class AdminLoginServlet extends HttpServlet {
             // Create a session
             HttpSession session = request.getSession();
             // Store user information in session
-            session.setAttribute("email", Email);
+            session.setAttribute("adminEmail", Email);
             // Redirect to profile page
-            response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Profile.jsp");
+            response.sendRedirect(request.getContextPath() + "/AdminPanel/JSP/Products.jsp");
         } else {
             // Password is incorrect, display an error message
             request.setAttribute("errorMessage", "Incorrect password");

@@ -8,6 +8,13 @@
 <%@page import="Model.AdminOrderObj"%>
 <%@page import="Controller.DeleteAdminOrder"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    if (session == null || session.getAttribute("adminEmail") == null) {
+        response.sendRedirect("/AdminPanel/JSP/Login.jsp"); // Redirect to the login page if not logged in
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
