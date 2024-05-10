@@ -412,14 +412,15 @@ public class DAO {
         }
     }
 
-//    public static List<ShoppingCartObj> getOrderConfirmationDetails() {
-//        String userEmail = (String) session.getAttribute("email"); // Retrieve the email attribute from the session
-//        if (userEmail != null) { // Check if email attribute is not null
-//            return getAllCartItems(userEmail); // Call the method with userEmail
-//        } else {
-//            return new ArrayList<>(); // Return an empty list if userEmail is null
-//        }
-//    }
+    public static void removeShoppingItem(int recordId) {
+        try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM shoppingcart WHERE recordId = ?")) {
+            statement.setInt(1, recordId);
+            statement.executeUpdate();
+        } catch (SQLException e) {
+            System.err.println("Error while deleting record: " + e.getMessage());
+        }
+    }
+
     public static List<NewestProductObj> getNewArrivals() {
         List<NewestProductObj> newitems = new ArrayList<>();
         Connection connection = null;
@@ -577,8 +578,8 @@ public class DAO {
                 if (resultSet != null) {
                     resultSet.close();
                 }
-                if (preparedStatement  != null) {
-                    preparedStatement .close();
+                if (preparedStatement != null) {
+                    preparedStatement.close();
                 }
                 if (connection != null) {
                     connection.close();

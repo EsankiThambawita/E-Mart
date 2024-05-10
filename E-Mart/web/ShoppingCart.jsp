@@ -76,6 +76,10 @@
                             <div class="col col-lg-2">
                                 LKR <%= item.getProductPrice() %>
                             </div>
+                            <form action="/DeleteShoppingItem" method="post" class="col col-lg-2 qty-group">
+                                <input type="hidden" name="recordId" value="<%= item.getRecordId() %>">
+                                <button type="submit"><img src="/AdminPanel/Images/delete.svg" alt="Delete" style="width: 20px; height: 20px; display: flex; flex-direction: row;"></button>
+                            </form>
                         </div>
                         <% 
                                     } 

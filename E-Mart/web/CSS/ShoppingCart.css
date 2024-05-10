@@ -155,3 +155,8 @@ hr{
 nav{
     display: flex !important;
 }
+
+.row{
+    display: flex;
+    flex-direction: row !important;
+}
