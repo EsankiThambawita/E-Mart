@@ -51,7 +51,8 @@
                 </thead>
                 <tbody>
                 <% 
-                    List<AdminOrderObj> orders = DAO.getAdminOrders();
+                    String email = (String) session.getAttribute("email");
+                    List<AdminOrderObj> orders = DAO.getOrders(email);
                     for (AdminOrderObj order : orders) {
                 %>
                 <tr>

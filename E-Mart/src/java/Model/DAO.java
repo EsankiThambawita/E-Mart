@@ -531,6 +531,65 @@ public class DAO {
         return orders;
     }
 
+    public static List<AdminOrderObj> getOrders(String userEmail) {
+        List<AdminOrderObj> orders = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+
+            // Establishing connection to the database
+            connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+
+            // Creating SQL statement
+            String query = "SELECT * FROM orders WHERE email = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, userEmail);
+
+            // Executing the query
+            resultSet = preparedStatement.executeQuery();
+
+            // Iterating over the result set and adding items from smartphone
+            while (resultSet.next()) {
+                int orderNumber = resultSet.getInt("orderId");
+                String productId = resultSet.getString("productId");
+                int quantity = resultSet.getInt("quantity");
+                java.util.Date orderDate = resultSet.getDate("orderDate");
+                String orderStatus = resultSet.getString("orderStatus");
+                int totalPrice = resultSet.getInt("totalPrice");
+                String shippingAddress = resultSet.getString("address");
+                String customerName = resultSet.getString("name");
+                String feedback = resultSet.getString("feedback");
+                String email = resultSet.getString("email");
+
+                // Creating Smartphone object and adding it to the list
+                AdminOrderObj order = new AdminOrderObj(orderDate, orderNumber, orderStatus, productId, quantity,
+                        totalPrice, shippingAddress, customerName, feedback, email);
+                orders.add(order);
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+        } finally {
+            // Closing the connection, statement, and result set
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (preparedStatement  != null) {
+                    preparedStatement .close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException e) {
+                System.err.println("Error while retrieving shopping cart items: " + e.getMessage());
+            }
+        }
+        return orders;
+    }
+
     public static void removeOrderItem(int orderId) {
         try (Connection connection = getConnection(); PreparedStatement statement = connection.prepareStatement("DELETE FROM orders WHERE orderId = ?")) {
             statement.setInt(1, orderId);

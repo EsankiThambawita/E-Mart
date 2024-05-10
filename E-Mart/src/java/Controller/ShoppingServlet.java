@@ -48,8 +48,15 @@ public class ShoppingServlet extends HttpServlet {
         String productName = request.getParameter("productName");
 
         if (action.equals("buy")) {
-            addToCheckout(productId, quantity, price, productName, category, description, iconPath);
-            response.sendRedirect("Checkout.jsp");
+            String email = (String) request.getSession().getAttribute("email");
+            if (email != null && !email.isEmpty()) {
+                // User is logged in, proceed to add item to cart
+                addToShoppingCart(productId, quantity, price, productName, category, description, iconPath, email);
+                response.sendRedirect("Checkout.jsp");
+            } else {
+                // User is not logged in, redirect to login page or display a message
+                response.sendRedirect("SignIn.jsp");
+            }
 
         } else if (action.equals("cart")) {
             String email = (String) request.getSession().getAttribute("email");

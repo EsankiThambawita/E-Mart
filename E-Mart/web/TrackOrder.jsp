@@ -48,8 +48,9 @@
                 </h1>
             </div>
             <% 
-    List<AdminOrderObj> orders = DAO.getAdminOrders();
-    for (AdminOrderObj order : orders) {
+                String email = (String) session.getAttribute("email");
+                List<AdminOrderObj> orders = DAO.getOrders(email);
+                for (AdminOrderObj order : orders) {
             %>
             <div class="order-tracking-card">
                 <div class="order-details-row">
