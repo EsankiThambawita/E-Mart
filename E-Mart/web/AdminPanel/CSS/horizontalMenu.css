@@ -14,28 +14,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     padding: 0;
     margin: 20px auto;
     overflow: hidden;
-    background-color: #2c3e50; /* Background color */
+    background-color: #2c3e50; 
     border-radius: 10px;
-    display: flex; /* Use flexbox for layout */
-    max-width: 900px; /* Limit the maximum width of the menu */
+    display: flex; 
+    max-width: 900px; 
     
 }
 
 .horizontal-menu li {
-    flex: 1; /* Distribute space evenly among menu items */
+    flex: 1;
 }
 
 .horizontal-menu li a {
     display: block;
-    color: #ecf0f1; /* Text color */
-    padding: 15px 20px; /* Padding */
+    color: #ecf0f1; 
+    padding: 15px 20px;
     text-decoration: none;
-    font-size: 18px; /* Font size */
-    font-weight: bold; /* Font weight */
-    text-transform: uppercase; /* Uppercase text */
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    font-size: 18px; 
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
 }
 
 .horizontal-menu li a:hover {
-    background-color: #34495e; /* Hover background color */
+    background-color: #34495e; 
 }
