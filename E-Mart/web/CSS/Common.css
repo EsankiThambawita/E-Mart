@@ -10,8 +10,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body{
     background-color: black;
     color: white;
-    font-family: 'Inter';
     margin: 0;
+    font-family: Calibri, sans-serif !important;
 }
 
 .button-outline,

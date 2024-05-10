@@ -32,6 +32,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     background-color: #151663;
 }
 
+*, ::after, ::before {
+    box-sizing: unset;
+}
+
 body {
     overflow-x: hidden; /* Only hide horizontal overflow */
     width: 100vw; /* Fix typo */
@@ -233,3 +237,4 @@ body {
 nav{
     display:flex !important;
 }
+

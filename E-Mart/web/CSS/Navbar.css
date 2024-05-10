@@ -6,6 +6,7 @@ nav {
     padding: 1rem;
     transition: all 2s;
     max-height: 100vh;
+    text-decoration: none !important;
 }
 
 .nav-content {
@@ -179,4 +180,5 @@ nav {
 .indicator {
     font-size: 18px;
     color: white;
+    text-decoration: none !important;
 }

@@ -11,7 +11,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 body, html {
     margin: 0;
     padding: 0;
-    font-family: Calibri, sans-serif;
+    font-family: Calibri, sans-serif !important;
     color: #FFF;
     background-color: black;
     height: 100%;
