@@ -22,7 +22,6 @@
     <body>
         <%@ include file="Navbar.jsp" %>
 
-        <% DAO.getAllCartItems(); %>
         <% DAO.getAllSmartphones(); %>
         <% DAO.getNewArrivals(); %>
 

@@ -35,7 +35,8 @@
                     <th>Price</th>
                 </tr>
                 <% 
-                    List<ShoppingCartObj> cartItems = DAO.getAllCartItems();
+                    String email = (String) session.getAttribute("email");
+                    List<ShoppingCartObj> cartItems = DAO.getAllCartItems(email);
                     for (ShoppingCartObj item : cartItems) {
                 %>
                 <input type="hidden" name="orderDate" value="<%= LocalDate.now() %>"> 

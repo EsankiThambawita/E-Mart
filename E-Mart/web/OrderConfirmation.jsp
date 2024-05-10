@@ -43,10 +43,12 @@
                 <div class="order-summary">
                     <h2>Order Summary</h2>
                     <div class="line"></div>
-                    <% List<ShoppingCartObj> confirmItems = DAO.getOrderConfirmationDetails(); 
-                       if(confirmItems != null) {
+                    <% 
+                        String email = (String) session.getAttribute("email");
+                        List<ShoppingCartObj> confirmItems = DAO.getAllCartItems(email); 
+                        if(confirmItems != null) {
                             int itemCount = 1; // Counter variable for item count
-                       for(ShoppingCartObj item : confirmItems) {
+                            for(ShoppingCartObj item : confirmItems) {
                     %>
                     <div class="item">
                         <span class="number"><%= itemCount++ %>)</span>
@@ -111,7 +113,6 @@
                     <%
                         List<AdminOrderObj> orders = DAO.getAdminOrders();
                         int lastOrderId = 0; // Initialize with 0 or any other default value
-                        String email = "";
                         int lastIndex = orders.size() - 1;
                         if (lastIndex >= 0) {
                             // Get the orderId of the last order

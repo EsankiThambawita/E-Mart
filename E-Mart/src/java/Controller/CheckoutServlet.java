@@ -95,7 +95,8 @@ public class CheckoutServlet extends HttpServlet {
             // Generate orderId (for example, using a simple timestamp-based approach)
             int orderId = GenerateOrderId();
 
-            List<ShoppingCartObj> cartItems = DAO.getAllCartItems(); // Retrieve list of cart items
+            String email = (String) request.getSession().getAttribute("email");
+            List<ShoppingCartObj> cartItems = DAO.getAllCartItems(email); // Retrieve list of cart items
 
             // Convert cart items to a map of product IDs and quantities
             Map<Integer, Integer> cartItemsMap = new HashMap<>();

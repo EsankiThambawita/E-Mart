@@ -75,8 +75,8 @@ public class OrderConfirmationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         //processRequest(request, response);
-        
-        List<ShoppingCartObj> confirmItems = DAO.getOrderConfirmationDetails();
+        String email = (String) request.getSession().getAttribute("email");
+        List<ShoppingCartObj> confirmItems = DAO.getAllCartItems(email);
         request.setAttribute("confirmItems", confirmItems);
         request.getRequestDispatcher("OrderConfirmation.jsp").forward(request, response);
     }

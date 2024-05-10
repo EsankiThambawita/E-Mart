@@ -346,10 +346,10 @@ public class DAO {
         return products;
     }
 
-    public static List<ShoppingCartObj> getAllCartItems() {
+    public static List<ShoppingCartObj> getAllCartItems(String userEmail) {
         List<ShoppingCartObj> currentCartSnap = new ArrayList<>();
         Connection connection = null;
-        Statement statement = null;
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -357,14 +357,13 @@ public class DAO {
             // Establishing connection to the database
             connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
-            // Creating SQL statement
-            statement = connection.createStatement();
-
-            // SQL query to fetch shopping cart items
-            String query = "SELECT * FROM ShoppingCart";
+            // Creating SQL statement with parameter binding
+            String query = "SELECT * FROM ShoppingCart WHERE email = ?";
+            statement = connection.prepareStatement(query);
+            statement.setString(1, userEmail); // Bind userEmail to the first parameter
 
             // Executing the query
-            resultSet = statement.executeQuery(query);
+            resultSet = statement.executeQuery();
 
             // Iterating over the result set and adding items to the shopping cart list
             while (resultSet.next()) {
@@ -413,10 +412,14 @@ public class DAO {
         }
     }
 
-    public static List<ShoppingCartObj> getOrderConfirmationDetails() {
-        return getAllCartItems();
-    }
-
+//    public static List<ShoppingCartObj> getOrderConfirmationDetails() {
+//        String userEmail = (String) session.getAttribute("email"); // Retrieve the email attribute from the session
+//        if (userEmail != null) { // Check if email attribute is not null
+//            return getAllCartItems(userEmail); // Call the method with userEmail
+//        } else {
+//            return new ArrayList<>(); // Return an empty list if userEmail is null
+//        }
+//    }
     public static List<NewestProductObj> getNewArrivals() {
         List<NewestProductObj> newitems = new ArrayList<>();
         Connection connection = null;

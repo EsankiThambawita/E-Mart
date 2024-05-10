@@ -35,7 +35,7 @@ public class AdminLoginServlet extends HttpServlet {
         String Password = request.getParameter("password");
 
         // Check if the password is correct
-        if ("emart24051".equals(Password)) {
+        if ("emart1234".equals(Password)) {
             // Create a session
             HttpSession session = request.getSession();
             // Store user information in session

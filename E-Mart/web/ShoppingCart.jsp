@@ -40,9 +40,19 @@
                     <h3 class="card-title">Order Summary</h3>
                     <hr>
                     <div class="container text-center" id="orderItemsList">
-                        <% 
-                            List<ShoppingCartObj> cartItems = DAO.getAllCartItems();
-                            for (ShoppingCartObj item : cartItems) {
+                        <%
+                            // Retrieve email from session attribute
+                            String email = (String) session.getAttribute("email");
+
+                            // Check if email is not null
+                            if (email != null) {
+                                // Retrieve cart items from DAO using email
+                                List<ShoppingCartObj> cartItems = DAO.getAllCartItems(email);
+
+                                // Check if cartItems is not null
+                                if (cartItems != null) {
+                                    // Iterate over cartItems and display each item
+                                    for (ShoppingCartObj item : cartItems) {
                         %>
                         <div class="row">
                             <div class="col-md-auto item-icon">
@@ -67,7 +77,11 @@
                                 LKR <%= item.getProductPrice() %>
                             </div>
                         </div>
-                        <% } %>
+                        <% 
+                                    } 
+                                } 
+                            } 
+                        %>
                     </div>
 
                     <hr>
@@ -84,8 +98,14 @@
                                 <span>Total - </span>
                                 <% 
                                     int total = 0;
-                                    for (ShoppingCartObj item : cartItems) {
-                                        total += item.getTotalPrice();
+                                    String temail = (String) session.getAttribute("email");
+                                    if (email != null) {
+                                        List<ShoppingCartObj> cartItems = DAO.getAllCartItems(temail);
+                                        if (cartItems != null) {
+                                            for (ShoppingCartObj item : cartItems) {
+                                                total += item.getTotalPrice();
+                                            }
+                                        }
                                     }
                                 %>
                                 <span>LKR <%= total %></span>
