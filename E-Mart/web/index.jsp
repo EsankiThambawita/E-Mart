@@ -11,12 +11,13 @@
 <!DOCTYPE html>
 <html>
     <head>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <link href="CSS/Common.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Navbar.css" rel="stylesheet" type="text/css"/>
         <link href="CSS/Footer.css" rel="stylesheet" type="text/css"/>
-        <link href="CSS/Home.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/index.css" rel="stylesheet" type="text/css"/>
     </head>
 
     <body>
