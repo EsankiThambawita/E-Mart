@@ -9,6 +9,13 @@
 <%@page import="Model.DAO"%>
 <%@page import="Model.AdminOrderObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("SignIn.jsp"); // Redirect to the login page if not logged in
+    }
+%>
 <!DOCTYPE html>
 <html>
 <head>

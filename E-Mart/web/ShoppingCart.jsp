@@ -8,6 +8,13 @@
 <%@page import="java.util.List"%>
 <%@page import="Model.DAO"%>
 <%@page import="Model.ShoppingCartObj"%>
+<%@ page import="javax.servlet.http.*" %>
+
+<%
+    if (session == null || session.getAttribute("email") == null) {
+        response.sendRedirect("SignIn.jsp"); // Redirect to the login page if not logged in
+    }
+%>
 <!DOCTYPE html>
 <html lang="en">
     <head>

@@ -7,6 +7,7 @@
 <%@ page import="Model.userDao" %>
 <%@page import="java.util.*" %>
 <%@page import="java.sql.*" %>
+<%@ page import="javax.servlet.http.*" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -139,6 +140,11 @@
         </div>
         <%@ include file="Footer.html" %>
         <script src="JS/Common.js"></script>  
+        <%
+            if (session == null || session.getAttribute("email") == null) {
+                response.sendRedirect("SignIn.jsp"); // Redirect to the login page if not logged in
+            }
+        %>
     </body>
 </html>
 
