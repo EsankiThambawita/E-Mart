@@ -39,12 +39,12 @@ public class Checkout {
 
     }
 
-    public String addCheckout(int orderId, String name, String mail, String add, String citys, String states, int zips, Map<Integer, Integer> cartItems, String orderDate, int price, int quantity) {
+    public String addCheckout( String name, String mail, String add, String citys, String states, int zips, Map<Integer, Integer> cartItems, String orderDate, int price, int quantity) {
         Connection conn = null;
         try {
             connectToDB(); // Assuming connectToDB() is a method that initializes the database connection
             conn = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            String query = "INSERT INTO orders(orderId, name, email, address, city, state, zip, productId, orderDate, totalPrice, quantity, orderStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'processing')";
+            String query = "INSERT INTO orders(name, email, address, city, state, zip, productId, orderDate, totalPrice, quantity, orderStatus) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'processing')";
 
             StringBuilder productIdsBuilder = new StringBuilder();
             for (int productId : cartItems.keySet()) {
@@ -57,20 +57,19 @@ public class Checkout {
             }
 
             PreparedStatement preparedStatement = conn.prepareStatement(query);
-            preparedStatement.setInt(1, orderId);
-            preparedStatement.setString(2, name);
-            preparedStatement.setString(3, mail);
-            preparedStatement.setString(4, add);
-            preparedStatement.setString(5, citys);
-            preparedStatement.setString(6, states);
-            preparedStatement.setInt(7, zips);
-            preparedStatement.setString(8, productIds);
-            preparedStatement.setString(9, orderDate);
-            preparedStatement.setInt(10, price);
-            preparedStatement.setInt(11, quantity);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, mail);
+            preparedStatement.setString(3, add);
+            preparedStatement.setString(4, citys);
+            preparedStatement.setString(5, states);
+            preparedStatement.setInt(6, zips);
+            preparedStatement.setString(7, productIds);
+            preparedStatement.setString(8, orderDate);
+            preparedStatement.setInt(9, price);
+            preparedStatement.setInt(10, quantity);
             preparedStatement.executeUpdate();
 
-            return "success with orderId: " + orderId; // Return orderId along with success message
+            return "success with orderId: " + mail; // Return orderId along with success message
 
         } catch (SQLException ex) {
             // Log the exception

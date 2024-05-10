@@ -1,3 +1,4 @@
+
 package Controller;
 
 import Model.DAO;
@@ -41,7 +42,7 @@ public class ShoppingServlet extends HttpServlet {
         int productId = Integer.parseInt(request.getParameter("ID"));
         String action = request.getParameter("action");
         String category = request.getParameter("category");
-        int quantity = Integer.parseInt(request.getParameter("quantity"));
+        int quantity = 1;
         int price = Integer.parseInt(request.getParameter("productPrice"));
         String description = request.getParameter("description");
         String iconPath = request.getParameter("iconPath");
@@ -75,7 +76,7 @@ public class ShoppingServlet extends HttpServlet {
     public static void addToCheckout(int productId, int quantity, int productPrice, String productName, String category, String description, String iconPath) {
         Connection connection = null;
         PreparedStatement statement = null;
-
+        
         try {
             // Get connection
             connection = getConnection();

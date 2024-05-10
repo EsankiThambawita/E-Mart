@@ -93,7 +93,7 @@ public class CheckoutServlet extends HttpServlet {
             int quantity = Integer.parseInt(request.getParameter("quantity"));
 
             // Generate orderId (for example, using a simple timestamp-based approach)
-            int orderId = GenerateOrderId();
+//            int orderId = GenerateOrderId();
 
             String email = (String) request.getSession().getAttribute("email");
             List<ShoppingCartObj> cartItems = DAO.getAllCartItems(email); // Retrieve list of cart items
@@ -105,7 +105,7 @@ public class CheckoutServlet extends HttpServlet {
             }
 
             Checkout c = new Checkout();
-            var result = c.addCheckout(orderId, name, mail, add, citys, states, zips, cartItemsMap, orderDate, price, quantity);
+            var result = c.addCheckout(name, mail, add, citys, states, zips, cartItemsMap, orderDate, price, quantity);
             out.println(result);
 
             // Redirect to orderConfirmation.jsp
