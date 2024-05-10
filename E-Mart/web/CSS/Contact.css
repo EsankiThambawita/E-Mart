@@ -229,3 +229,7 @@ body {
 .nav-link.support-link {
     opacity: 1;
 }
+
+nav{
+    display:flex !important;
+}
