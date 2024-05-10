@@ -1,0 +1,362 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Apr 11, 2024, 3:53:39 PM
+    Author     : Esanki Lakvindee
+*/
+
+/*Global styles*/
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Calibri, sans-serif;
+    color: #FFF;
+    background-color: black;
+    height: 100%;
+}
+
+.gradient-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.6) 100%);
+    z-index: 1; /* Ensure the gradient overlay is behind the content but on top of the background image */
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    height: 50vh; /* Adjust height as needed */
+    overflow: hidden; /* Ensure that content beyond the height of the container is hidden */
+    background-color: black; /* Set background color as desired */
+}
+
+.background-image {
+    width: 100%;
+    height: 50vh; /* Adjust height as needed */
+    object-fit: cover;
+}
+
+.content {
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    text-align: left;
+    z-index: 2;
+}
+
+h1, p {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+.buttons {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2%; /* Adjust gap as needed */
+}
+
+button {
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    border-radius: 10%; /* Adjust border-radius as needed */
+    border: 0.5px solid #FFF;
+    background: rgba(0, 0, 0, 0.00);
+    font-size: 1.5vw; /* Adjust font-size as needed */
+    cursor: pointer;
+    color: #FFF;
+}
+.button1 {
+    background: rgba(0, 0, 0, 0.90); /* Black color background */
+}
+
+.button2 {
+    background: rgba(21, 22, 99, 0.90) !important;
+    backdrop-filter: blur(50px);
+    border: 0.5px solid blue;
+}
+
+
+/*Second Section*/
+.second-section {
+    position: relative;
+    margin-top: 10vh; 
+    text-align: center;
+}
+
+.Topic {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 150%;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    letter-spacing: 0.2em;
+}
+
+.rectangle-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%; /* Adjust percentage as needed */
+    margin-right: 10%; /* Adjust percentage as needed */
+    gap: 3%; /* Adjust percentage as needed */
+}
+
+.rectangle {
+    width: 100%; /* Adjust percentage as needed */
+    height: 40vw; /* Adjust percentage or vw as needed */
+    max-width: 394px; /* Set maximum width if needed */
+    border-radius: 5%; /* Adjust percentage as needed */
+    border: 0.5vw solid rgba(255, 255, 255, 0.40); /* Adjust border width and color */
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    overflow: hidden; /* Ensures that the border-radius is applied to the background */
+}
+
+
+.rectangle img {
+    width: 100%; /* Adjust percentage as needed */
+    margin-top: 5%; /* Adjust percentage as needed */
+    max-height: 100%; /* Adjust percentage as needed */
+}
+.text1, .text2 {
+    display: block;
+    color: #FFF;
+    font-family: Calibri;
+    font-style: normal;
+    line-height: 2vw; /* Adjust as needed */
+    letter-spacing: 0.2vw; /* Adjust as needed */
+}
+
+.text1 {
+    font-size: 2vw; /* Adjust as needed */
+    font-weight: 700;
+    margin-top: 5vw; /* Adjust as needed */
+}
+
+.text2 {
+    font-size: 2.5vw; /* Adjust as needed */
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.70);
+    margin-top: 3vw; /* Adjust as needed */
+}
+
+/*Fourth Section*/
+.categories-text {
+    text-align: center;
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 4vw; /* Adjust as needed */
+    font-weight: 700;
+    line-height: 1.5; /* Adjust as needed */
+    letter-spacing: 0.3vw; /* Adjust as needed */
+    margin-top: 10vh; /* Adjust as needed */
+}
+
+.category-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 8vw; /* Adjust as needed */
+    margin-right: 10vw; /* Adjust as needed */
+    margin-top: 5vh; /* Adjust as needed */
+}
+
+.category-container .category1,
+.category-container .category2,
+.category-container .category3 {
+    width: 45%; /* Adjust as needed */
+    height: 30vw; /* Adjust as needed */
+    border-radius: 5%; /* Adjust as needed */
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1vw; /* Adjust as needed */
+    margin-right: 5%; /* Gap between each category */
+}
+
+.category-container .column1 img {
+    width: 50%; /* Adjust as needed */
+}
+
+.category-container .column2 {
+    width: 60%; /* Adjust as needed */
+}
+
+.category-container .line1 {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 3vw; /* Adjust as needed */
+    font-weight: 700;
+    line-height: 1.5; /* Adjust as needed */
+    letter-spacing: 0.2vw; /* Adjust as needed */
+    margin-bottom: 2vw; /* Adjust as needed */
+}
+
+.category-container .line2 {
+    color: rgba(255, 255, 255, 0.80);
+    font-family: Calibri;
+    font-size: 1.5vw; /* Adjust as needed */
+    font-weight: 300;
+    line-height: 1.5; /* Adjust as needed */
+    letter-spacing: 0.2vw; /* Adjust as needed */
+}
+
+.nextcategory-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 10%; /* Adjust margin-left as needed */
+    margin-right: 10%; /* Adjust margin-right as needed */
+    margin-top: 5vh; /* Adjust margin-top as needed */
+}
+
+.nextcategory-container .category4,
+.nextcategory-container .category5 {
+    width: 35%; /* Adjust width as needed */
+    height: 30vw; /* Adjust height as needed */
+    border-radius: 5%; /* Adjust border-radius as needed */
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    background: linear-gradient(0deg, rgba(255, 255, 255, 0.07) 0%, rgba(255, 255, 255, 0.07) 100%), linear-gradient(209deg, rgba(0, 0, 0, 0.42) 17.86%, #000 82.12%), linear-gradient(93deg, rgba(0, 0, 0, 0.24) 0%, rgba(0, 0, 0, 0.24) 100%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2vw; /* Adjust padding as needed */
+    margin-right: 5%; /* Gap between each category */
+}
+
+.nextcategory-container .category4 {
+    margin-left: 0;
+}
+
+.nextcategory-container .category5 {
+    margin-right: 0;
+}
+
+.nextcategory-container .column1 img {
+    height: 10vw; /* Adjust image height as needed */
+    width: 8vw; /* Adjust image width as needed */
+}
+
+.nextcategory-container .column2 {
+    width: 50%; /* Each takes half of the container */
+}
+
+.nextcategory-container .line1 {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 3vw; /* Adjust font-size as needed */
+    font-weight: 700;
+    line-height: 1.5; /* Adjust line-height as needed */
+    letter-spacing: 0.2vw; /* Adjust letter-spacing as needed */
+    margin-bottom: 2vw; /* Adjust margin-bottom as needed */
+}
+
+.nextcategory-container .line2 {
+    color: rgba(255, 255, 255, 0.80);
+    font-family: Calibri;
+    font-size: 1.5vw; /* Adjust font-size as needed */
+    font-weight: 300;
+    line-height: 1.5; /* Adjust line-height as needed */
+    letter-spacing: 0.2vw; /* Adjust letter-spacing as needed */
+}
+/* Sixth section */
+.longrectangle-container {
+    display: flex;
+    justify-content: center;
+    margin-left: 10%; /* Adjust margin-left as needed */
+    margin-right: 10%; /* Adjust margin-right as needed */
+    margin-top: 10vh; /* Adjust margin-top as needed */
+    margin-bottom: 10vh; /* Adjust margin-bottom as needed */
+}
+
+.longrectangle {
+    width: 80%; /* Adjust width as needed */
+    max-width: 1652px; /* Maximum width */
+    height: 30vh; /* Adjust height as needed */
+    border-radius: 2vw; /* Adjust border-radius as needed */
+    border: 1px solid #3B7BF8;
+    background: linear-gradient(209deg, rgba(21, 22, 99, 0.70) 17.86%, rgba(21, 22, 99, 0.70) 82.12%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw; /* Adjust padding as needed */
+}
+
+.sentence {
+    color: #FFF;
+    font-family: Calibri;
+    font-size: 3vw; /* Adjust font-size as needed */
+    font-weight: 400;
+    line-height: 1.5; /* Adjust line-height as needed */
+    letter-spacing: 0.2vw; /* Adjust letter-spacing as needed */
+    margin-bottom: 6vh; /* Adjust margin-bottom as needed */
+}
+.start-shopping {
+    width: 20vw; /* Adjust width as needed */
+    height: 8vh; /* Adjust height as needed */
+    border-radius: 2vh; /* Adjust border-radius as needed */
+    border: 0.3vw solid #151663; /* Adjust border width as needed */
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(2vw); /* Adjust blur radius as needed */
+    font-family: Calibri;
+    font-size: 2vw; /* Adjust font-size as needed */
+    font-weight: 700;
+    color: #151663;
+    cursor: pointer;
+}
+
+/*Clicking parts of second, third sections*/
+.rectangle-container .rectangle a {
+    display: block;
+    position: relative;
+    width: 100%; /* Ensures full width for responsiveness */
+    height: 100%; /* Ensures full height for responsiveness */
+}
+
+.rectangle-container .rectangle a img {
+    display: block;
+    width: 100%; /* Ensures full width for responsiveness */
+    height: 100%; /* Ensures full height for responsiveness */
+    transition: filter 0.3s ease; /* Smooth transition for the hover effect */
+}
+
+.rectangle-container .rectangle a:hover img {
+    filter: brightness(70%);
+}
+
+.rectangle-container .rectangle a:hover .text1,
+.rectangle-container .rectangle a:hover .text2 {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/*Clicking part of fourth, fifth sections*/
+.category-container a,
+.nextcategory-container a {
+    display: block;
+    text-decoration: none; /* Remove underline from links */
+    transition: transform 0.3s ease; /* Smooth transition for the hover effect */
+    width: 100%; /* Ensures full width for responsiveness */
+    height: 100%; /* Ensures full height for responsiveness */
+}
+
+.category-container a:hover,
+.nextcategory-container a:hover {
+    transform: scale(1.1); /* Increase size by 10% when hovered */
+}
+
+.category-container a:hover .line1,
+.category-container a:hover .line2,
+.nextcategory-container a:hover .line1,
+.nextcategory-container a:hover .line2 {
+    color: rgba(255, 255, 255, 0.9); /* Change text color when hovered */
+}
