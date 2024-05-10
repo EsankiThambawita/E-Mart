@@ -79,6 +79,11 @@ public class SignUpServlet extends HttpServlet {
         String confirmPassword = request.getParameter("confirmPassword");
         String contactNumber = request.getParameter("ContactNumber");
 
+        username.trim();
+        email.trim();
+        password.trim();
+        contactNumber.trim();
+
         // If Validation fails
         if (!validation(username, email, password, confirmPassword, contactNumber)) {
             request.getRequestDispatcher("SignUp.jsp").forward(request, response);
@@ -89,7 +94,7 @@ public class SignUpServlet extends HttpServlet {
             // Save to the database
             userDao userDao = new userDao(); // Create an instance of userDao
             userDao.insertDetails(email, username, password, contactNumber);
-             // Generate unique UserID
+            // Generate unique UserID
             String userID = UUID.randomUUID().toString();
             // Set session attributes
             HttpSession session = request.getSession();
@@ -100,12 +105,10 @@ public class SignUpServlet extends HttpServlet {
 
             // Set cookie with UserID
             Cookie cookie = new Cookie("UserID", userID);
-            cookie.setMaxAge(24 * 60 * 60); 
+            cookie.setMaxAge(24 * 60 * 60);
 
-                // Redirect to profile page
-        response.sendRedirect("ProfileServlet?email=" + email);
-   
-   
+            // Redirect to profile page
+            response.sendRedirect("ProfileServlet?email=" + email);
 
         }
 

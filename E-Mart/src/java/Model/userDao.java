@@ -23,7 +23,7 @@ public class userDao {
 
     public static void insertDetails(String email, String username, String password, String contactNumber) {
         connectToDB();
-        String query = "INSERT INTO users(email,username,password,contactNumber)  VALUES(' " + email + " ', ' " + username + " ', ' " + password + " ', ' " + contactNumber + " ')";
+        String query = "INSERT INTO users(email,username,password,contactNumber)  VALUES('"+email+"','"+username+"','"+password+"','"+contactNumber+"')";
         try {
             st.executeUpdate(query);
             System.out.println("Record inserted");
