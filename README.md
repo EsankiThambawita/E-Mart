@@ -1,3 +1,8 @@
+# NOTICE - Previous IP address Expired
+#        - New IP address - 40.82.159.41 
+ 
+Due to expiration of the previous IP address the website was moved to another IP address. To be expired within this month.
+
 E-Mart- Development of an E-Commerce Application using Java Technologies
 
 
